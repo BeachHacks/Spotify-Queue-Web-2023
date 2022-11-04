@@ -1,0 +1,13 @@
+import '../styles/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SearchBar from './SearchBar.js';
+import Dashboard from './Dashboard.js';
+import Login from './Login';
+
+const code = new URLSearchParams(window.location.search).get('code')
+
+function App() {
+  return code ? <Dashboard code ={code}/> : <Login/> 
+}
+
+export default App;
