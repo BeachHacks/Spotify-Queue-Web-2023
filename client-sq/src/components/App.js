@@ -1,6 +1,5 @@
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchBar from './SearchBar.js';
 import Dashboard from './Dashboard.js';
 import Login from './Login';
 
