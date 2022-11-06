@@ -4,11 +4,11 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 // const SpotifyWebApi = SpotifyWebApi
-const port = 3000;
 // app.use(express.json()); // converts data into json between front and back 
 // app.use(express.static('./sq-ui/src')); // connects back to front
 app.use(cors())
 app.use(bodyParser.json())
+const spotifyApi = new SpotifyWebApi();
 
 app.post('/login', (req,res) => {
   const code = req.body.code
@@ -31,5 +31,16 @@ app.post('/login', (req,res) => {
   })
 })
 
+app.post('/searchTracks', function(req, res){
+  spotifyApi.setAccessToken(req.body.accessToken)
+  spotifyApi.searchTracks(req.body.searchString).then(
+    function(data) {
+        res.send(data);
+    },
+    function(err) {
+        console.error(err);
+    }
+    )
+}) 
 
 app.listen(3001);
