@@ -3,23 +3,27 @@ import useAuth from "./useAuth";
 import {Container, Form} from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-node';
 import '../styles/App.css'
+import axios from 'axios';
 
 function Dashboard({code}){
     const spotifyApi = new SpotifyWebApi();
     const accessToken = useAuth(code)
-
     spotifyApi.setAccessToken(accessToken);
 
-    const onSearchChange = async(searchQuery) =>{
-        spotifyApi.searchTracks(searchQuery).then(
-        function(data) {
-            console.log('Artist albums', data.body);
-        },
-        function(err) {
-            console.error(err);
-        }
-        )
-    }
+    const searchTracks = async(searchQuery) => {
+        axios
+          .post("http://localhost:3001/searchTracks", {
+            searchString : searchQuery,
+            accessToken : accessToken,
+          })
+          .then(res => {
+            console.log(res.data.body)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+
     return (
 
     // Search Bar Component
@@ -28,7 +32,7 @@ function Dashboard({code}){
         <Form.Control
             type="search"
             placeholder="Search Songs/Artists"
-            onChange={(e)=>{onSearchChange(e.target.value)}}
+            onChange={(e)=>{searchTracks(e.target.value)}}
         />
     </Container> 
     )}
