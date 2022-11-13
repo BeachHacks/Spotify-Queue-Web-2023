@@ -19,7 +19,7 @@ router.get('/list', (req, res) => {
 
 router.post('/add', (req, res) => {
    queue.push(req.body)
-   res.send('Added to queue')
+   res.json(queue);
 })
 
 
