@@ -12,7 +12,6 @@ app.use(bodyParser.json())
 app.use('/queue', queue)
 const spotifyApi = new SpotifyWebApi();
 
-
 app.post('/login', (req,res) => {
   const code = req.body.code
 
