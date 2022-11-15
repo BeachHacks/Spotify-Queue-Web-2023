@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import useAuth from "./useAuth";
+//import useAuth from "./useAuth";
 import {Container, Form} from 'react-bootstrap';
-import SpotifyWebApi from 'spotify-web-api-node';
+//import SpotifyWebApi from 'spotify-web-api-node';
 import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
 import Queue from "./Queue"
 
-function Dashboard({code}){
-    const spotifyApi = new SpotifyWebApi();
-    const accessToken = useAuth(code)
-    spotifyApi.setAccessToken(accessToken);
+function Dashboard(){
+    //const spotifyApi = new SpotifyWebApi();
+    //const accessToken = useAuth(code)
+    //spotifyApi.setAccessToken(accessToken);
     const [searchResults, setSearchResults] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
@@ -38,10 +38,10 @@ function Dashboard({code}){
         return axios
           .post("http://localhost:3001/searchTracks", {
             searchString : searchQuery,
-            accessToken : accessToken,
+           //accessToken : accessToken,
           })
           .then(res => {
-            //console.log(res.data.body)
+            console.log(res.data.body)
             return res.data.body;
           })
           .catch((err) => {
@@ -50,7 +50,7 @@ function Dashboard({code}){
       } 
     
       if(!search) return setSearchResults([])
-      if(!accessToken) return
+      //if(!accessToken) return
      
       // Parse search query
       searchTracks(search).then(res => {
@@ -70,11 +70,12 @@ function Dashboard({code}){
               title: track.name,
               uri: track.uri,
               albumUrl: smallestAlbumImage.url,
+              explicit: track.explicit
             }
           })
         )
       })
-    }, [search, accessToken])
+    }, [search])
 
     return (
 
@@ -91,6 +92,7 @@ function Dashboard({code}){
             <Track 
               track={track}
               key={track.uri}
+              clickable={true}
               />
           ))}
         </div>

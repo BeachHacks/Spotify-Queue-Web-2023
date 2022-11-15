@@ -1,6 +1,6 @@
 // Component for rendering the Queue
 import React from "react"
-import axios from 'axios';
+//import axios from 'axios';
 import Track from "./Track"
 
 export default function Queue({ trackList }) {
@@ -12,6 +12,7 @@ export default function Queue({ trackList }) {
               <Track 
                 track={track}
                 key={index}
+                clickable={false}
               />
           ))}
           </div> 
