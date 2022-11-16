@@ -5,6 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
+import Queue from "./Queue"
 
 function Dashboard({code}){
     const spotifyApi = new SpotifyWebApi();
@@ -12,7 +13,26 @@ function Dashboard({code}){
     spotifyApi.setAccessToken(accessToken);
     const [searchResults, setSearchResults] = useState([])
     const [search, setSearch] = useState("")
+    const [queueData, setQueueData] = useState([])
 
+    // Hook handling retrieving the data of the queue from the backend.
+    useEffect(() => {
+      let ignore = false; 
+
+      async function fetchQueue() {
+        const result = await axios('http://localhost:3001/queue/show');
+        if (!ignore) setQueueData(result.data);
+      }
+
+      const interval = setInterval(() => {
+        fetchQueue();
+      }, 1000);
+
+      return () => {ignore = true; clearInterval(interval);}
+    }, [])
+
+
+    // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
       const searchTracks = async(searchQuery) => {
         return axios
@@ -31,7 +51,8 @@ function Dashboard({code}){
     
       if(!search) return setSearchResults([])
       if(!accessToken) return
-      
+     
+      // Parse search query
       searchTracks(search).then(res => {
         setSearchResults(
           res.tracks.items.map(track => {
@@ -42,7 +63,8 @@ function Dashboard({code}){
               },
               track.album.images[0]
             )
-
+            
+            // Track attributes
             return {
               artist: track.artists[0].name,
               title: track.name,
@@ -56,15 +78,15 @@ function Dashboard({code}){
 
     return (
 
-    // Search Bar Component
-    <Container>
+    // Dashboard Component 
+    <Container className="d-flex flex-column py-2" style={{height: "100vh"}}>
         <h1>Spotify Search Bar</h1>
         <Form.Control
             type="search"
             placeholder="Search Songs/Artists"
             onChange={(e)=>{setSearch(e.target.value)}}
         />
-        <div className="flex-grow-1 my-2" style={{ overflowY: "auto"}}>
+        <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}>
           {searchResults.map(track => (
             <Track 
               track={track}
@@ -72,7 +94,11 @@ function Dashboard({code}){
               />
           ))}
         </div>
-        
+        <h1>Queue</h1>
+        <div style= {{ height: "30vh", overflowY: "auto"}}>
+          <Queue trackList={queueData} />
+        </div>
+       
     </Container> 
     )}
 
