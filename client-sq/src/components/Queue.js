@@ -13,6 +13,7 @@ export default function Queue({ trackList }) {
                 track={track}
                 key={index}
                 clickable={false}
+
               />
           ))}
           </div> 

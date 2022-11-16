@@ -51,6 +51,7 @@ function Dashboard(){
     
       if(!search) return setSearchResults([])
       //if(!accessToken) return
+
      
       // Parse search query
       searchTracks(search).then(res => {

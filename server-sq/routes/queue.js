@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
+
 module.exports = function(spotifyApi) {
     var queue = []; // Will eventually translate to playback queue.
     
@@ -20,7 +21,6 @@ module.exports = function(spotifyApi) {
         }
         return true;
     }
-    
 
     router.get('/', (req, res) => {
         res.send('Queue routing check')
@@ -53,5 +53,3 @@ module.exports = function(spotifyApi) {
     return router;
 
 }
-
-
