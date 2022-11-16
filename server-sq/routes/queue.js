@@ -7,7 +7,7 @@ module.exports = function(spotifyApi) {
     async function filter(trackUri) {
         let res = await spotifyApi.getAudioFeaturesForTrack(trackUri).then()
         let features = res.body;
-        console.log(features);
+        //console.log(features);
         //Parse Features - REQUIRES UPDATE
         //updated based on piano, classical music, and other slow/sleepy song track features (update if needed)
         if (features.energy <= 0.3 || 
@@ -37,11 +37,15 @@ module.exports = function(spotifyApi) {
     router.post('/add', (req, res) => {
         let filterPromise = filter(req.body.uri.replace('spotify:track:', ''))
         //console.log("SHOULD BE promise PENDING", filterPromise) // Promise { <pending> }
+        console.log(req.body);
         filterPromise.then(result=> {
-            console.log("This song is filtered out of the queue", result)
             if(result){
                 queue.push(req.body)
+                console.log("This song was added to queue")
                 }  // "boolean for filter"
+            else{
+                console.log("This song does not meet the queue requirements")
+            }
         })
         res.send("Check server for filter status");
     })
