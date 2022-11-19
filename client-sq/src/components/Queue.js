@@ -4,7 +4,6 @@ import React from "react"
 import Track from "./Track"
 
 export default function Queue({ trackList }) {
-
     return (
       // Will be modified to include displaying position in queue.
         <div className="flex-grow-1 my-2" style={{ overflowY: "auto"}}>

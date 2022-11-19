@@ -62,7 +62,7 @@ app.post('/refresh', (req, res) => {
 
 app.post('/searchTracks', function(req, res){
   //spotifyApi.setAccessToken(req.body.accessToken)
-  spotifyApi.searchTracks(req.body.searchString).then(
+  spotifyApi.searchTracks(req.body.searchString,req.body.params).then(
     function(data) {
         res.send(data);
     },
@@ -70,7 +70,19 @@ app.post('/searchTracks', function(req, res){
         console.error(err);
     }
     )
-}) 
+})
+
+app.post('/getAudioFeaturesForTracks', function(req, res){
+  //spotifyApi.setAccessToken(req.body.accessToken)
+  spotifyApi.getAudioFeaturesForTracks(req.body.idArr).then(
+    function(data) {
+        res.send(data);
+    },
+    function(err) {
+        console.error(err);
+    }
+    )
+})
 
 // REQUIRES UPDATE: to be called set on < 60 minute interval
 // Setup Procedures
@@ -85,6 +97,7 @@ spotifyApi.clientCredentialsGrant().then(
     console.log('Something went wrong when retrieving the access token', err);
   }
 )
+
 
 app.use('/queue', queue(spotifyApi));
 

@@ -8,10 +8,12 @@ import Track from "./Track"
 import Queue from "./Queue"
 
 function Dashboard(){
+    
     //const spotifyApi = new SpotifyWebApi();
     //const accessToken = useAuth(code)
     //spotifyApi.setAccessToken(accessToken);
     const [searchResults, setSearchResults] = useState([])
+    const [passedArr, setPassArr] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
 
@@ -34,10 +36,27 @@ function Dashboard(){
 
     // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
+      let idArr = [];
+      //var pass = [];
+      const getFeats = async(arr) => {
+        return axios
+          .post("http://localhost:3001/getAudioFeaturesForTracks", {
+            idArr : arr,
+           //accessToken : accessToken,
+          })
+          .then(res => {
+            //console.log(res.data.body)
+            return res.data.body;
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
       const searchTracks = async(searchQuery) => {
         return axios
           .post("http://localhost:3001/searchTracks", {
             searchString : searchQuery,
+            params: {limit: 50}
            //accessToken : accessToken,
           })
           .then(res => {
@@ -48,15 +67,49 @@ function Dashboard(){
             console.log(err)
           })
       } 
+      
+      function filter(idArr){
+        var boolFilter = []
+        getFeats(idArr).then(res=>{
+          let features = res.audio_features
+          for(let i = 0; i < idArr.length; i++){
+            if (features[i].energy <= 0.3 || 
+                features[i].loudness <= -17 ||
+                features[i].acousticness >= .8 ||
+                features[i].instrumentalness >= 0.60 ||
+                features[i].valence <= 0.15 ||
+                features[i].tempo <= 45 ) {
+
+              boolFilter.push(false);
+
+          }
+            else 
+              boolFilter.push(true);
+        }
+        })
+        return boolFilter;
+      } 
+
+
+        
     
       if(!search) return setSearchResults([])
       //if(!accessToken) return
-
-     
       // Parse search query
       searchTracks(search).then(res => {
+        
+        //get id array from search
+        for(let i = 0; i < res.tracks.items.length; i++)
+          idArr.push(res.tracks.items[i].uri.replace('spotify:track:', ''))
+
+        setPassArr(
+          filter(idArr)
+        )
+        
+        let counter = -1
         setSearchResults(
           res.tracks.items.map(track => {
+            counter++
             const smallestAlbumImage = track.album.images.reduce(
               (smallest, image) => {
                 if (image.height < smallest.height) return image
@@ -64,18 +117,20 @@ function Dashboard(){
               },
               track.album.images[0]
             )
-            
-            // Track attributes
+            //Track attributes
+            //console.log(track.name)
             return {
               artist: track.artists[0].name,
               title: track.name,
               uri: track.uri,
               albumUrl: smallestAlbumImage.url,
-              explicit: track.explicit
+              explicit: track.explicit,
+              passFilter: passedArr[counter]
             }
           })
         )
       })
+      
     }, [search])
 
     return (
