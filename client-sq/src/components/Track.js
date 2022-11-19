@@ -1,6 +1,7 @@
 // Component for showing track details
 import React from "react"
 import axios from 'axios';
+import { Button, TableCell, TableRow } from '@mui/material';
 
 export default function Track({ track, clickable }) {
     let gray = ""
@@ -34,15 +35,25 @@ export default function Track({ track, clickable }) {
    }
 
     return (
-        <div className="d-flex m-2 align-items-center" style={{ cursor: "pointer"}} onClick={handleAdd}>
-            <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px"}} />
-            <div className="m1-3">
-              
-                <div>{track.title}<span className="text-muted">{gray}</span></div>
-                <div className="text-muted">{track.artist}</div>
-            
-            </div>
-        </div>
+        <>
+            <TableRow hover={true}>
+              <TableCell>
+                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:10}} />
+              </TableCell>
+              <TableCell align="center">
+                {track.title}
+              </TableCell>
+              <TableCell align="center">
+                {track.artist}
+              </TableCell>
+              <TableCell align="right">
+              {
+                 gray === "" && clickable? 
+                 <Button onClick={handleAdd} variant="contained" color="primary">Add</Button>
+                 : clickable ? <Button variant="outlined" disabled>Add</Button> : null
+              }
+              </TableCell>
+            </TableRow>
+        </>
     )
-    
 }
