@@ -106,11 +106,9 @@ function Dashboard(){
         setPassArr(
           filter(idArr)
         )
-        
-        let counter = -1
+
         setSearchResults(
           res.tracks.items.map(track => {
-            counter++
             const smallestAlbumImage = track.album.images.reduce(
               (smallest, image) => {
                 if (image.height < smallest.height) return image
@@ -125,8 +123,7 @@ function Dashboard(){
               title: track.name,
               uri: track.uri,
               albumUrl: smallestAlbumImage.url,
-              explicit: track.explicit,
-              passFilter: passedArr[counter]
+              explicit: track.explicit
             }
           })
         )
@@ -162,6 +159,7 @@ function Dashboard(){
               {searchResults.map(track => (
                   <Track 
                     track={track}
+                    filter = {passedArr}
                     key={track.uri}
                     clickable={true}
                     />
