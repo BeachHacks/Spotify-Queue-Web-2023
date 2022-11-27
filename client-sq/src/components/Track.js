@@ -35,16 +35,20 @@ export default function Track({ track, filter, clickable }) {
               <TableCell>
                 <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:10}} />
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="left">
                 {track.title}
-              </TableCell>
-              <TableCell align="center">
+                {" - \n"}
                 {track.artist}
               </TableCell>
+
+              <TableCell align="center">
+                {/* {track.artist} */}
+              </TableCell>
+
               <TableCell align="right">
               {
                  !unqueueable && clickable? 
-                 <Button onClick={handleAdd} variant="contained" color="primary">Add</Button>
+                 <Button onClick={handleAdd} variant="contained" color="success">+</Button>
                  : clickable ? <Button variant="outlined" disabled>Add</Button> : null
               }
               </TableCell>

@@ -5,10 +5,11 @@ import axios from 'axios';
 import Track from "./Track"
 import Queue from "./Queue"
 import {  TableContainer, Table, TableCell, TableBody, TableHead, TableRow, Paper } from '@mui/material';
+import DisplayResults from "./DisplayResults";
 
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
-    const [passedArr, setPassArr] = useState([])
+    const [goodSongsArr, setPassArr] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
 
@@ -127,31 +128,17 @@ function Dashboard(){
             placeholder="Search Songs/Artists"
             onChange={(e)=>{setSearch(e.target.value)}}
         />
+        
+        {/* results component */}
+        <h1>Results</h1>
         {searchResults.length === 0?
-          <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}></div>
+          <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}>
+            Type in the search bar to search for a song!
+          </div>
           :
-          <TableContainer component={Paper} style={{ height: "75vh", overflowY: "auto"}}>
-            <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell align="center">Song</TableCell>
-                <TableCell align="center" >Artist</TableCell>
-                <TableCell></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {searchResults.map(track => (
-                  <Track 
-                    track={track}
-                    filter = {passedArr}
-                    key={track.uri}
-                    clickable={true}
-                    />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>}
+          <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
+
+
         <h1>Queue</h1>
         <div style= {{ height: "30vh", overflowY: "auto"}}>
           <Queue trackList={queueData} />
