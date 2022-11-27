@@ -3,21 +3,23 @@ import React from "react"
 import axios from 'axios';
 import { Button, TableCell, TableRow } from '@mui/material';
 
-export default function Track({ track, clickable }) {
-    let gray = ""
-    if(!track.passFilter)
-      gray = " GRAY OUT (filter) "
+export default function Track({ track, filter, clickable }) {
+  
+    let unqueueable = false
+    
+    if(!filter)
+      unqueueable = true
     if(track.explicit)
-      gray = " GRAY OUT (explicit) "
+      unqueueable = true
     
     function handleAdd() {
-      if (!track.explicit && clickable && track.passFilter) axios.post("http://localhost:3001/queue/add", {
+      if (!track.explicit && clickable && filter) axios.post("http://localhost:3001/queue/add", {
             title: track.title,
             artist: track.artist,
             albumUrl: track.albumUrl,
             uri: track.uri,
             passFilter: track.passFilter,
-            explicit: track.explicit
+            explicit: filter
           })
           .then(res => {
             console.log(res.data)
@@ -25,13 +27,6 @@ export default function Track({ track, clickable }) {
           .catch((err) => {
             console.log(err)
           }); 
-      else {
-        if(track.explicit)
-        console.log('Explicit song will not be added to queue')
-        else
-        console.log('Song does not pass filter requirements (Your song is boring zzZ)')
-            
-     }
    }
 
     return (
@@ -48,7 +43,7 @@ export default function Track({ track, clickable }) {
               </TableCell>
               <TableCell align="right">
               {
-                 gray === "" && clickable? 
+                 !unqueueable && clickable? 
                  <Button onClick={handleAdd} variant="contained" color="primary">Add</Button>
                  : clickable ? <Button variant="outlined" disabled>Add</Button> : null
               }
