@@ -109,6 +109,8 @@ function Dashboard(){
               title: track.name,
               uri: track.uri,
               albumUrl: smallestAlbumImage.url,
+              albumName : track.album.name,
+              songDuration : track.duration_ms,
               explicit: track.explicit
             }
           })
@@ -120,7 +122,7 @@ function Dashboard(){
     return (
 
     // Dashboard Component 
-    <Container className="d-flex flex-column py-2" style={{height: "100vh"}}>
+    <Container className="d-flex flex-column py-2" style={{height: "100vh", fontFamily:"ui-rounded"}}>
         <h1>Spotify Search Bar</h1>
         <Form.Control
             style={{margin:5}}
