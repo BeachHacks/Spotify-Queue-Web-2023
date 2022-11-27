@@ -6,6 +6,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
 import Queue from "./Queue"
+import {  TableContainer, Table, TableCell, TableBody, TableHead, TableRow, Paper } from '@mui/material';
 
 function Dashboard(){
     
@@ -105,11 +106,9 @@ function Dashboard(){
         setPassArr(
           filter(idArr)
         )
-        
-        let counter = -1
+
         setSearchResults(
           res.tracks.items.map(track => {
-            counter++
             const smallestAlbumImage = track.album.images.reduce(
               (smallest, image) => {
                 if (image.height < smallest.height) return image
@@ -124,8 +123,7 @@ function Dashboard(){
               title: track.name,
               uri: track.uri,
               albumUrl: smallestAlbumImage.url,
-              explicit: track.explicit,
-              passFilter: passedArr[counter]
+              explicit: track.explicit
             }
           })
         )
@@ -139,24 +137,40 @@ function Dashboard(){
     <Container className="d-flex flex-column py-2" style={{height: "100vh"}}>
         <h1>Spotify Search Bar</h1>
         <Form.Control
+            style={{margin:5}}
             type="search"
             placeholder="Search Songs/Artists"
             onChange={(e)=>{setSearch(e.target.value)}}
         />
-        <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}>
-          {searchResults.map(track => (
-            <Track 
-              track={track}
-              key={track.uri}
-              clickable={true}
-              />
-          ))}
-        </div>
+        {searchResults.length === 0?
+          <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}></div>
+          :
+          <TableContainer component={Paper} style={{ height: "75vh", overflowY: "auto"}}>
+            <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell align="center">Song</TableCell>
+                <TableCell align="center" >Artist</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {searchResults.map(track => (
+                  <Track 
+                    track={track}
+                    filter = {passedArr}
+                    key={track.uri}
+                    clickable={true}
+                    />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>}
         <h1>Queue</h1>
         <div style= {{ height: "30vh", overflowY: "auto"}}>
           <Queue trackList={queueData} />
         </div>
-       
     </Container> 
     )}
 
