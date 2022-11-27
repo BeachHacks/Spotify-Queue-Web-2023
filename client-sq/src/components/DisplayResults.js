@@ -14,7 +14,6 @@ export default function DisplayResults({ trackList, filterArr }) {
                 <TableCell align="left">Songs</TableCell>
                 <TableCell></TableCell>
                 <TableCell></TableCell>
-                <TableCell></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>

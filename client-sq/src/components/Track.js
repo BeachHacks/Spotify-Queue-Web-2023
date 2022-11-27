@@ -32,18 +32,22 @@ export default function Track({ track, filter, clickable }) {
     return (
         <>
             <TableRow hover={true}>
-              <TableCell>
+
+              <TableCell align="right">
                 <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:10}} />
               </TableCell>
+
+
               <TableCell align="left">
-                {track.title}
-                {" - \n"}
-                {track.artist}
+                <div style={{ fontWeight : "bold", fontSize : "large"}}>
+                  {track.title}
+                </div>
+                <div>
+                  {track.artist}
+                </div>
               </TableCell>
 
-              <TableCell align="center">
-                {/* {track.artist} */}
-              </TableCell>
+            
 
               <TableCell align="right">
               {
