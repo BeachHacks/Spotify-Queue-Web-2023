@@ -2,13 +2,12 @@
 import React from "react"
 import axios from 'axios';
 import { Button, TableCell, TableRow } from '@mui/material';
-import { IconButton } from 'rsuite';
-import PlusIcon from '@rsuite/icons/Plus';
-import "../styles/RsuiteStyles.css"
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { IconButton } from '@mui/material';
+import { green } from '@mui/material/colors';
 
 export default function Track({ track, filter, clickable }) {
-  
+
     let unqueueable = false
     
     if(!filter)
@@ -73,9 +72,14 @@ export default function Track({ track, filter, clickable }) {
               <TableCell align="right">
               {
                  !unqueueable && clickable? 
-                 <IconButton appearance="primary" color="green" circle icon={<PlusIcon />} onClick={handleAdd} ></IconButton>
-                 : clickable ? <IconButton circle icon={<PlusIcon />}  variant="outlined" disabled></IconButton> : null
-              }
+                 <IconButton onClick={handleAdd} >
+                    <AddCircleIcon sx={{ fontSize: 35, color: green[500] }}/>
+                 </IconButton>
+                 : clickable ? 
+                 <IconButton variant="outlined" disabled>
+                     <AddCircleIcon sx={{ fontSize: 35 }}/>
+                 </IconButton> : null
+              }  
               </TableCell>
             </TableRow>
         </>
