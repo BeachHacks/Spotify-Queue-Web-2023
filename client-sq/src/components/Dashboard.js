@@ -124,26 +124,30 @@ function Dashboard(){
     // Dashboard Component 
     <Container className="d-flex flex-column py-2" style={{height: "100vh", fontFamily:"ui-rounded"}}>
         <h1>Spotify Search Bar</h1>
+
         <Form.Control
             style={{margin:5}}
             type="search"
             placeholder="Search Songs/Artists"
             onChange={(e)=>{setSearch(e.target.value)}}
         />
-        
-        {/* results component */}
-        <h1>Results</h1>
-        {searchResults.length === 0?
-          <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto"}}>
-            Type in the search bar to search for a song!
+        <div style={{display:"flex", flexDirection:"row"}}>
+          <div>
+          {/* results component */}
+          <h1>Results</h1>
+          {searchResults.length === 0?
+            <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto", width: 700}}>
+              Search for a song in the search bar!
+            </div>
+            :
+            <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
           </div>
-          :
-          <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
-
-
-        <h1>Queue</h1>
-        <div style= {{ height: "30vh", overflowY: "auto"}}>
-          <Queue trackList={queueData} />
+          <div>
+          <h1>Next Up</h1>
+          <div style= {{ height: "30vh", overflowY: "auto"}}>
+            <Queue trackList={queueData} />
+          </div>
+          </div>
         </div>
     </Container> 
     )}

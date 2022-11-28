@@ -6,11 +6,10 @@ import {  TableContainer, Table, TableCell, TableBody, TableHead, TableRow, Pape
 import { tableCellClasses } from "@mui/material/TableCell";
 export default function DisplayResults({ trackList, filterArr }) {
     return (
-        <TableContainer component={Paper}style={{height: "75vh", overflowY: "auto", width: 700}}>
+        <TableContainer sx={{ maxHeight: 700 }} component={Paper} style={{backgroundColor:'#F1F1F1', height: "75vh", overflowY: "auto", width: 700}}>
             <Table sx={{
                         [`& .${tableCellClasses.root}`]: {
-                        borderBottom: "none"
-                        }
+                        borderBottom: "none" }
                     }}
                     style={{ width: 700, border: "collapse", height: 50}} 
                     stickyHeader aria-label="sticky table">
