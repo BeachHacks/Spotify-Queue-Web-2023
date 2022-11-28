@@ -2,6 +2,10 @@
 import React from "react"
 import axios from 'axios';
 import { Button, TableCell, TableRow } from '@mui/material';
+import { IconButton } from 'rsuite';
+import PlusIcon from '@rsuite/icons/Plus';
+import "../styles/RsuiteStyles.css"
+
 
 export default function Track({ track, filter, clickable }) {
   
@@ -69,8 +73,8 @@ export default function Track({ track, filter, clickable }) {
               <TableCell align="right">
               {
                  !unqueueable && clickable? 
-                 <Button onClick={handleAdd} variant="contained" color="success">+</Button>
-                 : clickable ? <Button variant="outlined" disabled>+</Button> : null
+                 <IconButton appearance="primary" color="green" circle icon={<PlusIcon />} onClick={handleAdd} ></IconButton>
+                 : clickable ? <IconButton circle icon={<PlusIcon />}  variant="outlined" disabled></IconButton> : null
               }
               </TableCell>
             </TableRow>
