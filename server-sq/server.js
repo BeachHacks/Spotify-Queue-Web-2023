@@ -33,19 +33,32 @@ app.post('/getAudioFeaturesForTracks', function(req, res){
     )
 })
 
-// REQUIRES UPDATE: to be called set on < 60 minute interval
-// Setup Procedures
-spotifyApi.clientCredentialsGrant().then(
-  function(data) {
-    console.log('The access token expires in ' + data.body['expires_in']);
-    console.log('The access token is ' + data.body['access_token']);
 
-    spotifyApi.setAccessToken(data.body['access_token']);
-  },
-  function(err) {
-    console.log('Something went wrong when retrieving the access token', err);
-  }
-)
+
+// REQUIRES UPDATE: to be called set on < 60 minute interval - 
+// Setup Procedures
+function refreshToken(){
+  spotifyApi.clientCredentialsGrant().then(
+    function(data) {
+      console.log('The access token expires in ' + data.body['expires_in']);
+      console.log('The access token is ' + data.body['access_token']);
+  
+      spotifyApi.setAccessToken(data.body['access_token']);
+    },
+    function(err) {
+      console.log('Something went wrong when retrieving the access token', err);
+    }
+  )
+}
+
+//initial access token
+refreshToken()
+
+//refresh token every 30 minutes
+const interval = setInterval(() => {
+  refreshToken()
+}, (30)*(60)* 1000);
+
 
 
 app.use('/queue', queue(spotifyApi));
