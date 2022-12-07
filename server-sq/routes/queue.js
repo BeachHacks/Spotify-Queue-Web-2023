@@ -19,6 +19,7 @@ module.exports = function(spotifyApi) {
 
     router.post('/add', (req, res) => {
         queue.push(req.body)
+        spotifyApi.addToQueue(req.body.uri);
         res.send("Added song to queue.")
     })
 
