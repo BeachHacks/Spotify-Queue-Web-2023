@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {Container, Form} from 'react-bootstrap';
 import '../styles/App.css'
 import axios from 'axios';
-import Track from "./Track"
 import Queue from "./Queue"
-import {  TableContainer, Table, TableCell, TableBody, TableHead, TableRow, Paper } from '@mui/material';
+import NavBar from "./NavBar"
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,} from '@mui/material';
 import DisplayResults from "./DisplayResults";
 
 function Dashboard(){
@@ -120,36 +119,63 @@ function Dashboard(){
     }, [search])
 
     return (
+    <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
+    
+      <NavBar/>
 
-    // Dashboard Component 
-    <Container className="d-flex flex-column py-2" style={{height: "100vh", fontFamily:"ui-rounded"}}>
-        <h1>Spotify Search Bar</h1>
+      <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
+          <h1 style={{color:"#4e69ec"}}>Home</h1>
+          <TextField
+              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.325}}
+              type="search"
+              placeholder="Search Songs/Artists"
+              onChange={(e)=>{setSearch(e.target.value)}}
+          />
 
-        <Form.Control
-            style={{margin:5}}
-            type="search"
-            placeholder="Search Songs/Artists"
-            onChange={(e)=>{setSearch(e.target.value)}}
-        />
-        <div style={{display:"flex", flexDirection:"row"}}>
-          <div>
-          {/* results component */}
-          <h1>Results</h1>
-          {searchResults.length === 0?
-            <div className="flex-grow-1 my-2" style={{ height: "75vh", overflowY: "auto", width: 700}}>
-              Search for a song in the search bar!
+          <div 
+          style={{display:"flex", flexDirection:"row"}}
+          >
+            <div>
+            {/* results component */}
+            {searchResults.length === 0?
+              <Container 
+              sx={{boxShadow:3}}
+              style={{ height: window.innerHeight*0.8, marginTop: 10, overflowY: "auto", width: window.innerWidth*0.33, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
+                Search for a song in the search bar!
+              </Container>
+              :
+              <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
             </div>
-            :
-            <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
           </div>
-          <div>
-          <h1>Next Up</h1>
-          <div style= {{ height: "30vh", overflowY: "auto"}}>
-            <Queue trackList={queueData} />
-          </div>
-          </div>
-        </div>
-    </Container> 
+      </Container>
+      <TableContainer sx={{boxShadow:3 }} style={{
+                                          borderRadius:10,
+                                          backgroundColor:'#ffffff',
+                                          height: window.innerHeight*0.89,
+                                          overflowY: "auto",
+                                          marginTop: 70,
+                                          marginRight:30,
+                                          width: window.innerWidth*2,
+                                          overflowX:"hidden",
+                                          fontFamily:"DM Sans"
+                                          }}>
+        <Table
+        style={{marginLeft:10, marginTop:10}}
+        sx={{
+              [`& .${tableCellClasses.root}`]: {
+              borderBottom: "none" }
+          }}
+        >
+          <TableRow style={{height:window.innerHeight*0.35}}>
+            <h2 style={{color:"#3d435a"}}>Now Playing</h2>
+          </TableRow>
+          <TableRow>
+              <h2 style={{color:"#3d435a"}}>Next Up</h2>
+              <Queue trackList={queueData} />
+          </TableRow>
+        </Table>
+      </TableContainer>
+    </div>
     )}
 
 export default Dashboard;
