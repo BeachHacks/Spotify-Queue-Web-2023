@@ -1,12 +1,13 @@
+/* eslint-disable eqeqeq */
 // Component for showing track details
 import React from "react"
 import axios from 'axios';
-import { Button, TableCell, TableRow } from '@mui/material';
+import { TableCell, TableHead, TableRow } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { IconButton } from '@mui/material';
 import { green } from '@mui/material/colors';
 
-export default function Track({ track, filter, clickable }) {
+export default function Track({ track, filter, clickable, num }) {
 
     let unqueueable = false
     
@@ -45,14 +46,14 @@ export default function Track({ track, filter, clickable }) {
     return (
         <>
             <TableRow hover={true}>
-
+            {clickable==false?<TableCell style={{fontWeight : "bold",fontFamily:"ui-rounded", color:"#3d435a"}}>{num+2}</TableCell> :""}
               {/* Album Artwork  */}
               <TableCell style={{ width: 50 }} align="left">
-                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px"}} />
+                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:5}} />
               </TableCell>
 
               {/* Title and Artist  */}
-              <TableCell style={{ width: 400, fontFamily:"ui-rounded"}} align="left">
+              <TableCell style={{ width: 400, fontFamily:"ui-rounded", color:"#3d435a"}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : "120%"}}>
                   {track.title}
                 </div>
@@ -61,15 +62,8 @@ export default function Track({ track, filter, clickable }) {
                 </div>
               </TableCell>
 
-              <TableCell style={{ width: 400, fontFamily:"ui-rounded"}} align="left">
-              <div style={{fontSize : "small"}}>
-                  {track.albumName}
-                </div>
-                
-              </TableCell>
-
               {/* Button Add to Queue */}
-              <TableCell align="right">
+              <TableCell align="left">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
