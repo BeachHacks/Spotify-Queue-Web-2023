@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ScheduleRoundedIcon from '@mui/icons-material/Schedule';
-import CommentRoundedIcon from '@mui/icons-material/Comment';
-import { TextField, Table, Tab, Tabs, Container, TableRow, TableContainer, tableCellClasses,} from '@mui/material';
+import NavBar from "./NavBar"
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,} from '@mui/material';
 import DisplayResults from "./DisplayResults";
 
 function Dashboard(){
@@ -13,12 +11,6 @@ function Dashboard(){
     const [goodSongsArr, setPassArr] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event,newValue) => {
-      setValue(newValue);
-      console.log(value)
-    };
 
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
@@ -128,26 +120,8 @@ function Dashboard(){
 
     return (
     <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
-      <Container style={{
-                        backgroundColor:"#ffffff",
-                        width: window.innerWidth*0.2,
-                        height: "100vh",
-                        fontFamily:"DM Sans"
-                        }}
-                        sx={{boxShadow:10}}
-                        >
-        <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:window.innerWidth*0.01, boxShadow:10}}>
-          <h1 style={{fontWeight:"bolder", marginTop: 10, color:"#3d435a", fontFamily:"DM Sans"}}>BeachQueue</h1>
-          <p style={{ marginTop:50, color: "#3d435a", }}>Menu</p>
-
-          <Tabs orientation="vertical" value={value} onChange={handleChange}>
-            <Tab icon={<HomeRoundedIcon/>} iconPosition="start" label="Home" value="0" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab icon={<ScheduleRoundedIcon/>} iconPosition="start" label= "History" value="1" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab icon={<CommentRoundedIcon/>} iconPosition="start" label="How To Use" value="2" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-          </Tabs>
- 
-        </div>
-      </Container>
+    
+      <NavBar/>
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
           <h1 style={{color:"#4e69ec"}}>Home</h1>
