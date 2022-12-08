@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router()
 
-
 module.exports = function(spotifyApi) {
-    var queue = []; // Will eventually translate to playback queue.
+    var queue = []; 
     
     router.get('/', (req, res) => {
-        res.send('Queue routing check')
+        res.send('queue routing check')
     })
 
     router.get('/next', (req, res) => {
@@ -18,11 +17,10 @@ module.exports = function(spotifyApi) {
     })
 
     router.post('/add', (req, res) => {
-        queue.push(req.body)
+        queue.push(req.body) 
         spotifyApi.addToQueue(req.body.uri);
-        res.send("Added song to queue.")
+        res.send("added song to queue.")
     })
 
     return router;
-
 }

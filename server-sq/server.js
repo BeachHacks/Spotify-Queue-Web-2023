@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const queue = require('./routes/queue')
+const playback = require('./routes/playback')
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -64,17 +65,17 @@ app.get('/adminStatus', (req, res) => {
 })
 
 //refresh token every 30 minutes
-const interval = setInterval(() => {
+setInterval(() => {
   spotifyApi.refreshAccessToken().then((data) => {
     console.log('Access token refreshed')
     spotifyApi.setAccessToken(data.body['access_token']);
     }, (err) => {
     console.log('Could not refresh access token', err);
     }
-  )}, (30)*(60)*1000
-);
+  )}, 1800000);
 
 app.use('/queue', queue(spotifyApi));
+app.use('/playback', playback(spotifyApi));
 
 // Open to port
 app.listen(3001);
