@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(spotifyApi) {
+module.exports = function(spotifyApi, adminStatus) {
     var queue = []; 
     
     router.get('/', (req, res) => {
@@ -18,7 +18,7 @@ module.exports = function(spotifyApi) {
 
     router.post('/add', (req, res) => {
         queue.push(req.body) 
-        spotifyApi.addToQueue(req.body.uri);
+        adminStatus ? spotifyApi.addToQueue(req.body.uri) : res.send("Failed to add song")
         res.send("added song to queue.")
     })
 
