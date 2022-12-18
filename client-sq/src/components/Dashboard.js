@@ -3,8 +3,9 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,} from '@mui/material';
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,Button} from '@mui/material';
 import DisplayResults from "./DisplayResults";
+import { Row } from "react-bootstrap";
 
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
@@ -125,13 +126,21 @@ function Dashboard(){
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
           <h1 style={{color:"#4e69ec"}}>Home</h1>
+          <div style={{display:"flex", flexDirection:"row"}}>
           <TextField
-              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.325}}
+              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
               type="search"
               placeholder="Search Songs/Artists"
-              onChange={(e)=>{setSearch(e.target.value)}}
+              // onChange={(e)=>{setSearch(e.target.value)}}
           />
+          <Button style= {{fontFamily: "DM Sans", fontWeight: "bold",fontSize: 15, display: "flex", flexDirection: Row, height: 55, marginTop: 5}}
+          onClick={(e)=>{setSearch(e.target.value)}} 
+          type="button"
+          variant="contained"
+          >
+          Enter</Button>
 
+          </div>
           <div 
           style={{display:"flex", flexDirection:"row"}}
           >
