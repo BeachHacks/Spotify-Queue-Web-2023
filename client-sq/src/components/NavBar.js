@@ -17,7 +17,8 @@ export default function NavBar() {
                         backgroundColor:"#ffffff",
                         width: window.innerWidth*0.2,
                         height: "100vh",
-                        fontFamily:"DM Sans"
+                        fontFamily:"DM Sans",
+                        margin: 0
                         }}
                         sx={{boxShadow:10}}
                         >
