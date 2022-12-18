@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 var clientId = 'db55ce79bd574c94aca99e831e39d6c9', clientSecret = 'b07d5cc57b5d4afc8b29032e60cffee9';
 const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: 'http://localhost:3000/auth'});
-let adminStatus = { adminSet : false };
+let adminStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
 app.post('/searchTracks', function(req, res){
   spotifyApi.searchTracks(req.body.searchString,req.body.params).then(
@@ -44,7 +44,8 @@ app.post('/adminLogin', (req,res) => {
     console.log('The token expires in ' + data.body['expires_in']);
     console.log('The access token is ' + data.body['access_token']);
     console.log('The refresh token is ' + data.body['refresh_token']);
-
+    
+    adminStatus.accessToken = data.body['access_token']
     // Set the access token on the API object to use it in later calls
     spotifyApi.setAccessToken(data.body['access_token']);
     spotifyApi.setRefreshToken(data.body['refresh_token']);
@@ -64,10 +65,15 @@ app.get('/adminStatus', (req, res) => {
   res.json(adminStatus);
 })
 
+app.get('/token', (req, res) => {
+  res.send(adminStatus.accessToken)
+})
+
 //refresh token every 30 minutes
 setInterval(() => {
   spotifyApi.refreshAccessToken().then((data) => {
     console.log('Access token refreshed')
+    adminStatus.accessToken = data.body['access_token']
     spotifyApi.setAccessToken(data.body['access_token']);
     }, (err) => {
     console.log('Could not refresh access token', err);
@@ -80,4 +86,3 @@ app.use('/playback', playback(spotifyApi, adminStatus));
 
 // Open to port
 app.listen(3001);
-//spotifyApi.getMe();

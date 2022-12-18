@@ -17,9 +17,17 @@ module.exports = function(spotifyApi, adminStatus) {
     })
 
     router.post('/add', (req, res) => {
-        queue.push(req.body) 
-        adminStatus ? spotifyApi.addToQueue(req.body.uri) : res.send("Failed to add song")
-        res.send("added song to queue.")
+        let added = true
+        if (adminStatus.activePlaying) {
+            spotifyApi.addToQueue(req.body.uri).then(() => {
+                console.log(req.body)
+            }, (err) => {
+                console.log(err)
+            })
+            queue.push(req.body)
+        }
+        added ? res.send("Added to queue") : res.send("Failed to add song")
+        //console.log("Added Flag: ", added)
     })
 
     return router;
