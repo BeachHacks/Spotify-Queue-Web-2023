@@ -4,7 +4,7 @@ import axios from 'axios';
 import NavBar from "./NavBar"
 import Track from "./Track"
 import { TextField, Container } from '@mui/material';
-import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCellClasses } from '@mui/material';
+import {  TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
 
 function History(){
 
@@ -44,7 +44,6 @@ function History(){
             style={{display:"flex", flexDirection:"row"}}
             >
                 <div>
-                {/* results component */}
                 {historyData.length === 0?
                 <Container 
                 sx={{boxShadow:3}}
@@ -58,14 +57,12 @@ function History(){
                                 borderBottom: "none" }
                             }}
                             stickyHeader aria-label="sticky table">
-                        <TableHead>
-                            <TableRow>
-                                {/* <TableCell><h1>Results</h1></TableCell>
-                                <TableCell></TableCell>
-                                <TableCell></TableCell>
-                                <TableCell></TableCell> */}
-                                {/* <TableCell></TableCell> */}
-                            </TableRow>
+                        <TableHead sx={{}}>
+                            <TableCell style={{ width: 50 }} align="left">
+                            </TableCell>
+                            <TableCell style={{ fontFamily: "DM Sans", fontSize: 20, }} alight="left">
+                                Title
+                            </TableCell>
                         </TableHead>
                         <TableBody>
                             {historyData.map(track => (
