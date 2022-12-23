@@ -10,9 +10,20 @@ import { Row } from "react-bootstrap";
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
     const [goodSongsArr, setPassArr] = useState([])
+
+    const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
+
     const [queueData, setQueueData] = useState([])
 
+
+   const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      // Perform change here
+      setSearch(dynInput)
+    }
+  }
+  
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
       let ignore = false; 
@@ -131,10 +142,11 @@ function Dashboard(){
               style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
               type="search"
               placeholder="Search Songs/Artists"
-              // onChange={(e)=>{setSearch(e.target.value)}}
+              onChange={(e)=>{setInput (e.target.value)}}
+              onKeyPress={handleKeyPress}
           />
           <Button style= {{fontFamily: "DM Sans", fontWeight: "bold",fontSize: 15, display: "flex", flexDirection: Row, height: 55, marginTop: 5}}
-          onClick={(e)=>{setSearch(e.target.value)}} 
+          onClick={() =>{setSearch(dynInput)}}
           type="button"
           variant="contained"
           >
