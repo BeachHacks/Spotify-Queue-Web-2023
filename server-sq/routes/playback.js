@@ -12,11 +12,11 @@ module.exports = function(spotifyApi, adminStatus) {
         res.json(history)
     })
 
-    // Retrieve playback state every 10 seconds
+    // Retrieve playback state every 5 seconds
     setInterval(() => {
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
-        console.log('Retrieved playback state')
-        console.log(data.body) //Debugging Purposes
+        //console.log('Retrieved playback state')
+        //console.log(data.body) //Debugging Purposes
         if (Object.keys(data.body).length != 0){
             if (Object.keys(adminStatus.playbackState).length != 0 && data.body?.item?.uri != adminStatus.playbackState.item.uri) {
                 const smallestAlbumImage = data.body.item.album.images.reduce(
@@ -38,7 +38,7 @@ module.exports = function(spotifyApi, adminStatus) {
                 console.log("Added to history")
             }
             else { //Debugging Purposes
-                console.log("Not added to history. Empty playback state.")
+                //console.log("Not added to history. Empty playback state.")
             }
             adminStatus.playbackState = data.body
             adminStatus.activePlaying = adminStatus.playbackState.device.is_active

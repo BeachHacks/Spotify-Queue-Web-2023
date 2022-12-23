@@ -18,12 +18,13 @@ module.exports = function(spotifyApi, adminStatus) {
 
     router.post('/add', (req, res) => {
         let added = true
+        // Comment out the following IF statement if having issues when adding to song.
         if (adminStatus.activePlaying) {
-            spotifyApi.addToQueue(req.body.uri).then(() => {
+            /*spotifyApi.addToQueue(req.body.uri).then(() => {
                 console.log(req.body)
             }, (err) => {
                 console.log(err)
-            })
+            })*/
             queue.push(req.body)
         }
         added ? res.send("Added to queue") : res.send("Failed to add song")

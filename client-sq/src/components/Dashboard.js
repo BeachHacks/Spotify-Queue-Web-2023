@@ -11,6 +11,21 @@ function Dashboard(){
     const [goodSongsArr, setPassArr] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
+    const [accessToken, setAccessToken] = useState("")
+
+    // Hook handling retrieving token from backend. May be updated to publish-subscribe model
+    useEffect(() => {
+      let ignore = false;
+
+      async function fetchToken() {
+        const result = await axios('http://localhost:3001/token')
+        if(!ignore) setAccessToken(result.data)
+      }
+
+      fetchToken();
+
+      return () => { ignore = true; }
+    }, [])
 
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
