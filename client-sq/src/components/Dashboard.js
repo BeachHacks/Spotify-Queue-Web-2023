@@ -1,17 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,} from '@mui/material';
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses} from '@mui/material';
 import DisplayResults from "./DisplayResults";
+import ProgressBar from "./ProgressBar";
 
-function Dashboard(){
+function Dashboard(props){
     const [searchResults, setSearchResults] = useState([])
     const [goodSongsArr, setPassArr] = useState([])
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
     const [accessToken, setAccessToken] = useState("")
+    const [timer, setTimer] = useState(0);
+    const id = useRef(null);
+    const clear = () => { window.clearInterval(id.current); };
+    
+    useEffect(() => {
+      id.current = window.setInterval(() => {
+        setTimer((time) => time + 1);
+      }, 1000);
+      return () => clear();
+    }, []);
+
+    useEffect(() => {
+      if (timer >= 101) {
+        setTimer(0);
+      }
+    }, [timer]);
 
     // Hook handling retrieving token from backend. May be updated to publish-subscribe model
     useEffect(() => {
@@ -135,7 +152,7 @@ function Dashboard(){
 
     return (
     <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
-    
+
       <NavBar/>
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
@@ -181,8 +198,21 @@ function Dashboard(){
               borderBottom: "none" }
           }}
         >
-          <TableRow style={{height:window.innerHeight*0.35}}>
+          <TableRow style={{height:window.innerHeight*0.3}}>
             <h2 style={{color:"#3d435a"}}>Now Playing</h2>
+              <div style={{display:"inline-flex", width:"90%"}}>
+                <div>
+                  <img src="https://i1.sndcdn.com/artworks-k3nFy3VUf0Ih-0-t500x500.jpg" 
+                       alt={"HardCoded"}
+                       style={{ height: "150px", width: "150px" }} />
+                </div>
+                <div style={{alignSelf:"flex-end", marginLeft:15, marginBottom:10}}>
+                  <h3>Anti-Hero</h3>
+                  <h6>Taylor Swift</h6>
+                  <ProgressBar number={timer} style={{width:"420px"}}/>
+                  <div> Counter for Reference: {timer}</div>
+                </div>
+              </div>
           </TableRow>
           <TableRow>
               <h2 style={{color:"#3d435a"}}>Next Up</h2>
