@@ -53,7 +53,7 @@ module.exports = function(spotifyApi, adminStatus) {
       console.log('Removed: ' + popped + 'from top of queue');
     }
 
-  }, 3000);
+  }, 1000);
 
 
   return router;
