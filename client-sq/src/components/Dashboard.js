@@ -7,10 +7,14 @@ import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses
 import DisplayResults from "./DisplayResults";
 import ProgressBar from "./ProgressBar";
 
+
 function Dashboard(props){
     const [searchResults, setSearchResults] = useState([])
     const [goodSongsArr, setPassArr] = useState([])
+
+    const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
+
     const [queueData, setQueueData] = useState([])
     const [accessToken, setAccessToken] = useState("")
     const [timer, setTimer] = useState(0);
@@ -44,6 +48,14 @@ function Dashboard(props){
       return () => { ignore = true; }
     }, [])
 
+
+   const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      // Perform change here
+      setSearch(dynInput)
+    }
+  }
+  
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
       let ignore = false; 
@@ -157,13 +169,22 @@ function Dashboard(props){
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
           <h1 style={{color:"#4e69ec"}}>Home</h1>
+          <div style={{display:"flex", flexDirection:"row"}}>
           <TextField
-              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.325}}
+              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
               type="search"
               placeholder="Search Songs/Artists"
-              onChange={(e)=>{setSearch(e.target.value)}}
+              onChange={(e)=>{setInput (e.target.value)}}
+              onKeyPress={handleKeyPress}
           />
+          <Button style= {{fontFamily: "DM Sans", fontWeight: "bold",fontSize: 15, display: "flex", flexDirection: Row, height: 55, marginTop: 5}}
+          onClick={() =>{setSearch(dynInput)}}
+          type="button"
+          variant="contained"
+          >
+          Enter</Button>
 
+          </div>
           <div 
           style={{display:"flex", flexDirection:"row"}}
           >
