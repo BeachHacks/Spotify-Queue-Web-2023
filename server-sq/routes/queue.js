@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router()
 
-
-module.exports = function(spotifyApi) {
-    var queue = []; // Will eventually translate to playback queue.
+module.exports = function(spotifyApi, adminStatus) {
+    var queue = []; 
     
     router.get('/', (req, res) => {
-        res.send('Queue routing check')
+        res.send('queue routing check')
     })
 
     router.get('/next', (req, res) => {
@@ -18,10 +17,19 @@ module.exports = function(spotifyApi) {
     })
 
     router.post('/add', (req, res) => {
-        queue.push(req.body)
-        res.send("Added song to queue.")
+        let added = true
+        // Comment out the following IF statement if having issues when adding to song.
+        if (adminStatus.activePlaying) {
+            /*spotifyApi.addToQueue(req.body.uri).then(() => {
+                console.log(req.body)
+            }, (err) => {
+                console.log(err)
+            })*/
+            queue.push(req.body)
+        }
+        added ? res.send("Added to queue") : res.send("Failed to add song")
+        //console.log("Added Flag: ", added)
     })
 
     return router;
-
 }
