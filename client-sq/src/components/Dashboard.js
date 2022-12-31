@@ -11,12 +11,13 @@ import NowPlaying from "./NowPlaying";
 
 function Dashboard(props){
     const [searchResults, setSearchResults] = useState([])
-    const [goodSongsArr, setPassArr] = useState([])
+    //const [goodSongsArr, setPassArr] = useState([])
 
     const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
 
     const [queueData, setQueueData] = useState([])
+
     const [accessToken, setAccessToken] = useState("")
     const [timer, setTimer] = useState(0);
     const id = useRef(null);
@@ -73,22 +74,8 @@ function Dashboard(props){
       return () => {ignore = true; clearInterval(interval);}
     }, [])
 
-
     // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
-      let idArr = [];
-      const getFeats = async(arr) => {
-        return axios
-          .post("http://localhost:3001/getAudioFeaturesForTracks", {
-            idArr : arr,
-          })
-          .then(res => {
-            return res.data.body;
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      }
       const searchTracks = async(searchQuery) => {
         return axios
           .post("http://localhost:3001/searchTracks", {
@@ -96,20 +83,20 @@ function Dashboard(props){
             params: {limit: 50}
           })
           .then(res => {
-            console.log(res.data.body)
-            return res.data.body;
+            return res.data;
           })
           .catch((err) => {
             console.log(err)
           })
       } 
       
-      function filter(idArr){
+      function filter(features){
         var boolFilter = []
-        getFeats(idArr).then(res=>{
-          let features = res.audio_features
-          for(let i = 0; i < idArr.length; i++){
-            if (features[i].energy <= 0.3 || 
+          for(let i = 0; i < features.length; i++){
+            if (features[i] === null) {
+              boolFilter.push(false);
+            }
+            else if (features[i].energy <= 0.3 || 
                 features[i].loudness <= -17 ||
                 features[i].acousticness >= .8 ||
                 features[i].instrumentalness >= 0.60 ||
@@ -121,25 +108,23 @@ function Dashboard(props){
           }
             else 
               boolFilter.push(true);
-        }
-        })
+          }
         return boolFilter;
       } 
     
       if(!search) return setSearchResults([])
       // Parse search query
       searchTracks(search).then(res => {
-        
-        //get id array from search
-        for(let i = 0; i < res.tracks.items.length; i++)
-          idArr.push(res.tracks.items[i].uri.replace('spotify:track:', ''))
 
-        setPassArr(
-          filter(idArr)
-        )
+        console.log("AUDIO feats",res.features.audio_features)
+        
+        let boolArray = filter(res.features.audio_features)
+
+        console.log("filter", boolArray)
+        let counter = 0
 
         setSearchResults(
-          res.tracks.items.map(track => {
+          res.tracks.tracks.items.map(track => {
             const smallestAlbumImage = track.album.images.reduce(
               (smallest, image) => {
                 if (image.height < smallest.height) return image
@@ -155,7 +140,9 @@ function Dashboard(props){
               albumUrl: smallestAlbumImage.url,
               albumName : track.album.name,
               songDuration : track.duration_ms,
-              explicit: track.explicit
+              explicit: track.explicit, 
+              filter: boolArray[counter++]
+
             }
           })
         )
@@ -198,7 +185,7 @@ function Dashboard(props){
                 Search for a song in the search bar!
               </Container>
               :
-              <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
+              <DisplayResults trackList={searchResults} />}
             </div>
           </div>
       </Container>

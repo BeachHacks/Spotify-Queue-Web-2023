@@ -7,25 +7,26 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { IconButton } from '@mui/material';
 import { green } from '@mui/material/colors';
 
-export default function Track({ track, filter, clickable, num }) {
+export default function Track({ track, clickable, num }) {
 
     let unqueueable = false
     
-    if(!filter)
+    if(!track.filter)
       unqueueable = true
     if(track.explicit)
       unqueueable = true
     
     function handleAdd() {
-      if (!track.explicit && clickable && filter) axios.post("http://localhost:3001/queue/add", {
+      if (!track.explicit && clickable && track.filter) axios.post("http://localhost:3001/queue/add", {
             title: track.title,
             artist: track.artist,
             albumUrl: track.albumUrl,
             albumName: track.albumName,
             songDuration: track.songDuration,
             uri: track.uri,
-            passFilter: track.passFilter,
-            explicit: filter
+            explicit: track.explicit
+
+
           })
           .then(res => {
             console.log(res.data)
@@ -63,7 +64,7 @@ export default function Track({ track, filter, clickable, num }) {
               </TableCell>
 
               {/* Button Add to Queue */}
-              <TableCell align="left">
+              <TableCell align="right">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
