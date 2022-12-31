@@ -168,7 +168,7 @@ function Dashboard(props){
           sx={{height: window.innerHeight*.05, width:window.innerHeight*.05}}
           style= {{borderRadius: 80, display: "flex", 
            marginTop: window.innerHeight*.017,
-           backgroundColor:"#516ef6", color:"#ffffff"}}
+           backgroundColor:"#1976d2", color:"#ffffff"}}
           onClick={() =>{setSearch(dynInput)}}
           size= "large"
           type="button"
@@ -178,14 +178,18 @@ function Dashboard(props){
           >
           </IconButton>
           <TextField
+            
+            
             sx={{
               [`& fieldset`]: {
-                height: window.innerHeight*.06,
+                
+                height: window.innerHeight*.065,
                 borderRadius: 3.5,
+                colorScheme: "111111",
                 borderColor: '2.5px solid #e0e4f2',
               }
              }}
-              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,marginTop:15, backgroundColor:"#ffffff", width: window.innerWidth*0.262,marginTop: window.innerHeight*.015, display: "flex"}}
+              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: window.innerWidth*0.262,marginTop: window.innerHeight*.015, display: "flex"}}
               type="search"
               placeholder ="Search Songs/Artists" 
               

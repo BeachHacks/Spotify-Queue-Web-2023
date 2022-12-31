@@ -68,7 +68,7 @@ export default function Track({ track, clickable, num }) {
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
-                    <AddCircleIcon sx={{ fontSize: 35, color: "#516ef6" }}/>
+                    <AddCircleIcon sx={{ fontSize: 35, color: "#1976d2" }}/>
                  </IconButton>
                  : clickable ? 
                  <IconButton variant="outlined" disabled>

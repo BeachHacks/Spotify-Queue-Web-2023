@@ -5,7 +5,7 @@ import Track from "./Track"
 import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCellClasses } from '@mui/material';
 export default function DisplayResults({ trackList }) {
     return (
-        <TableContainer sx={{ maxHeight: 780}}  style={{ outline: '2.5px solid #516ef6',borderRadius:10, backgroundColor:'#ffffff', height: window.innerHeight*0.76, overflowY: "auto",
+        <TableContainer   style={{ outline: '2.5px solid #1976d2',borderRadius:10, backgroundColor:'#ffffff', height: window.innerHeight*0.76, overflowY: "auto",
          width: window.innerWidth*0.29, overflowX:"hidden", marginTop: window.innerHeight*0.015}}>
             <Table sx={{
                         [`& .${tableCellClasses.root}`]: {
