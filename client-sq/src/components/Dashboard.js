@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses,Button} from '@mui/material';
-import DisplayResults from "./DisplayResults";
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
 import { Row } from "react-bootstrap";
+import DisplayResults from "./DisplayResults";
+import NowPlaying from "./NowPlaying";
 
-function Dashboard(){
+
+function Dashboard(props){
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
 
@@ -15,6 +17,39 @@ function Dashboard(){
     const [search, setSearch] = useState("")
 
     const [queueData, setQueueData] = useState([])
+
+    const [accessToken, setAccessToken] = useState("")
+    const [timer, setTimer] = useState(0);
+    const id = useRef(null);
+    const clear = () => { window.clearInterval(id.current); };
+    
+    useEffect(() => {
+      id.current = window.setInterval(() => {
+        setTimer((time) => time + 1);
+      }, 1000);
+      return () => clear();
+    }, []);
+
+    useEffect(() => {
+      if (timer >= 101) {
+        setTimer(0);
+      }
+    }, [timer]);
+
+    // Hook handling retrieving token from backend. May be updated to publish-subscribe model
+    useEffect(() => {
+      let ignore = false;
+
+      async function fetchToken() {
+        const result = await axios('http://localhost:3001/token')
+        if(!ignore) setAccessToken(result.data)
+      }
+
+      fetchToken();
+
+      return () => { ignore = true; }
+    }, [])
+
 
    const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -117,11 +152,11 @@ function Dashboard(){
 
     return (
     <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
-    
+
       <NavBar/>
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
-          <h1 style={{color:"#4e69ec"}}>Home</h1>
+          <h1 style={{ color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
           <TextField
               style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
@@ -172,8 +207,8 @@ function Dashboard(){
               borderBottom: "none" }
           }}
         >
-          <TableRow style={{height:window.innerHeight*0.35}}>
-            <h2 style={{color:"#3d435a"}}>Now Playing</h2>
+          <TableRow style={{height:window.innerHeight*0.3}}>
+              <NowPlaying/>
           </TableRow>
           <TableRow>
               <h2 style={{color:"#3d435a"}}>Next Up</h2>
