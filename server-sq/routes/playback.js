@@ -12,6 +12,20 @@ module.exports = function(spotifyApi, adminStatus) {
     res.json(history)
   })
 
+  router.get('/playState', (req, res) => {
+    if (!adminStatus.adminSet || !adminStatus.playbackState.device.is_active) res.send('Host not active');
+    else {
+      const playState = adminStatus.playbackState
+      res.json({
+        title: playState.item.name,
+        artist: playState.item.artists[0].name,
+        albumImage: playState.item.album.images,
+        progress: playState.progress_ms,
+        duration: playState.item.duration_ms,
+      });
+    }
+  })
+
   // Retrieve playback state every 3 seconds and update history
   setInterval(() => {
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
