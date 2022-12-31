@@ -25,7 +25,7 @@ export default function Track({ track, filter, clickable, num }) {
             songDuration: track.songDuration,
             uri: track.uri,
             passFilter: track.passFilter,
-            explicit: filter
+            //explicit: filter
           })
           .then(res => {
             console.log(res.data)
@@ -63,7 +63,7 @@ export default function Track({ track, filter, clickable, num }) {
               </TableCell>
 
               {/* Button Add to Queue */}
-              <TableCell align="left">
+              <TableCell align="right">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
