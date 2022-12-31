@@ -3,7 +3,7 @@ import React, {useState} from "react"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ScheduleRoundedIcon from '@mui/icons-material/Schedule';
 import CommentRoundedIcon from '@mui/icons-material/Comment';
-import { Container, Tabs, Tab } from '@mui/material';
+import { Container, Tabs, Tab, LinkTab } from '@mui/material';
 export default function NavBar() {
     const [value, setValue] = useState(1);
 
@@ -17,7 +17,8 @@ export default function NavBar() {
                         backgroundColor:"#ffffff",
                         width: window.innerWidth*0.2,
                         height: "100vh",
-                        fontFamily:"DM Sans"
+                        fontFamily:"DM Sans",
+                        margin: 0
                         }}
                         sx={{boxShadow:10}}
                         >
@@ -26,9 +27,9 @@ export default function NavBar() {
           <p style={{ marginTop:50, color: "#3d435a", }}>Menu</p>
 
           <Tabs orientation="vertical" value={value} onChange={handleChange}>
-            <Tab icon={<HomeRoundedIcon/>} iconPosition="start" label="Home" value="0" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab icon={<ScheduleRoundedIcon/>} iconPosition="start" label= "History" value="1" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab icon={<CommentRoundedIcon/>} iconPosition="start" label="How To Use" value="2" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
+            <Tab href="/" icon={<HomeRoundedIcon/>} iconPosition="start" label="Home" value="0" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
+            <Tab href="/history" icon={<ScheduleRoundedIcon/>} iconPosition="start" label= "History" value="1" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
+            <Tab href="/use" icon={<CommentRoundedIcon/>} iconPosition="start" label="How To Use" value="2" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
           </Tabs>
  
         </div>

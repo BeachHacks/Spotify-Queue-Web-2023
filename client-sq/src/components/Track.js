@@ -25,6 +25,8 @@ export default function Track({ track, clickable, num }) {
             songDuration: track.songDuration,
             uri: track.uri,
             explicit: track.explicit
+
+
           })
           .then(res => {
             console.log(res.data)
@@ -62,7 +64,7 @@ export default function Track({ track, clickable, num }) {
               </TableCell>
 
               {/* Button Add to Queue */}
-              <TableCell align="left">
+              <TableCell align="right">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
