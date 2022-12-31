@@ -40,24 +40,19 @@ app.post('/searchTracks', function(req, res){
 })
 
 app.post('/adminLogin', (req,res) => {
-
   const code = req.body.code
-  console.log(code)
-
   spotifyApi.authorizationCodeGrant(code).then(
     function(data) {
-      console.log('The token expires in ' + data.body['expires_in']);
-      console.log('The access token is ' + data.body['access_token']);
-      console.log('The refresh token is ' + data.body['refresh_token']);
-
       adminStatus.accessToken = data.body['access_token']
       // Set the access token on the API object to use it in later calls
       spotifyApi.setAccessToken(data.body['access_token']);
       spotifyApi.setRefreshToken(data.body['refresh_token']);
       adminStatus.adminSet = true; //Flag verifying token set (Concept in case we need to add more adminstrative features from client)
+      console.log('Host set')
     },
     function(err) {
-      console.log('Something went wrong!', err);
+      adminStatus.adminSet = false;
+      console.log('Error logging in host: ', err);
     })
     .catch(() => {
       res.sendStatus(400);
