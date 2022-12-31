@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router()
 
 module.exports = function(spotifyApi, adminStatus) {
-  var history = []; 
+  const history = []; 
 
   router.get('/', (req, res) => {
     res.send('playback routing check')
@@ -14,6 +14,7 @@ module.exports = function(spotifyApi, adminStatus) {
 
   // Retrieve playback state every 3 seconds and update history
   setInterval(() => {
+    if (!adminStatus.adminSet) { return; }
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
       //console.log('Retrieved playback state')
       //console.log(data.body) //Debugging Purposes
@@ -33,7 +34,8 @@ module.exports = function(spotifyApi, adminStatus) {
             albumName: data.body.item.album.name,
             songDuration: data.body.item.duration,
             uri: data.body.item.uri,
-            passFilter: true,
+            explicit: data.body.item.explicit, 
+            filter: true,
           })
           console.log("Added to history")
         }
@@ -41,7 +43,6 @@ module.exports = function(spotifyApi, adminStatus) {
           //console.log("Not added to history. Empty playback state.")
         }
         adminStatus.playbackState = data.body
-        console.log(adminStatus.playbackState);
         adminStatus.activePlaying = adminStatus.playbackState.device.is_active
       } 
     }, (err) => {
