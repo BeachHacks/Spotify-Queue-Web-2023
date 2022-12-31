@@ -3,9 +3,10 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses} from '@mui/material';
+import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
+import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
-import ProgressBar from "./ProgressBar";
+import NowPlaying from "./NowPlaying";
 
 
 function Dashboard(props){
@@ -168,7 +169,7 @@ function Dashboard(props){
       <NavBar/>
 
       <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
-          <h1 style={{color:"#4e69ec"}}>Home</h1>
+          <h1 style={{ color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
           <TextField
               style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
@@ -220,20 +221,7 @@ function Dashboard(props){
           }}
         >
           <TableRow style={{height:window.innerHeight*0.3}}>
-            <h2 style={{color:"#3d435a"}}>Now Playing</h2>
-              <div style={{display:"inline-flex", width:"90%"}}>
-                <div>
-                  <img src="https://i1.sndcdn.com/artworks-k3nFy3VUf0Ih-0-t500x500.jpg" 
-                       alt={"HardCoded"}
-                       style={{ height: "150px", width: "150px" }} />
-                </div>
-                <div style={{alignSelf:"flex-end", marginLeft:15, marginBottom:10}}>
-                  <h3>Anti-Hero</h3>
-                  <h6>Taylor Swift</h6>
-                  <ProgressBar number={timer} style={{width:"420px"}}/>
-                  <div> Counter for Reference: {timer}</div>
-                </div>
-              </div>
+              <NowPlaying/>
           </TableRow>
           <TableRow>
               <h2 style={{color:"#3d435a"}}>Next Up</h2>
