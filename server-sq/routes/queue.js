@@ -2,34 +2,59 @@ const express = require("express");
 const router = express.Router()
 
 module.exports = function(spotifyApi, adminStatus) {
-    var queue = []; 
-    
-    router.get('/', (req, res) => {
-        res.send('queue routing check')
-    })
+  let queue = []; 
+  let buffer = [];
 
-    router.get('/next', (req, res) => {
-        res.json(queue[0])
-    })
+  router.get('/', (req, res) => {
+    res.send('queue routing check')
+  })
 
-    router.get('/show', (req, res) => {
-        res.json(queue)
-    })
+  router.get('/next', (req, res) => {
+    res.json(queue[0])
+  })
 
-    router.post('/add', (req, res) => {
-        let added = true
-        // Comment out the following IF statement if having issues when adding to song.
-        if (adminStatus.activePlaying) {
-            /*spotifyApi.addToQueue(req.body.uri).then(() => {
-                console.log(req.body)
-            }, (err) => {
-                console.log(err)
-            })*/
-            queue.push(req.body)
-        }
-        added ? res.send("Added to queue") : res.send("Failed to add song")
-        //console.log("Added Flag: ", added)
-    })
+  router.get('/show', (req, res) => {
+    res.json(queue)
+  })
 
-    return router;
+  router.post('/add', (req, res) => {
+    let added = false 
+    if (adminStatus.activePlaying) {
+      queue.push(req.body)
+      buffer.push(req.body)
+      added = true
+    }
+    added ? res.send("Added to queue") : res.send("Failed to add song")
+  })
+
+  // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)
+  setInterval(() => {
+    if (buffer.length < 1) {
+      console.log('Buffer empty');
+      return;
+    }
+    let next = buffer.shift();
+    console.log('Next: ' + next);
+    spotifyApi.addToQueue(next.uri).then(() => {
+      console.log('Added song to Spotify')
+    }, (err) => {
+      console.log(err)
+    })
+  }, 5000);
+
+  // Update queue 
+  setInterval(() => {
+    if (queue.length < 1) {
+      // Empty queue
+      return;
+    }
+    if (Object.keys(adminStatus.playbackState).length != 0 && queue[0].title == adminStatus.playbackState.item.name){
+      let popped = queue.shift();
+      console.log('Removed: ' + popped + 'from top of queue');
+    }
+
+  }, 1000);
+
+
+  return router;
 }
