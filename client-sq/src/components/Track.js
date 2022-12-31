@@ -47,14 +47,14 @@ export default function Track({ track, clickable, num }) {
     return (
         <>
             <TableRow hover={true}>
-            {clickable==false?<TableCell style={{fontWeight : "bold",fontFamily:"ui-rounded", color:"#3d435a"}}>{num+2}</TableCell> :""}
+            {clickable==false?<TableCell style={{ fontWeight : "bold",fontFamily:"DM Sans", color:"#3d435a"}}>{num+2}</TableCell> :""}
               {/* Album Artwork  */}
               <TableCell style={{ width: 50 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:5}} />
               </TableCell>
 
               {/* Title and Artist  */}
-              <TableCell style={{ width: 400, fontFamily:"ui-rounded", color:"#3d435a"}} align="left">
+              <TableCell style={{ width: 400, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : "120%"}}>
                   {track.title}
                 </div>
@@ -68,7 +68,7 @@ export default function Track({ track, clickable, num }) {
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
-                    <AddCircleIcon sx={{ fontSize: 35, color: green[500] }}/>
+                    <AddCircleIcon sx={{ fontSize: 35, color: "#516ef6" }}/>
                  </IconButton>
                  : clickable ? 
                  <IconButton variant="outlined" disabled>

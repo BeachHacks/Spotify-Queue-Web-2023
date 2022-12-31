@@ -14,17 +14,19 @@ export default function NavBar() {
     return (
       <>
         <Container style={{
+                        
+                        outline: '2.5px solid #e0e4f2',
                         backgroundColor:"#ffffff",
-                        width: window.innerWidth*0.2,
+                        width: window.innerWidth*0.17,
                         height: "100vh",
                         fontFamily:"DM Sans",
                         margin: 0
                         }}
-                        sx={{boxShadow:10}}
+                        //sx={{boxShadow:10}}
                         >
-        <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:window.innerWidth*0.01, boxShadow:10}}>
-          <h1 style={{fontWeight:"bolder", marginTop: 10, color:"#3d435a", fontFamily:"DM Sans"}}>BeachQueue</h1>
-          <p style={{ marginTop:50, color: "#3d435a", }}>Menu</p>
+        <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", margin: window.innerHeight*.035, boxShadow:"none"}}>
+          <h1 style={{fontWeight:"1000", fontSize:window.innerHeight*.035, color:"#3d435a", fontFamily:"DM Sans", marginTop:50}}>BeachQueue</h1>
+          <p style={{ fontSize:window.innerHeight*.02, fontWeight: "bold", marginTop:window.innerHeight*.055, color: "#3d435a", }}>Menu</p>
 
           <Tabs orientation="vertical" value={value} onChange={handleChange}>
             <Tab href="/" icon={<HomeRoundedIcon/>} iconPosition="start" label="Home" value="0" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>

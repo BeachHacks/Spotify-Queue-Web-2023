@@ -4,6 +4,7 @@ import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
 import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
+import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
@@ -149,52 +150,65 @@ function Dashboard(props){
       })
       
     }, [search])
+ 
+    
 
     return (
     <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
 
       <NavBar/>
 
-      <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
-          <h1 style={{ color:"#3d435a"}}>Home</h1>
+      <Container style={{fontFamily:"DM Sans", marginLeft:24, marginTop:window.innerHeight*.05}}>
+          <h1 style={{ fontWeight: "1000", color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
           <TextField
-              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
+            sx={{
+              [`& fieldset`]: {
+                borderRadius: 3.5,
+                borderColor: '2.5px solid #e0e4f2',
+              }
+             }}
+              style={{marginTop:15, backgroundColor:"#ffffff", width: window.innerWidth*0.22,marginTop: window.innerHeight*.015, display: "flex"}}
               type="search"
-              placeholder="Search Songs/Artists"
+              placeholder ="Search Songs/Artists" 
+              
               onChange={(e)=>{setInput (e.target.value)}}
               onKeyPress={handleKeyPress}
           />
-          <Button style= {{fontFamily: "DM Sans", fontWeight: "bold",fontSize: 15, display: "flex", flexDirection: Row, height: 55, marginTop: 5}}
+          <Button style= {{borderRadius: 10,boxShadow: "none",fontFamily: "DM Sans", fontWeight: "bold",fontSize: window.innerWidth*0.0085, display: "flex", flexDirection: Row, 
+          height: 55, width:window.innerWidth*0.0625, marginTop: window.innerHeight*.015, marginLeft: 15,
+           backgroundColor:"#516ef6", color:"#ffffff"}}
           onClick={() =>{setSearch(dynInput)}}
           type="button"
           variant="contained"
           >
-          Enter</Button>
+          Search</Button>
 
           </div>
           <div 
-          style={{display:"flex", flexDirection:"row"}}
+          style={{fontWeight: "bold", display:"flex", flexDirection:"row"}}
           >
             <div>
             {/* results component */}
             {searchResults.length === 0?
               <Container 
-              sx={{boxShadow:3}}
-              style={{ height: window.innerHeight*0.8, marginTop: 10, overflowY: "auto", width: window.innerWidth*0.33, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
+              //sx={{boxShadow:3}}
+              style={{ outline: '2.5px solid #e0e4f2',height: window.innerHeight*0.76, marginTop: window.innerHeight*0.015, overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
+                <div style = {{fontSize: 30, margin: window.innerHeight*0.015}}>
                 Search for a song in the search bar!
+                </div>
               </Container>
               :
               <DisplayResults trackList={searchResults} />}
             </div>
           </div>
       </Container>
-      <TableContainer sx={{boxShadow:3 }} style={{
+      <TableContainer  style={{   outline: '2.5px solid #e0e4f2',
                                           borderRadius:10,
                                           backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.89,
+                                          height: window.innerHeight*0.833,
                                           overflowY: "auto",
-                                          marginTop: 70,
+                                          marginTop: window.innerHeight*.126,
                                           marginRight:30,
                                           width: window.innerWidth*2,
                                           overflowX:"hidden",
@@ -211,7 +225,7 @@ function Dashboard(props){
               <NowPlaying/>
           </TableRow>
           <TableRow>
-              <h2 style={{color:"#3d435a"}}>Next Up</h2>
+              <h2 style={{color:"#3d435a", marginLeft: 12,fontSize:24, fontWeight: "1000"}}>Next Up</h2>
               <Queue trackList={queueData} />
           </TableRow>
         </Table>
