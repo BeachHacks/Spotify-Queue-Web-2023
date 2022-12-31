@@ -9,7 +9,7 @@ import { Row } from "react-bootstrap";
 
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
-    const [goodSongsArr, setPassArr] = useState([])
+    //const [goodSongsArr, setPassArr] = useState([])
 
     const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
@@ -81,9 +81,12 @@ function Dashboard(){
       // Parse search query
       searchTracks(search).then(res => {
 
-        setPassArr(
-          filter(res.features.audio_features)
-        )
+        console.log("AUDIO feats",res.features.audio_features)
+        
+        let boolArray = filter(res.features.audio_features)
+
+        console.log("filter", boolArray)
+        let counter = 0
 
         setSearchResults(
           res.tracks.tracks.items.map(track => {
@@ -102,7 +105,9 @@ function Dashboard(){
               albumUrl: smallestAlbumImage.url,
               albumName : track.album.name,
               songDuration : track.duration_ms,
-              explicit: track.explicit
+              explicit: track.explicit, 
+              filter: boolArray[counter++]
+
             }
           })
         )
@@ -145,7 +150,7 @@ function Dashboard(){
                 Search for a song in the search bar!
               </Container>
               :
-              <DisplayResults trackList={searchResults} filterArr={goodSongsArr} />}
+              <DisplayResults trackList={searchResults} />}
             </div>
           </div>
       </Container>
