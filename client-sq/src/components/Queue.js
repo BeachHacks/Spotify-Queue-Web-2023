@@ -16,10 +16,10 @@ export default function Queue({ trackList }) {
           >
           <TableHead>
             <TableCell style={{fontSize : "120%",fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
-            <span style={{marginLeft:window.innerWidth*.0065}}>
+            <span style={{marginLeft:"1%"}}>
             #
                 </span>
-              <span style={{marginLeft:window.innerWidth*.063}}>
+              <span style={{marginLeft:"3%"}}>
                 Title
                 </span>
                 <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ width: "84.5%",marginTop: window.innerHeight*.009}}/>     

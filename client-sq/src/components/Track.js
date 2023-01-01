@@ -3,7 +3,8 @@
 import React from "react"
 import axios from 'axios';
 import { TableCell, TableHead, TableRow } from '@mui/material';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import { IconButton } from '@mui/material';
 import { green } from '@mui/material/colors';
 
@@ -46,11 +47,11 @@ export default function Track({ track, clickable, num }) {
    }
     return (
         <>
-            <TableRow hover={true}>
-            {clickable==false?<TableCell style={{ fontWeight : "bold",fontFamily:"DM Sans", color:"#3d435a"}}>{num+2}</TableCell> :""}
+            <TableRow  hover={true} >
+            {clickable==false?<TableCell style={{ fontSize: "120%", fontWeight : "bold",fontFamily:"DM Sans", color:"#3d435a"}}>{num+2}</TableCell> :""}
               {/* Album Artwork  */}
               <TableCell style={{ width: 50 }} align="left">
-                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px", borderRadius:5}} />
+                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px"}} />
               </TableCell>
 
               {/* Title and Artist  */}
@@ -68,11 +69,11 @@ export default function Track({ track, clickable, num }) {
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
-                    <AddCircleIcon sx={{ fontSize: 35, color: "#1976d2" }}/>
+                    <AddCircleOutlineRoundedIcon sx={{ fontSize: "160%", color: "#1976d2"}}/>
                  </IconButton>
                  : clickable ? 
                  <IconButton variant="outlined" disabled>
-                     <AddCircleIcon sx={{ fontSize: 35 }}/>
+                     <AddCircleOutlineRoundedIcon sx={{ fontSize:"160%"}}/>
                  </IconButton> : null
               }  
               </TableCell>

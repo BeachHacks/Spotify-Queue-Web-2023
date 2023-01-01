@@ -17,17 +17,17 @@ const NavBar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<HomeRoundedIcon  />
+            icon:<HomeRoundedIcon fontSize="large" />
         },
         {
             path:"/history",
             name:"History",
-            icon:<ScheduleRoundedIcon/>
+            icon:<ScheduleRoundedIcon fontSize="large" />
         },
         {
             path:"/howtouse",
             name:"How to use",
-            icon:<CommentRoundedIcon />
+            icon:<CommentRoundedIcon fontSize="large" />
         }
       
     ]
@@ -51,10 +51,10 @@ const NavBar = ({children}) => {
                    <h1 style={{display:  "block" }} className="logo">BeachQueue</h1>
                    
                </div>
-               <p style={{ marginTop:50, color: "#3d435a", fontSize: "110%"}}>Menu</p>
+               <p style={{ marginTop:"25%", color: "#3d435a", fontSize: "120%"}}>Menu</p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginBottom: "4%", width: "95%" }}to={item.path} key={index} className="link" activeclassName="active">
+                       <NavLink style={{marginBottom: "4%", width: "85%" }}to={item.path} key={index} className="link" activeclassName="active">
                            <div style={{marginTop: "1%"}} className="icon">{item.icon}</div>
                            <div style={{display:  "block" }} className="link_text">{item.name}</div>
                        </NavLink>
