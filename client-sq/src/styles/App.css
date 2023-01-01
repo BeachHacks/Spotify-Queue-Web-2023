@@ -38,3 +38,61 @@
     transform: rotate(360deg);
   }
 }
+*{
+  margin:0;
+  padding:0;
+  text-decoration: none;
+}
+
+.container{
+  display:flex;
+}
+main{
+  width: 100%;
+  padding: 20px;
+}
+
+.top_section{
+  display: flex;
+  align-items:center;
+  padding:22px 0px;
+}
+.logo{
+  font-weight: bold;
+  font-size: 35px;
+  color: #3d435a;
+}
+ 
+.link{
+ 
+
+  border-radius: 10px;
+  
+  display: flex;
+  color: #3d435a;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.link:hover{
+  
+  background:#e2e9fd;
+  color: #1976d2;
+  transition: all 0.5s;
+}
+.active{
+  
+  background:#1976d2;
+  color: rgb(255, 255, 255);
+
+}
+.icon{
+  font-size: 16px;
+  
+}
+ .link_text{
+  margin-top: 2px;
+  font-size: 20px;
+  
+}

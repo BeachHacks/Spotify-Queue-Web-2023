@@ -4,38 +4,67 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ScheduleRoundedIcon from '@mui/icons-material/Schedule';
 import CommentRoundedIcon from '@mui/icons-material/Comment';
 import { Container, Tabs, Tab, LinkTab } from '@mui/material';
-export default function NavBar() {
-    const [value, setValue] = useState(1);
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-    const handleChange = (event,newValue) => {
-      setValue(newValue);
-      console.log(value)
-    };
+
+
+
+
+const NavBar = ({children}) => {
+    
+    const menuItem=[
+        {
+            path:"/",
+            name:"Home",
+            icon:<HomeRoundedIcon fontSize = 'large' />
+        },
+        {
+            path:"/history",
+            name:"History",
+            icon:<ScheduleRoundedIcon fontSize = 'large'/>
+        },
+        {
+            path:"/howtouse",
+            name:"How to use",
+            icon:<CommentRoundedIcon fontSize = 'large'/>
+        }
+      
+    ]
     return (
-      <>
-        <Container style={{
-                        
-                        outline: '2.5px solid #e0e4f2',
-                        backgroundColor:"#ffffff",
-                        width: window.innerWidth*0.17,
-                        height: "100vh",
-                        fontFamily:"DM Sans",
-                        margin: 0
-                        }}
-                        //sx={{boxShadow:10}}
-                        >
-        <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", margin: window.innerHeight*.035, boxShadow:"none"}}>
-          <h1 style={{fontWeight:"1000", fontSize:window.innerHeight*.035, color:"#3d435a", fontFamily:"DM Sans", marginTop:50}}>BeachQueue</h1>
-          <p style={{ fontSize:window.innerHeight*.02, fontWeight: "bold", marginTop:window.innerHeight*.055, color: "#3d435a", }}>Menu</p>
+        
+      <Container style={{
+                      
+        borderRight: '2.5px solid #e0e4f2',
+        backgroundColor:"#ffffff",
+      
+        width: window.innerWidth*0.17,
+        minHeight: "100vh",
+        fontFamily:"DM Sans",
+        fontWeight:"bold",
+        margin: 0
+        }}
+       
+        >
+            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:window.innerWidth*0.012,marginTop:window.innerHeight*0.02}}>
+               <div className="top_section">
+                   <h1 style={{display:  "block" }} className="logo">BeachQueue</h1>
+                   
+               </div>
+               <p style={{ marginTop:50, color: "#3d435a", fontSize: 21}}>Menu</p>
+               {
+                   menuItem.map((item, index)=>(
+                       <NavLink style={{marginBottom: "5%", width: "95%"}}to={item.path} key={index} className="link" activeclassName="active">
+                           <div className="icon">{item.icon}</div>
+                           <div style={{display:  "block" }} className="link_text">{item.name}</div>
+                       </NavLink>
+                   ))
+               }
+           </div>
+           <main>{children}</main>
+           </Container>
+    );
+};
 
-          <Tabs orientation="vertical" value={value} onChange={handleChange}>
-            <Tab href="/" icon={<HomeRoundedIcon/>} iconPosition="start" label="Home" value="0" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab href="/history" icon={<ScheduleRoundedIcon/>} iconPosition="start" label= "History" value="1" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-            <Tab href="/use" icon={<CommentRoundedIcon/>} iconPosition="start" label="How To Use" value="2" style={{width: window.innerWidth*0.15, borderRadius: 10, color: "#3d435a"}} fullWidth/>
-          </Tabs>
- 
-        </div>
-      </Container>
-      </>
-    )
-}
+export default NavBar;
+

@@ -155,11 +155,13 @@ function Dashboard(props){
     
 
     return (
-    <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
+      <div style={{minHeight: "100vh", width:"80%", maxWidth:"100%"}}>
+        <Container style={{marginLeft:0}}>
+      <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width: "100%", height:window.innerHeight}}>
 
-      <NavBar/>
+      
 
-      <Container style={{fontFamily:"DM Sans", marginLeft:24, marginTop:window.innerHeight*.05}}>
+      <Container style={{fontFamily:"DM Sans", marginLeft:0, marginTop:window.innerHeight*.05}}>
           <h1 style={{ fontWeight: "1000", color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
 
@@ -189,7 +191,7 @@ function Dashboard(props){
                 borderColor: '2.5px solid #e0e4f2',
               }
              }}
-              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: window.innerWidth*0.262,marginTop: window.innerHeight*.015, display: "flex"}}
+              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: "90%",marginTop: window.innerHeight*.015, display: "flex"}}
               type="search"
               placeholder ="Search Songs/Artists" 
               
@@ -207,7 +209,7 @@ function Dashboard(props){
             {searchResults.length === 0?
               <Container 
               //sx={{boxShadow:3}}
-              style={{ outline: '2.5px solid #e0e4f2',height: window.innerHeight*0.76, marginTop: window.innerHeight*0.015, overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
+              style={{ border: '2.5px solid #e0e4f2',height: window.innerHeight*0.76, marginTop: window.innerHeight*0.015, overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, borderRadius:15, color: "#3d435a"}}>
                 <div style = {{fontSize: 30, margin: window.innerHeight*0.015}}>
                 Search for a song in the search bar!
                 </div>
@@ -217,14 +219,14 @@ function Dashboard(props){
             </div>
           </div>
       </Container>
-      <TableContainer  style={{   outline: '2.5px solid #e0e4f2',
-                                          borderRadius:10,
+      <TableContainer  style={{   border: '2.5px solid #e0e4f2',
+                                          borderRadius:15,
                                           backgroundColor:'#ffffff',
                                           height: window.innerHeight*0.833,
                                           overflowY: "auto",
                                           marginTop: window.innerHeight*.126,
-                                          marginRight:30,
-                                          width: window.innerWidth*2,
+                                          marginRight:0,
+                                          minWidth: window.innerWidth*.5,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
                                           }}>
@@ -244,6 +246,8 @@ function Dashboard(props){
           </TableRow>
         </Table>
       </TableContainer>
+    </div>
+    </Container>
     </div>
     )}
 
