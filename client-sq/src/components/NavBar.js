@@ -38,7 +38,7 @@ const NavBar = ({children}) => {
         borderRight: '2.5px solid #e0e4f2',
         backgroundColor:"#ffffff",
       
-        width: window.innerWidth*0.17,
+        width: window.innerWidth*0.178,
         minHeight: "100vh",
         fontFamily:"DM Sans",
         fontWeight:"bold",
@@ -54,7 +54,7 @@ const NavBar = ({children}) => {
                <p style={{ marginTop:50, color: "#3d435a", fontSize: 21}}>Menu</p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginBottom: "5%", width: "105%"}}to={item.path} key={index} className="link" activeclassName="active">
+                       <NavLink style={{marginBottom: "5%", width: "95%"}}to={item.path} key={index} className="link" activeclassName="active">
                            <div className="icon">{item.icon}</div>
                            <div style={{display:  "block" }} className="link_text">{item.name}</div>
                        </NavLink>
