@@ -156,13 +156,13 @@ function Dashboard(props){
 
     return (
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:"80%", maxWidth:"100%"}}>
-        <Container style={{marginLeft:0}}>
+        
       <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight}}>
 
       
 
-      <Container style={{fontFamily:"DM Sans", marginLeft:0, marginTop:window.innerHeight*.05}}>
-          <h1 style={{ fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+      <Container style={{fontFamily:"DM Sans", marginTop:window.innerHeight*.05}}>
+          <h1 style={{ fontSize:"200%",fontWeight: "1000", color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
 
           
@@ -247,7 +247,7 @@ function Dashboard(props){
         </Table>
       </TableContainer>
     </div>
-    </Container>
+    
     </div>
     )}
 

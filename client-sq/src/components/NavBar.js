@@ -17,17 +17,17 @@ const NavBar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<HomeRoundedIcon fontSize = 'large' />
+            icon:<HomeRoundedIcon  />
         },
         {
             path:"/history",
             name:"History",
-            icon:<ScheduleRoundedIcon fontSize = 'large'/>
+            icon:<ScheduleRoundedIcon/>
         },
         {
             path:"/howtouse",
             name:"How to use",
-            icon:<CommentRoundedIcon fontSize = 'large'/>
+            icon:<CommentRoundedIcon />
         }
       
     ]
@@ -38,7 +38,7 @@ const NavBar = ({children}) => {
         borderRight: '2.5px solid #e0e4f2',
         backgroundColor:"#ffffff",
       
-        width: window.innerWidth*0.178,
+        width: "17.8%",
         minHeight: "100vh",
         fontFamily:"DM Sans",
         fontWeight:"bold",
@@ -46,16 +46,16 @@ const NavBar = ({children}) => {
         }}
        
         >
-            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:window.innerWidth*0.012,marginTop:window.innerHeight*0.02}}>
+            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:"7%",marginTop:"6%"}}>
                <div className="top_section">
                    <h1 style={{display:  "block" }} className="logo">BeachQueue</h1>
                    
                </div>
-               <p style={{ marginTop:50, color: "#3d435a", fontSize: 21}}>Menu</p>
+               <p style={{ marginTop:50, color: "#3d435a", fontSize: "110%"}}>Menu</p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginBottom: "5%", width: "95%"}}to={item.path} key={index} className="link" activeclassName="active">
-                           <div className="icon">{item.icon}</div>
+                       <NavLink style={{marginBottom: "4%", width: "95%" }}to={item.path} key={index} className="link" activeclassName="active">
+                           <div style={{marginTop: "1%"}} className="icon">{item.icon}</div>
                            <div style={{display:  "block" }} className="link_text">{item.name}</div>
                        </NavLink>
                    ))

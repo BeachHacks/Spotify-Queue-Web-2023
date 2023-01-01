@@ -16,6 +16,7 @@ function HowToUse() {
   };
 
   return (
+    <div style={{minHeight: "100vh", width:"80%", maxWidth:"100%"}}>
     <Container style={{ fontFamily: 'DM Sans', marginLeft: 24, marginTop: '5%' }}>
       <h1 style={{ fontWeight: '1000', color: '#3d435a' }}>How to Use</h1>
       
@@ -32,6 +33,8 @@ function HowToUse() {
         3. yadayadayada
       </Typography>
     </Container>
+
+    </div>
   );
 }
 
