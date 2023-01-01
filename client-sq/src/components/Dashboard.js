@@ -161,44 +161,34 @@ function Dashboard(props){
 
       
 
-      <Container style={{fontFamily:"DM Sans", marginTop:window.innerHeight*.05}}>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05}}>
           <h1 style={{ fontSize:"200%",fontWeight: "1000", color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
 
           
           <IconButton 
-          sx={{height: window.innerHeight*.05, width:window.innerHeight*.05}}
-          style= {{borderRadius: 80, display: "flex", 
-           marginTop: window.innerHeight*.017,
+         
+          style= {{ height: 45,
+            width: 45, borderRadius: 80, display: "flex", 
+           marginTop: "5%",
            backgroundColor:"#1976d2", color:"#ffffff"}}
           onClick={() =>{setSearch(dynInput)}}
-          size= "large"
           type="button"
           variant="contained"
           children={<SearchRoundedIcon/>}
           fullWidth={false}
           >
           </IconButton>
-          <TextField
-            
-            
-            sx={{
-              [`& fieldset`]: {
-                
-                height: window.innerHeight*.065,
-                borderRadius: 3.5,
-                colorScheme: "111111",
-                borderColor: '2.5px solid #e0e4f2',
-              }
-             }}
-              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: "90%",marginTop: window.innerHeight*.015, display: "flex"}}
-              type="search"
-              placeholder ="Search Songs/Artists" 
-              
-              onChange={(e)=>{setInput (e.target.value)}}
-              onKeyPress={handleKeyPress}
+
+          
+          <input type="search" style = {{marginTop: "4.5%"}} placeholder ="Search Songs/Artists"  className="searchBar"
+          onChange={(e)=>{setInput (e.target.value)}}
+           onKeyPress={handleKeyPress}
           />
           
+         
+       
+             
 
           </div>
           <div 
@@ -252,3 +242,22 @@ function Dashboard(props){
     )}
 
 export default Dashboard;
+
+/*   <TextField
+            
+            
+            sx={{
+              [`& fieldset`]: {
+                
+                height: window.innerHeight*.065,
+                borderRadius: 3.5,
+                colorScheme: "111111",
+                borderColor: '2.5px solid #e0e4f2',
+              }
+             }}
+              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: "90%",marginTop: window.innerHeight*.015, display: "flex"}}
+              type="search"
+              placeholder ="Search Songs/Artists" 
+              
+              onChange={(e)=>{setInput (e.target.value)}}
+              onKeyPress={handleKeyPress}/> */

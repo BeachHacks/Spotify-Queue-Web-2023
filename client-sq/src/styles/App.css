@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Varela+Round&display=swap');
 
 .App {
   text-align: center;
@@ -58,6 +59,7 @@ main{
   padding:22px 0px;
 }
 .logo{
+  font-family: 'DM Sans', sans-serif;
   font-weight: bold;
   font-size: 180%;
   color: #3d435a;
@@ -93,4 +95,13 @@ main{
   margin-top: 3%;
   font-size: 120%;
   
+}
+
+.searchBar {
+  margin-left: 2%;
+  border-radius: 30px;
+  border: 2.5px solid #e0e4f2;
+  padding: 22px 25px; 
+  width: 88.5%;
+  height: 15px;    
 }
