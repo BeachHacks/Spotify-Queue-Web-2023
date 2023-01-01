@@ -155,9 +155,9 @@ function Dashboard(props){
     
 
     return (
-      <div style={{minHeight: "100vh", width:"80%", maxWidth:"100%"}}>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:"80%", maxWidth:"100%"}}>
         <Container style={{marginLeft:0}}>
-      <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width: "100%", height:window.innerHeight}}>
+      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight}}>
 
       
 
