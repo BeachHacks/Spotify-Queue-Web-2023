@@ -22,7 +22,7 @@ export default function Queue({ trackList }) {
               <span style={{marginLeft:window.innerWidth*.063}}>
                 Title
                 </span>
-                <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ marginTop: window.innerHeight*.009}}/>     
+                <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ width: "84.5%",marginTop: window.innerHeight*.009}}/>     
                 </TableCell>
            
           </TableHead>

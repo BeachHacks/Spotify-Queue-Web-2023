@@ -226,7 +226,7 @@ function Dashboard(props){
                                           overflowY: "auto",
                                           marginTop: window.innerHeight*.126,
                                           marginRight:0,
-                                          minWidth: window.innerWidth*.5,
+                                          minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
                                           }}>
