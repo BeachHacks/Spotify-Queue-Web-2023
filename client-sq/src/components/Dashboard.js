@@ -155,14 +155,14 @@ function Dashboard(props){
     
 
     return (
-      <div style={{minHeight: "100vh", width:"80%", maxWidth:"100%"}}>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:"80%", maxWidth:"100%"}}>
         
       <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight}}>
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:"3.2%", marginLeft:"1.2%"}}>
-          <h1 style={{ fontSize:"250%",fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05}}>
+          <h1 style={{ fontSize:"200%",fontWeight: "1000", color:"#3d435a"}}>Home</h1>
           <div style={{display:"flex", flexDirection:"row"}}>
 
           
@@ -179,9 +179,10 @@ function Dashboard(props){
           fullWidth={false}
           >
           </IconButton>
-
           
-          <input type="search" style = {{marginTop: "4.5%"}} placeholder ="Search Songs/Artists"  className="searchBar"
+        
+       
+          <input type="search" id = "site-search" style = {{marginTop: "4.5%"}} placeholder ="Search Songs/Artists"  className="searchBar"
           onChange={(e)=>{setInput (e.target.value)}}
            onKeyPress={handleKeyPress}
           />
@@ -212,9 +213,9 @@ function Dashboard(props){
       <TableContainer  style={{   border: '2.5px solid #e0e4f2',
                                           borderRadius:15,
                                           backgroundColor:'#ffffff',
-                                          height: "82.5%",
+                                          height: window.innerHeight*0.833,
                                           overflowY: "auto",
-                                          marginTop: "8.5%",
+                                          marginTop: window.innerHeight*.126,
                                           marginRight:0,
                                           minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
