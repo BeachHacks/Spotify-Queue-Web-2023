@@ -6,7 +6,7 @@ import ProgressBar from "./ProgressBar";
 function NowPlaying(){
 
     const [playbackState, setPlaybackState] = useState({
-        albumImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg",
+        albumImage: [{url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg"}],
         artist: "Loading",
         duration: 0,
         progress: 0,
