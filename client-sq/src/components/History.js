@@ -3,9 +3,9 @@ import '../styles/App.css'
 import axios from 'axios';
 
 import Track from "./Track"
-import { TextField, Container } from '@mui/material';
+import { TextField, Container, IconButton } from '@mui/material';
 import {  TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
-
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 function History(){
 
     const [historyData, setHistoryData] = useState([])
@@ -29,36 +29,70 @@ function History(){
 
     return (
 
-      <div style={{minHeight: "100vh", width:"80%", maxWidth:"100%"}}>
-        <Container style={{ fontFamily:"DM Sans", padding: "10px 44px", minWidth:"100%", minHeight:"100%"}}>
-            <h1 style={{color:"#4e69ec"}}>History</h1>
-            <TextField
-                        style={{margin:0, backgroundColor:"#ffffff", width: "100%"}}
+      <div style={{minHeight: "100vh", width:"80vh", maxWidth:"100%"}}>
+        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>History</Container>
+        
+        <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
+
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.5px solid #e00000',
+      width:window.innerWidth*.75 }}>
+        
+            <div style ={{ width:window.innerWidth*.78, marginTop: window.innerHeight*.02,outline: '2.5px solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
+            <input 
+                        style = {{
+                            width: "100%", 
+                            height: window.innerHeight*.065,  
+                            borderTopRightRadius: window.innerHeight*.015,
+                            borderTopLeftRadius: window.innerHeight*.015,
+                            border: "none",
+                            //background: "transparent",
+                            paddingLeft: window.innerWidth*.035,
+                            paddingRight: window.innerWidth*.00875,
+
+                            borderBottom: '2.5px solid #e0e4f2'
+                            }} 
                         type="search"
                         placeholder="Search with a word or artist"
-                        onChange={(e)=>{}}
+                        onChange={(e)=>{} }
+                        
                     />
+<IconButton 
+         
+         style= {{ marginTop: -window.innerHeight*.064,  marginBottom: window.innerHeight*.004,height: window.innerHeight*.06,
+           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         
+           color:"#1976d2"}}
+         onClick={() =>{}}
+         type="button"
+         variant="contained"
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         fullWidth={false}
+         >
+         </IconButton>
+            
             <div 
             style={{display:"flex", flexDirection:"row"}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
-                <Container 
-                sx={{boxShadow:3}}
-                style={{ height: window.innerHeight*0.8, marginTop: 10, overflowY: "auto", backgroundColor:"#ffffff", padding:10, borderRadius:15, color: "#3d435a", }}>
+                <div
+               
+                style={{ fontWeight: "bold",height: "75vh",  overflowY: "auto", backgroundColor:"#ffffff", padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
                    Loading history...
-                </Container>
+                </div>
                 :
-                <TableContainer sx={{ boxShadow:3 }} component={Paper} style={{borderRadius:15, backgroundColor:'#ffffff', height: "82.5vh", width: "100%", overflowX:"hidden", marginTop: 10,}}>
+                <TableContainer component={Paper} style={{borderRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "75vh", width: "100%", overflowX:"hidden"}}>
+                    
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
                                 borderBottom: "none" }
                             }}
                             stickyHeader aria-label="sticky table">
-                        <TableHead sx={{}}>
+                        <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
                             <TableCell style={{ width: 50 }} align="left">
                             </TableCell>
-                            <TableCell style={{ fontFamily: "DM Sans", fontSize: 20, }} align="left">
+                            <TableCell style={{fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01 }} align="left">
                                 Title
                             </TableCell>
                         </TableHead>
@@ -79,8 +113,10 @@ function History(){
                 }
                 </div>
             </div>
-        </Container>
+            </div>
+            </Container>
         
+            </div>
       </div>
         )}
 

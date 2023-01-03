@@ -167,13 +167,7 @@ function Dashboard(props){
          
           <div style={{display:"flex", flexDirection:"row"}}>
 
-          
-          
-          
-          
-        
-       
-          <input type="search" id = "site-search" style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
+          <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
                                                             width: window.innerWidth*.29, 
                                                             height: window.innerHeight*.065,  
                                                             borderTopRightRadius: window.innerHeight*.015,
@@ -183,6 +177,7 @@ function Dashboard(props){
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
                                                             placeholder ="Search Songs/Artists"  
+                                                            className="searchA"
                                                            
           onChange={(e)=>{setInput (e.target.value)}}
            onKeyPress={handleKeyPress}
@@ -262,9 +257,9 @@ function Dashboard(props){
               <NowPlaying/>
           </div>
           <div>
-              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
+              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: -window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
               <div style={{marginLeft:-window.innerWidth*.0045}}>
-            <div style={{fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+            <div style={{marginTop: window.innerHeight*0.01,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
             <span style={{marginLeft:window.innerWidth*0.015}}>
             #
                 </span>
