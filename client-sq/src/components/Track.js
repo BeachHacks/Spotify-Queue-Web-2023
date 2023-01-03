@@ -7,6 +7,7 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import { IconButton } from '@mui/material';
 import { green } from '@mui/material/colors';
+import { style } from "@mui/system";
 
 export default function Track({ track, clickable, num }) {
 
@@ -47,33 +48,51 @@ export default function Track({ track, clickable, num }) {
    }
     return (
         <>
-            <TableRow  hover={true}  >
-            {clickable==false?<TableCell style={{ fontSize: "120%", fontWeight : "bold",fontFamily:"DM Sans", color:"#3d435a"}}>{num+2}</TableCell> :""}
-              {/* Album Artwork  */}
-              <TableCell style={{ width: 50 }} align="left">
-                <img src={track.albumUrl} alt={track.title} style={{height : "64px", width: "64px"}} />
-              </TableCell>
+            <TableRow  hover={true} >
+            {clickable==false?<TableCell style={{ fontSize: window.innerWidth*0.009, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
+            
+          }}>{num+2}</TableCell> 
+            :""}
 
+              {/* image  */}
+              {clickable==false? <TableCell style={{ width: window.innerWidth*0.01 }} align="left">
+                <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.05, width:window.innerHeight*0.05}} />
+              </TableCell> :<TableCell style={{ width: window.innerWidth*0.01 }} align="left">
+                <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.065, width: window.innerHeight*0.065}} />
+              </TableCell>   }
+              
+              <div  style={{ marginLeft: -window.innerWidth*0.007}}>
               {/* Title and Artist  */}
-              <TableCell style={{ width: 400, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
-                <div style={{ fontWeight : "bold", fontSize : "120%"}}>
+              {clickable==false? <TableCell style={{ width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
+                <div style={{ fontWeight : "bold", fontSize: window.innerWidth*0.009, letterSpacing: -window.innerWidth*0.00015}}>
                   {track.title}
                 </div>
-                <div>
+                <div style={{ fontWeight : 300, color: "#6d7285", fontSize: window.innerWidth*0.009, letterSpacing: -window.innerWidth*0.00015}}>
                   {track.artist}
                 </div>
-              </TableCell>
+              </TableCell> : 
+              <TableCell style={{ width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
+                <div style={{ fontWeight : "bold", fontSize : window.innerWidth*0.01}}>
+                  {track.title}
+                </div>
+                <div style={{ fontWeight : "bold", color: "#6d7285", fontSize: window.innerWidth*0.0095, letterSpacing: -window.innerWidth*0.00015}}>
+                  {track.artist}
+                </div>
+              </TableCell>}
+              </div>
+              
+          
 
               {/* Button Add to Queue */}
               <TableCell align="right">
               {
                  !unqueueable && clickable? 
-                 <IconButton onClick={handleAdd} >
-                    <AddCircleOutlineRoundedIcon   sx={{  fontSize: "160%", color: "#1976d2"}}/>
+                 <IconButton onClick={handleAdd} style={{  marginRight: -window.innerWidth*0.008}} >
+                    <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022, color: "#1976d2"}}/>
                  </IconButton>
                  : clickable ? 
-                 <IconButton variant="outlined" disabled>
-                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:"160%"}}/>
+                 <IconButton variant="outlined" disabled  style={{  marginRight: -window.innerWidth*0.008}}>
+                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:window.innerWidth*0.022, }}/>
                  </IconButton> : null
               }  
               </TableCell>

@@ -11,7 +11,7 @@ import HowToUse from './HowToUse';
 
 function App() {
   return (
-    <div style={{display: 'inline-flex', width: "100vw", overflow: "hidden",backgroundColor:"#f6f8fe"}}> 
+    <div style={{display: 'inline-flex', width: "100%", overflow: "hidden",backgroundColor:"#f6f8fe",  height: "100vh"}}> 
     <NavBar />
     <Routes>
     <Route path="/admin" element={<Admin />}>
