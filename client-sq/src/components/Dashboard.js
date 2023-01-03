@@ -9,7 +9,7 @@ import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 
 
-function Dashboard(props){
+function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
 
@@ -19,24 +19,7 @@ function Dashboard(props){
     const [queueData, setQueueData] = useState([])
 
     const [accessToken, setAccessToken] = useState("")
-    const [timer, setTimer] = useState(0);
-    const id = useRef(null);
-    const clear = () => { window.clearInterval(id.current); };
-    
-    useEffect(() => {
-      id.current = window.setInterval(() => {
-        setTimer((time) => time + 1);
-      }, 1000);
-      return () => clear();
-    }, []);
 
-    useEffect(() => {
-      if (timer >= 101) {
-        setTimer(0);
-      }
-    }, [timer]);
-
-    // Hook handling retrieving token from backend. May be updated to publish-subscribe model
     useEffect(() => {
       let ignore = false;
 
@@ -208,7 +191,11 @@ function Dashboard(props){
           }}
         >
           <TableRow style={{height:window.innerHeight*0.3}}>
-              <NowPlaying/>
+            <h2 style={{ color: "#3d435a" }}>Now Playing</h2>
+            {accessToken === ""? 
+            <h2>LOGIN TO SEE THE PLAYER</h2>:
+            <NowPlaying/>
+            }
           </TableRow>
           <TableRow>
               <h2 style={{color:"#3d435a"}}>Next Up</h2>

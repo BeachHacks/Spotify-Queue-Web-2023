@@ -61,7 +61,7 @@ module.exports = function(spotifyApi, adminStatus) {
     }, (err) => {
       console.log('Could not retrieve playback state successfully', err);
     }
-    )}, 3000);
+    )}, 1000);
 
   return router;
 }
