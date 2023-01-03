@@ -225,7 +225,7 @@ function Dashboard(props){
                 <div style = {{fontSize: window.innerHeight*0.03, margin: window.innerHeight*0.015}}>
                 Results
                 </div>
-                <div style = {{fontSize: window.innerHeight*0.02, margin: window.innerHeight*0.015}}>
+                <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
                 Your search results will show here once you <a style = {{color:"#1976d2"}}>hit enter</a>
                 </div>
                 
