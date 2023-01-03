@@ -9,8 +9,8 @@ function NowPlaying(){
 
     useEffect(() => {
         id.current = window.setInterval(() => {
-            setTimer((time) => time + 1);
-        }, 1000);
+            setTimer((time) => time + .1);
+        }, 100);
         return () => clear();
     }, []);
 
@@ -34,7 +34,7 @@ function NowPlaying(){
                     <h3>Anti-Hero</h3>
                     <h6>Taylor Swift</h6>
                     <ProgressBar number={timer} style={{ width: "420px" }} />
-                    <div> Counter for Reference: {timer}</div>
+                    <div> Counter for Reference: {parseInt(timer,10)}</div>
                 </div>
             </div>
             
