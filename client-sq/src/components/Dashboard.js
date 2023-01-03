@@ -161,7 +161,8 @@ function Dashboard(props){
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.003}}>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.003,border: '2.25px solid #0004f2', 
+      width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
 
@@ -171,7 +172,7 @@ function Dashboard(props){
           
         
        
-          <input type="search" id = "site-search" style = {{marginLeft: 0,marginTop: window.innerHeight*.018,
+          <input type="search" id = "site-search" style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
                                                             width: window.innerWidth*.29, 
                                                             height: window.innerHeight*.065,  
                                                             borderTopRightRadius: window.innerHeight*.015,
@@ -222,15 +223,19 @@ function Dashboard(props){
 
                color: "#3d435a"}}>
                 <div style = {{fontSize: window.innerHeight*0.03, margin: window.innerHeight*0.015}}>
-                Search for a song in the search bar!
+                Results
                 </div>
+                <div style = {{fontSize: window.innerHeight*0.02, margin: window.innerHeight*0.015}}>
+                Your search results will show here once you <a style = {{color:"#1976d2"}}>hit enter</a>
+                </div>
+                
               </Container>
               :
               <DisplayResults trackList={searchResults} />}
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05}}>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,border: '2.25px solid #0004f2'}}>
      
       <TableContainer  style={{   border: '2.25px solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
@@ -239,7 +244,7 @@ function Dashboard(props){
                                           width: window.innerWidth*0.40,
                                           overflowY: "auto",
                                           marginTop: window.innerHeight*.018,
-                                          marginLeft:-window.innerHeight*.045,
+                                          marginLeft:-window.innerHeight*.0,
                                           minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
@@ -271,21 +276,3 @@ function Dashboard(props){
 
 export default Dashboard;
 
-/*   <TextField
-            
-            
-            sx={{
-              [`& fieldset`]: {
-                
-                height: window.innerHeight*.065,
-                borderRadius: 3.5,
-                colorScheme: "111111",
-                borderColor: '2.25px solid #e0e4f2',
-              }
-             }}
-              style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: "90%",marginTop: window.innerHeight*.015, display: "flex"}}
-              type="search"
-              placeholder ="Search Songs/Artists" 
-              
-              onChange={(e)=>{setInput (e.target.value)}}
-              onKeyPress={handleKeyPress}/> */
