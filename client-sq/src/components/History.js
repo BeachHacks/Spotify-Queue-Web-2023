@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Track from "./Track"
 import { TextField, Container, IconButton } from '@mui/material';
-import {  TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
+import {  Divider,TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 function History(){
 
@@ -54,6 +54,7 @@ function History(){
                             }} 
                         type="search"
                         placeholder="Search with a word or artist"
+                        className="searchA"
                         onChange={(e)=>{} }
                         
                     />
@@ -72,7 +73,7 @@ function History(){
          </IconButton>
             
             <div 
-            style={{display:"flex", flexDirection:"row"}}
+            style={{display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
@@ -82,22 +83,25 @@ function History(){
                    Loading history...
                 </div>
                 :
-                <TableContainer component={Paper} style={{borderRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "75vh", width: "100%", overflowX:"hidden"}}>
-                    
+                    <div style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "75vh", width: "100%" }} >  
+                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.02,paddingTop:window.innerHeight*0.02}} align="left">
+                                Title
+                                
+                            </div>
+                            <Divider component="nav" style={{ marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                <TableContainer  style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "70vh", width: "100%" ,overflowX:"hidden"}}>
+                   
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
                                 borderBottom: "none" }
                             }}
                             stickyHeader aria-label="sticky table">
                         <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
-                            <TableCell style={{ width: 50 }} align="left">
-                            </TableCell>
-                            <TableCell style={{fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01 }} align="left">
-                                Title
-                            </TableCell>
+                           
+                        
                         </TableHead>
                         <TableBody>
-                            {historyData.map(track => (
+                            {historyData.slice(0).reverse().map(track => (
                                 <Track 
                                 track={track}
                                 filter = {Array.from({length:historyData.length}, () => true)}
@@ -110,6 +114,7 @@ function History(){
                         </TableBody>
                     </Table>
                 </TableContainer>
+                </div>
                 }
                 </div>
             </div>
