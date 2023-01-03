@@ -16,14 +16,14 @@ export default function Queue({ trackList }) {
             }}
           >
          
-          <TableBody>
+          <TableBody >
             <TableCell >
               {trackList.map((track, index) => (
                 <Track 
                   track={track}
                   key={index}
                   num={index}
-                  clickable={false}
+                  clickable={false} 
               />
               ))}
             </TableCell>
