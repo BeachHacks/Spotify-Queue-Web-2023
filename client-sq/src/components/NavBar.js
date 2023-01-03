@@ -17,17 +17,17 @@ const NavBar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<HomeRoundedIcon fontSize="large" />
+            icon:<HomeRoundedIcon style={{fontSize: window.innerHeight*.035}} />
         },
         {
             path:"/history",
             name:"History",
-            icon:<ScheduleRoundedIcon fontSize="large" />
+            icon:<ScheduleRoundedIcon style={{fontSize: window.innerHeight*.035}} />
         },
         {
             path:"/howtouse",
             name:"How to use",
-            icon:<CommentRoundedIcon fontSize="large" />
+            icon:<CommentRoundedIcon style={{fontSize: window.innerHeight*.035}} />
         }
       
     ]
@@ -35,7 +35,7 @@ const NavBar = ({children}) => {
         
       <Container style={{
                       
-        borderRight: '2.5px solid #e0e4f2',
+        borderRight: '2.25px solid #e0e4f2',
         backgroundColor:"#ffffff",
       
         width: "17.8%",
@@ -48,15 +48,27 @@ const NavBar = ({children}) => {
         >
             <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:"7%",marginTop:"6%"}}>
                <div className="top_section">
-                   <h1 style={{display:  "block" }} className="logo">BeachQueue</h1>
+                   <h1 style={{display:  "block",
+                    fontFamily: 'DM Sans',
+                    fontWeight: "bold",
+                    fontSize: window.innerHeight *.04,
+                    color: "#3d435a"
+                
+                }} >BeachQueue</h1>
                    
                </div>
-               <p style={{ marginTop:"25%", color: "#3d435a", fontSize: "120%"}}>Menu</p>
+               <p style={{ marginTop:window.innerHeight*.05, color: "#3d435a", fontWeight: 400, fontSize: window.innerHeight*.02}}>Menu</p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginBottom: "4%", width: "100%" }}to={item.path} key={index} className="link" activeclassName="active">
-                           <div style={{marginTop: "1%"}} className="icon">{item.icon}</div>
-                           <div style={{display:  "block" }} className="link_text">{item.name}</div>
+                       <NavLink style={{marginBottom: window.innerHeight*.005, width: "100%",
+                       borderRadius: window.innerHeight*.015,
+                        padding:  "4% 6.7%",
+                        gap: window.innerHeight*.012
+                       
+                       
+                       }}to={item.path} key={index} className="link" activeclassName="active">
+                           <div >{item.icon}</div>
+                           <div style={{display:  "block", fontWeight: 400, fontSize: window.innerHeight*.02,marginTop:window.innerHeight*.002 }} >{item.name}</div>
                        </NavLink>
                    ))
                }

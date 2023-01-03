@@ -47,7 +47,7 @@ export default function Track({ track, clickable, num }) {
    }
     return (
         <>
-            <TableRow  hover={true} >
+            <TableRow  hover={true}  >
             {clickable==false?<TableCell style={{ fontSize: "120%", fontWeight : "bold",fontFamily:"DM Sans", color:"#3d435a"}}>{num+2}</TableCell> :""}
               {/* Album Artwork  */}
               <TableCell style={{ width: 50 }} align="left">
@@ -69,11 +69,11 @@ export default function Track({ track, clickable, num }) {
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} >
-                    <AddCircleOutlineRoundedIcon sx={{ fontSize: "160%", color: "#1976d2"}}/>
+                    <AddCircleOutlineRoundedIcon   sx={{  fontSize: "160%", color: "#1976d2"}}/>
                  </IconButton>
                  : clickable ? 
                  <IconButton variant="outlined" disabled>
-                     <AddCircleOutlineRoundedIcon sx={{ fontSize:"160%"}}/>
+                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:"160%"}}/>
                  </IconButton> : null
               }  
               </TableCell>

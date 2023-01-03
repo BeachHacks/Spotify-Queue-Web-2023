@@ -156,39 +156,50 @@ function Dashboard(props){
 
     return (
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:"80%", maxWidth:"100%"}}>
-        
-      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight}}>
+        <h1 style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.023, fontSize: window.innerHeight *.04,fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05}}>
-          <h1 style={{ fontSize:"200%",fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.003}}>
+         
           <div style={{display:"flex", flexDirection:"row"}}>
 
           
-          <IconButton 
-         
-          style= {{ height: 45,
-            width: 45, borderRadius: 80, display: "flex", 
-           marginTop: "5%",
-           backgroundColor:"#1976d2", color:"#ffffff"}}
-          onClick={() =>{setSearch(dynInput)}}
-          type="button"
-          variant="contained"
-          children={<SearchRoundedIcon/>}
-          fullWidth={false}
-          >
-          </IconButton>
+          
+          
           
         
        
-          <input type="search" id = "site-search" style = {{marginTop: "4.5%"}} placeholder ="Search Songs/Artists"  className="searchBar"
+          <input type="search" id = "site-search" style = {{marginLeft: 0,marginTop: window.innerHeight*.018,
+                                                            width: window.innerWidth*.29, 
+                                                            height: window.innerHeight*.065,  
+                                                            borderTopRightRadius: window.innerHeight*.015,
+                                                            borderTopLeftRadius: window.innerHeight*.015,
+                                                            border: "2.25px solid #e0e4f2",
+                                                            paddingLeft: window.innerWidth*.035,
+                                                            paddingRight: window.innerWidth*.00875
+                                                            }} 
+                                                            placeholder ="Search Songs/Artists"  
+                                                           
           onChange={(e)=>{setInput (e.target.value)}}
            onKeyPress={handleKeyPress}
           />
-          
          
-       
+         
+         <IconButton 
+         
+         style= {{ marginTop: window.innerHeight*.02,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.06,
+           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         
+           color:"#1976d2"}}
+         onClick={() =>{setSearch(dynInput)}}
+         type="button"
+         variant="contained"
+         children={<SearchRoundedIcon style = {{fontSize: window.innerHeight*.045 }}/>}
+         fullWidth={false}
+         >
+         </IconButton>
              
 
           </div>
@@ -200,8 +211,17 @@ function Dashboard(props){
             {searchResults.length === 0?
               <Container 
               //sx={{boxShadow:3}}
-              style={{ border: '2.5px solid #e0e4f2',height: window.innerHeight*0.76, marginTop: window.innerHeight*0.015, overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, borderRadius:15, color: "#3d435a"}}>
-                <div style = {{fontSize: 30, margin: window.innerHeight*0.015}}>
+              style={{ borderLeft: '2.25px solid #e0e4f2',
+              borderRight: '2.25px solid #e0e4f2',
+              borderBottom: '2.25px solid #e0e4f2',
+              
+              height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
+              overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
+              borderBottomLeftRadius:window.innerHeight*.015,
+              borderBottomRightRadius:window.innerHeight*.015,
+
+               color: "#3d435a"}}>
+                <div style = {{fontSize: window.innerHeight*0.03, margin: window.innerHeight*0.015}}>
                 Search for a song in the search bar!
                 </div>
               </Container>
@@ -210,19 +230,25 @@ function Dashboard(props){
             </div>
           </div>
       </Container>
-      <TableContainer  style={{   border: '2.5px solid #e0e4f2',
-                                          borderRadius:15,
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05}}>
+     
+      <TableContainer  style={{   border: '2.25px solid #e0e4f2',
+                                          borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.833,
+                                          height: window.innerHeight*0.85,
+                                          width: window.innerWidth*0.40,
                                           overflowY: "auto",
-                                          marginTop: window.innerHeight*.126,
-                                          marginRight:0,
+                                          marginTop: window.innerHeight*.018,
+                                          marginLeft:-window.innerHeight*.045,
                                           minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
                                           }}>
+
+
+                   
         <Table
-        style={{marginLeft:10, marginTop:10}}
+        style={{marginLeft:"2%", marginTop:"2%"}}
         sx={{
               [`& .${tableCellClasses.root}`]: {
               borderBottom: "none" }
@@ -237,6 +263,7 @@ function Dashboard(props){
           </TableRow>
         </Table>
       </TableContainer>
+    </Container>
     </div>
     
     </div>
@@ -253,7 +280,7 @@ export default Dashboard;
                 height: window.innerHeight*.065,
                 borderRadius: 3.5,
                 colorScheme: "111111",
-                borderColor: '2.5px solid #e0e4f2',
+                borderColor: '2.25px solid #e0e4f2',
               }
              }}
               style={{height: window.innerHeight*.06,marginLeft: window.innerWidth*0.005,backgroundColor:"#ffffff", width: "90%",marginTop: window.innerHeight*.015, display: "flex"}}
