@@ -215,7 +215,7 @@ function Dashboard(props){
               borderRight: '2.25px solid #e0e4f2',
               borderBottom: '2.25px solid #e0e4f2',
               
-              height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
+              height: window.innerHeight*0.786, marginTop: -window.innerHeight*0.000, 
               overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
               borderBottomLeftRadius:window.innerHeight*.015,
               borderBottomRightRadius:window.innerHeight*.015,
@@ -239,7 +239,7 @@ function Dashboard(props){
                                           width: window.innerWidth*0.40,
                                           overflowY: "auto",
                                           marginTop: window.innerHeight*.018,
-                                          marginLeft:-window.innerHeight*.045,
+                                          marginLeft:-window.innerHeight*.04,
                                           minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
