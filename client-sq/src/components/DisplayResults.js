@@ -6,28 +6,22 @@ import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCel
 export default function DisplayResults({ trackList }) {
     return (
         <TableContainer   style={{ 
-            borderLeft: '2.25px solid #e0e4f2',
-              borderRight: '2.25px solid #e0e4f2',
-              borderBottom: '2.25px solid #e0e4f2',
+            borderLeft: '2.5px solid #e0e4f2',
+              borderRight: '2.5px solid #e0e4f2',
+              borderBottom: '2.5px solid #e0e4f2',
               borderBottomLeftRadius:window.innerHeight*.015,
               borderBottomRightRadius:window.innerHeight*.015,
                backgroundColor:'#ffffff', height: window.innerHeight*0.784, overflowY: "auto",
          width: window.innerWidth*0.29, overflowX:"hidden", marginTop: window.innerHeight*0.00}}>
-            <Table sx={{
+            <Table 
+                    sx={{
                         [`& .${tableCellClasses.root}`]: {
-                        borderBottom: "none" }
+                        borderBottom: "none" 
+                        }
                     }}
                     stickyHeader aria-label="sticky table">
-                <TableHead>
-                    <TableRow>
-                        {/* <TableCell><h1>Results</h1></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell> */}
-                        {/* <TableCell></TableCell> */}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+                 
+                <TableBody style={{height:265}}>
                     {trackList.map(track => (
                         <Track 
                         track={track}

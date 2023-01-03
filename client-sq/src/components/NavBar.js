@@ -32,7 +32,7 @@ const NavBar = ({children}) => {
       
     ]
     return (
-        <div style = {{ borderRight: '2.25px solid #e0e4f2',backgroundColor:"#ffffff", width:window.innerWidth*.17 }}>
+        <div style = {{ borderRight: '2.5px solid #e0e4f2',backgroundColor:"#ffffff", width:window.innerWidth*.17 }}>
       <Container style={{
                       
        
@@ -51,7 +51,7 @@ const NavBar = ({children}) => {
                    <h1 style={{display:  "block",
                     fontFamily: 'DM Sans',
                     fontWeight: "bold",
-                    fontSize: window.innerHeight *.04,
+                    fontSize: window.innerWidth *.02,
                     color: "#3d435a"
                 
                 }} >BeachQueue</h1>

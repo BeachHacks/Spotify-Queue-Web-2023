@@ -21,10 +21,10 @@ function NowPlaying(){
     }, [timer]);
 
     return(
-        <>
-            <h2 style={{ color:"#3d435a", marginBottom: 5, marginTop: 12, marginLeft: 12,fontSize:24, fontWeight: "1000" }}>Now Playing</h2>
+        <div style = {{ marginLeft: window.innerWidth*0.005}}>
+            <h2 style={{ color:"#3d435a", marginTop:  window.innerHeight*0.0055, fontSize: window.innerWidth*0.016, fontWeight: "1000" }}>Now playing</h2>
 
-            <div style={{ marginLeft: 12,display: "inline-flex", width: "90%" }}>
+            <div style={{ display: "inline-flex", width: "90%" }}>
                 <div>
                     <img src="https://i1.sndcdn.com/artworks-k3nFy3VUf0Ih-0-t500x500.jpg"
                         alt={"HardCoded"}
@@ -52,7 +52,7 @@ function NowPlaying(){
                     <p> Counter for Reference: {timer}</p>
                 </TableCell>
             </TableRow> */}
-        </>
+        </div>
     )
 }
 export default NowPlaying;

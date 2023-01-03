@@ -3,7 +3,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
+import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
 import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
@@ -156,12 +156,13 @@ function Dashboard(props){
 
     return (
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
-        <h1 style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.023, fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
       <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.25px solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.5px solid #e00000',
       width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
@@ -177,7 +178,7 @@ function Dashboard(props){
                                                             height: window.innerHeight*.065,  
                                                             borderTopRightRadius: window.innerHeight*.015,
                                                             borderTopLeftRadius: window.innerHeight*.015,
-                                                            border: "2.25px solid #e0e4f2",
+                                                            border: "2.5px solid #e0e4f2",
                                                             paddingLeft: window.innerWidth*.035,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
@@ -212,9 +213,9 @@ function Dashboard(props){
             {searchResults.length === 0?
               <Container 
               //sx={{boxShadow:3}}
-              style={{ borderLeft: '2.25px solid #e0e4f2',
-              borderRight: '2.25px solid #e0e4f2',
-              borderBottom: '2.25px solid #e0e4f2',
+              style={{ borderLeft: '2.5px solid #e0e4f2',
+              borderRight: '2.5px solid #e0e4f2',
+              borderBottom: '2.5px solid #e0e4f2',
               
               height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
               overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
@@ -235,15 +236,15 @@ function Dashboard(props){
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '2.25px solid #e00000'
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '2.5px solid #e00000'
       }}>
      
-      <TableContainer  style={{   border: '2.25px solid #e0e4f2',
+      <Container  style={{   border: '2.5px solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
                                           height: window.innerHeight*0.85,
                                           width: window.innerWidth*0.40,
-                                          overflowY: "auto",
+                                          overflowY: "hidden",
                                           marginTop: window.innerHeight*.018,
                                           marginLeft:-window.innerHeight*.0,
                                           minWidth: window.innerWidth*.48,
@@ -252,23 +253,32 @@ function Dashboard(props){
                                           }}>
 
 
-                   
-        <Table
-        style={{marginLeft:"2%", marginTop:"2%"}}
-        sx={{
-              [`& .${tableCellClasses.root}`]: {
-              borderBottom: "none" }
-          }}
+        <div style = {{marginLeft:-window.innerHeight*.02}}>  
+        <div
+        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.03}}
+        
         >
-          <TableRow style={{height:window.innerHeight*0.3}}>
+          <div style={{height:window.innerHeight*0.3}}>
               <NowPlaying/>
-          </TableRow>
-          <TableRow>
-              <h2 style={{color:"#3d435a", marginLeft: 12,fontSize:24, fontWeight: "1000"}}>Next Up</h2>
+          </div>
+          <div>
+              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
+              <div style={{marginLeft:-window.innerWidth*.0045}}>
+            <div style={{fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+            <span style={{marginLeft:window.innerWidth*0.015}}>
+            #
+                </span>
+              <span style={{marginLeft:window.innerWidth*0.015}}>
+                Title
+                </span>
+                <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+                </div>
+          </div>
               <Queue trackList={queueData} />
-          </TableRow>
-        </Table>
-      </TableContainer>
+          </div>
+        </div>
+        </div>     
+      </Container>
     </Container>
     </div>
     
