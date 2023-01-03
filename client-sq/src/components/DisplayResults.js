@@ -11,7 +11,7 @@ export default function DisplayResults({ trackList }) {
               borderBottom: '2.25px solid #e0e4f2',
               borderBottomLeftRadius:window.innerHeight*.015,
               borderBottomRightRadius:window.innerHeight*.015,
-               backgroundColor:'#ffffff', height: window.innerHeight*0.786, overflowY: "auto",
+               backgroundColor:'#ffffff', height: window.innerHeight*0.784, overflowY: "auto",
          width: window.innerWidth*0.29, overflowX:"hidden", marginTop: window.innerHeight*0.00}}>
             <Table sx={{
                         [`& .${tableCellClasses.root}`]: {
