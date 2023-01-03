@@ -89,5 +89,11 @@ main{
 .searchA::placeholder{
   font-size: 1.9vh;
 }
+.searchA:focus{
+  
+    outline: none !important;
 
+  
+ 
+}
 

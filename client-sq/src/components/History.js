@@ -36,9 +36,9 @@ function History(){
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
       <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.5px solid #e00000',
-      width:window.innerWidth*.75 }}>
+      width:window.innerWidth*.75, }}>
         
-            <div style ={{ width:window.innerWidth*.78, marginTop: window.innerHeight*.018,border: '2.5px solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
+            <div style ={{ backgroundColor:"#ffffff", width:window.innerWidth*.78,height:window.innerHeight*.85, marginTop: window.innerHeight*.018,border: '2.5px solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
             <input 
                         style = {{
                             width: "100%", 
@@ -72,24 +72,24 @@ function History(){
          >
          </IconButton>
             
-            <div 
+         <div 
             style={{display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
                 <div
                
-                style={{ fontWeight: "bold",height: "75vh",  overflowY: "auto", backgroundColor:"#ffffff", padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
+                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
                    Loading history...
                 </div>
                 :
-                    <div style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "75vh", width: "100%" }} >  
+                    <div style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015,  height: "77vh", width: "100%" }} >  
                         <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.02,paddingTop:window.innerHeight*0.02}} align="left">
                                 Title
                                 
                             </div>
                             <Divider component="nav" style={{ marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
-                <TableContainer  style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "70vh", width: "100%" ,overflowX:"hidden"}}>
+                <TableContainer  style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "100%" ,overflowX:"hidden"}}>
                    
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
@@ -116,7 +116,8 @@ function History(){
                 </TableContainer>
                 </div>
                 }
-                </div>
+                
+            </div>
             </div>
             </div>
             </Container>
