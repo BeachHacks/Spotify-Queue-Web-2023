@@ -17,22 +17,22 @@ const NavBar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<HomeRoundedIcon style={{fontSize: window.innerHeight*.035}} />
+            icon:<HomeRoundedIcon style={{fontSize: window.innerWidth*.018}} />
         },
         {
             path:"/history",
             name:"History",
-            icon:<ScheduleRoundedIcon style={{fontSize: window.innerHeight*.035}} />
+            icon:<ScheduleRoundedIcon style={{fontSize: window.innerWidth*.018}} />
         },
         {
             path:"/howtouse",
             name:"How to use",
-            icon:<CommentRoundedIcon style={{fontSize: window.innerHeight*.035}} />
+            icon:<CommentRoundedIcon style={{fontSize: window.innerWidth*.018}} />
         }
       
     ]
     return (
-        <div style = {{ borderRight: '2.25px solid #e0e4f2',backgroundColor:"#ffffff"}}>
+        <div style = {{ borderRight: '2.25px solid #e0e4f2',backgroundColor:"#ffffff", width:window.innerWidth*.17 }}>
       <Container style={{
                       
        
@@ -46,7 +46,7 @@ const NavBar = ({children}) => {
         }}
        
         >
-            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:"7%",marginTop:window.innerHeight*.02}}>
+            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:window.innerWidth*.01,marginTop:window.innerHeight*.02}}>
                <div className="top_section">
                    <h1 style={{display:  "block",
                     fontFamily: 'DM Sans',
@@ -57,10 +57,10 @@ const NavBar = ({children}) => {
                 }} >BeachQueue</h1>
                    
                </div>
-               <p style={{ marginTop:window.innerHeight*.07, color: "#3d435a", fontWeight: 400, fontSize: window.innerHeight*.02}}>Menu</p>
+               <p style={{ marginTop:window.innerHeight*.07, color: "#3d435a",  fontSize: window.innerHeight*.02}}>Menu</p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginBottom: window.innerHeight*.005, width: "100%",
+                       <NavLink style={{marginBottom: window.innerHeight*.005, width: window.innerWidth*.123,
                        borderRadius: window.innerHeight*.015,
                         padding:  "4% 6.7%",
                         gap: window.innerHeight*.012
@@ -68,7 +68,7 @@ const NavBar = ({children}) => {
                        
                        }}to={item.path} key={index} className="link" activeclassName="active">
                            <div >{item.icon}</div>
-                           <div style={{display:  "block", fontWeight: 400, fontSize: window.innerHeight*.02,marginTop:window.innerHeight*.002 }} >{item.name}</div>
+                           <div style={{display:  "block",  fontSize: window.innerHeight*.02,marginTop:window.innerHeight*.002 }} >{item.name}</div>
                        </NavLink>
                    ))
                }

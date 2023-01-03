@@ -155,13 +155,13 @@ function Dashboard(props){
     
 
     return (
-      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:"80%", maxWidth:"100%"}}>
-        <h1 style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.023, fontSize: window.innerHeight *.04,fontWeight: "1000", color:"#3d435a"}}>Home</h1>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
+        <h1 style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.023, fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</h1>
       <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.003,border: '2.25px solid #0004f2', 
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.25px solid #e00000',
       width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
@@ -197,7 +197,7 @@ function Dashboard(props){
          onClick={() =>{setSearch(dynInput)}}
          type="button"
          variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerHeight*.045 }}/>}
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
          fullWidth={false}
          >
          </IconButton>
@@ -222,7 +222,7 @@ function Dashboard(props){
               borderBottomRightRadius:window.innerHeight*.015,
 
                color: "#3d435a"}}>
-                <div style = {{fontSize: window.innerHeight*0.03, margin: window.innerHeight*0.015}}>
+                <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
                 Results
                 </div>
                 <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
@@ -235,7 +235,8 @@ function Dashboard(props){
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,border: '2.25px solid #0004f2'}}>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '2.25px solid #e00000'
+      }}>
      
       <TableContainer  style={{   border: '2.25px solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
