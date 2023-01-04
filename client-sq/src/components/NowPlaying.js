@@ -56,7 +56,7 @@ function NowPlaying(){
     }
     
     return(
-            <div>
+            
             <div style={{ display: "inline-flex", width: "90%" }}>
                 <div>
                     <img src={playbackState.albumImage[0].url}
@@ -74,7 +74,7 @@ function NowPlaying(){
                 </div>
             </div>
             
-        </>
+        
 
     )
 }
