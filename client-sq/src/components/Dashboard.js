@@ -11,7 +11,7 @@ import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
-function Dashboard(props){
+function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
 
@@ -21,24 +21,7 @@ function Dashboard(props){
     const [queueData, setQueueData] = useState([])
 
     const [accessToken, setAccessToken] = useState("")
-    const [timer, setTimer] = useState(0);
-    const id = useRef(null);
-    const clear = () => { window.clearInterval(id.current); };
-    
-    useEffect(() => {
-      id.current = window.setInterval(() => {
-        setTimer((time) => time + 1);
-      }, 1000);
-      return () => clear();
-    }, []);
 
-    useEffect(() => {
-      if (timer >= 101) {
-        setTimer(0);
-      }
-    }, [timer]);
-
-    // Hook handling retrieving token from backend. May be updated to publish-subscribe model
     useEffect(() => {
       let ignore = false;
 
@@ -253,8 +236,13 @@ function Dashboard(props){
         style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.03}}
         
         >
+
           <div style={{height:window.innerHeight*0.3}}>
-              <NowPlaying/>
+              <h2 style={{ color: "#3d435a" }}>Now Playing</h2>
+            {accessToken === ""? 
+            <h2>LOGIN TO SEE THE PLAYER</h2>:
+            <NowPlaying/>
+            }
           </div>
           <div>
               <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: -window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
@@ -269,6 +257,7 @@ function Dashboard(props){
                 <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
                 </div>
           </div>
+
               <Queue trackList={queueData} />
           </div>
         </div>

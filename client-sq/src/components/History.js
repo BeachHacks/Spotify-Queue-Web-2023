@@ -9,6 +9,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 function History(){
 
     const [historyData, setHistoryData] = useState([])
+    const [searchedHistory, setSearchedHistory] = useState(historyData)
 
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
@@ -26,6 +27,9 @@ function History(){
     return () => {ignore = true; clearInterval(interval);}
     }, [])
 
+    const searchHistory = (term) => {
+      setSearchedHistory(historyData.filter((track) => (track.title.toLowerCase().includes(term.toLowerCase()) || track.artist.toLowerCase().includes(term.toLowerCase()))))
+    }
 
     return (
 
@@ -54,9 +58,13 @@ function History(){
                             }} 
                         type="search"
                         placeholder="Search with a word or artist"
+
                         className="searchA"
-                        onChange={(e)=>{} }
+                       
                         
+
+                        onChange={(e)=>{searchHistory(e.target.value)}}
+
                     />
 <IconButton 
          
@@ -101,7 +109,10 @@ function History(){
                         
                         </TableHead>
                         <TableBody>
-                            {historyData.slice(0).reverse().map(track => (
+
+
+                            {(searchedHistory.length > 0 ? searchedHistory : historyData).map(track => (
+
                                 <Track 
                                 track={track}
                                 filter = {Array.from({length:historyData.length}, () => true)}
