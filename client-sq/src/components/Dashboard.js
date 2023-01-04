@@ -233,19 +233,19 @@ function Dashboard(){
 
         <div style = {{marginLeft:-window.innerHeight*.02}}>  
         <div
-        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.03}}
+        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.025}}
         
         >
 
-          <div style={{height:window.innerHeight*0.3}}>
-              <h2 style={{ color: "#3d435a" }}>Now Playing</h2>
+          <div style={{height:window.innerHeight*0.3,marginLeft: window.innerWidth*0.005}}>
+              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.016}}>Now Playing</h2>
             {accessToken === ""? 
             <h2>LOGIN TO SEE THE PLAYER</h2>:
             <NowPlaying/>
             }
           </div>
           <div>
-              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: -window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
+              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: window.innerHeight*0.005,fontSize:window.innerWidth*0.014, fontWeight: "1000"}}>Next up</h2>
               <div style={{marginLeft:-window.innerWidth*.0045}}>
             <div style={{marginTop: window.innerHeight*0.01,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
             <span style={{marginLeft:window.innerWidth*0.015}}>
