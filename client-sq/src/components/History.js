@@ -9,6 +9,7 @@ import {  TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Pape
 function History(){
 
     const [historyData, setHistoryData] = useState([])
+    const [searchedHistory, setSearchedHistory] = useState(historyData)
 
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
@@ -26,6 +27,9 @@ function History(){
     return () => {ignore = true; clearInterval(interval);}
     }, [])
 
+    const searchHistory = (term) => {
+      setSearchedHistory(historyData.filter((track) => (track.title.toLowerCase().includes(term.toLowerCase()) || track.artist.toLowerCase().includes(term.toLowerCase()))))
+    }
 
     return (
         <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
@@ -38,7 +42,7 @@ function History(){
                         style={{margin:0, backgroundColor:"#ffffff", width: window.innerWidth*0.725}}
                         type="search"
                         placeholder="Search with a word or artist"
-                        onChange={(e)=>{}}
+                        onChange={(e)=>{searchHistory(e.target.value)}}
                     />
             <div 
             style={{display:"flex", flexDirection:"row"}}
@@ -65,7 +69,7 @@ function History(){
                             </TableCell>
                         </TableHead>
                         <TableBody>
-                            {historyData.map(track => (
+                            {(searchedHistory.length > 0 ? searchedHistory : historyData).map(track => (
                                 <Track 
                                 track={track}
                                 filter = {Array.from({length:historyData.length}, () => true)}
