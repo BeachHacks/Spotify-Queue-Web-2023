@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router()
 
 module.exports = function(spotifyApi, adminStatus) {
-  let queue = []; 
-  let buffer = [];
+  const queue = []; 
+  const buffer = [];
 
   router.get('/', (req, res) => {
     res.send('queue routing check')
@@ -29,11 +29,10 @@ module.exports = function(spotifyApi, adminStatus) {
 
   // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)
   setInterval(() => {
-    if (buffer.length < 1) {
-      console.log('Buffer empty');
+    if (buffer.length < 1 || !adminStatus.activePlaying) {
       return;
     }
-    let next = buffer.shift();
+    const next = buffer.shift();
     console.log('Next: ' + next);
     spotifyApi.addToQueue(next.uri).then(() => {
       console.log('Added song to Spotify')
@@ -44,12 +43,12 @@ module.exports = function(spotifyApi, adminStatus) {
 
   // Update queue 
   setInterval(() => {
-    if (queue.length < 1) {
+    if (queue.length < 1 || !adminStatus.activePlaying) {
       // Empty queue
       return;
     }
-    if (Object.keys(adminStatus.playbackState).length != 0 && queue[0].title == adminStatus.playbackState.item.name){
-      let popped = queue.shift();
+    if (Object.keys(adminStatus.playbackState).length != 0 && queue[0].uri == adminStatus.playbackState.item.uri){
+      const popped = queue.shift();
       console.log('Removed: ' + popped + 'from top of queue');
     }
 

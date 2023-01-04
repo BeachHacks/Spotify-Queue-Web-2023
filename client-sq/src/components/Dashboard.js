@@ -3,11 +3,13 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import { TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
+import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
+import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
-
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import SearchRounded from "@mui/icons-material/SearchRounded";
 
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
@@ -132,78 +134,140 @@ function Dashboard(){
       })
       
     }, [search])
+ 
+    
 
     return (
-    <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
+        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
+      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
-      <NavBar/>
+      
 
-      <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
-          <h1 style={{ color:"#3d435a"}}>Home</h1>
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
+      width:window.innerWidth*.303 }}>
+         
           <div style={{display:"flex", flexDirection:"row"}}>
-          <TextField
-              style={{margin:5, backgroundColor:"#ffffff", width: window.innerWidth*0.26, display: "flex"}}
-              type="search"
-              placeholder="Search Songs/Artists"
-              onChange={(e)=>{setInput (e.target.value)}}
-              onKeyPress={handleKeyPress}
+
+          <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
+                                                            width: window.innerWidth*.29, 
+                                                            height: window.innerHeight*.065,  
+                                                            borderTopRightRadius: window.innerHeight*.015,
+                                                            borderTopLeftRadius: window.innerHeight*.015,
+                                                            border: ".3vh solid #e0e4f2",
+                                                            paddingLeft: window.innerWidth*.035,
+                                                            paddingRight: window.innerWidth*.00875
+                                                            }} 
+                                                            placeholder ="Search Songs/Artists"  
+                                                            className="searchA"
+                                                           
+          onChange={(e)=>{setInput (e.target.value)}}
+           onKeyPress={handleKeyPress}
           />
-          <Button style= {{fontFamily: "DM Sans", fontWeight: "bold",fontSize: 15, display: "flex", flexDirection: Row, height: 55, marginTop: 5}}
-          onClick={() =>{setSearch(dynInput)}}
-          type="button"
-          variant="contained"
-          >
-          Enter</Button>
+         
+         
+         <IconButton 
+         
+         style= {{ marginTop: window.innerHeight*.02,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.06,
+           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         
+           color:"#1976d2"}}
+         onClick={() =>{setSearch(dynInput)}}
+         type="button"
+         variant="contained"
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         fullWidth={false}
+         >
+         </IconButton>
+             
 
           </div>
           <div 
-          style={{display:"flex", flexDirection:"row"}}
+          style={{fontWeight: "bold", display:"flex", flexDirection:"row"}}
           >
             <div>
             {/* results component */}
             {searchResults.length === 0?
               <Container 
-              sx={{boxShadow:3}}
-              style={{ height: window.innerHeight*0.8, marginTop: 10, overflowY: "auto", width: window.innerWidth*0.33, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
-                Search for a song in the search bar!
+              //sx={{boxShadow:3}}
+              style={{ borderLeft: '.3vh solid #e0e4f2',
+              borderRight: '.3vh solid #e0e4f2',
+              borderBottom: '.3vh solid #e0e4f2',
+              
+              height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
+              overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
+              borderBottomLeftRadius:window.innerHeight*.015,
+              borderBottomRightRadius:window.innerHeight*.015,
+
+               color: "#3d435a"}}>
+                <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
+                Results
+                </div>
+                <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
+                Your search results will show here once you <a style = {{color:"#1976d2"}}>hit enter</a>
+                </div>
+                
               </Container>
               :
               <DisplayResults trackList={searchResults} />}
             </div>
           </div>
       </Container>
-      <TableContainer sx={{boxShadow:3 }} style={{
-                                          borderRadius:10,
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.3vh solid #e00000'
+      }}>
+     
+      <Container  style={{   border: '.3vh solid #e0e4f2',
+                                          borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.89,
-                                          overflowY: "auto",
-                                          marginTop: 70,
-                                          marginRight:30,
-                                          width: window.innerWidth*2,
+                                          height: window.innerHeight*0.85,
+                                          width: window.innerWidth*0.40,
+                                          overflowY: "hidden",
+                                          marginTop: window.innerHeight*.018,
+                                          marginLeft:-window.innerHeight*.0,
+                                          minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
                                           }}>
-        <Table
-        style={{marginLeft:10, marginTop:10}}
-        sx={{
-              [`& .${tableCellClasses.root}`]: {
-              borderBottom: "none" }
-          }}
+
+
+        <div style = {{marginLeft:-window.innerHeight*.02}}>  
+        <div
+        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.03}}
+        
         >
-          <TableRow style={{height:window.innerHeight*0.3}}>
-            <h2 style={{ color: "#3d435a" }}>Now Playing</h2>
+
+          <div style={{height:window.innerHeight*0.3}}>
+              <h2 style={{ color: "#3d435a" }}>Now Playing</h2>
             {accessToken === ""? 
             <h2>LOGIN TO SEE THE PLAYER</h2>:
             <NowPlaying/>
             }
-          </TableRow>
-          <TableRow>
-              <h2 style={{color:"#3d435a"}}>Next Up</h2>
+          </div>
+          <div>
+              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: -window.innerHeight*0.03,fontSize:window.innerWidth*0.0145, fontWeight: "1000"}}>Next up</h2>
+              <div style={{marginLeft:-window.innerWidth*.0045}}>
+            <div style={{marginTop: window.innerHeight*0.01,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+            <span style={{marginLeft:window.innerWidth*0.015}}>
+            #
+                </span>
+              <span style={{marginLeft:window.innerWidth*0.015}}>
+                Title
+                </span>
+                <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+                </div>
+          </div>
+
               <Queue trackList={queueData} />
-          </TableRow>
-        </Table>
-      </TableContainer>
+          </div>
+        </div>
+        </div>     
+      </Container>
+    </Container>
+    </div>
+    
     </div>
     )}
 
 export default Dashboard;
+

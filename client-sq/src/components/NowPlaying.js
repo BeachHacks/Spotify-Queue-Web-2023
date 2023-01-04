@@ -4,6 +4,8 @@ import ProgressBar from "./ProgressBar";
 
 function NowPlaying(){
 
+
+
     const [playbackState, setPlaybackState] = useState({
         albumImage: [{url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg"}],
         artist: "Loading",
@@ -11,6 +13,7 @@ function NowPlaying(){
         progress: 0,
         title: "Loading"}
     )
+
 
     useEffect(() => {
 
@@ -53,23 +56,26 @@ function NowPlaying(){
     }
     
     return(
-        <>
-
+            <div>
             <div style={{ display: "inline-flex", width: "90%" }}>
                 <div>
                     <img src={playbackState.albumImage[0].url}
                         alt={"Album Image"}
                         style={{ height: "150px", width: "150px" }}/>
                 </div>
+
                 <div style={{ alignSelf: "flex-end", marginLeft: 15, marginBottom: 10, width:"100%" }}>
+
                     <h3>{playbackState.title}</h3>
                     <h6>{playbackState.artist}</h6>
                     <ProgressBar number={(playbackState.progress/playbackState.duration)*100}/>
                     <div>{millisecondsToMinute(playbackState.progress)}/{millisecondsToMinute(playbackState.duration)}</div>
+
                 </div>
             </div>
             
         </>
+
     )
 }
 export default NowPlaying;
