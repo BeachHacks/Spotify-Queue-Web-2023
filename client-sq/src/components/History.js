@@ -111,7 +111,7 @@ function History(){
                         <TableBody>
 
 
-                            {(searchedHistory.length > 0 ? searchedHistory : historyData).map(track => (
+                            {(searchedHistory.length > 0 ? searchedHistory.slice(0).reverse() : historyData.slice(0).reverse()).map(track => (
 
                                 <Track 
                                 track={track}
