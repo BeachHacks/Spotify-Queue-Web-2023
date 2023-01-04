@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { TableRow, TableCell } from '@mui/material';
 import axios from 'axios';
 import ProgressBar from "./ProgressBar";
 
@@ -58,35 +57,18 @@ function NowPlaying(){
 
             <div style={{ display: "inline-flex", width: "90%" }}>
                 <div>
-                {playbackState === {}?
-                    <h2>kjasjhasv</h2>:
                     <img src={playbackState.albumImage[0].url}
                         alt={"Album Image"}
-                        style={{ height: "150px", width: "150px" }} />}
+                        style={{ height: "150px", width: "150px" }}/>
                 </div>
-                <div style={{ alignSelf: "flex-end", marginLeft: 15, marginBottom: 10 }}>
+                <div style={{ alignSelf: "flex-end", marginLeft: 15, marginBottom: 10, width:"100%" }}>
                     <h3>{playbackState.title}</h3>
                     <h6>{playbackState.artist}</h6>
-                    <ProgressBar number={(playbackState.progress/playbackState.duration)*100} style={{ width: "420px" }} />
+                    <ProgressBar number={(playbackState.progress/playbackState.duration)*100}/>
                     <div>{millisecondsToMinute(playbackState.progress)}/{millisecondsToMinute(playbackState.duration)}</div>
-                    <div></div>
                 </div>
             </div>
             
-            {/* <TableRow style={{ display: "inline-flex", }}>
-                <TableCell>
-                    <img src="https://i1.sndcdn.com/artworks-k3nFy3VUf0Ih-0-t500x500.jpg"
-                        alt={"HardCoded"}
-                        style={{ height: "150px", width: "150px" }} />
-                </TableCell>
-                <TableCell style={{alignSelf:"end",}}>
-                    <h3>Anti-Hero</h3>
-                    <h6>Taylor Swift</h6>
-                    <ProgressBar number={timer} style={{ width: "420px" }} 
-                    />
-                    <p> Counter for Reference: {timer}</p>
-                </TableCell>
-            </TableRow> */}
         </>
     )
 }
