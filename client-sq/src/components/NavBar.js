@@ -32,7 +32,7 @@ const NavBar = ({children}) => {
       
     ]
     return (
-        <div style = {{ borderRight: '2.5px solid #e0e4f2',backgroundColor:"#ffffff", width:window.innerWidth*.17 }}>
+        <div style = {{ borderRight: '.3vh solid #e0e4f2',backgroundColor:"#ffffff", width:window.innerWidth*.17 }}>
       <Container style={{
                       
        

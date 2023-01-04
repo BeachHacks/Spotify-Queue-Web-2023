@@ -39,10 +39,10 @@ function History(){
         
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.5px solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
       width:window.innerWidth*.75, }}>
         
-            <div style ={{ backgroundColor:"#ffffff", width:window.innerWidth*.78,height:window.innerHeight*.85, marginTop: window.innerHeight*.018,border: '2.5px solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
+            <div style ={{ backgroundColor:"#ffffff", width:window.innerWidth*.78,height:window.innerHeight*.85, marginTop: window.innerHeight*.018,border: '.3vh solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
             <input 
                         style = {{
                             width: "100%", 
@@ -54,7 +54,7 @@ function History(){
                             paddingLeft: window.innerWidth*.035,
                             paddingRight: window.innerWidth*.00875,
 
-                            borderBottom: '2.5px solid #e0e4f2'
+                            borderBottom: '.3vh solid #e0e4f2'
                             }} 
                         type="search"
                         placeholder="Search with a word or artist"

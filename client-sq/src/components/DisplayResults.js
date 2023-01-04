@@ -6,9 +6,9 @@ import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCel
 export default function DisplayResults({ trackList }) {
     return (
         <TableContainer   style={{ 
-            borderLeft: '2.5px solid #e0e4f2',
-              borderRight: '2.5px solid #e0e4f2',
-              borderBottom: '2.5px solid #e0e4f2',
+            borderLeft: '.3vh solid #e0e4f2',
+              borderRight: '.3vh solid #e0e4f2',
+              borderBottom: '.3vh solid #e0e4f2',
               borderBottomLeftRadius:window.innerHeight*.015,
               borderBottomRightRadius:window.innerHeight*.015,
                backgroundColor:'#ffffff', height: window.innerHeight*0.784, overflowY: "auto",

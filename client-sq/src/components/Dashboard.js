@@ -145,7 +145,7 @@ function Dashboard(){
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '2.5px solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
       width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
@@ -155,7 +155,7 @@ function Dashboard(){
                                                             height: window.innerHeight*.065,  
                                                             borderTopRightRadius: window.innerHeight*.015,
                                                             borderTopLeftRadius: window.innerHeight*.015,
-                                                            border: "2.5px solid #e0e4f2",
+                                                            border: ".3vh solid #e0e4f2",
                                                             paddingLeft: window.innerWidth*.035,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
@@ -191,9 +191,9 @@ function Dashboard(){
             {searchResults.length === 0?
               <Container 
               //sx={{boxShadow:3}}
-              style={{ borderLeft: '2.5px solid #e0e4f2',
-              borderRight: '2.5px solid #e0e4f2',
-              borderBottom: '2.5px solid #e0e4f2',
+              style={{ borderLeft: '.3vh solid #e0e4f2',
+              borderRight: '.3vh solid #e0e4f2',
+              borderBottom: '.3vh solid #e0e4f2',
               
               height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
               overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
@@ -214,10 +214,10 @@ function Dashboard(){
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '2.5px solid #e00000'
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.3vh solid #e00000'
       }}>
      
-      <Container  style={{   border: '2.5px solid #e0e4f2',
+      <Container  style={{   border: '.3vh solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
                                           height: window.innerHeight*0.85,
