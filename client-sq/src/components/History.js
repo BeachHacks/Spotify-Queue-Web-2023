@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import '../styles/App.css'
 import axios from 'axios';
-import NavBar from "./NavBar"
-import Track from "./Track"
-import { TextField, Container } from '@mui/material';
-import {  TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
 
+import Track from "./Track"
+import { TextField, Container, IconButton } from '@mui/material';
+import {  Divider,TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 function History(){
 
     const [historyData, setHistoryData] = useState([])
@@ -32,44 +32,87 @@ function History(){
     }
 
     return (
-        <div  style={{ display:"inline-flex", backgroundColor:"#f6f8fe", width:window.innerWidth, height:window.innerHeight}}>
-        
-        <NavBar/>
 
-        <Container style={{ fontFamily:"DM Sans", marginLeft:20, marginTop:10}}>
-            <h1 style={{color:"#4e69ec"}}>History</h1>
-            <TextField
-                        style={{margin:0, backgroundColor:"#ffffff", width: window.innerWidth*0.725}}
+      <div style={{minHeight: "100vh", width:"80vh", maxWidth:"100%"}}>
+        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>History</Container>
+        
+        <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
+
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
+      width:window.innerWidth*.75, }}>
+        
+            <div style ={{ backgroundColor:"#ffffff", width:window.innerWidth*.78,height:window.innerHeight*.85, marginTop: window.innerHeight*.018,border: '.3vh solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
+            <input 
+                        style = {{
+                            width: "100%", 
+                            height: window.innerHeight*.065,  
+                            borderTopRightRadius: window.innerHeight*.015,
+                            borderTopLeftRadius: window.innerHeight*.015,
+                            border: "none",
+                            //background: "transparent",
+                            paddingLeft: window.innerWidth*.035,
+                            paddingRight: window.innerWidth*.00875,
+
+                            borderBottom: '.3vh solid #e0e4f2'
+                            }} 
                         type="search"
                         placeholder="Search with a word or artist"
+
+                        className="searchA"
+                       
+                        
+
                         onChange={(e)=>{searchHistory(e.target.value)}}
+
                     />
-            <div 
-            style={{display:"flex", flexDirection:"row"}}
+<IconButton 
+         
+         style= {{ marginTop: -window.innerHeight*.064,  marginBottom: window.innerHeight*.004,height: window.innerHeight*.06,
+           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         
+           color:"#1976d2"}}
+         onClick={() =>{}}
+         type="button"
+         variant="contained"
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         fullWidth={false}
+         >
+         </IconButton>
+            
+         <div 
+            style={{display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154}}
             >
-                <div>
+                <div style={{width: "100%"}}>
                 {historyData.length === 0?
-                <Container 
-                sx={{boxShadow:3}}
-                style={{ height: window.innerHeight*0.8, marginTop: 10, overflowY: "auto", width: window.innerWidth, backgroundColor:"#ffffff", padding:10, borderRadius:10, color: "#3d435a"}}>
-                    Nothing played yet!
-                </Container>
+                <div
+               
+                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
+                   Loading history...
+                </div>
                 :
-                <TableContainer sx={{ boxShadow:3 }} component={Paper} style={{borderRadius:10, backgroundColor:'#ffffff', height: window.innerHeight*0.825, width: window.innerWidth*0.724, overflowX:"hidden", marginTop: 10,}}>
+                    <div style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015,  height: "77vh", width: "100%" }} >  
+                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.02,paddingTop:window.innerHeight*0.02}} align="left">
+                                Title
+                                
+                            </div>
+                            <Divider component="nav" style={{ marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                <TableContainer  style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "100%" ,overflowX:"hidden"}}>
+                   
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
                                 borderBottom: "none" }
                             }}
                             stickyHeader aria-label="sticky table">
-                        <TableHead sx={{}}>
-                            <TableCell style={{ width: 50 }} align="left">
-                            </TableCell>
-                            <TableCell style={{ fontFamily: "DM Sans", fontSize: 20, }} alight="left">
-                                Title
-                            </TableCell>
+                        <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
+                           
+                        
                         </TableHead>
                         <TableBody>
-                            {(searchedHistory.length > 0 ? searchedHistory : historyData).map(track => (
+
+
+                            {(searchedHistory.length > 0 ? searchedHistory.slice(0).reverse() : historyData.slice(0).reverse()).map(track => (
+
                                 <Track 
                                 track={track}
                                 filter = {Array.from({length:historyData.length}, () => true)}
@@ -82,12 +125,16 @@ function History(){
                         </TableBody>
                     </Table>
                 </TableContainer>
-                }
                 </div>
+                }
+                
             </div>
-        </Container>
+            </div>
+            </div>
+            </Container>
         
-        </div>
+            </div>
+      </div>
         )}
 
 export default History;

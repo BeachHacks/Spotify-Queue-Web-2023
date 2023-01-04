@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,700;1,700&family=Varela+Round&display=swap');
 .App {
   text-align: center;
 }
@@ -38,3 +39,61 @@
     transform: rotate(360deg);
   }
 }
+*{
+  margin:0;
+  padding:0;
+  text-decoration: none;
+}
+
+.container{
+  display:flex;
+}
+main{
+  width: 100%;
+  padding: 20px;
+}
+
+.top_section{
+  display: flex;
+  align-items:center;
+  padding:22px 0px;
+}
+.logo{
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 180%;
+  color: #3d435a;
+}
+ 
+.link{
+  
+
+
+  display: flex;
+  color: #3d435a;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.link:hover{
+  
+  background:#f6f8fe;
+  color: #1976d2;
+  transition: all 0.5s;
+}
+.active{
+  
+  background:#1976d2;
+  color: rgb(255, 255, 255);
+
+}
+.searchA::placeholder{
+  font-size: 1.9vh;
+}
+.searchA:focus{
+  
+    outline: none !important;
+
+  
+ 
+}
+
