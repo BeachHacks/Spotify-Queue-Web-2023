@@ -111,12 +111,12 @@ function History(){
                         <TableBody>
 
 
-                            {(searchedHistory.length > 0 ? searchedHistory.slice(0).reverse() : historyData.slice(0).reverse()).map(track => (
+                            {(searchedHistory.length > 0 ? searchedHistory.slice(0).reverse() : historyData.slice(0).reverse()).map((track, index) => (
 
                                 <Track 
                                 track={track}
                                 filter = {Array.from({length:historyData.length}, () => true)}
-                                key={track.uri}
+                                key={index}
                                 clickable={true}
                                 albumName={track.albumName}
                                 duration={track.songDuration}

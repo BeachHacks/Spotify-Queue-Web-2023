@@ -51,7 +51,6 @@ module.exports = function(spotifyApi, adminStatus) {
       const popped = queue.shift();
       console.log('Removed: ' + popped + 'from top of queue');
     }
-
   }, 1000);
 
 
