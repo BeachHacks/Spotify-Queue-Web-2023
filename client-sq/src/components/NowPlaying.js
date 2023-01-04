@@ -57,7 +57,7 @@ function NowPlaying(){
     }
     
     return(
-
+            <div>
             <div style={{ display: "inline-flex", width: "90%" }}>
                 <div>
                 {playbackState === {}?
