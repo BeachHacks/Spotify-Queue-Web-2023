@@ -13,7 +13,7 @@ module.exports = function(spotifyApi, adminStatus) {
   })
 
   router.get('/playState', (req, res) => {
-    if (!adminStatus.adminSet || !adminStatus.playbackState.device.is_active) res.send('Host not active');
+    if (!adminStatus.adminSet || !adminStatus.playbackState?.device?.is_active) res.send('Host not active');
     else {
       const playState = adminStatus.playbackState
       res.json({
