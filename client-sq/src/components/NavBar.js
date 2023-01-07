@@ -54,7 +54,7 @@ const NavBar = ({children}) => {
                 }} >BeachParty</h1>
                    
                </div>
-               <p style={{ marginTop:'12vh', color: "#3d435a",  fontSize: '2vh'}}></p>
+               <p style={{ marginTop:'9.5vh', color: "#3d435a",  fontSize: '2vh'}}></p>
                {
                    menuItem.map((item, index)=>(
                        <NavLink style={{marginLeft: '.65vw',marginBottom: '1.1vh', width: '12.35vw',
