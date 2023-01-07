@@ -42,19 +42,18 @@ function History(){
       <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
       width:window.innerWidth*.75, }}>
         
-            <div style ={{ backgroundColor:"#ffffff", width:window.innerWidth*.78,height:window.innerHeight*.85, marginTop: window.innerHeight*.018,border: '.3vh solid #e0e4f2', borderRadius: window.innerHeight*.015}}>
+           
             <input 
                         style = {{
-                            width: "100%", 
+                            marginTop: window.innerHeight*.018,
+                            width: window.innerWidth*.783, 
                             height: window.innerHeight*.065,  
-                            borderTopRightRadius: window.innerHeight*.015,
-                            borderTopLeftRadius: window.innerHeight*.015,
-                            border: "none",
+                            borderRadius: window.innerHeight*.015,
                             //background: "transparent",
                             paddingLeft: window.innerWidth*.035,
                             paddingRight: window.innerWidth*.00875,
 
-                            borderBottom: '.3vh solid #e0e4f2'
+                            border: '.3vh solid #e0e4f2'
                             }} 
                         type="search"
                         placeholder="Search with a word or artist"
@@ -68,10 +67,10 @@ function History(){
                     />
 <IconButton 
          
-         style= {{ marginTop: -window.innerHeight*.064,  marginBottom: window.innerHeight*.004,height: window.innerHeight*.06,
+         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.063,  marginBottom: window.innerHeight*.002,height: window.innerHeight*.06,
            width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
          
-           color:"#1976d2"}}
+           color:"#496fff"}}
          onClick={() =>{}}
          type="button"
          variant="contained"
@@ -79,9 +78,9 @@ function History(){
          fullWidth={false}
          >
          </IconButton>
-            
+        
          <div 
-            style={{display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154}}
+            style={{border: '.3vh solid #e0e4f2',marginTop: window.innerHeight*.023, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
@@ -91,17 +90,18 @@ function History(){
                    Loading history...
                 </div>
                 :
-                    <div style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015,  height: "77vh", width: "100%" }} >  
-                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.02,paddingTop:window.innerHeight*0.02}} align="left">
+                    <div style={{borderRadius:window.innerHeight*.015,  height: "77vh", width: "100%" }} >  
+                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.03,paddingTop:window.innerHeight*0.02}} align="left">
                                 Title
                                 
                             </div>
-                            <Divider component="nav" style={{ marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
-                <TableContainer  style={{borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "100%" ,overflowX:"hidden"}}>
+                            <Divider  sx={{ borderTop: ".2vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "99.5%" ,overflowX:"hidden"}}>
                    
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
-                                borderBottom: "none" }
+                                borderBottom: "none" ,
+                            }
                             }}
                             stickyHeader aria-label="sticky table">
                         <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
@@ -129,7 +129,7 @@ function History(){
                 }
                 
             </div>
-            </div>
+           
             </div>
             </Container>
         

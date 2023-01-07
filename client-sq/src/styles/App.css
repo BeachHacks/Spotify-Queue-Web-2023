@@ -45,6 +45,9 @@
   text-decoration: none;
 }
 
+
+
+
 .container{
   display:flex;
 }
@@ -56,7 +59,7 @@ main{
 .top_section{
   display: flex;
   align-items:center;
-  padding:22px 0px;
+  padding:2.2vh 0vw;
 }
 .logo{
   font-family: 'DM Sans', sans-serif;
@@ -77,12 +80,12 @@ main{
 .link:hover{
   
   background:#f6f8fe;
-  color: #1976d2;
+  color: #496fff;
   transition: all 0.5s;
 }
 .active{
   
-  background:#1976d2;
+  background:#496fff;
   color: rgb(255, 255, 255);
 
 }
@@ -100,4 +103,3 @@ main{
   
  
 }
-
