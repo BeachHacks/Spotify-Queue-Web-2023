@@ -5,14 +5,15 @@ import { TableContainer, Table, TableBody, tableCellClasses, TableHead, TableCel
 export default function Queue({ trackList }) {
     return (
       // Will be modified to include displaying position in queue.
-        <TableContainer sx={{ maxHeight: window.innerHeight*.45, boxShadow:0,width: window.innerWidth*.7  }} style={{ overflowY: "auto", overflowX:"hidden", marginLeft: -window.innerWidth*0.005}}>
+        <TableContainer sx={{ maxHeight: window.innerHeight*.45, boxShadow:0,width: window.innerWidth*.46,}} style={{ overflowY: "auto", overflowX:"hidden", marginLeft: -window.innerWidth*0.005}}>
           
           <Table
           stickyHeader
           sx={{
                 [`& .${tableCellClasses.root}`]: {
                 borderBottom: "none" },
-                boxShadow:0
+                boxShadow:0,
+                
             }}
           >
          

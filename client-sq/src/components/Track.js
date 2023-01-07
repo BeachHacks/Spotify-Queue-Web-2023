@@ -48,19 +48,23 @@ export default function Track({ track, clickable, num }) {
    }
     return (
         <>
-            <TableRow  hover={true} >
+            <TableRow   hover={true} >
+            <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
             {clickable==false?<TableCell style={{ fontSize: window.innerWidth*0.009, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
             
           }}>{num+2}</TableCell> 
             :""}
 
+              
               {/* image  */}
               {clickable==false? <TableCell style={{ width: window.innerWidth*0.01 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.05, width:window.innerHeight*0.05}} />
               </TableCell> :<TableCell style={{ width: window.innerWidth*0.01 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.065, width: window.innerHeight*0.065}} />
               </TableCell>   }
-              
+           
+
+
               <div  style={{ marginLeft: -window.innerWidth*0.007}}>
               {/* Title and Artist  */}
               {clickable==false? <TableCell style={{ width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">

@@ -6,17 +6,17 @@ import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCel
 export default function DisplayResults({ trackList }) {
     return (
         <TableContainer   style={{ 
-            borderLeft: '.3vh solid #e0e4f2',
-              borderRight: '.3vh solid #e0e4f2',
-              borderBottom: '.3vh solid #e0e4f2',
-              borderBottomLeftRadius:window.innerHeight*.015,
-              borderBottomRightRadius:window.innerHeight*.015,
-               backgroundColor:'#ffffff', height: window.innerHeight*0.784, overflowY: "auto",
-         width: window.innerWidth*0.29, overflowX:"hidden", marginTop: window.innerHeight*0.00}}>
+            border: '.3vh solid #e0e4f2',
+              
+              borderRadius:window.innerHeight*.015,
+          
+               backgroundColor:'#ffffff', height: window.innerHeight*0.75, marginTop: window.innerHeight*0.02, overflowY: "auto",
+         width: window.innerWidth*0.29, overflowX:"hidden"}}>
             <Table 
                     sx={{
                         [`& .${tableCellClasses.root}`]: {
-                        borderBottom: "none" 
+                        borderBottom: "none" ,
+                        
                         }
                     }}
                     stickyHeader aria-label="sticky table">
