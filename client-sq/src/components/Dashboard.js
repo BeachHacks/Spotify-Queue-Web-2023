@@ -252,7 +252,7 @@ function Dashboard(){
               <span style={{marginLeft:window.innerWidth*0.015}}>
                 Title
                 </span>
-                <Divider  sx={{  border: ".1vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+                <Divider  sx={{  borderTop: ".2vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
                 </div>
           </div>
 

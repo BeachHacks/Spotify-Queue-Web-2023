@@ -50,9 +50,11 @@ export default function Track({ track, clickable, num }) {
         <>
             <TableRow   hover={true} >
             <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
-            {clickable==false?<TableCell style={{ fontSize: window.innerWidth*0.009, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
+
+            {clickable==false?
+            <a style={{ marginLeft: -window.innerWidth*0.004 }}><TableCell style={{ fontSize: window.innerWidth*0.009, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
             
-          }}>{num+2}</TableCell> 
+          }}>{num+2}</TableCell> </a>
             :""}
 
               

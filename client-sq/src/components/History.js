@@ -95,7 +95,7 @@ function History(){
                                 Title
                                 
                             </div>
-                            <Divider component="nav" style={{border:".1vh solid #e0e4f2", marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                            <Divider  sx={{ borderTop: ".2vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
                 <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "99.5%" ,overflowX:"hidden"}}>
                    
                     <Table sx={{
