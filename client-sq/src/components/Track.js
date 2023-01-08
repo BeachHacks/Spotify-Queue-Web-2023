@@ -1,15 +1,12 @@
-/* eslint-disable eqeqeq */
 // Component for showing track details
 import React from "react"
 import axios from 'axios';
-import { TableCell, TableHead, TableRow } from '@mui/material';
+import { TableCell, TableRow } from '@mui/material';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import { IconButton } from '@mui/material';
-import { green } from '@mui/material/colors';
-import { style } from "@mui/system";
 
 export default function Track({ track, clickable, num }) {
+
 
     let unqueueable = false
     
@@ -107,4 +104,5 @@ export default function Track({ track, clickable, num }) {
         </>
         
     )
+
 }

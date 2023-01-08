@@ -1,7 +1,8 @@
 // Component for rendering the Queue
 import React from "react"
 import Track from "./Track"
-import { Divider, TableContainer, Table, TableBody, tableCellClasses, TableHead, TableCell } from '@mui/material';
+import { TableContainer, Table, TableBody, tableCellClasses, TableCell } from '@mui/material';
+
 export default function Queue({ trackList }) {
     return (
       // Will be modified to include displaying position in queue.
@@ -37,4 +38,5 @@ export default function Queue({ trackList }) {
             </Table>
         </TableContainer>
     )
+
 }

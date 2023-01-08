@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from "react";
 import '../styles/App.css'
 import axios from 'axios';
-
 import Track from "./Track"
-import { TextField, Container, IconButton } from '@mui/material';
-import {  Divider,TableContainer, Table, TableBody, TableHead, TableCell, TableRow, Paper, tableCellClasses } from '@mui/material';
+import { Container, IconButton } from '@mui/material';
+import { Divider, TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-function History(){
+
+function History() {
 
     const [historyData, setHistoryData] = useState([])
     const [searchedHistory, setSearchedHistory] = useState(historyData)
 
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
-    let ignore = false; 
+        let ignore = false;
 
-    async function fetchHistory() {
-        const result = await axios('http://localhost:3001/playback/history');
-        if (!ignore) setHistoryData(result.data);
-    }
+        async function fetchHistory() {
+            const result = await axios('http://localhost:3001/playback/history');
+            if (!ignore) setHistoryData(result.data);
+        }
 
-    const interval = setInterval(() => {
-        fetchHistory();
-    }, 1000);
+        const interval = setInterval(() => {
+            fetchHistory();
+        }, 1000);
 
-    return () => {ignore = true; clearInterval(interval);}
+        return () => { ignore = true; clearInterval(interval); }
     }, [])
 
     const searchHistory = (term) => {
-      setSearchedHistory(historyData.filter((track) => (track.title.toLowerCase().includes(term.toLowerCase()) || track.artist.toLowerCase().includes(term.toLowerCase()))))
+        setSearchedHistory(historyData.filter((track) => (track.title.toLowerCase().includes(term.toLowerCase()) || track.artist.toLowerCase().includes(term.toLowerCase()))))
     }
 
     return (
+
 
       <div style={{minHeight: "100vh", width:"80vh", maxWidth:"100%"}}>
         <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
@@ -55,16 +56,18 @@ function History(){
 
                             border: '.25vh solid #e0e4f2'
                             }} 
+
                         type="search"
                         placeholder="Search with a word or artist"
 
                         className="searchA"
-                       
-                        
 
-                        onChange={(e)=>{searchHistory(e.target.value)}}
+
+
+                        onChange={(e) => { searchHistory(e.target.value) }}
 
                     />
+
 <IconButton 
          
          style= {{  marginLeft:  -window.innerWidth*.78, marginTop: window.innerHeight*.023,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
@@ -110,40 +113,17 @@ function History(){
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {
                                 borderBottom: "none" ,
+
                             }
-                            }}
-                            stickyHeader aria-label="sticky table">
-                        <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
-                           
-                        
-                        </TableHead>
-                        <TableBody>
 
+                        </div>
 
-                            {(searchedHistory.length > 0 ? searchedHistory.slice(0).reverse() : historyData.slice(0).reverse()).map(track => (
+                    </div>
+                </Container>
 
-                                <Track 
-                                track={track}
-                                filter = {Array.from({length:historyData.length}, () => true)}
-                                key={track.uri}
-                                clickable={true}
-                                albumName={track.albumName}
-                                duration={track.songDuration}
-                                />
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                </div>
-                }
-                
             </div>
-           
-            </div>
-            </Container>
-        
-            </div>
-      </div>
-        )}
+        </div>
+    )
+}
 
 export default History;

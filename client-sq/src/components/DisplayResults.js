@@ -2,9 +2,10 @@
 import React from "react"
 import Track from "./Track"
 // import {Container} from 'react-bootstrap';
-import {  TableContainer, Table, TableBody, TableHead, TableRow, Paper, tableCellClasses } from '@mui/material';
+import { TableContainer, Table, TableBody, tableCellClasses } from '@mui/material';
 export default function DisplayResults({ trackList }) {
     return (
+
         <TableContainer   style={{ 
             border: '.25vh solid #e0e4f2',
               
@@ -33,13 +34,14 @@ export default function DisplayResults({ trackList }) {
                      aria-label="sticky table">
                  
                 <TableBody style={{height:265}}>
+
                     {trackList.map(track => (
-                        <Track 
-                        track={track}
-                        key={track.uri}
-                        clickable={true}
-                        albumName={track.albumName}
-                        duration={track.songDuration}
+                        <Track
+                            track={track}
+                            key={track.uri}
+                            clickable={true}
+                            albumName={track.albumName}
+                            duration={track.songDuration}
                         />
                     ))}
                 </TableBody>
