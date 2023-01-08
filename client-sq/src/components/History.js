@@ -67,7 +67,7 @@ function History(){
                     />
 <IconButton 
          
-         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.085,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
+         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.093,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
            width: window.innerHeight*.05, borderRadius: 80, 
          
            color:"#496fff"}}
@@ -83,7 +83,7 @@ function History(){
          
         
          <div 
-            style={{border: '.25vh solid #e0e4f2',marginTop: -window.innerHeight*.003, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
+            style={{border: '.25vh solid #e0e4f2',marginTop: -window.innerHeight*.01, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
