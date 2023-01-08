@@ -1,133 +1,99 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
-import { IconButton, Container, Divider } from '@mui/material';
+import NavBar from "./NavBar"
+import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
+import { Typography } from '@mui/material';
+import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import SearchRounded from "@mui/icons-material/SearchRounded";
 
-function Dashboard() {
-  const [searchResults, setSearchResults] = useState([])
-  //const [goodSongsArr, setPassArr] = useState([])
+function Dashboard(){
+    const [searchResults, setSearchResults] = useState([])
+    //const [goodSongsArr, setPassArr] = useState([])
 
-  const [dynInput, setInput] = useState("")
-  const [search, setSearch] = useState("")
+    const [dynInput, setInput] = useState("")
+    const [search, setSearch] = useState("")
 
-  const [queueData, setQueueData] = useState([])
+    const [queueData, setQueueData] = useState([])
 
-  const [accessToken, setAccessToken] = useState("")
+    const [accessToken, setAccessToken] = useState("")
 
-  useEffect(() => {
-    let ignore = false;
+    useEffect(() => {
+      let ignore = false;
 
-    async function fetchToken() {
-      const result = await axios('http://localhost:3001/token')
-      if (!ignore) setAccessToken(result.data)
-    }
+      async function fetchToken() {
+        const result = await axios('http://localhost:3001/token')
+        if(!ignore) setAccessToken(result.data)
+      }
 
-    fetchToken();
+      fetchToken();
 
-    return () => { ignore = true; }
-  }, [])
+      return () => { ignore = true; }
+    }, [])
 
 
-  const handleKeyPress = (event) => {
+   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
     }
   }
+  
+    // Hook handling retrieving the data of the queue from the backend.
+    useEffect(() => {
+      let ignore = false; 
 
-  // Hook handling retrieving the data of the queue from the backend.
-  useEffect(() => {
-    let ignore = false;
-
-    async function fetchQueue() {
-      const result = await axios('http://localhost:3001/queue/show');
-      if (!ignore) setQueueData(result.data);
-    }
-
-    const interval = setInterval(() => {
-      fetchQueue();
-    }, 1000);
-
-    return () => { ignore = true; clearInterval(interval); }
-  }, [])
-
-  // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
-  useEffect(() => {
-    const searchTracks = async (searchQuery) => {
-      return axios
-        .post("http://localhost:3001/searchTracks", {
-          searchString: searchQuery,
-          params: { limit: 50 }
-        })
-        .then(res => {
-          return res.data;
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-
-    function filter(features) {
-      var boolFilter = []
-      for (let i = 0; i < features.length; i++) {
-        if (features[i] === null) {
-          boolFilter.push(false);
-        }
-        else if (features[i].energy <= 0.3 ||
-          features[i].loudness <= -17 ||
-          features[i].acousticness >= .8 ||
-          features[i].instrumentalness >= 0.60 ||
-          features[i].valence <= 0.15 ||
-          features[i].tempo <= 45) {
-
-          boolFilter.push(false);
-
-        }
-        else
-          boolFilter.push(true);
+      async function fetchQueue() {
+        const result = await axios('http://localhost:3001/queue/show');
+        if (!ignore) setQueueData(result.data);
       }
-      return boolFilter;
-    }
 
-    if (!search) return setSearchResults([])
-    // Parse search query
-    searchTracks(search).then(res => {
+      const interval = setInterval(() => {
+        fetchQueue();
+      }, 1000);
 
-      console.log("AUDIO feats", res.features.audio_features)
+      return () => {ignore = true; clearInterval(interval);}
+    }, [])
 
-      let boolArray = filter(res.features.audio_features)
+    // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
+    useEffect(() => {
+      const searchTracks = async(searchQuery) => {
+        return axios
+          .post("http://localhost:3001/searchTracks", {
+            searchString : searchQuery,
+            params: {limit: 50}
+          })
+          .then(res => {
+            return res.data;
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      } 
+      
+      function filter(features){
+        var boolFilter = []
+          for(let i = 0; i < features.length; i++){
+            if (features[i] === null) {
+              boolFilter.push(false);
+            }
+            else if (features[i].energy <= 0.3 || 
+                features[i].loudness <= -17 ||
+                features[i].acousticness >= .8 ||
+                features[i].instrumentalness >= 0.60 ||
+                features[i].valence <= 0.15 ||
+                features[i].tempo <= 45 ) {
 
-      console.log("filter", boolArray)
-      let counter = 0
-
-      setSearchResults(
-        res.tracks.tracks.items.map(track => {
-          const smallestAlbumImage = track.album.images.reduce(
-            (smallest, image) => {
-              if (image.height < smallest.height) return image
-              return smallest
-            },
-            track.album.images[0]
-          )
-          //Track attributes
-          return {
-            artist: track.artists[0].name,
-            title: track.name,
-            uri: track.uri,
-            albumUrl: smallestAlbumImage.url,
-            albumName: track.album.name,
-            songDuration: track.duration_ms,
-            explicit: track.explicit,
-            filter: boolArray[counter++]
+              boolFilter.push(false);
 
           }
-
-            else 
+            else {
               boolFilter.push(true);
+            }
           }
         return boolFilter;
       } 
@@ -216,38 +182,53 @@ function Dashboard() {
          </IconButton>
              
 
-
           </div>
-          <div
-            style={{ fontWeight: "bold", display: "flex", flexDirection: "row" }}
+          <div 
+          style={{fontWeight: "bold", display:"flex", flexDirection:"row"}}
           >
             <div>
-
             {/* results component */}
             {searchResults.length === 0?
               <div 
               //sx={{boxShadow:3}}
-              style={{ border: '.25vh solid #e0e4f2',
-           
-              
-              height: window.innerHeight*0.755, marginTop: window.innerHeight*0.02, 
-              overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
+              style={{
+              border: '.25vh solid #e0e4f2',
+              height: window.innerHeight*0.755,
+              marginTop: window.innerHeight*0.02, 
+              overflowY: "auto",
+              width: window.innerWidth*0.29,
+              backgroundColor:"#ffffff", 
+              padding:10, 
               borderRadius:window.innerHeight*.015,
-          
-
-               color: "#3d435a"}}>
+              color: "#3d435a"}}>
                 <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
                 Results
                 </div>
                 <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
-
                 </div>
-                :
-                <DisplayResults trackList={searchResults} />}
+              </div >
+              :
+              <div style = {{
+                color: "#3d435a", 
+                border: '.25vh solid #e0e4f2',
+                borderRadius:window.innerHeight*.015,
+                backgroundColor:'#ffffff',  
+                width: window.innerWidth*0.29, 
+                height: window.innerHeight*0.755, 
+                marginTop: window.innerHeight*0.02, }}>
+                <div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
+                Results
+                </div>
+                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008 }}>
+                Explicit or recently added songs are grayed out.
+                </div>
+
+                <DisplayResults trackList={searchResults} />
+              </div>
+              }
             </div>
           </div>
-
       </Container>
       <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.25vh solid #e00000'
       }}>
@@ -304,10 +285,8 @@ function Dashboard() {
     
     </div>
     
-
     </div>
-  )
-}
+    )}
 
 export default Dashboard;
 

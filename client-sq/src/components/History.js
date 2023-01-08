@@ -108,13 +108,41 @@ function History() {
                                 
                             </div>
                             <Divider  sx={{ borderTop: ".1vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
-                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "100%", width: "99.5%" ,overflowX:"hidden"}}>
+                            <TableContainer  style={{
+                                float: "left", 
+                            borderBottomLeftRadius:window.innerHeight*.015,
+                            borderBottomRightRadius:window.innerHeight*.015, 
+                            backgroundColor:'#ffffff', height: "100%", width: "99.5%" ,overflowX:"hidden"}}>
                    
-                    <Table sx={{
-                                [`& .${tableCellClasses.root}`]: {
-                                borderBottom: "none" ,
+                   <Table sx={{
+                               [`& .${tableCellClasses.root}`]: {
+                               borderBottom: "none" ,
+                           }
+                           }}
+                           stickyHeader aria-label="sticky table">
+                       <TableHead style = {{width:window.innerHeight*0.954}}sx={{}}>
+                          
+                       
+                       </TableHead>
+                       <TableBody>
 
-                            }
+
+                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map(track => (
+
+                               <Track 
+                               track={track}
+                               filter = {Array.from({length:historyData.length}, () => true)}
+                               key={track.uri}
+                               clickable={true}
+                               albumName={track.albumName}
+                               duration={track.songDuration}
+                               />
+                           ))}
+                       </TableBody>
+                   </Table>
+               </TableContainer>
+
+               </div>}
 
                         </div>
 

@@ -6,23 +6,8 @@ import { TableContainer, Table, TableBody, tableCellClasses } from '@mui/materia
 export default function DisplayResults({ trackList }) {
     return (
 
-        <TableContainer   style={{ 
-            border: '.25vh solid #e0e4f2',
-              
-              borderRadius:window.innerHeight*.015,
-          
-               backgroundColor:'#ffffff', height: window.innerHeight*0.755, marginTop: window.innerHeight*0.02, overflowY: "auto",
-         width: window.innerWidth*0.29, overflowX:"hidden"}}>   
-
-
-            <div style = {{color: "#3d435a"}}  >
-<div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
-                Results
-                </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008 }}>
-                Explicit or recently added songs are grayed out.
-                </div>
-                </div>
+        <TableContainer   style={{ height: window.innerHeight*0.625, marginTop: window.innerHeight*0.02, overflowY: "auto",
+        width: "auto", overflowX:"hidden"}}>
 
             <Table stickyHeader
                     sx={{

@@ -60,7 +60,12 @@ const NavBar = ({ children }) => {
                        gap: '1.1vh',
                        height: '5vh'
 
-
+                    }}to={item.path} key={index} className="link" activeclassName="active">
+                    <div style={{display:  "block",  marginTop:'-.2vh', }}>{item.icon}</div>
+                    <div style={{display:  "block",  fontSize:'1.85vh' ,marginTop:'.15vh' }} >{item.name}</div>
+                </NavLink>
+            ))
+        }
                 </div>
                 <div style={{ marginLeft: '1.8vw', marginTop: '52vh' }}>
                     <a style={{
