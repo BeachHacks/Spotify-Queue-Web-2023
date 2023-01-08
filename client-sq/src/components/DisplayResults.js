@@ -10,7 +10,7 @@ export default function DisplayResults({ trackList }) {
               
               borderRadius:window.innerHeight*.015,
           
-               backgroundColor:'#ffffff', height: window.innerHeight*0.75, marginTop: window.innerHeight*0.02, overflowY: "auto",
+               backgroundColor:'#ffffff', height: window.innerHeight*0.755, marginTop: window.innerHeight*0.02, overflowY: "auto",
          width: window.innerWidth*0.29, overflowX:"hidden"}}>   
 
 
@@ -22,14 +22,15 @@ export default function DisplayResults({ trackList }) {
                 Explicit or recently added songs are grayed out.
                 </div>
                 </div>
-            <Table 
+
+            <Table stickyHeader
                     sx={{
                         [`& .${tableCellClasses.root}`]: {
                         borderBottom: "none" ,
                         
                         }
                     }}
-                    stickyHeader aria-label="sticky table">
+                     aria-label="sticky table">
                  
                 <TableBody style={{height:265}}>
                     {trackList.map(track => (

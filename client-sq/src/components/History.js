@@ -83,7 +83,11 @@ function History(){
          
         
          <div 
-            style={{border: '.25vh solid #e0e4f2',marginTop: -window.innerHeight*.003, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
+            style={{border: '.25vh solid #e0e4f2',
+            marginTop: -window.innerHeight*.003, borderRadius: window.innerHeight*.015, 
+            display:"flex", flexDirection:"row",fontWeight: "bold",
+            height: "75.3vh",  backgroundColor:"#ffffff",   color: "#3d435a",
+            fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
@@ -93,13 +97,13 @@ function History(){
                    Loading history...
                 </div>
                 :
-                    <div style={{borderRadius:window.innerHeight*.015,  height: "77vh", width: "100%" }} >  
+                    <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
                         <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.03,paddingTop:window.innerHeight*0.02}} align="left">
                                 Title
                                 
                             </div>
                             <Divider  sx={{ borderTop: ".1vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
-                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "69vh", width: "99.5%" ,overflowX:"hidden"}}>
+                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "100%", width: "99.5%" ,overflowX:"hidden"}}>
                    
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {

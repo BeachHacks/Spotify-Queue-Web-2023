@@ -193,7 +193,7 @@ function Dashboard(){
               style={{ border: '.25vh solid #e0e4f2',
            
               
-              height: window.innerHeight*0.75, marginTop: window.innerHeight*0.02, 
+              height: window.innerHeight*0.755, marginTop: window.innerHeight*0.02, 
               overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
               borderRadius:window.innerHeight*.015,
           
