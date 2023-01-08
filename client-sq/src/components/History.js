@@ -42,7 +42,7 @@ function History(){
       <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.25vh solid #e00000',
       width:window.innerWidth*.75, }}>
         
-           
+        <div style={{display:"flex", flexDirection:"row"}}>
             <input 
                         style = {{
                             marginTop: window.innerHeight*.018,
@@ -67,8 +67,8 @@ function History(){
                     />
 <IconButton 
          
-         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.093,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
-           width: window.innerHeight*.05, borderRadius: 80, 
+         style= {{  marginLeft:  -window.innerWidth*.78, marginTop: window.innerHeight*.023,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
+           width: window.innerHeight*.05, borderRadius: 80, display: "flex", 
          
            color:"#496fff"}}
          onClick={() =>{}}
@@ -79,13 +79,13 @@ function History(){
          >
          </IconButton>
 
-
+         </div>
          
         
          <div 
 
             style={{border: '.25vh solid #e0e4f2',
-            marginTop: -window.innerHeight*.003, borderRadius: window.innerHeight*.015, 
+            marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
             display:"flex", flexDirection:"row",fontWeight: "bold",
             height: "75.3vh",  backgroundColor:"#ffffff",   color: "#3d435a",
             fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
