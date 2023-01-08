@@ -1,271 +1,269 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
-import NavBar from "./NavBar"
-import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
-import { Typography } from '@mui/material';
-import { Row } from "react-bootstrap";
+import { IconButton, Container, Divider } from '@mui/material';
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import SearchRounded from "@mui/icons-material/SearchRounded";
 
-function Dashboard(){
-    const [searchResults, setSearchResults] = useState([])
-    //const [goodSongsArr, setPassArr] = useState([])
+function Dashboard() {
+  const [searchResults, setSearchResults] = useState([])
+  //const [goodSongsArr, setPassArr] = useState([])
 
-    const [dynInput, setInput] = useState("")
-    const [search, setSearch] = useState("")
+  const [dynInput, setInput] = useState("")
+  const [search, setSearch] = useState("")
 
-    const [queueData, setQueueData] = useState([])
+  const [queueData, setQueueData] = useState([])
 
-    const [accessToken, setAccessToken] = useState("")
+  const [accessToken, setAccessToken] = useState("")
 
-    useEffect(() => {
-      let ignore = false;
+  useEffect(() => {
+    let ignore = false;
 
-      async function fetchToken() {
-        const result = await axios('http://localhost:3001/token')
-        if(!ignore) setAccessToken(result.data)
-      }
+    async function fetchToken() {
+      const result = await axios('http://localhost:3001/token')
+      if (!ignore) setAccessToken(result.data)
+    }
 
-      fetchToken();
+    fetchToken();
 
-      return () => { ignore = true; }
-    }, [])
+    return () => { ignore = true; }
+  }, [])
 
 
-   const handleKeyPress = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
     }
   }
-  
-    // Hook handling retrieving the data of the queue from the backend.
-    useEffect(() => {
-      let ignore = false; 
 
-      async function fetchQueue() {
-        const result = await axios('http://localhost:3001/queue/show');
-        if (!ignore) setQueueData(result.data);
+  // Hook handling retrieving the data of the queue from the backend.
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchQueue() {
+      const result = await axios('http://localhost:3001/queue/show');
+      if (!ignore) setQueueData(result.data);
+    }
+
+    const interval = setInterval(() => {
+      fetchQueue();
+    }, 1000);
+
+    return () => { ignore = true; clearInterval(interval); }
+  }, [])
+
+  // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
+  useEffect(() => {
+    const searchTracks = async (searchQuery) => {
+      return axios
+        .post("http://localhost:3001/searchTracks", {
+          searchString: searchQuery,
+          params: { limit: 50 }
+        })
+        .then(res => {
+          return res.data;
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
+    function filter(features) {
+      var boolFilter = []
+      for (let i = 0; i < features.length; i++) {
+        if (features[i] === null) {
+          boolFilter.push(false);
+        }
+        else if (features[i].energy <= 0.3 ||
+          features[i].loudness <= -17 ||
+          features[i].acousticness >= .8 ||
+          features[i].instrumentalness >= 0.60 ||
+          features[i].valence <= 0.15 ||
+          features[i].tempo <= 45) {
+
+          boolFilter.push(false);
+
+        }
+        else
+          boolFilter.push(true);
       }
+      return boolFilter;
+    }
 
-      const interval = setInterval(() => {
-        fetchQueue();
-      }, 1000);
+    if (!search) return setSearchResults([])
+    // Parse search query
+    searchTracks(search).then(res => {
 
-      return () => {ignore = true; clearInterval(interval);}
-    }, [])
+      console.log("AUDIO feats", res.features.audio_features)
 
-    // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
-    useEffect(() => {
-      const searchTracks = async(searchQuery) => {
-        return axios
-          .post("http://localhost:3001/searchTracks", {
-            searchString : searchQuery,
-            params: {limit: 50}
-          })
-          .then(res => {
-            return res.data;
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      } 
-      
-      function filter(features){
-        var boolFilter = []
-          for(let i = 0; i < features.length; i++){
-            if (features[i] === null) {
-              boolFilter.push(false);
-            }
-            else if (features[i].energy <= 0.3 || 
-                features[i].loudness <= -17 ||
-                features[i].acousticness >= .8 ||
-                features[i].instrumentalness >= 0.60 ||
-                features[i].valence <= 0.15 ||
-                features[i].tempo <= 45 ) {
+      let boolArray = filter(res.features.audio_features)
 
-              boolFilter.push(false);
+      console.log("filter", boolArray)
+      let counter = 0
+
+      setSearchResults(
+        res.tracks.tracks.items.map(track => {
+          const smallestAlbumImage = track.album.images.reduce(
+            (smallest, image) => {
+              if (image.height < smallest.height) return image
+              return smallest
+            },
+            track.album.images[0]
+          )
+          //Track attributes
+          return {
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: smallestAlbumImage.url,
+            albumName: track.album.name,
+            songDuration: track.duration_ms,
+            explicit: track.explicit,
+            filter: boolArray[counter++]
 
           }
-            else 
-              boolFilter.push(true);
-          }
-        return boolFilter;
-      } 
-    
-      if(!search) return setSearchResults([])
-      // Parse search query
-      searchTracks(search).then(res => {
+        })
+      )
+    })
 
-        console.log("AUDIO feats",res.features.audio_features)
-        
-        let boolArray = filter(res.features.audio_features)
+  }, [search])
 
-        console.log("filter", boolArray)
-        let counter = 0
 
-        setSearchResults(
-          res.tracks.tracks.items.map(track => {
-            const smallestAlbumImage = track.album.images.reduce(
-              (smallest, image) => {
-                if (image.height < smallest.height) return image
-                return smallest
-              },
-              track.album.images[0]
-            )
-            //Track attributes
-            return {
-              artist: track.artists[0].name,
-              title: track.name,
-              uri: track.uri,
-              albumUrl: smallestAlbumImage.url,
-              albumName : track.album.name,
-              songDuration : track.duration_ms,
-              explicit: track.explicit, 
-              filter: boolArray[counter++]
 
-            }
-          })
-        )
-      })
-      
-    }, [search])
- 
-    
+  return (
+    <div style={{ minHeight: "100vh", backgroundColor: "#f6f8fe", width: window.innerWidth * .8, maxWidth: "100%" }}>
+      <Container style={{
+        fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .05, marginLeft: window.innerWidth * .01,
+        fontSize: window.innerWidth * .02, fontWeight: "1000", color: "#3d435a"
+      }}>Home</Container>
+      <div style={{ display: "inline-flex", width: "100%", height: window.innerHeight, marginTop: -window.innerHeight * .00 }}>
 
-    return (
-      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
-        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
-        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
-      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
 
-      
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.00,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
-      width:window.innerWidth*.303 }}>
-         
-          <div style={{display:"flex", flexDirection:"row"}}>
+        <Container style={{
+          fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .00, marginLeft: window.innerWidth * .01,// outline: '.3vh solid #e00000',
+          width: window.innerWidth * .303
+        }}>
 
-          <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
-                                                            width: window.innerWidth*.29, 
-                                                            height: window.innerHeight*.065,  
-                                                            borderRadius: window.innerHeight*.015,
-                                                            border: ".3vh solid #e0e4f2",
-                                                            paddingLeft: window.innerWidth*.035,
-                                                            paddingRight: window.innerWidth*.00875
-                                                            }} 
-                                                            placeholder ="Search Songs/Artists"  
-                                                            className="searchA"
-                                                           
-          onChange={(e)=>{setInput (e.target.value)}}
-           onKeyPress={handleKeyPress}
-          />
-         
-         
-         <IconButton 
-         
-         style= {{ marginTop: window.innerHeight*.02,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.06,
-           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
-         
-           color:"#496fff"}}
-         onClick={() =>{setSearch(dynInput)}}
-         type="button"
-         variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
-         fullWidth={false}
-         >
-         </IconButton>
-             
+          <div style={{ display: "flex", flexDirection: "row" }}>
+
+            <input type="search" id="site-search" style={{
+              marginLeft: 0, marginTop: window.innerHeight * .018,
+              width: window.innerWidth * .29,
+              height: window.innerHeight * .065,
+              borderRadius: window.innerHeight * .015,
+              border: ".3vh solid #e0e4f2",
+              paddingLeft: window.innerWidth * .035,
+              paddingRight: window.innerWidth * .00875
+            }}
+              placeholder="Search Songs/Artists"
+              className="searchA"
+
+              onChange={(e) => { setInput(e.target.value) }}
+              onKeyPress={handleKeyPress}
+            />
+
+
+            <IconButton
+
+              style={{
+                marginTop: window.innerHeight * .02, marginLeft: -window.innerWidth * .2875, height: window.innerHeight * .06,
+                width: window.innerHeight * .06, borderRadius: 80, display: "flex",
+
+                color: "#496fff"
+              }}
+              onClick={() => { setSearch(dynInput) }}
+              type="button"
+              variant="contained"
+              children={<SearchRoundedIcon style={{ fontSize: window.innerWidth * .023 }} />}
+              fullWidth={false}
+            >
+            </IconButton>
+
 
           </div>
-          <div 
-          style={{fontWeight: "bold", display:"flex", flexDirection:"row"}}
+          <div
+            style={{ fontWeight: "bold", display: "flex", flexDirection: "row" }}
           >
             <div>
-            {/* results component */}
-            {searchResults.length === 0?
-              <div 
-              //sx={{boxShadow:3}}
-              style={{ border: '.3vh solid #e0e4f2',
-           
-              
-              height: window.innerHeight*0.75, marginTop: window.innerHeight*0.02, 
-              overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
-              borderRadius:window.innerHeight*.015,
-          
+              {/* results component */}
+              {searchResults.length === 0 ?
+                <div
+                  //sx={{boxShadow:3}}
+                  style={{
+                    border: '.3vh solid #e0e4f2',
+                    height: window.innerHeight * 0.75, marginTop: window.innerHeight * 0.02,
+                    overflowY: "auto", width: window.innerWidth * 0.29, backgroundColor: "#ffffff", padding: 10,
+                    borderRadius: window.innerHeight * .015,
+                    color: "#3d435a"
+                  }}>
+                  <div style={{ fontSize: window.innerWidth * 0.0154, margin: window.innerHeight * 0.015 }}>
+                    Results
+                  </div>
+                  <div style={{ fontSize: window.innerWidth * 0.01, margin: window.innerHeight * 0.015 }}>
+                    Your search results will show here once you <a style={{ color: "#496fff" }}>hit enter</a>
+                  </div>
 
-               color: "#3d435a"}}>
-                <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
-                Results
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
-                Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
-                </div>
-                
-              </div >
-              :
-              <DisplayResults trackList={searchResults} />}
+                :
+                <DisplayResults trackList={searchResults} />}
             </div>
           </div>
-      </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.3vh solid #e00000'
-      }}>
-     
-      <Container  style={{   border: '.3vh solid #e0e4f2',
-                                          borderRadius:window.innerHeight*.015,
-                                          backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.835,
-                                          width: window.innerWidth*0.40,
-                                          overflowY: "hidden",
-                                          marginTop: -window.innerHeight*.032,
-                                          marginLeft:-window.innerHeight*.0,
-                                          minWidth: window.innerWidth*.48,
-                                          overflowX:"hidden",
-                                          fontFamily:"DM Sans"
-                                          }}>
+        </Container>
+        <Container style={{
+          fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .05,// outline: '.3vh solid #e00000'
+        }}>
+
+          <Container style={{
+            border: '.3vh solid #e0e4f2',
+            borderRadius: window.innerHeight * .015,
+            backgroundColor: '#ffffff',
+            height: window.innerHeight * 0.835,
+            width: window.innerWidth * 0.40,
+            overflowY: "hidden",
+            marginTop: -window.innerHeight * .032,
+            marginLeft: -window.innerHeight * .0,
+            minWidth: window.innerWidth * .48,
+            overflowX: "hidden",
+            fontFamily: "DM Sans"
+          }}>
 
 
-        <div style = {{marginLeft:-window.innerHeight*.02}}>  
-        <div
-        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.025}}
-        
-        >
-
-          <div style={{height:window.innerHeight*0.3,marginLeft: window.innerWidth*0.005}}>
-              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.016}}>Now playing</h2>
-            {accessToken === ""? 
-            <h2>LOGIN TO SEE THE PLAYER</h2>:
-            <NowPlaying/>
-            }
-          </div>
-          <div>
-              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: window.innerHeight*0.005,fontSize:window.innerWidth*0.014, fontWeight: "1000"}}>Next up</h2>
-              <div style={{marginLeft:-window.innerWidth*.0045}}>
-            <div style={{marginTop: window.innerHeight*0.01,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
-            <span style={{marginLeft:window.innerWidth*0.015}}>
-            #
-                </span>
-              <span style={{marginLeft:window.innerWidth*0.015}}>
-                Title
-                </span>
-                <Divider  sx={{  borderTop: ".2vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+            <div style={{ marginLeft: -window.innerHeight * .02 }}>
+              <div style={{ marginLeft: window.innerWidth * .007, marginTop: window.innerHeight * .025 }}>
+                <div style={{ height: window.innerHeight * 0.3, marginLeft: window.innerWidth * 0.005 }}>
+                  <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.016 }}>Now playing</h2>
+                  {accessToken === "" ?
+                    <h2>LOGIN TO SEE THE PLAYER</h2> :
+                    <NowPlaying />
+                  }
                 </div>
-          </div>
-
-              <Queue trackList={queueData} />
-          </div>
-        </div>
-        </div>     
-      </Container>
-    </Container>
+                <div>
+                  <h2 style={{ color: "#3d435a", marginLeft: window.innerWidth * 0.005, marginTop: window.innerHeight * 0.005, fontSize: window.innerWidth * 0.014, fontWeight: "1000" }}>Next up</h2>
+                  <div style={{ marginLeft: -window.innerWidth * .0045 }}>
+                    <div style={{ marginTop: window.innerHeight * 0.01, fontSize: window.innerWidth * 0.01, fontFamily: "DM Sans", fontWeight: "bold", color: "#3d435a" }}>
+                      <span style={{ marginLeft: window.innerWidth * 0.015 }}>
+                        #
+                      </span>
+                      <span style={{ marginLeft: window.innerWidth * 0.015 }}>
+                        Title
+                      </span>
+                      <Divider sx={{ borderTop: ".2vh solid #e0e4f2" }} component="nav" style={{ marginLeft: window.innerWidth * 0.010, width: window.innerWidth * .45, marginTop: window.innerHeight * .009 }} />
+                    </div>
+                  </div>
+                  <Queue trackList={queueData} />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Container>
+      </div>
     </div>
-    
-    </div>
-    )}
+  )
+}
 
 export default Dashboard;
 
