@@ -32,7 +32,7 @@ const NavBar = ({children}) => {
       
     ]
     return (
-        <div style = {{ borderRight: '.3vh solid #e0e4f2',backgroundColor:"#ffffff", width: '17.6vw' }}>
+        <div style = {{ borderRight: '.25vh solid #e0e4f2',backgroundColor:"#ffffff", width: '17.6vw' }}>
       <div style={{
                       
         marginLeft:'1vw', 
@@ -44,17 +44,19 @@ const NavBar = ({children}) => {
        
         >
             <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:'1vw',marginTop:'2vh'}}>
-               <div className="top_section">
-                   <h1 style={{display:  "block",
-                    fontFamily: 'DM Sans',
-                    fontWeight: "bold",
-                    fontSize: '4vh',
-                    color: "#3d435a"
-                
-                }} >BeachParty</h1>
+               <div style={{
+                    height: "18vh",
+                    display: "flex",
+                    alignItems:"center",
+                    padding:"2.2vh 1.6vw"
+                    }}>
+                  
+
+                <img   style={{height: 8*.615+'vw', width:8*1.254+'vw'}}
+       src="logo.png" />
                    
                </div>
-               <p style={{ marginTop:'9.5vh', color: "#3d435a",  fontSize: '2vh'}}></p>
+               <p style={{ marginTop:'0vh', color: "#3d435a",  fontSize: '2vh'}}></p>
                {
                    menuItem.map((item, index)=>(
                        <NavLink style={{marginLeft: '.65vw',marginBottom: '1.1vh', width: '12.35vw',

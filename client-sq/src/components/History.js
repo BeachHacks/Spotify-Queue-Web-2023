@@ -39,7 +39,7 @@ function History(){
         
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.25vh solid #e00000',
       width:window.innerWidth*.75, }}>
         
            
@@ -47,13 +47,13 @@ function History(){
                         style = {{
                             marginTop: window.innerHeight*.018,
                             width: window.innerWidth*.783, 
-                            height: window.innerHeight*.065,  
+                            height: window.innerHeight*.06,  
                             borderRadius: window.innerHeight*.015,
                             //background: "transparent",
-                            paddingLeft: window.innerWidth*.035,
+                            paddingLeft: window.innerWidth*.027,
                             paddingRight: window.innerWidth*.00875,
 
-                            border: '.3vh solid #e0e4f2'
+                            border: '.25vh solid #e0e4f2'
                             }} 
                         type="search"
                         placeholder="Search with a word or artist"
@@ -67,20 +67,23 @@ function History(){
                     />
 <IconButton 
          
-         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.063,  marginBottom: window.innerHeight*.002,height: window.innerHeight*.06,
-           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         style= {{  marginLeft: window.innerWidth*.0025, marginTop: -window.innerHeight*.085,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
+           width: window.innerHeight*.05, borderRadius: 80, 
          
            color:"#496fff"}}
          onClick={() =>{}}
          type="button"
          variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
          fullWidth={false}
          >
          </IconButton>
+
+
+         
         
          <div 
-            style={{border: '.3vh solid #e0e4f2',marginTop: window.innerHeight*.023, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
+            style={{border: '.25vh solid #e0e4f2',marginTop: -window.innerHeight*.003, borderRadius: window.innerHeight*.015, display:"flex", flexDirection:"row",fontWeight: "bold",height: "75vh",  backgroundColor:"#ffffff",   color: "#3d435a",fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
@@ -95,8 +98,8 @@ function History(){
                                 Title
                                 
                             </div>
-                            <Divider  sx={{ borderTop: ".2vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
-                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "72vh", width: "99.5%" ,overflowX:"hidden"}}>
+                            <Divider  sx={{ borderTop: ".1vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                <TableContainer  style={{float: "right", borderBottomLeftRadius:window.innerHeight*.015,borderBottomRightRadius:window.innerHeight*.015, backgroundColor:'#ffffff', height: "69vh", width: "99.5%" ,overflowX:"hidden"}}>
                    
                     <Table sx={{
                                 [`& .${tableCellClasses.root}`]: {

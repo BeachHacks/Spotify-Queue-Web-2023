@@ -145,17 +145,17 @@ function Dashboard(){
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.00,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.00,marginLeft:window.innerWidth*.01,// outline: '.25vh solid #e00000',
       width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
 
           <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
                                                             width: window.innerWidth*.29, 
-                                                            height: window.innerHeight*.065,  
+                                                            height: window.innerHeight*.06,  
                                                             borderRadius: window.innerHeight*.015,
-                                                            border: ".3vh solid #e0e4f2",
-                                                            paddingLeft: window.innerWidth*.035,
+                                                            border: ".25vh solid #e0e4f2",
+                                                            paddingLeft: window.innerWidth*.027,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
                                                             placeholder ="Search Songs/Artists"  
@@ -168,14 +168,14 @@ function Dashboard(){
          
          <IconButton 
          
-         style= {{ marginTop: window.innerHeight*.02,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.06,
-           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         style= {{ marginTop: window.innerHeight*.0235,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.05,
+           width: window.innerHeight*.05, borderRadius: 80, 
          
            color:"#496fff"}}
          onClick={() =>{setSearch(dynInput)}}
          type="button"
          variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
          fullWidth={false}
          >
          </IconButton>
@@ -190,7 +190,7 @@ function Dashboard(){
             {searchResults.length === 0?
               <div 
               //sx={{boxShadow:3}}
-              style={{ border: '.3vh solid #e0e4f2',
+              style={{ border: '.25vh solid #e0e4f2',
            
               
               height: window.innerHeight*0.75, marginTop: window.innerHeight*0.02, 
@@ -212,10 +212,10 @@ function Dashboard(){
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.3vh solid #e00000'
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.25vh solid #e00000'
       }}>
      
-      <Container  style={{   border: '.3vh solid #e0e4f2',
+      <Container  style={{   border: '.25vh solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
                                           height: window.innerHeight*0.835,
@@ -252,16 +252,19 @@ function Dashboard(){
               <span style={{marginLeft:window.innerWidth*0.015}}>
                 Title
                 </span>
-                <Divider  sx={{  borderTop: ".2vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+                <Divider  sx={{  borderTop: ".1vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
                 </div>
           </div>
-
-              <Queue trackList={queueData} />
+          <Queue trackList={queueData} />
+              
           </div>
+          
         </div>
+        
         </div>     
       </Container>
     </Container>
+    
     </div>
     
     </div>
