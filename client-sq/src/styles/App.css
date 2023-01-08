@@ -56,11 +56,7 @@ main{
   padding: 20px;
 }
 
-.top_section{
-  display: flex;
-  align-items:center;
-  padding:2.2vh 0vw;
-}
+
 .logo{
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
