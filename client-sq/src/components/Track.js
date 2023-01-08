@@ -50,7 +50,7 @@ export default function Track({ track, clickable, num }) {
             <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
 
             {clickable==false?
-            <TableCell style={{ padding: "2.5vh .45vw",fontSize: window.innerHeight*0.018, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
+            <TableCell style={{ padding: "2.25vh .45vw",fontSize: window.innerHeight*0.018, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
             
           }}>{num+2}</TableCell> 
             :""}
@@ -59,13 +59,13 @@ export default function Track({ track, clickable, num }) {
               {/* image  */}
               {clickable==false? <TableCell style={{ padding: ".7vh .9vw",width: window.innerWidth*0.01 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.05, width:window.innerHeight*0.05}} />
-              </TableCell> :<TableCell style={{ padding: ".7vh .9vw",width: window.innerWidth*0.01 }} align="left">
+              </TableCell> :<TableCell style={{ padding: ".75vh .9vw",width: window.innerWidth*0.01 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.065, width: window.innerHeight*0.065}} />
               </TableCell>   }
            
 
 
-              <div  style={{ marginLeft: -window.innerWidth*0.007}}>
+              <div  style={{ marginLeft: -window.innerWidth*0.007, alignItems: "center", align: "center"}}>
               {/* Title and Artist  */}
               {clickable==false? <TableCell style={{ padding: ".7vh .9vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
                 <div style={{ fontWeight : "bold", fontSize: window.innerHeight*0.018, letterSpacing: -window.innerWidth*0.00015}}>
@@ -75,7 +75,7 @@ export default function Track({ track, clickable, num }) {
                   {track.artist}
                 </div>
               </TableCell> : 
-              <TableCell style={{ padding: ".7vh .9vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
+              <TableCell style={{ padding: ".75vh .9vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : window.innerHeight*0.02}}>
                   {track.title}
                 </div>
@@ -88,7 +88,7 @@ export default function Track({ track, clickable, num }) {
           
 
               {/* Button Add to Queue */}
-              <TableCell style={{ padding: ".7vh .9vw"}} align="right">
+              <TableCell style={{ padding: ".75vh .9vw"}} align="right">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} style={{  marginRight: -window.innerWidth*0.008}} >

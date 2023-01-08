@@ -3,7 +3,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
 import { Container, IconButton } from '@mui/material';
-import { Divider, TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
+import {  TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 function History() {
@@ -103,16 +103,17 @@ function History() {
                 </div>
                 :
                     <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
-                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.03,paddingTop:window.innerHeight*0.02}} align="left">
+                        <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+                        <div style={{height: "5vh",fontWeight: 300,   color: "#3d435a",fontSize: window.innerWidth*0.012, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
                                 Title
                                 
                             </div>
-                            <Divider  sx={{ borderTop: ".1vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                            <div  style={{ borderTop: ".25vh solid #e0e4f2",marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
                             <TableContainer  style={{
                                 float: "left", 
                             borderBottomLeftRadius:window.innerHeight*.015,
                             borderBottomRightRadius:window.innerHeight*.015, 
-                            backgroundColor:'#ffffff', height: "100%", width: "99.5%" ,overflowX:"hidden"}}>
+                            backgroundColor:'#ffffff', height: "61vh", width: "99.5%" ,overflowX:"hidden"}}>
                    
                    <Table sx={{
                                [`& .${tableCellClasses.root}`]: {

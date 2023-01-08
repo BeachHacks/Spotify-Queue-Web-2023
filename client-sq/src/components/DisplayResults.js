@@ -6,7 +6,7 @@ import { TableContainer, Table, TableBody, tableCellClasses } from '@mui/materia
 export default function DisplayResults({ trackList }) {
     return (
 
-        <TableContainer   style={{ height: window.innerHeight*0.625, marginTop: window.innerHeight*0.02, overflowY: "auto",
+        <TableContainer   style={{ height: "64vh", marginTop: window.innerHeight*0.02, overflowY: "auto",
         width: "auto", overflowX:"hidden"}}>
 
             <Table stickyHeader
@@ -18,7 +18,7 @@ export default function DisplayResults({ trackList }) {
                     }}
                      aria-label="sticky table">
                  
-                <TableBody style={{height:265}}>
+                <TableBody style={{}}>
 
                     {trackList.map(track => (
                         <Track

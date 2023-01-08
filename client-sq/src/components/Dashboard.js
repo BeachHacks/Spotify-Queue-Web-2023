@@ -3,7 +3,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
+import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
 import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
@@ -220,7 +220,7 @@ function Dashboard(){
                 <div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
                 Results
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008 }}>
+                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008,height: "1.5vh"}}>
                 Explicit or recently added songs are grayed out.
                 </div>
 
@@ -270,7 +270,16 @@ function Dashboard(){
               <span style={{marginLeft:window.innerWidth*0.015}}>
                 Title
                 </span>
-                <Divider  sx={{  borderTop: ".1vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+
+                
+                <div style={{ 
+                  borderTop: ".25vh solid #e0e4f2", 
+                  marginLeft:window.innerWidth*0.010, 
+                  width: window.innerWidth*.45,marginTop: 
+                  window.innerHeight*.009, 
+                  height:window.innerHeight*.001 }}
+                />     
+                
                 </div>
           </div>
           <Queue trackList={queueData} />
