@@ -9,16 +9,16 @@ export default function Authorized() {
 
   useEffect(() => {
     axios
-    .post("http://localhost:3001/adminLogin", {
-      code,
-    })
-    .then(res => {
-      console.log(res.data)
-      window.history.pushState({}, null, "/")
-    })
-    .catch(() => {
-      window.location = "/"
-    })
+      .post("http://localhost:3001/adminLogin", {
+        code,
+      })
+      .then(res => {
+        console.log(res.data)
+        window.history.pushState({}, null, "/")
+      })
+      .catch(() => {
+        window.location = "/"
+      })
   }, [])
 
   return (
@@ -27,7 +27,7 @@ export default function Authorized() {
       style={{ minHeight: "100vh" }}
     >
       <a className="btn btn-success btn-lg" href={'http://localhost:3000/'}>
-        Authorized. Back to Dashboard 
+        Authorized. Back to Dashboard
       </a>
     </Container>
   )

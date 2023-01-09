@@ -91,8 +91,9 @@ function Dashboard(){
               boolFilter.push(false);
 
           }
-            else 
+            else {
               boolFilter.push(true);
+            }
           }
         return boolFilter;
       } 
@@ -141,22 +142,21 @@ function Dashboard(){
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
         <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
         fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
-      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
+      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
 
       
 
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01,// outline: '.3vh solid #e00000',
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.00,marginLeft:window.innerWidth*.01,// outline: '.25vh solid #e00000',
       width:window.innerWidth*.303 }}>
          
           <div style={{display:"flex", flexDirection:"row"}}>
 
           <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
                                                             width: window.innerWidth*.29, 
-                                                            height: window.innerHeight*.065,  
-                                                            borderTopRightRadius: window.innerHeight*.015,
-                                                            borderTopLeftRadius: window.innerHeight*.015,
-                                                            border: ".3vh solid #e0e4f2",
-                                                            paddingLeft: window.innerWidth*.035,
+                                                            height: window.innerHeight*.06,  
+                                                            borderRadius: window.innerHeight*.015,
+                                                            border: ".25vh solid #e0e4f2",
+                                                            paddingLeft: window.innerWidth*.027,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
                                                             placeholder ="Search Songs/Artists"  
@@ -169,14 +169,14 @@ function Dashboard(){
          
          <IconButton 
          
-         style= {{ marginTop: window.innerHeight*.02,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.06,
-           width: window.innerHeight*.06, borderRadius: 80, display: "flex", 
+         style= {{ marginTop: window.innerHeight*.0235,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.05,
+           width: window.innerHeight*.05, borderRadius: 80, 
          
-           color:"#1976d2"}}
+           color:"#496fff"}}
          onClick={() =>{setSearch(dynInput)}}
          type="button"
          variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.023 }}/>}
+         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
          fullWidth={false}
          >
          </IconButton>
@@ -189,41 +189,57 @@ function Dashboard(){
             <div>
             {/* results component */}
             {searchResults.length === 0?
-              <Container 
+              <div 
               //sx={{boxShadow:3}}
-              style={{ borderLeft: '.3vh solid #e0e4f2',
-              borderRight: '.3vh solid #e0e4f2',
-              borderBottom: '.3vh solid #e0e4f2',
-              
-              height: window.innerHeight*0.784, marginTop: -window.innerHeight*0.000, 
-              overflowY: "auto", width: window.innerWidth*0.29, backgroundColor:"#ffffff", padding:10, 
-              borderBottomLeftRadius:window.innerHeight*.015,
-              borderBottomRightRadius:window.innerHeight*.015,
-
-               color: "#3d435a"}}>
+              style={{
+              border: '.25vh solid #e0e4f2',
+              height: window.innerHeight*0.755,
+              marginTop: window.innerHeight*0.02, 
+              overflowY: "auto",
+              width: window.innerWidth*0.29,
+              backgroundColor:"#ffffff", 
+              padding:10, 
+              borderRadius:window.innerHeight*.015,
+              color: "#3d435a"}}>
                 <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
                 Results
                 </div>
                 <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
-                Your search results will show here once you <a style = {{color:"#1976d2"}}>hit enter</a>
+                Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
                 </div>
-                
-              </Container>
+              </div >
               :
-              <DisplayResults trackList={searchResults} />}
+              <div style = {{
+                color: "#3d435a", 
+                border: '.25vh solid #e0e4f2',
+                borderRadius:window.innerHeight*.015,
+                backgroundColor:'#ffffff',  
+                width: window.innerWidth*0.29, 
+                height: window.innerHeight*0.755, 
+                marginTop: window.innerHeight*0.02, }}>
+                <div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
+                Results
+                </div>
+                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008 }}>
+                Explicit or recently added songs are grayed out.
+                </div>
+
+                <DisplayResults trackList={searchResults} />
+              </div>
+              }
             </div>
           </div>
       </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.3vh solid #e00000'
+      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.25vh solid #e00000'
       }}>
      
-      <Container  style={{   border: '.3vh solid #e0e4f2',
+      <Container  style={{   border: '.25vh solid #e0e4f2',
                                           borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.85,
+                                          height: window.innerHeight*0.835,
                                           width: window.innerWidth*0.40,
                                           overflowY: "hidden",
-                                          marginTop: window.innerHeight*.018,
+                                          marginTop: -window.innerHeight*.032,
                                           marginLeft:-window.innerHeight*.0,
                                           minWidth: window.innerWidth*.48,
                                           overflowX:"hidden",
@@ -238,7 +254,7 @@ function Dashboard(){
         >
 
           <div style={{height:window.innerHeight*0.3,marginLeft: window.innerWidth*0.005}}>
-              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.016}}>Now Playing</h2>
+              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.016}}>Now playing</h2>
             {accessToken === ""? 
             <h2>LOGIN TO SEE THE PLAYER</h2>:
             <NowPlaying/>
@@ -254,16 +270,19 @@ function Dashboard(){
               <span style={{marginLeft:window.innerWidth*0.015}}>
                 Title
                 </span>
-                <Divider  sx={{  border: "1px solid #e0e4f2" }}component="nav" style={{ marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+                <Divider  sx={{  borderTop: ".1vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
                 </div>
           </div>
-
-              <Queue trackList={queueData} />
+          <Queue trackList={queueData} />
+              
           </div>
+          
         </div>
+        
         </div>     
       </Container>
     </Container>
+    
     </div>
     
     </div>

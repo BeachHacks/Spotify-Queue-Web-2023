@@ -13,7 +13,7 @@ export default function Admin() {
       style={{ minHeight: "100vh" }}
     >
       <a className="btn btn-success btn-lg" href={AUTH_URL}>
-        Login to Spotify 
+        Login to Spotify
       </a>
     </Container>
   )
