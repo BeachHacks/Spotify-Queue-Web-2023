@@ -5,7 +5,7 @@ import Track from "./Track"
 import { Container, IconButton } from '@mui/material';
 import {  TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-
+ 
 function History() {
 
     const [historyData, setHistoryData] = useState([])
@@ -128,12 +128,12 @@ function History() {
                        <TableBody>
 
 
-                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map(track => (
+                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map((track, index) => (
 
                                <Track 
                                track={track}
                                filter = {Array.from({length:historyData.length}, () => true)}
-                               key={track.uri}
+                               key={index}
                                clickable={true}
                                albumName={track.albumName}
                                duration={track.songDuration}
