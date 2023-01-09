@@ -60,7 +60,7 @@ export default function Track({ track, clickable, num }) {
               {clickable==false? <TableCell style={{ padding: ".7vh 1.1vw",width: window.innerWidth*0.01 }} align="left">
                 <img src={track.albumUrl} alt={track.title} style={{height : window.innerWidth*0.02625, width:window.innerWidth*0.02625}} />
               </TableCell> :<TableCell style={{ padding: ".75vh .9vw",width: window.innerWidth*0.01 }} align="left">
-                <img src={track.albumUrl} alt={track.title} style={{height : window.innerHeight*0.065, width: window.innerHeight*0.065}} />
+                <img src={track.albumUrl} alt={track.title} style={{height : window.innerWidth*0.034, width: window.innerWidth*0.034}} />
               </TableCell>   }
            
 
@@ -75,7 +75,7 @@ export default function Track({ track, clickable, num }) {
                   {track.artist}
                 </div>
               </TableCell> : 
-              <TableCell style={{ padding: ".75vh .9vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
+              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : window.innerHeight*0.02}}>
                   {track.title}
                 </div>

@@ -217,10 +217,10 @@ function Dashboard(){
                 width: window.innerWidth*0.29, 
                 height: window.innerHeight*0.755, 
                 marginTop: window.innerHeight*0.02, }}>
-                <div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
+                <div style = {{fontSize: window.innerWidth*0.015, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
                 Results
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008,height: "1.5vh"}}>
+                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.006,height: "2vh"}}>
                 Explicit or recently added songs are grayed out.
                 </div>
 
