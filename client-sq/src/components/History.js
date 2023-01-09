@@ -3,9 +3,9 @@ import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
 import { Container, IconButton } from '@mui/material';
-import { Divider, TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
+import {  TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-
+ 
 function History() {
 
     const [historyData, setHistoryData] = useState([])
@@ -47,7 +47,7 @@ function History() {
             <input 
                         style = {{
                             marginTop: window.innerHeight*.018,
-                            width: window.innerWidth*.783, 
+                            width: window.innerWidth*.7775, 
                             height: window.innerHeight*.06,  
                             borderRadius: window.innerHeight*.015,
                             //background: "transparent",
@@ -70,7 +70,7 @@ function History() {
 
 <IconButton 
          
-         style= {{  marginLeft:  -window.innerWidth*.78, marginTop: window.innerHeight*.023,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
+         style= {{  marginLeft:  -window.innerWidth*.77525, marginTop: window.innerHeight*.023,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
            width: window.innerHeight*.05, borderRadius: 80, display: "flex", 
          
            color:"#496fff"}}
@@ -91,7 +91,7 @@ function History() {
             marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
             display:"flex", flexDirection:"row",fontWeight: "bold",
             height: "75.3vh",  backgroundColor:"#ffffff",   color: "#3d435a",
-            fontSize: window.innerWidth*0.0154,width:window.innerWidth*.783}}
+            fontSize: window.innerWidth*0.0154,width:window.innerWidth*.7775}}
 
             >
                 <div style={{width: "100%"}}>
@@ -103,16 +103,17 @@ function History() {
                 </div>
                 :
                     <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
-                        <div style={{height: "5vh",fontWeight: "bold",   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.03,paddingTop:window.innerHeight*0.02}} align="left">
+                        <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+                        <div style={{height: "5vh",fontWeight: 700,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
                                 Title
                                 
                             </div>
-                            <Divider  sx={{ borderTop: ".1vh solid #e0e4f2" }} component="nav" style={{marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
+                            <div  style={{ borderTop: ".25vh solid #e0e4f2",marginLeft:window.innerWidth*0.01, width: window.innerWidth*.76,marginTop: window.innerHeight*.000}}/>
                             <TableContainer  style={{
                                 float: "left", 
                             borderBottomLeftRadius:window.innerHeight*.015,
                             borderBottomRightRadius:window.innerHeight*.015, 
-                            backgroundColor:'#ffffff', height: "100%", width: "99.5%" ,overflowX:"hidden"}}>
+                            backgroundColor:'#ffffff', height: "61vh", width: "99.5%" ,overflowX:"hidden"}}>
                    
                    <Table sx={{
                                [`& .${tableCellClasses.root}`]: {
@@ -127,12 +128,12 @@ function History() {
                        <TableBody>
 
 
-                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map(track => (
+                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map((track, index) => (
 
                                <Track 
                                track={track}
                                filter = {Array.from({length:historyData.length}, () => true)}
-                               key={track.uri}
+                               key={index}
                                clickable={true}
                                albumName={track.albumName}
                                duration={track.songDuration}

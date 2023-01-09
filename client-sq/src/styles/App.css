@@ -88,9 +88,11 @@ main{
 .searchA{
 
   font-size: 1.9vh;
+  color:#3d435a;
 }
 .searchA::placeholder{
-  font-size: 1.9vh;
+  font-size: 1vw;
+  color:#6d7285
 }
 .searchA:focus{
   

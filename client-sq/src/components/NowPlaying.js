@@ -54,18 +54,18 @@ function NowPlaying() {
     }
 
     return (
-        <div style={{ display: "inline-flex", width: window.innerWidth * .451 }}>
+        <div style={{ display: "inline-flex", width: window.innerWidth*.444,}}>
             <div>
                 <img src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
-                    style={{ height: window.innerHeight * 0.185, width: window.innerHeight * 0.185, marginTop: window.innerHeight * 0.008 }} />
+                    style={{ height: window.innerWidth * 0.104, width: window.innerWidth * 0.104, marginTop: window.innerHeight * 0.008 }} />
             </div>
 
-            <div style={{ alignSelf: "flex-end", marginLeft: window.innerWidth * .015, width: "100%", marginBottom: -window.innerHeight * 0.006 }}>
+            <div style={{ alignSelf: "flex-end", marginLeft: window.innerWidth * .016, width: "100%", marginBottom: -window.innerHeight * 0.006 }}>
 
                 <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.01657, marginBottom: -window.innerHeight * 0.005 }}>{playbackState.title}</div>
-                <div style={{ color: "#3d435a", fontWeight: 700, fontSize: window.innerWidth * 0.0105, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
-                <ProgressBar number={(playbackState.progress / playbackState.duration) * 100} />
+                <div style={{ color: "#3d435a", fontWeight: 700, fontSize: window.innerWidth * 0.0102, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
+                <ProgressBar style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
                 <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.0075, marginTop: window.innerHeight * 0.005 }}>{millisecondsToMinute(playbackState.progress)}<span style={{ float: "right" }} >{millisecondsToMinute(playbackState.duration)}</span></div>
 
             </div>

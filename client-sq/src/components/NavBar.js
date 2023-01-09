@@ -11,17 +11,17 @@ const NavBar = ({ children }) => {
         {
             path: "/",
             name: "Home",
-            icon: <HomeRoundedIcon style={{ fontSize: '3.2vh' }} />
+            icon: <HomeRoundedIcon style={{ fontSize: '1.7vw' }} />
         },
         {
             path: "/history",
             name: "History",
-            icon: <ScheduleRoundedIcon style={{ fontSize: '3.2vh' }} />
+            icon: <ScheduleRoundedIcon style={{ fontSize: '1.7vw' }} />
         },
         {
             path: "/howtouse",
             name: "How to use",
-            icon: <CommentRoundedIcon style={{ fontSize: '3.2vh' }} />
+            icon: <CommentRoundedIcon style={{ fontSize: '1.7vw'  }} />
         }
 
     ]
@@ -34,7 +34,7 @@ const NavBar = ({ children }) => {
         backgroundColor:"#ffffff",
         minHeight: "100vh",
         fontFamily:"DM Sans",
-        fontWeight:"bold"
+        fontWeight:700
         }}
        
         >
@@ -51,18 +51,18 @@ const NavBar = ({ children }) => {
        src="logo.png" />
                    
                </div>
-               <p style={{ marginTop:'0vh', color: "#3d435a",  fontSize: '2vh'}}></p>
+               <p style={{ marginTop:'4vh', color: "#3d435a",  fontSize: '2vh'}}></p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginLeft: '.65vw',marginBottom: '1.1vh', width: '12.35vw',
+                       <NavLink style={{marginLeft: '.65vw',marginBottom: '1vh', width: '12.35vw',
                        borderRadius: '.75vh',
-                       padding:  "1vh .55vw",
+                       padding:  "1vh .6vw",
                        gap: '1.1vh',
                        height: '5vh'
 
                     }}to={item.path} key={index} className="link" activeclassName="active">
-                    <div style={{display:  "block",  marginTop:'-.2vh', }}>{item.icon}</div>
-                    <div style={{display:  "block",  fontSize:'1.85vh' ,marginTop:'.15vh' }} >{item.name}</div>
+                    <div style={{display:  "block",  marginTop:'-.09vh', width: '1.7vw' }}>{item.icon}</div>
+                    <div style={{display:  "block",  fontSize:'1.025vw' ,marginTop:'.09vh',marginLeft: '.08vw' }} >{item.name}</div>
                 </NavLink>
             ))
         }

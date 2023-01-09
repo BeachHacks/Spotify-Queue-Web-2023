@@ -3,7 +3,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button, Divider} from '@mui/material';
+import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
 import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
@@ -217,10 +217,10 @@ function Dashboard(){
                 width: window.innerWidth*0.29, 
                 height: window.innerHeight*0.755, 
                 marginTop: window.innerHeight*0.02, }}>
-                <div style = {{fontSize: window.innerWidth*0.0154, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
+                <div style = {{fontSize: window.innerWidth*0.015, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
                 Results
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.008 }}>
+                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.006,height: "2vh"}}>
                 Explicit or recently added songs are grayed out.
                 </div>
 
@@ -237,11 +237,11 @@ function Dashboard(){
                                           borderRadius:window.innerHeight*.015,
                                           backgroundColor:'#ffffff',
                                           height: window.innerHeight*0.835,
-                                          width: window.innerWidth*0.40,
+                                          width: window.innerWidth*0.4,
                                           overflowY: "hidden",
                                           marginTop: -window.innerHeight*.032,
                                           marginLeft:-window.innerHeight*.0,
-                                          minWidth: window.innerWidth*.48,
+                                          minWidth: window.innerWidth*.4748,
                                           overflowX:"hidden",
                                           fontFamily:"DM Sans"
                                           }}>
@@ -249,28 +249,38 @@ function Dashboard(){
 
         <div style = {{marginLeft:-window.innerHeight*.02}}>  
         <div
-        style={{marginLeft:window.innerWidth*.007, marginTop:window.innerHeight*.025}}
+        style={{ marginLeft:window.innerWidth*.012, marginTop:window.innerHeight*.026}}
         
         >
 
-          <div style={{height:window.innerHeight*0.3,marginLeft: window.innerWidth*0.005}}>
-              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.016}}>Now playing</h2>
+          <div style={{height:window.innerHeight*0.3}}>
+              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.0167}}>Now playing</h2>
             {accessToken === ""? 
             <h2>LOGIN TO SEE THE PLAYER</h2>:
             <NowPlaying/>
             }
           </div>
           <div>
-              <h2 style={{color:"#3d435a", marginLeft: window.innerWidth*0.005,marginTop: window.innerHeight*0.005,fontSize:window.innerWidth*0.014, fontWeight: "1000"}}>Next up</h2>
+              <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>
               <div style={{marginLeft:-window.innerWidth*.0045}}>
-            <div style={{marginTop: window.innerHeight*0.01,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
-            <span style={{marginLeft:window.innerWidth*0.015}}>
+            <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+            <span style={{marginLeft:window.innerWidth*0.011}}>
             #
                 </span>
-              <span style={{marginLeft:window.innerWidth*0.015}}>
+              <span style={{marginLeft:window.innerWidth*0.02}}>
                 Title
                 </span>
-                <Divider  sx={{  borderTop: ".1vh solid #e0e4f2" }}component="nav" style={{  marginLeft:window.innerWidth*0.010, width: window.innerWidth*.45,marginTop: window.innerHeight*.009}}/>     
+
+                
+                <div style={{ 
+                  borderTop: ".25vh solid #e0e4f2", 
+                  marginLeft:window.innerWidth*0.00425, 
+                
+                  width: window.innerWidth*.4453,
+                  marginTop: window.innerHeight*.00755, 
+                  height:window.innerHeight*.018 }}
+                />     
+                
                 </div>
           </div>
           <Queue trackList={queueData} />
