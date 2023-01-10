@@ -17,7 +17,7 @@ function NowPlaying() {
 
         let ignore = false;
         async function getPlayState() {
-            const result = await axios('http://localhost:3001/playback/playState')
+            const result = await axios(process.env.REACT_APP_API_URL + '/playback/playState')
             if (!ignore) setPlaybackState(result.data)
         }
         getPlayState()
