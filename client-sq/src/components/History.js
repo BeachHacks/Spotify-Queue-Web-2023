@@ -17,7 +17,7 @@ function History() {
 
         async function fetchHistory() {
             const result = await axios('http://localhost:3001/playback/history');
-            if (!ignore) setHistoryData(result.data);
+            if (!ignore) setHistoryData(result.data.reverse().slice(1));
         }
 
         const interval = setInterval(() => {
@@ -128,7 +128,7 @@ function History() {
                        <TableBody>
 
 
-                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map((track, index) => (
+                           {((searchedHistory.length > 0 ) ? searchedHistory : historyData).map((track, index) => (
 
                                <Track 
                                track={track}
