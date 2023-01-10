@@ -35,8 +35,8 @@ function History() {
 
 
       <div style={{minHeight: "100vh", width:"80vh", maxWidth:"100%"}}>
-        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,marginLeft:window.innerWidth*.01, 
-        fontSize: window.innerWidth *.02,fontWeight: "1000", color:"#3d435a"}}>History</Container>
+        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>History</Container>
         
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.05}}>
 
