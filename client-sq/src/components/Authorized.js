@@ -26,7 +26,7 @@ export default function Authorized() {
       className="d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      <a className="btn btn-success btn-lg" href={'http://localhost:3000/'}>
+      <a className="btn btn-success btn-lg" href={process.env.REACT_APP_BASE_URL}>
         Authorized. Back to Dashboard
       </a>
     </Container>
