@@ -1,12 +1,14 @@
 // Component for showing track details
-import React from "react"
+import {useState,React} from "react"
 import axios from 'axios';
 import { TableCell, TableRow } from '@mui/material';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { IconButton } from '@mui/material';
 
 export default function Track({ track, clickable, num }) {
-
+    const [clicked, setClicked] = useState(false)
+    const [disable, setDisabled] = useState(false)
 
     let unqueueable = false
     
@@ -33,6 +35,12 @@ export default function Track({ track, clickable, num }) {
           .catch((err) => {
             console.log(err)
           }); 
+
+          setClicked(true)
+          setDisabled(true)
+          setTimeout(() => {
+            setClicked(false)
+          }, 3000);
    }
   
    function secondsToMinutes(milliSeconds){
@@ -91,11 +99,21 @@ export default function Track({ track, clickable, num }) {
               <TableCell style={{ padding: ".75vh .9vw"}} align="right">
               {
                  !unqueueable && clickable? 
-                 <IconButton onClick={handleAdd} style={{  marginRight: -window.innerWidth*0.008}} >
-                    <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022, color: "#1976d2"}}/>
+                 <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{  marginRight: -window.innerWidth*0.008}} >
+                 {!clicked? 
+                  !disable?
+                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022, color: "#496fff"}}/>
+                 : 
+                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022}}/>
+                 :
+                 <CheckCircleRoundedIcon sx={{  fontSize: window.innerWidth*0.022, color: "#496fff"}}/>
+
+                
+                
+                 }
                  </IconButton>
                  : clickable ? 
-                 <IconButton variant="outlined" disabled  style={{  marginRight: -window.innerWidth*0.008}}>
+                 <IconButton variant="outlined" disabled style={{  marginRight: -window.innerWidth*0.008}}>
                      <AddCircleOutlineRoundedIcon   sx={{ fontSize:window.innerWidth*0.022, }}/>
                  </IconButton> : null
               }  
