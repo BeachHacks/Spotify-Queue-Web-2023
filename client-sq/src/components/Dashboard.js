@@ -14,14 +14,23 @@ import SearchRounded from "@mui/icons-material/SearchRounded";
 function Dashboard(){
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
-
     const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
-
     const [queueData, setQueueData] = useState([])
-
     const [accessToken, setAccessToken] = useState("")
 
+
+    const [clickedSB, setClickedSB] = useState("#a3a8bf")
+
+    function handleFocus() {
+        setClickedSB("#496fff");
+    
+      }
+      
+      function handleBlur() {
+        setClickedSB("#a3a8bf");
+    
+      }
     useEffect(() => {
       let ignore = false;
 
@@ -164,15 +173,17 @@ function Dashboard(){
                                                            
           onChange={(e)=>{setInput (e.target.value)}}
            onKeyPress={handleKeyPress}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
           />
          
          
-         <IconButton 
+         <IconButton disableRipple
          
          style= {{ marginTop: window.innerHeight*.0235,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.05,
            width: window.innerHeight*.05, borderRadius: 80, 
          
-           color:"#496fff"}}
+           color:clickedSB}}
          onClick={() =>{setSearch(dynInput)}}
          type="button"
          variant="contained"

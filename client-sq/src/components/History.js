@@ -11,13 +11,27 @@ function History() {
     const [historyData, setHistoryData] = useState([])
     const [searchedHistory, setSearchedHistory] = useState(historyData)
 
+
+    const [clickedSB, setClickedSB] = useState("#a3a8bf")
+
+    function handleFocus() {
+        setClickedSB("#496fff");
+    
+      }
+      
+      function handleBlur() {
+        setClickedSB("#a3a8bf");
+    
+      }
     // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
         let ignore = false;
 
         async function fetchHistory() {
+
             const result = await axios(process.env.REACT_APP_API_URL + '/playback/history');
-            if (!ignore) setHistoryData(result.data);
+            if (!ignore) setHistoryData(result.data.reverse().slice(1));
+
         }
 
         const interval = setInterval(() => {
@@ -59,21 +73,20 @@ function History() {
 
                         type="search"
                         placeholder="Search with a word or artist"
-
                         className="searchA"
-
-
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
 
                         onChange={(e) => { searchHistory(e.target.value) }}
 
                     />
 
 <IconButton 
-         
+         disableRipple
          style= {{  marginLeft:  -window.innerWidth*.77525, marginTop: window.innerHeight*.023,  marginBottom: window.innerHeight*.000,height: window.innerHeight*.05,
            width: window.innerHeight*.05, borderRadius: 80, display: "flex", 
          
-           color:"#496fff"}}
+           color:clickedSB}}
          onClick={() =>{}}
          type="button"
          variant="contained"
@@ -128,7 +141,7 @@ function History() {
                        <TableBody>
 
 
-                           {(searchedHistory.length > 0 ? searchedHistory.reverse().slice(1) : historyData.reverse().slice(1)).map((track, index) => (
+                           {((searchedHistory.length > 0 ) ? searchedHistory : historyData).map((track, index) => (
 
                                <Track 
                                track={track}
