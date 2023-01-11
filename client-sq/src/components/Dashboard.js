@@ -35,7 +35,7 @@ function Dashboard(){
       let ignore = false;
 
       async function fetchToken() {
-        const result = await axios('http://localhost:3001/token')
+        const result = await axios(process.env.REACT_APP_API_URL + '/token')
         if(!ignore) setAccessToken(result.data)
       }
 
@@ -57,7 +57,7 @@ function Dashboard(){
       let ignore = false; 
 
       async function fetchQueue() {
-        const result = await axios('http://localhost:3001/queue/show');
+        const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
         if (!ignore) setQueueData(result.data);
       }
 
@@ -72,7 +72,7 @@ function Dashboard(){
     useEffect(() => {
       const searchTracks = async(searchQuery) => {
         return axios
-          .post("http://localhost:3001/searchTracks", {
+          .post(process.env.REACT_APP_API_URL + "/searchTracks", {
             searchString : searchQuery,
             params: {limit: 50}
           })
