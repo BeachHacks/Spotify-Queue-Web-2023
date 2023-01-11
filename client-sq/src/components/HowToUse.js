@@ -28,7 +28,7 @@ function HowToUse() {
                   </div> 
                   
                   
-                   <img  style={{marginTop:'-.075vh',marginLeft: '7.5vw',height: '22.6vh', width: 22.6 * 1.436/0.543  + 'vh', objectFit: "contain" }}
+                   <img  style={{marginTop:'-0.3vh',marginLeft: '7.5vw',height: '22.85vh', width: 22.85 * 612/247  + 'vh', objectFit: "contain" }}
                       objectFit="cover"  src="htf.png" />
                         </div>
                 </div>
@@ -53,7 +53,7 @@ function HowToUse() {
                 </div>
                 
                 </div>
-                <img  style={{marginTop:'-.03vh',marginLeft: '7.5vw',height: '22.5vh', width: 22.5 * 1.435/0.541  + 'vh', objectFit: "contain" }}
+                <img  style={{marginTop:'-.03vh',marginLeft: '7.5vw',height: '22.6vh', width: 22.6 * 612/244  + 'vh', objectFit: "contain" }}
                       objectFit="cover"  src="htq.png" />
                 </div>
         </div>

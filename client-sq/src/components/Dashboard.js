@@ -20,16 +20,18 @@ function Dashboard(){
     const [accessToken, setAccessToken] = useState("")
 
 
+    const [clicked, setClicked] = useState(false)
     const [clickedSB, setClickedSB] = useState("#a3a8bf")
 
     function handleFocus() {
         setClickedSB("#496fff");
+        setClicked(true)
     
       }
       
       function handleBlur() {
         setClickedSB("#a3a8bf");
-    
+        setClicked(false)
       }
     useEffect(() => {
       let ignore = false;
@@ -168,7 +170,7 @@ function Dashboard(){
                                                             paddingLeft: window.innerWidth*.027,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
-                                                            placeholder ="Search Songs/Artists"  
+                                                            placeholder ="Search for a song to queue"  
                                                             className="searchA"
                                                            
           onChange={(e)=>{setInput (e.target.value)}}
@@ -209,16 +211,49 @@ function Dashboard(){
               overflowY: "auto",
               width: window.innerWidth*0.29,
               backgroundColor:"#ffffff", 
-              padding:10, 
+               
               borderRadius:window.innerHeight*.015,
               color: "#3d435a"}}>
-                <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
-                Results
+                
+                {!clicked?
+                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+
+                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+                    Guidelines
+                  </div>
+
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
+                    </div>
+                  </div>
+                  
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    If you loved a song you heard earlier, you can find it again in the history tab.
+                    </div>
+                  </div>
+
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    To keep the event professional we've disabled adding explicit songs.
+                    </div>
+                  </div>
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
+                :
+                 <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+               Results
+                </div>
+                <div style = {{fontSize: window.innerWidth*0.01025}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
                 </div>
-              </div >
+                </div>
+             }
+             </div>
               :
               <div style = {{
                 color: "#3d435a", 
@@ -228,13 +263,18 @@ function Dashboard(){
                 width: window.innerWidth*0.29, 
                 height: window.innerHeight*0.755, 
                 marginTop: window.innerHeight*0.02, }}>
-                <div style = {{fontSize: window.innerWidth*0.015, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
-                Results
+
+
+<div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                <div style = {{fontSize: window.innerWidth*0.0145}}>
+               Results
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.006,height: "2vh"}}>
+                <div style = {{fontSize: window.innerWidth*0.01025, marginTop: '-.2vh',height:"1.5vh"}}>
                 Explicit or recently added songs are grayed out.
                 </div>
-
+                </div>
+              
+                
                 <DisplayResults trackList={searchResults} />
               </div>
               }
