@@ -6,6 +6,7 @@ import { IconButton, Container, Divider } from '@mui/material';
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import LandingPage from "./LandingPage";
 
 function Dashboard() {
   const [searchResults, setSearchResults] = useState([])
@@ -135,6 +136,7 @@ function Dashboard() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#f6f8fe", width: window.innerWidth * .8, maxWidth: "100%" }}>
+      <LandingPage/>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .05, marginLeft: window.innerWidth * .01,
         fontSize: window.innerWidth * .02, fontWeight: "1000", color: "#3d435a"
