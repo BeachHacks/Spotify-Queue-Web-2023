@@ -38,7 +38,7 @@ function Dashboard(){
       }
     useEffect(() => {
       let ignore = false;
-
+      
       async function fetchToken() {
         const result = await axios(process.env.REACT_APP_API_URL + '/token')
         if(!ignore) setAccessToken(result.data)
@@ -54,8 +54,10 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
+      
      
     }
+  
    
   }
   
@@ -79,19 +81,24 @@ function Dashboard(){
     useEffect(() => {
       
       const searchTracks = async(searchQuery) => {
+        setLoading(true)
         return axios
           .post(process.env.REACT_APP_API_URL + "/searchTracks", {
             searchString : searchQuery,
             params: {limit: 50}
           })
           .then(res => {
+            setLoading(false)
             return res.data;
+            
           })
           .catch((err) => {
             console.log(err)
           })
-      } 
+        } 
       
+      
+
       function filter(features){
         var boolFilter = []
           for(let i = 0; i < features.length; i++){
@@ -180,10 +187,10 @@ function Dashboard(){
                                                             placeholder ="Search for a song to queue"  
                                                             className="searchA"
                                                            
-          onChange={(e)=>{setInput (e.target.value)}}
-           onKeyPress={
-            handleKeyPress
-          }
+                        onChange={(e)=>{setInput (e.target.value)}}
+                        onKeyPress={
+                          handleKeyPress
+                        }
                         onFocus={handleFocus}
                         onBlur={handleBlur}
           />
@@ -196,7 +203,7 @@ function Dashboard(){
          
            color:clickedSB}}
          onClick={() =>{
-          setLoading(true)
+          
           setSearch(dynInput)
          
         }}

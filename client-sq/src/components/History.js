@@ -12,6 +12,7 @@ function History() {
     const [searchedHistory, setSearchedHistory] = useState(historyData)
 
 
+    const [searching, setSearching] = useState(false)
     const [clickedSB, setClickedSB] = useState("#a3a8bf")
 
     function handleFocus() {
@@ -33,6 +34,8 @@ function History() {
             if (!ignore) setHistoryData(result.data.reverse().slice(1));
 
         }
+
+        fetchHistory();
 
         const interval = setInterval(() => {
             fetchHistory();
@@ -77,7 +80,12 @@ function History() {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
 
-                        onChange={(e) => { searchHistory(e.target.value) }}
+                        onChange={(e) => { 
+                            if(e.target.value.length > 0)
+                                setSearching(true)
+                            searchHistory(e.target.value) 
+                            
+                        }}
 
                     />
 
@@ -112,11 +120,15 @@ function History() {
                 <div
                
                 style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
-                   Loading history...
+                   No songs in history.
                 </div>
                 :
-                    <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
+                    <div style={{borderRadius:window.innerHeight*.0145,  height: "69.4vh", width: "100%" }} >  
+                       {searching?
+                        <div style={{margin: "2vh"}}>Results</div>
+                            :
                         <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+                       }
                         <div style={{height: "5vh",fontWeight: 700,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
                                 Title
                                 
