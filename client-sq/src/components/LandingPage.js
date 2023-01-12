@@ -14,7 +14,10 @@ const style = {
     width: "75%",
     height: "80%",
     fontFamily: "DM Sans",
-    backgroundColor: "#F6F8FF"
+    backgroundColor: "#F6F8FF",
+    outline: "none",
+    border: 'none',
+    color: "#3C435C"
 }
 
 function LandingPage() {
@@ -78,8 +81,8 @@ function LandingPage() {
                                     <img src="BeachMuseGraphics.png" 
                                     style={{ marginTop: window.innerHeight*0.05, 
                                              marginLeft: window.innerWidth*0.05, 
-                                             height: window.innerHeight * 0.3,
-                                             width: window.innerWidth*0.3
+                                             height: .05 * 290  + 'vw', 
+                                             width: .05* 557+ 'vw'
                                              }}/>
                                 </Grid>
                             </Grid>
@@ -217,12 +220,13 @@ function LandingPage() {
                                     paddingRight: window.innerWidth * 0.04,
                                     marginTop: window.innerHeight * 0.09,
                                     width: window.innerWidth * 0.4,
-                                    height: window.innerHeight * 0.73
+                                    height: window.innerHeight * 0.73,
+                                    
                                 }}>
                                 <Stack direction="column" spacing={4}>
                                     <Grid
                                         container
-                                        sx={{ boxShadow: 3, borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
+                                        sx={{   boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2", borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center", border: '.25vh solid #e0e4f2' }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
@@ -230,7 +234,7 @@ function LandingPage() {
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{ boxShadow: 3, borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
+                                        sx={{  boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2",  borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
@@ -238,7 +242,7 @@ function LandingPage() {
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{ boxShadow: 3, borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
+                                        sx={{  boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2",  borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
