@@ -83,6 +83,8 @@ function History() {
                         onChange={(e) => { 
                             if(e.target.value.length > 0)
                                 setSearching(true)
+                            if(e.target.value.length == 0)
+                                setSearching(false)
                             searchHistory(e.target.value) 
                             
                         }}
@@ -112,18 +114,18 @@ function History() {
             marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
             display:"flex", flexDirection:"row",fontWeight: "bold",
             height: "75.3vh",  backgroundColor:"#ffffff",   color: "#3d435a",
-            fontSize: window.innerWidth*0.0154,width:window.innerWidth*.7775}}
+            fontSize: window.innerWidth*0.0145,width:window.innerWidth*.7775}}
 
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
                 <div
                
-                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
-                   No songs in history.
+                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a" }}>
+                   The party just started, no songs have been played.
                 </div>
                 :
-                    <div style={{borderRadius:window.innerHeight*.0145,  height: "69.4vh", width: "100%" }} >  
+                    <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
                        {searching?
                         <div style={{margin: "2vh"}}>Results</div>
                             :
