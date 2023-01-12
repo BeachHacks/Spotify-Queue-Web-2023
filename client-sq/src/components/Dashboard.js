@@ -12,12 +12,15 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
 function Dashboard(){
+
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
     const [dynInput, setInput] = useState("")
     const [search, setSearch] = useState("")
     const [queueData, setQueueData] = useState([])
     const [accessToken, setAccessToken] = useState("")
+
+    const [loading, setLoading] = useState(false)
 
 
     const [clicked, setClicked] = useState(false)
@@ -51,7 +54,9 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
+     
     }
+   
   }
   
     // Hook handling retrieving the data of the queue from the backend.
@@ -62,7 +67,7 @@ function Dashboard(){
         const result = await axios('http://localhost:3001/queue/show');
         if (!ignore) setQueueData(result.data);
       }
-
+      fetchQueue();
       const interval = setInterval(() => {
         fetchQueue();
       }, 1000);
@@ -72,6 +77,7 @@ function Dashboard(){
 
     // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
+      
       const searchTracks = async(searchQuery) => {
         return axios
           .post("http://localhost:3001/searchTracks", {
@@ -108,9 +114,11 @@ function Dashboard(){
           }
         return boolFilter;
       } 
-    
+      
+      
       if(!search) return setSearchResults([])
       // Parse search query
+      
       searchTracks(search).then(res => {
 
         console.log("AUDIO feats",res.features.audio_features)
@@ -146,8 +154,7 @@ function Dashboard(){
       })
       
     }, [search])
- 
-    
+
 
     return (
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
@@ -174,7 +181,9 @@ function Dashboard(){
                                                             className="searchA"
                                                            
           onChange={(e)=>{setInput (e.target.value)}}
-           onKeyPress={handleKeyPress}
+           onKeyPress={
+            handleKeyPress
+          }
                         onFocus={handleFocus}
                         onBlur={handleBlur}
           />
@@ -186,7 +195,11 @@ function Dashboard(){
            width: window.innerHeight*.05, borderRadius: 80, 
          
            color:clickedSB}}
-         onClick={() =>{setSearch(dynInput)}}
+         onClick={() =>{
+          setLoading(true)
+          setSearch(dynInput)
+         
+        }}
          type="button"
          variant="contained"
          children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
@@ -248,9 +261,15 @@ function Dashboard(){
                 <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
                Results
                 </div>
+                {loading? 
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Loading...
+                    </div>
+                  :
                 <div style = {{fontSize: window.innerWidth*0.01025}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
-                </div>
+                </div>}
+                
                 </div>
              }
              </div>
@@ -265,17 +284,29 @@ function Dashboard(){
                 marginTop: window.innerHeight*0.02, }}>
 
 
-<div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
-                <div style = {{fontSize: window.innerWidth*0.0145}}>
-               Results
-                </div>
-                <div style = {{fontSize: window.innerWidth*0.01025, marginTop: '-.2vh',height:"1.5vh"}}>
-                Explicit or recently added songs are grayed out.
-                </div>
+                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                
+        
+                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+                     Results
+                  </div>
+
+                  {loading? 
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Loading...
+                    </div>
+                  :
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Explicit or recently added songs are grayed out.
+                    </div>
+                    }
+                  
                 </div>
               
                 
-                <DisplayResults trackList={searchResults} />
+                <DisplayResults trackList={searchResults}  />
+             
+                
               </div>
               }
             </div>

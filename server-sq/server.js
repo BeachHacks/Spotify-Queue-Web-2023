@@ -8,7 +8,7 @@ const playback = require('./routes/playback')
 app.use(cors())
 app.use(bodyParser.json())
 
-const clientId = 'db55ce79bd574c94aca99e831e39d6c9', clientSecret = 'b07d5cc57b5d4afc8b29032e60cffee9';
+const clientId = '4199d61d3f61411f83d09ecdbb6cd5c0', clientSecret = '135bf044717d4bd698cdd788feaadf07';
 const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: 'http://localhost:3000/auth'});
 const adminStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
