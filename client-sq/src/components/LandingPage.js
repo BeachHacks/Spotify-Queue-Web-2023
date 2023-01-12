@@ -43,44 +43,46 @@ function LandingPage() {
                 >
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
-                            <Grid style={{ margin: "2.5%", }}>
-                                <h1 style={{ fontSize: window.innerWidth * 0.06, fontWeight: "bold", color: "#3C435C" }}>
+                            <Grid style={{ margin: "2.5vw", }}>
+                                <h1 style={{ fontSize:  '6vw', fontWeight: "bold", color: "#3C435C" }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
                                 </h1>
                                 <br />
-                                <h2 style={{ fontSize: window.innerWidth * 0.02, color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
+                                <h2 style={{ fontSize: '2vw', height: '7vh',color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
                                 <br />
                                 <Grid style={{
-                                    margin: "2.5%",
+                                    margin: 0,
                                     display: "inline-flex",
                                     marginLeft: 0,
-                                    height: window.innerHeight * 0.07,
+                                    height: '7vh',
                                 }} direction="row" alignItems="center" justifyContent="center">
                                     <Button
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.1,
-                                            fontSize: window.innerWidth * 0.01,
+                                            width: '10vw',
+                                            height: '7vh',
+                                            fontSize: '1vw',
                                         }}
                                         onClick={() => (setOpen(false))}
                                     >
                                         Ready to vibe!
                                     </Button>
                                     <Button style={{
-                                        marginLeft: window.innerWidth * 0.005,
+                                        marginLeft: '.5vw',
                                         backgroundColor: "#EBEEFF",
                                         color: "#496fff",
-                                        width: window.innerWidth * 0.1,
-                                        fontSize: window.innerWidth * 0.01,
+                                        width: '10vw',
+                                        height: '7vh',
+                                        fontSize: '1vw',
                                     }}
                                         onClick={() => { setMainPageFadeIn(false); console.log(clickNum) }}
                                     >
                                         How to Use
                                     </Button>
                                     <img src="BeachMuseGraphics.png" 
-                                    style={{ marginTop: window.innerHeight*0.05, 
-                                             marginLeft: window.innerWidth*0.05, 
+                                    style={{ marginTop: '7.5vh', 
+                                             marginLeft: '10vw', 
                                              height: .05 * 290  + 'vw', 
                                              width: .05* 557+ 'vw'
                                              }}/>
