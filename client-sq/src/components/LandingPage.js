@@ -41,18 +41,18 @@ function LandingPage() {
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
                             <Grid style={{ margin: "2.5%", }}>
-                                <h1 style={{ fontSize: window.innerWidth * 0.05, fontWeight: "bold", color: "#3C435C" }}>
+                                <h1 style={{ fontSize: window.innerWidth * 0.06, fontWeight: "bold", color: "#3C435C" }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
                                 </h1>
                                 <br />
                                 <h2 style={{ fontSize: window.innerWidth * 0.02, color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
                                 <br />
-                                <div style={{
+                                <Grid style={{
                                     margin: "2.5%",
                                     display: "inline-flex",
                                     marginLeft: 0,
-                                    height: window.innerHeight * 0.07
-                                }}>
+                                    height: window.innerHeight * 0.07,
+                                }} direction="row" alignItems="center" justifyContent="center">
                                     <Button
                                         style={{
                                             color: "white",
@@ -75,7 +75,13 @@ function LandingPage() {
                                     >
                                         How to Use
                                     </Button>
-                                </div>
+                                    <img src="BeachMuseGraphics.png" 
+                                    style={{ marginTop: window.innerHeight*0.05, 
+                                             marginLeft: window.innerWidth*0.05, 
+                                             height: window.innerHeight * 0.3,
+                                             width: window.innerWidth*0.3
+                                             }}/>
+                                </Grid>
                             </Grid>
                         </Fade> : <></>}
 
