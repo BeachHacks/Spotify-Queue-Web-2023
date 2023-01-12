@@ -28,8 +28,10 @@ function History() {
         let ignore = false;
 
         async function fetchHistory() {
-            const result = await axios('http://localhost:3001/playback/history');
+
+            const result = await axios(process.env.REACT_APP_API_URL + '/playback/history');
             if (!ignore) setHistoryData(result.data.reverse().slice(1));
+
         }
 
         const interval = setInterval(() => {

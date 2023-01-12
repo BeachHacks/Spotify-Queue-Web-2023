@@ -18,7 +18,7 @@ export default function Track({ track, clickable, num }) {
       unqueueable = true
     
     function handleAdd() {
-      if (!track.explicit && clickable && track.filter) axios.post("http://localhost:3001/queue/add", {
+      if (!track.explicit && clickable && track.filter) axios.post(process.env.REACT_APP_API_URL + "/queue/add", {
             title: track.title,
             artist: track.artist,
             albumUrl: track.albumUrl,
