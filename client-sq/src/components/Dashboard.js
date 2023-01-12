@@ -12,6 +12,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
 function Dashboard(){
+
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
     const [dynInput, setInput] = useState("")
@@ -19,23 +20,27 @@ function Dashboard(){
     const [queueData, setQueueData] = useState([])
     const [accessToken, setAccessToken] = useState("")
 
+    const [loading, setLoading] = useState(false)
 
+
+    const [clicked, setClicked] = useState(false)
     const [clickedSB, setClickedSB] = useState("#a3a8bf")
 
     function handleFocus() {
         setClickedSB("#496fff");
+        setClicked(true)
     
       }
       
       function handleBlur() {
         setClickedSB("#a3a8bf");
-    
+        setClicked(false)
       }
     useEffect(() => {
       let ignore = false;
-
+      
       async function fetchToken() {
-        const result = await axios('http://localhost:3001/token')
+        const result = await axios(process.env.REACT_APP_API_URL + '/token')
         if(!ignore) setAccessToken(result.data)
       }
 
@@ -49,7 +54,11 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
+      
+     
     }
+  
+   
   }
   
     // Hook handling retrieving the data of the queue from the backend.
@@ -57,10 +66,10 @@ function Dashboard(){
       let ignore = false; 
 
       async function fetchQueue() {
-        const result = await axios('http://localhost:3001/queue/show');
+        const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
         if (!ignore) setQueueData(result.data);
       }
-
+      fetchQueue();
       const interval = setInterval(() => {
         fetchQueue();
       }, 1000);
@@ -70,20 +79,26 @@ function Dashboard(){
 
     // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
+      
       const searchTracks = async(searchQuery) => {
+        setLoading(true)
         return axios
-          .post("http://localhost:3001/searchTracks", {
+          .post(process.env.REACT_APP_API_URL + "/searchTracks", {
             searchString : searchQuery,
             params: {limit: 50}
           })
           .then(res => {
+            setLoading(false)
             return res.data;
+            
           })
           .catch((err) => {
             console.log(err)
           })
-      } 
+        } 
       
+      
+
       function filter(features){
         var boolFilter = []
           for(let i = 0; i < features.length; i++){
@@ -106,9 +121,11 @@ function Dashboard(){
           }
         return boolFilter;
       } 
-    
+      
+      
       if(!search) return setSearchResults([])
       // Parse search query
+      
       searchTracks(search).then(res => {
 
         console.log("AUDIO feats",res.features.audio_features)
@@ -144,8 +161,7 @@ function Dashboard(){
       })
       
     }, [search])
- 
-    
+
 
     return (
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
@@ -168,11 +184,13 @@ function Dashboard(){
                                                             paddingLeft: window.innerWidth*.027,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
-                                                            placeholder ="Search Songs/Artists"  
+                                                            placeholder ="Search for a song to queue"  
                                                             className="searchA"
                                                            
-          onChange={(e)=>{setInput (e.target.value)}}
-           onKeyPress={handleKeyPress}
+                        onChange={(e)=>{setInput (e.target.value)}}
+                        onKeyPress={
+                          handleKeyPress
+                        }
                         onFocus={handleFocus}
                         onBlur={handleBlur}
           />
@@ -184,7 +202,11 @@ function Dashboard(){
            width: window.innerHeight*.05, borderRadius: 80, 
          
            color:clickedSB}}
-         onClick={() =>{setSearch(dynInput)}}
+         onClick={() =>{
+          
+          setSearch(dynInput)
+         
+        }}
          type="button"
          variant="contained"
          children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
@@ -209,16 +231,55 @@ function Dashboard(){
               overflowY: "auto",
               width: window.innerWidth*0.29,
               backgroundColor:"#ffffff", 
-              padding:10, 
+               
               borderRadius:window.innerHeight*.015,
               color: "#3d435a"}}>
-                <div style = {{fontSize: window.innerWidth*0.0154, margin: window.innerHeight*0.015}}>
-                Results
+                
+                {!clicked?
+                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+
+                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+                    Guidelines
+                  </div>
+
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
+                    </div>
+                  </div>
+                  
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    If you loved a song you heard earlier, you can find it again in the history tab.
+                    </div>
+                  </div>
+
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
+                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    To keep the event professional we've disabled adding explicit songs.
+                    </div>
+                  </div>
                 </div>
-                <div style = {{fontSize: window.innerWidth*0.01, margin: window.innerHeight*0.015}}>
+                :
+                 <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+               Results
+                </div>
+                {loading? 
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Loading...
+                    </div>
+                  :
+                <div style = {{fontSize: window.innerWidth*0.01025}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
+                </div>}
+                
                 </div>
-              </div >
+             }
+             </div>
               :
               <div style = {{
                 color: "#3d435a", 
@@ -228,14 +289,31 @@ function Dashboard(){
                 width: window.innerWidth*0.29, 
                 height: window.innerHeight*0.755, 
                 marginTop: window.innerHeight*0.02, }}>
-                <div style = {{fontSize: window.innerWidth*0.015, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.015 }}>
-                Results
-                </div>
-                <div style = {{fontSize: window.innerWidth*0.01, marginLeft: window.innerWidth*0.012,marginTop:window.innerHeight*0.006,height: "2vh"}}>
-                Explicit or recently added songs are grayed out.
-                </div>
 
-                <DisplayResults trackList={searchResults} />
+
+                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                
+        
+                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
+                     Results
+                  </div>
+
+                  {loading? 
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Loading...
+                    </div>
+                  :
+                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    Explicit or recently added songs are grayed out.
+                    </div>
+                    }
+                  
+                </div>
+              
+                
+                <DisplayResults trackList={searchResults}  />
+             
+                
               </div>
               }
             </div>
