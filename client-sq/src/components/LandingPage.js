@@ -12,7 +12,7 @@ const style = {
     borderRadius: 2,
     boxShadow: 24,
     width: "75%",
-    height: "80%",
+    height: "75%",
     fontFamily: "DM Sans",
     backgroundColor: "#F6F8FF"
 }
@@ -33,32 +33,31 @@ function LandingPage() {
             <Modal open={open}>
                 <Grid
                     container
-                    sx={[style, mainPageFadeIn === true ? { padding: 4 } : { padding: 0 }]}
+                    sx={[style, mainPageFadeIn === true ? { padding: '4vh' } : { padding: 0 }]}
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
                 >
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
-                            <Grid style={{ margin: "2.5%", }}>
-                                <h1 style={{ fontSize: window.innerWidth * 0.05, fontWeight: "bold", color: "#3C435C" }}>
+                            <Grid style={{width: "100%",
+                                        height: "100%",
+                                        margin: "2.5vw" }}>
+                                <div style={{ fontSize: '5vw', fontWeight: "bold", color: "#3C435C",marginTop:'5vh' }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
-                                </h1>
-                                <br />
-                                <h2 style={{ fontSize: window.innerWidth * 0.02, color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
-                                <br />
-                                <div style={{
-                                    margin: "2.5%",
-                                    display: "inline-flex",
-                                    marginLeft: 0,
-                                    height: window.innerHeight * 0.07
-                                }}>
+                                </div>
+                                
+                                <div style={{ fontWeight: 1000,fontSize: '2.5vw', height: '7vh', color: "#3C435C" }}>Ready to add your vibe to the party with <div style = {{marginTop:'-1vh'}}>BeachMuse?</div></div>
+                                
+                               
                                     <Button
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.1,
-                                            fontSize: window.innerWidth * 0.01,
+                                            width: '10vw',
+                                            height: '7vh',
+                                            fontSize: '1vw',
+                                            borderRadius: '.75vh',
                                         }}
                                         onClick={() => {setOpen(false); localStorage.setItem('visited', 'true')}}
                                     >
@@ -68,14 +67,23 @@ function LandingPage() {
                                         marginLeft: window.innerWidth * 0.005,
                                         backgroundColor: "#EBEEFF",
                                         color: "#496fff",
-                                        width: window.innerWidth * 0.1,
-                                        fontSize: window.innerWidth * 0.01,
+                                        width: '15vw',
+                                        height: '9vh',
+                                        fontSize: '1vw',
+                                        borderRadius: '.75vh',
                                     }}
                                         onClick={() => { setMainPageFadeIn(false); console.log(clickNum) }}
                                     >
                                         How to Use
                                     </Button>
-                                </div>
+                                    <img src="BeachMuseGraphics.png"
+                                        style={{
+                                            marginTop: '7.5vh',
+                                            marginLeft: '10vw',
+                                            height: .05 * 290 + 'vw',
+                                            width: .05 * 557 + 'vw'
+                                        }} />
+                               
                             </Grid>
                         </Fade> : <></>}
 
@@ -97,10 +105,10 @@ function LandingPage() {
                                             style={{
                                                 color: "white",
                                                 backgroundColor: "#496fff",
-                                                width: window.innerWidth * 0.09,
-                                                height: window.innerHeight * 0.07,
-                                                borderRadius: 10,
-                                                fontSize: window.innerWidth * 0.01,
+                                                width: "9vw",
+                                                height: "7vh",
+                                                borderRadius: '1vh',
+                                                fontSize: "1vw",
                                             }}
                                             onClick={() => { handleClick(); console.log(clickNum) }}
                                         > Next </Button>
@@ -143,10 +151,10 @@ function LandingPage() {
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.09,
-                                            height: window.innerHeight * 0.07,
-                                            borderRadius: 10,
-                                            fontSize: window.innerWidth * 0.01,
+                                            width: "9vw",
+                                            height: "7vh",
+                                            borderRadius: '1vh',
+                                            fontSize: "1vw",
                                         }}
                                         onClick={() => { handleClick(); console.log(clickNum) }}
                                     > Next </Button>
@@ -189,10 +197,10 @@ function LandingPage() {
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.09,
-                                            height: window.innerHeight * 0.07,
-                                            borderRadius: 10,
-                                            fontSize: window.innerWidth * 0.009,
+                                            width: "9vw",
+                                            height: "7vh",
+                                            borderRadius: '1vh',
+                                            fontSize: "0.9vw",
                                         }}
                                         onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
                                     > Ready to Vibe! </Button>
