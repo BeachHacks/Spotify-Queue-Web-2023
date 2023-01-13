@@ -12,6 +12,7 @@ function History() {
     const [searchedHistory, setSearchedHistory] = useState(historyData)
 
 
+    const [searching, setSearching] = useState(false)
     const [clickedSB, setClickedSB] = useState("#a3a8bf")
 
     function handleFocus() {
@@ -33,6 +34,8 @@ function History() {
             if (!ignore) setHistoryData(result.data.reverse().slice(1));
 
         }
+
+        fetchHistory();
 
         const interval = setInterval(() => {
             fetchHistory();
@@ -77,7 +80,14 @@ function History() {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
 
-                        onChange={(e) => { searchHistory(e.target.value) }}
+                        onChange={(e) => { 
+                            if(e.target.value.length > 0)
+                                setSearching(true)
+                            if(e.target.value.length == 0)
+                                setSearching(false)
+                            searchHistory(e.target.value) 
+                            
+                        }}
 
                     />
 
@@ -104,19 +114,23 @@ function History() {
             marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
             display:"flex", flexDirection:"row",fontWeight: "bold",
             height: "75.3vh",  backgroundColor:"#ffffff",   color: "#3d435a",
-            fontSize: window.innerWidth*0.0154,width:window.innerWidth*.7775}}
+            fontSize: window.innerWidth*0.0145,width:window.innerWidth*.7775}}
 
             >
                 <div style={{width: "100%"}}>
                 {historyData.length === 0?
                 <div
                
-                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a",fontSize: window.innerWidth*0.0154 }}>
-                   Loading history...
+                style={{ fontWeight: "bold",  overflowY: "auto",  padding:window.innerHeight*0.03,  color: "#3d435a" }}>
+                   The party just started, no songs have been played.
                 </div>
                 :
                     <div style={{borderRadius:window.innerHeight*.015,  height: "69.4vh", width: "100%" }} >  
+                       {searching?
+                        <div style={{margin: "2vh"}}>Results</div>
+                            :
                         <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+                       }
                         <div style={{height: "5vh",fontWeight: 700,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
                                 Title
                                 
