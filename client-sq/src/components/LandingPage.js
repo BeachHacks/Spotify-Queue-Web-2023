@@ -194,7 +194,7 @@ function LandingPage() {
                                             borderRadius: 10,
                                             fontSize: window.innerWidth * 0.009,
                                         }}
-                                        onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); }}
+                                        onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
                                     > Ready to Vibe! </Button>
                                     <img src={"Slider3.png"}
                                         style={{
