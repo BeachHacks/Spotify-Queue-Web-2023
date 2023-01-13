@@ -11,10 +11,12 @@ const style = {
     transform: 'translate(-50%, -50%)',
     borderRadius: 2,
     boxShadow: 24,
-    width: "75%",
+    width: "77.5%",
     height: "75%",
     fontFamily: "DM Sans",
-    backgroundColor: "#F6F8FF"
+    backgroundColor: "#F6F8FF",
+    border: 'none',
+    outline: 'none'
 }
 
 function LandingPage() {
@@ -42,7 +44,9 @@ function LandingPage() {
                         <Fade in={mainPageFadeIn} timeout={3000}>
                             <Grid style={{width: "100%",
                                         height: "100%",
-                                        margin: "2.5vw" }}>
+                                        margin: "5vw",
+                                        //border: ".25vh solid #e0e4f2",
+                                         }}>
                                 <div style={{ fontSize: '5vw', fontWeight: "bold", color: "#3C435C",marginTop:'5vh' }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
                                 </div>
@@ -50,38 +54,43 @@ function LandingPage() {
                                 <div style={{ fontWeight: 1000,fontSize: '2.5vw', height: '7vh', color: "#3C435C" }}>Ready to add your vibe to the party with <div style = {{marginTop:'-1vh'}}>BeachMuse?</div></div>
                                 
                                
-                                    <Button
+                                    <button
                                         style={{
+                                            fontWeight: 1000,
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: '10vw',
-                                            height: '7vh',
-                                            fontSize: '1vw',
+                                            width: '15vw',
+                                            height: '9vh',
+                                            fontSize: '1.5vw',
                                             borderRadius: '.75vh',
+                                            border: 'none'
                                         }}
                                         onClick={() => {setOpen(false); localStorage.setItem('visited', 'true')}}
                                     >
                                         Ready to vibe!
-                                    </Button>
-                                    <Button style={{
-                                        marginLeft: window.innerWidth * 0.005,
-                                        backgroundColor: "#EBEEFF",
-                                        color: "#496fff",
-                                        width: '15vw',
-                                        height: '9vh',
-                                        fontSize: '1vw',
-                                        borderRadius: '.75vh',
-                                    }}
+                                    </button>
+                                    <button
+                                        style={{
+                                            fontWeight: 1000,
+                                            backgroundColor: "#EBEEFF",
+                                            color: "#496fff",
+                                            width: '15vw',
+                                            height: '9vh',
+                                            fontSize: '1.5vw',
+                                            borderRadius: '.75vh',
+                                            border: 'none',
+                                            marginLeft: '1vw'
+                                        }}
                                         onClick={() => { setMainPageFadeIn(false); console.log(clickNum) }}
                                     >
                                         How to Use
-                                    </Button>
+                                    </button>
                                     <img src="BeachMuseGraphics.png"
                                         style={{
-                                            marginTop: '7.5vh',
-                                            marginLeft: '10vw',
-                                            height: .05 * 290 + 'vw',
-                                            width: .05 * 557 + 'vw'
+                                            marginTop: '3vh',
+                                            marginLeft: '3vw',
+                                            height: .052 * 290 + 'vw',
+                                            width: .052 * 557 + 'vw'
                                         }} />
                                
                             </Grid>
