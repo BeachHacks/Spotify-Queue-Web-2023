@@ -44,11 +44,11 @@ function LandingPage() {
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
                             <Grid style={{ margin: "2.5vw", }}>
-                                <h1 style={{ fontSize:  '6vw', fontWeight: "bold", color: "#3C435C" }}>
+                                <h1 style={{ fontSize: '6vw', fontWeight: "bold", color: "#3C435C" }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
                                 </h1>
                                 <br />
-                                <h2 style={{ fontSize: '2vw', height: '7vh',color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
+                                <h2 style={{ fontSize: '2vw', height: '7vh', color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
                                 <br />
                                 <Grid style={{
                                     margin: 0,
@@ -80,12 +80,13 @@ function LandingPage() {
                                     >
                                         How to Use
                                     </Button>
-                                    <img src="BeachMuseGraphics.png" 
-                                    style={{ marginTop: '7.5vh', 
-                                             marginLeft: '10vw', 
-                                             height: .05 * 290  + 'vw', 
-                                             width: .05* 557+ 'vw'
-                                             }}/>
+                                    <img src="BeachMuseGraphics.png"
+                                        style={{
+                                            marginTop: '7.5vh',
+                                            marginLeft: '10vw',
+                                            height: .05 * 290 + 'vw',
+                                            width: .05 * 557 + 'vw'
+                                        }} />
                                 </Grid>
                             </Grid>
                         </Fade> : <></>}
@@ -96,11 +97,11 @@ function LandingPage() {
                             <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
                                 <div style={{
                                     width: "90%", height: "100%",
-                                    paddingTop: window.innerHeight * 0.08, paddingLeft: window.innerWidth * 0.06,
+                                    paddingTop: "8vh", paddingLeft: "6vw",
                                 }}>
-                                    <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: window.innerWidth * 0.025 }}>How to find songs</h2>
+                                    <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>How to find songs</h2>
                                     <br />
-                                    <h3 style={{ color: "#3C435C", fontSize: window.innerWidth * 0.018 }}> In the search bar, type in a song or artist. Then, hit enter to see results.</h3>
+                                    <h3 style={{ color: "#3C435C", fontSize: "1.8vw" }}> In the search bar, type in a song or artist. Then, hit enter to see results.</h3>
                                     <br />
 
                                     <div style={{ display: "inline-flex" }}>
@@ -108,19 +109,19 @@ function LandingPage() {
                                             style={{
                                                 color: "white",
                                                 backgroundColor: "#496fff",
-                                                width: window.innerWidth * 0.09,
-                                                height: window.innerHeight * 0.07,
+                                                width: "9vw",
+                                                height: "7vh",
                                                 borderRadius: 10,
-                                                fontSize: window.innerWidth * 0.01,
+                                                fontSize: "1vw",
                                             }}
                                             onClick={() => { handleClick(); console.log(clickNum) }}
                                         > Next </Button>
                                         <img src={"Slider1.png"}
                                             style={{
-                                                marginLeft: window.innerWidth * 0.01,
+                                                marginLeft: "1vw",
                                                 marginTop: "11%",
-                                                width: window.innerWidth * 0.026,
-                                                height: window.innerHeight * 0.0135
+                                                width: "2.6vw",
+                                                height: "1.35vh"
                                             }}></img>
                                     </div>
                                 </div>
@@ -128,25 +129,25 @@ function LandingPage() {
                                     <img
                                         src={"LandingPage1.jpeg"}
                                         style={{
-                                            paddingLeft: window.innerWidth * 0.08,
-                                            paddingRight: window.innerWidth * 0.04,
-                                            marginTop: window.innerHeight * 0.07,
-                                            width: window.innerWidth * 0.41,
-                                            height: window.innerHeight * 0.73
+                                            paddingLeft: "8vw",
+                                            paddingRight: "4vw",
+                                            marginTop: "7vh",
+                                            width: "41vw",
+                                            height: "73vh"
                                         }} />
                                 </div>
                             </div>
                         </Fade> : <></>}
-
+                    {/* 2220797; 2252854 */}
                     {mainPageFadeIn === false && clickNum === 2 ?
                         <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
                             <div style={{
                                 width: "90%", height: "100%",
-                                paddingTop: window.innerHeight * 0.08, paddingLeft: window.innerWidth * 0.06,
+                                paddingTop: "8vh", paddingLeft: "6vw",
                             }}>
-                                <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: window.innerWidth * 0.025 }}>How to queue songs</h2>
+                                <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>How to queue songs</h2>
                                 <br />
-                                <h3 style={{ color: "#3C435C", fontSize: window.innerWidth * 0.018 }}> On the right to a song, click on the plus icon. A check mark will show a successful queue</h3>
+                                <h3 style={{ color: "#3C435C", fontSize: "1.8vw" }}> On the right to a song, click on the plus icon. A check mark will show a successful queue</h3>
                                 <br />
 
                                 <div style={{ display: "inline-flex" }}>
@@ -154,19 +155,19 @@ function LandingPage() {
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.09,
-                                            height: window.innerHeight * 0.07,
+                                            width: "9vw",
+                                            height: "7vh",
                                             borderRadius: 10,
-                                            fontSize: window.innerWidth * 0.01,
+                                            fontSize: "1vw",
                                         }}
                                         onClick={() => { handleClick(); console.log(clickNum) }}
                                     > Next </Button>
                                     <img src={"Slider2.png"}
                                         style={{
-                                            marginLeft: window.innerWidth * 0.01,
+                                            marginLeft: "1vw",
                                             marginTop: "11%",
-                                            width: window.innerWidth * 0.026,
-                                            height: window.innerHeight * 0.0135
+                                            width: "2.6vw",
+                                            height: "1.35vh"
                                         }}></img>
                                 </div>
                             </div>
@@ -174,11 +175,11 @@ function LandingPage() {
                                 <img
                                     src={"LandingPage2.png"}
                                     style={{
-                                        paddingLeft: window.innerWidth * 0.08,
-                                        paddingRight: window.innerWidth * 0.06,
-                                        marginTop: window.innerHeight * 0.07,
-                                        width: window.innerWidth * 0.41,
-                                        height: window.innerHeight * 0.73
+                                        paddingLeft: "8vw",
+                                        paddingRight: "6vw",
+                                        marginTop: "7vh",
+                                        width: "41vw",
+                                        height: "73vh"
                                     }} />
                             </div>
                         </div>
@@ -188,11 +189,11 @@ function LandingPage() {
                         <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
                             <div style={{
                                 width: "90%", height: "100%",
-                                paddingTop: window.innerHeight * 0.08, paddingLeft: window.innerWidth * 0.06,
+                                paddingTop: "8vh", paddingLeft: "6vw",
                             }}>
-                                <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: window.innerWidth * 0.025 }}>Other things to know</h2>
+                                <h2 style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>Other things to know</h2>
                                 <br />
-                                <h3 style={{ color: "#3C435C", fontSize: window.innerWidth * 0.018 }}> In order to create the best playlist for BeachHacks, we recommend following these tips.</h3>
+                                <h3 style={{ color: "#3C435C", fontSize: "1.8vw" }}> In order to create the best playlist for BeachHacks, we recommend following these tips.</h3>
                                 <br />
 
                                 <div style={{ display: "inline-flex" }}>
@@ -200,55 +201,55 @@ function LandingPage() {
                                         style={{
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: window.innerWidth * 0.09,
-                                            height: window.innerHeight * 0.07,
+                                            width: "9vw",
+                                            height: "7vh",
                                             borderRadius: 10,
-                                            fontSize: window.innerWidth * 0.009,
+                                            fontSize: "0.9vw",
                                         }}
                                         onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1) }}
                                     > Ready to Vibe! </Button>
                                     <img src={"Slider3.png"}
                                         style={{
-                                            marginLeft: window.innerWidth * 0.01,
+                                            marginLeft: "1vw",
                                             marginTop: "11%",
-                                            width: window.innerWidth * 0.026,
-                                            height: window.innerHeight * 0.0135
+                                            width: "2.6vw",
+                                            height: "1.35vh"
                                         }}></img>
                                 </div>
                             </div>
                             <div
                                 style={{
-                                    paddingLeft: window.innerWidth * 0.08,
-                                    paddingRight: window.innerWidth * 0.04,
-                                    marginTop: window.innerHeight * 0.09,
-                                    width: window.innerWidth * 0.4,
-                                    height: window.innerHeight * 0.73,
-                                    
+                                    paddingLeft: "8vw",
+                                    paddingRight: "4vw",
+                                    marginTop: "9vh",
+                                    width: "40vw",
+                                    height: "73vh",
+
                                 }}>
                                 <Stack direction="column" spacing={4}>
                                     <Grid
                                         container
-                                        sx={{   boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2", borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center", border: '.25vh solid #e0e4f2' }}
+                                        sx={{ boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2", borderRadius: 3, height: "10vh", width: "27vw", textAlign: "center", border: '.25vh solid #e0e4f2' }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <h2 style={{ fontSize: window.innerWidth * 0.015, marginTop: "2%" }}>To keep it professional, avoid<br />explicit songs.</h2>
+                                        <h2 style={{ fontSize: "1.5vw", marginTop: "2%" }}>To keep it professional, avoid<br />explicit songs.</h2>
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{  boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2",  borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
+                                        sx={{ boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2", borderRadius: 3, height: "10vh", width: "27vw", textAlign: "center" }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <h2 style={{ fontSize: window.innerWidth * 0.015, marginTop: "2%" }}>To keep the playlist diverse,<br />avoid repeating songs.</h2>
+                                        <h2 style={{ fontSize: "1.5vw", marginTop: "2%" }}>To keep the playlist diverse,<br />avoid repeating songs.</h2>
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{  boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2",  borderRadius: 3, height: window.innerHeight * 0.1, width: window.innerWidth * 0.27, textAlign: "center" }}
+                                        sx={{ boxShadow: "0vw 1vh 1vw 0.5vw #e0e4f2", borderRadius: 3, height: "10vh", width: "27vw", textAlign: "center" }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <h2 style={{ fontSize: window.innerWidth * 0.015, marginTop: "2%" }}>Rule 3 here</h2>
+                                        <h2 style={{ fontSize: "1.5vw", marginTop: "2%" }}>Rule 3 here</h2>
                                     </Grid>
                                 </Stack>
                             </div>
