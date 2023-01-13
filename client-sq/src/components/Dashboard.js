@@ -12,7 +12,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
 function Dashboard(){
-
+    const [text,setText] = useState("Loading")
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
     const [dynInput, setInput] = useState("")
@@ -76,6 +76,32 @@ function Dashboard(){
 
       return () => {ignore = true; clearInterval(interval);}
     }, [])
+
+  
+ 
+   
+    
+    useEffect(() => {
+
+      function loadingDots () {
+        let timer = setTimeout(() => {
+          setText("Loading.")
+          },250)
+          
+          let timer2 = setTimeout(() => {
+            setText("Loading..")
+            },500)
+            
+          let timer3 =  setTimeout(() => {
+              setText("Loading...")
+            },750)
+      }
+      
+      if(loading){
+        loadingDots()
+        setText("Loading")
+        }
+         }, [loading])
 
     // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
     useEffect(() => {
@@ -167,16 +193,18 @@ function Dashboard(){
       <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
         <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
         fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
-      <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
-
-      
-
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.00,marginLeft:window.innerWidth*.01,// outline: '.25vh solid #e00000',
-      width:window.innerWidth*.303 }}>
+        <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
+          <Container style={{fontFamily:"'DM Sans', sans-serif" , 
+                            marginTop:window.innerHeight*.00,
+                            marginLeft:window.innerWidth*.01,
+                            // outline: '.25vh solid #e00000',
+                            width:window.innerWidth*.303 }}>
          
-          <div style={{display:"flex", flexDirection:"row"}}>
+            <div style={{display:"flex", flexDirection:"row"}}>
 
-          <input type="search" id = "site-search"  style = {{marginLeft: 0, marginTop: window.innerHeight*.018,
+              <input type="search" id = "site-search"  style = {{
+                                                            marginLeft: 0, 
+                                                            marginTop: window.innerHeight*.018,
                                                             width: window.innerWidth*.29, 
                                                             height: window.innerHeight*.06,  
                                                             borderRadius: window.innerHeight*.015,
@@ -186,14 +214,12 @@ function Dashboard(){
                                                             }} 
                                                             placeholder ="Search for a song to queue"  
                                                             className="searchA"
-                                                           
-                        onChange={(e)=>{setInput (e.target.value)}}
-                        onKeyPress={
-                          handleKeyPress
-                        }
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-          />
+                                                            onChange={(e)=>{setInput (e.target.value)}}
+                                                            onKeyPress={
+                                                              handleKeyPress
+                                                            }
+                                                            onFocus={handleFocus}
+                                                            onBlur={handleBlur} />
          
          
          <IconButton disableRipple
@@ -270,7 +296,7 @@ function Dashboard(){
                 </div>
                 {loading? 
                     <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
-                    Loading...
+                    {text}
                     </div>
                   :
                 <div style = {{fontSize: window.innerWidth*0.01025}}>
@@ -300,7 +326,7 @@ function Dashboard(){
 
                   {loading? 
                     <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
-                    Loading...
+                    {text}
                     </div>
                   :
                     <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
@@ -337,54 +363,44 @@ function Dashboard(){
 
 
         <div style = {{marginLeft:-window.innerHeight*.02}}>  
-        <div
-        style={{ marginLeft:window.innerWidth*.012, marginTop:window.innerHeight*.026}}
-        
-        >
-
-          <div style={{height:window.innerHeight*0.3}}>
+          <div style={{ marginLeft:window.innerWidth*.012, marginTop:window.innerHeight*.026}}>
+            <div style={{height:window.innerHeight*0.3}}>
               <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.0167}}>Now playing</h2>
-            {accessToken === ""? 
-            <h2>LOGIN TO SEE THE PLAYER</h2>:
-            <NowPlaying/>
-            }
-          </div>
-          <div>
-              <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>
-              <div style={{marginLeft:-window.innerWidth*.0045}}>
-            <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
-            <span style={{marginLeft:window.innerWidth*0.011}}>
-            #
-                </span>
-              <span style={{marginLeft:window.innerWidth*0.02}}>
-                Title
-                </span>
+              {accessToken === ""? 
+              <h2>LOGIN TO SEE THE PLAYER</h2>:
+              <NowPlaying/>
+              }
+            </div>
 
-                
-                <div style={{ 
-                  borderTop: ".25vh solid #e0e4f2", 
-                  marginLeft:window.innerWidth*0.00425, 
-                
-                  width: window.innerWidth*.4453,
-                  marginTop: window.innerHeight*.00755, 
-                  height:window.innerHeight*.018 }}
-                />     
-                
-                </div>
-          </div>
-          <Queue trackList={queueData} />
+            <div>
+              <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>
               
+                <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+                  <span style={{marginLeft:window.innerWidth*0.0065}}> # </span>
+                  <span style={{marginLeft:window.innerWidth*0.0175}}> Title </span>
+                  <div style={{ 
+                    borderTop: ".25vh solid #e0e4f2", 
+                    width: '100%',
+                    marginTop: window.innerHeight*.00755, 
+                    height:window.innerHeight*.018 }} />     
+                </div>
+              
+
+            {queueData.length==0? 
+              <div style={{opacity: "50%", color: "#3d435a", marginLeft: '.5vw',fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: 300}}>
+                Be the first to add a song to the queue!
+              </div>
+              :
+              <Queue trackList={queueData} />}
+            
+            </div>
+
           </div>
-          
-        </div>
-        
         </div>     
       </Container>
     </Container>
-    
-    </div>
-    
-    </div>
+  </div>
+</div>
     )}
 
 export default Dashboard;

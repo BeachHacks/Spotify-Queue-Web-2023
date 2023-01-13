@@ -60,7 +60,7 @@ export default function Track({ track, clickable, num }) {
             {clickable==false?
             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: window.innerHeight*0.018, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
             
-          }}>{num+2}</TableCell> 
+          }}>{num+1}</TableCell> 
             :""}
 
               
@@ -96,20 +96,17 @@ export default function Track({ track, clickable, num }) {
           
 
               {/* Button Add to Queue */}
-              <TableCell style={{ padding: ".75vh .9vw"}} align="right">
+              <TableCell style={{padding: "0vh", paddingRight: "1vw"}} align="right">
               {
                  !unqueueable && clickable? 
                  <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{  marginRight: -window.innerWidth*0.008}} >
                  {!clicked? 
                   !disable?
-                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022, color: "#496fff"}}/>
+                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw', color: "#496fff"}}/>
                  : 
-                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: window.innerWidth*0.022}}/>
+                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw'}}/>
                  :
-                 <CheckCircleRoundedIcon sx={{  fontSize: window.innerWidth*0.022, color: "#496fff"}}/>
-
-                
-                
+                 <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: "#496fff"}}/>
                  }
                  </IconButton>
                  : clickable ? 
