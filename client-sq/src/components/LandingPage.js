@@ -60,7 +60,7 @@ function LandingPage() {
                                             width: window.innerWidth * 0.1,
                                             fontSize: window.innerWidth * 0.01,
                                         }}
-                                        onClick={() => (setOpen(false))}
+                                        onClick={() => {setOpen(false); localStorage.setItem('visited', 'true')}}
                                     >
                                         Ready to vibe!
                                     </Button>
@@ -194,7 +194,7 @@ function LandingPage() {
                                             borderRadius: 10,
                                             fontSize: window.innerWidth * 0.009,
                                         }}
-                                        onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1) }}
+                                        onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
                                     > Ready to Vibe! </Button>
                                     <img src={"Slider3.png"}
                                         style={{
