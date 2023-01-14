@@ -3,7 +3,7 @@ import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
 import NavBar from "./NavBar"
-import {IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
+import {Fade,IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
 import { Typography } from '@mui/material';
 import { Row } from "react-bootstrap";
 import DisplayResults from "./DisplayResults";
@@ -338,7 +338,7 @@ function Dashboard(){
               
                 
                 <DisplayResults trackList={searchResults}  />
-             
+               
                 
               </div>
               }
@@ -377,7 +377,11 @@ function Dashboard(){
               
                 <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
                   <span style={{marginLeft:window.innerWidth*0.0065}}> # </span>
-                  <span style={{marginLeft:window.innerWidth*0.0175}}> Title </span>
+
+                  {queueData.length<20? 
+                  <span style={{marginLeft:window.innerWidth*0.018}}> Title </span>:
+                  <span style={{marginLeft:window.innerWidth*0.01875}}> Title </span>}
+                  
                   <div style={{ 
                     borderTop: ".25vh solid #e0e4f2", 
                     width: '100%',
@@ -391,6 +395,7 @@ function Dashboard(){
                 Be the first to add a song to the queue!
               </div>
               :
+              
               <Queue trackList={queueData} />}
             
             </div>

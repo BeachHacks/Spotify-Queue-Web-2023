@@ -11,13 +11,14 @@ const style = {
     transform: 'translate(-50%, -50%)',
     borderRadius: 2,
     boxShadow: 24,
-    width: "75%",
-    height: "80%",
+    width: "77.5%",
+    height: "75%",
     fontFamily: "DM Sans",
     backgroundColor: "#F6F8FF",
     outline: "none",
     border: 'none',
     color: "#3C435C"
+
 }
 
 function LandingPage() {
@@ -36,58 +37,70 @@ function LandingPage() {
             <Modal open={open}>
                 <Grid
                     container
-                    sx={[style, mainPageFadeIn === true ? { padding: 4 } : { padding: 0 }]}
+                    sx={[style, mainPageFadeIn === true ? { padding: '4vh' } : { padding: 0 }]}
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
                 >
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
-                            <Grid style={{ margin: "2.5vw", }}>
-                                <h1 style={{ fontSize: '6vw', fontWeight: "bold", color: "#3C435C" }}>
+
+                            <Grid style={{width: "100%",
+                                        height: "100%",
+                                        margin: "5vw",
+                                        //border: ".25vh solid #e0e4f2",
+                                         }}>
+                                <div style={{ fontSize: '5vw', fontWeight: "bold", color: "#3C435C",marginTop:'5vh' }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
-                                </h1>
-                                <br />
-                                <h2 style={{ fontSize: '2vw', height: '7vh', color: "#3C435C" }}>Ready to add your vibe to the party with<br />BeachMuse?</h2>
-                                <br />
-                                <Grid style={{
-                                    margin: 0,
-                                    display: "inline-flex",
-                                    marginLeft: 0,
-                                    height: '7vh',
-                                }} direction="row" alignItems="center" justifyContent="center">
-                                    <Button
+                                </div>
+                                
+                                <div style={{ fontWeight: 1000,fontSize: '2.5vw', height: '7vh', color: "#3C435C" }}>Ready to add your vibe to the party with <div style = {{marginTop:'-1vh'}}>BeachMuse?</div></div>
+                                
+                               
+                                    <button
+
                                         style={{
+                                            fontWeight: 1000,
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: '10vw',
-                                            height: '7vh',
-                                            fontSize: '1vw',
+
+                                            width: '15vw',
+                                            height: '9vh',
+                                            fontSize: '1.5vw',
+                                            borderRadius: '.75vh',
+                                            border: 'none'
+
                                         }}
                                         onClick={() => {setOpen(false); localStorage.setItem('visited', 'true')}}
                                     >
                                         Ready to vibe!
-                                    </Button>
-                                    <Button style={{
-                                        marginLeft: '.5vw',
-                                        backgroundColor: "#EBEEFF",
-                                        color: "#496fff",
-                                        width: '10vw',
-                                        height: '7vh',
-                                        fontSize: '1vw',
-                                    }}
+
+                                    </button>
+                                    <button
+                                        style={{
+                                            fontWeight: 1000,
+                                            backgroundColor: "#EBEEFF",
+                                            color: "#496fff",
+                                            width: '15vw',
+                                            height: '9vh',
+                                            fontSize: '1.5vw',
+                                            borderRadius: '.75vh',
+                                            border: 'none',
+                                            marginLeft: '1vw'
+                                        }}
                                         onClick={() => { setMainPageFadeIn(false); console.log(clickNum) }}
                                     >
                                         How to Use
-                                    </Button>
+                                    </button>
                                     <img src="BeachMuseGraphics.png"
                                         style={{
-                                            marginTop: '7.5vh',
-                                            marginLeft: '10vw',
-                                            height: .05 * 290 + 'vw',
-                                            width: .05 * 557 + 'vw'
+                                            marginTop: '3vh',
+                                            marginLeft: '3vw',
+                                            height: .052 * 290 + 'vw',
+                                            width: .052 * 557 + 'vw'
                                         }} />
-                                </Grid>
+                               
+
                             </Grid>
                         </Fade> : <></>}
 
@@ -111,7 +124,9 @@ function LandingPage() {
                                                 backgroundColor: "#496fff",
                                                 width: "9vw",
                                                 height: "7vh",
-                                                borderRadius: 10,
+
+                                                borderRadius: '1vh',
+
                                                 fontSize: "1vw",
                                             }}
                                             onClick={() => { handleClick(); console.log(clickNum) }}
@@ -157,7 +172,9 @@ function LandingPage() {
                                             backgroundColor: "#496fff",
                                             width: "9vw",
                                             height: "7vh",
-                                            borderRadius: 10,
+
+                                            borderRadius: '1vh',
+
                                             fontSize: "1vw",
                                         }}
                                         onClick={() => { handleClick(); console.log(clickNum) }}
@@ -203,7 +220,9 @@ function LandingPage() {
                                             backgroundColor: "#496fff",
                                             width: "9vw",
                                             height: "7vh",
-                                            borderRadius: 10,
+
+                                            borderRadius: '1vh',
+
                                             fontSize: "0.9vw",
                                         }}
                                         onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
