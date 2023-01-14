@@ -54,7 +54,7 @@ function NowPlaying() {
     }
 
     return (
-        <div style={{ display: "inline-flex", width: window.innerWidth*.444,}}>
+        <div style={{ display: "inline-flex", width: "100%"}}>
             <div>
                 <img src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
