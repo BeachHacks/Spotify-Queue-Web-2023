@@ -8,11 +8,14 @@ import React from "react";
 import NavBar from "./NavBar"
 import { Routes, Route } from "react-router-dom"
 import HowToUse from './HowToUse';
+import LandingPage from "./LandingPage";
 
 function App() {
   return (
     <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: "#f6f8fe", height: "100vh" }}>
+    {(localStorage.getItem('visited') === null) && <LandingPage/>}
       <NavBar />
+      
       <Routes>
         <Route path="/admin" element={<Admin />}>
         </Route>
