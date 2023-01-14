@@ -9,7 +9,7 @@ export default function Authorized() {
 
   useEffect(() => {
     axios
-      .post(process.env.REACT_APP_API_URL + "/host/hostLogin", {
+      .post(process.env.REACT_APP_API_URL + "/host/login", {
         code,
       })
       .then(res => {

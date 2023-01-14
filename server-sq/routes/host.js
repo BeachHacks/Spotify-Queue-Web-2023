@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = function(spotifyApi, hostStatus) {
 
-  router.post('/hostLogin', (req,res) => {
+  router.post('/login', (req,res) => {
     const code = req.body.code
     spotifyApi.authorizationCodeGrant(code).then(
       function(data) {
@@ -24,7 +24,7 @@ module.exports = function(spotifyApi, hostStatus) {
     res.send('Done')
   })
 
-  router.get('/hostStatus', (req, res) => {
+  router.get('/status', (req, res) => {
     res.json(hostStatus);
   })
 
