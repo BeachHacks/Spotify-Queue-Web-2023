@@ -23,6 +23,7 @@ module.exports = function(socket, spotifyApi, adminStatus) {
       queue.push(req.body)
       buffer.push(req.body)
       added = true
+      socket.emit('queueAdd', req.body);
     }
     added ? res.send("Added to queue") : res.send("Failed to add song")
   })

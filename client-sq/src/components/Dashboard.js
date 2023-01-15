@@ -10,9 +10,12 @@ import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
+import io from 'socket.io-client'
+import { SocketContext } from './App';
 
 function Dashboard(){
 
+  let socket = useContext(SocketContext);
 
   const [searchResults, setSearchResults] = useState([])
   //const [goodSongsArr, setPassArr] = useState([])
@@ -22,7 +25,6 @@ function Dashboard(){
   const [accessToken, setAccessToken] = useState("")
 
   const [loading, setLoading] = useState(false)
-
 
   const [clicked, setClicked] = useState(false)
   const [clickedSB, setClickedSB] = useState("#a3a8bf")
@@ -37,6 +39,7 @@ function Dashboard(){
     setClickedSB("#a3a8bf");
     setClicked(false)
   }
+
   useEffect(() => {
     let ignore = false;
 
@@ -55,11 +58,7 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
-
-
     }
-
-
   }
 
   // Hook handling retrieving the data of the queue from the backend.
@@ -70,12 +69,17 @@ function Dashboard(){
         const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
         if (!ignore) setQueueData(result.data);
       }
+      fetchQueue();
 
-      const interval = setInterval(() => {
-        fetchQueue();
-      }, 1000);
+      if (socket == null) {
+        socket = io.connect(process.env.REACT_APP_API_URL);
+      }
 
-      return () => {ignore = true; clearInterval(interval);}
+      socket.on('queueAdd', (data) => {
+        setQueueData((prevData) => [...prevData, data]);
+      })
+
+      return () => {ignore = true; socket.off('addQueue');}
     }, [])
 
   // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
@@ -97,8 +101,6 @@ function Dashboard(){
             console.log(err)
           })
       } 
-
-
 
       function filter(features){
         var boolFilter = []
