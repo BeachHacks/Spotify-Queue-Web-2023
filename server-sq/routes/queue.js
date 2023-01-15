@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(spotifyApi, adminStatus) {
+module.exports = function(socket, spotifyApi, adminStatus) {
   const queue = []; 
   const buffer = [];
 

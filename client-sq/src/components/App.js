@@ -4,13 +4,31 @@ import Dashboard from './Dashboard.js';
 import Admin from "./Admin"
 import Authorized from "./Authorized"
 import History from "./History"
-import React from "react";
+import React, {useEffect} from "react";
 import NavBar from "./NavBar"
 import { Routes, Route } from "react-router-dom"
 import HowToUse from './HowToUse';
 import LandingPage from "./LandingPage";
+import io from 'socket.io-client';
+
 
 function App() {
+
+  // Socket Handlers
+  useEffect(() => {
+    // Create Socket
+    const socket = io(process.env.REACT_APP_API_URL);
+    
+    // Event Handlers
+    socket.on('id', (res) => {
+      console.log('ID: ', res);
+    });
+
+    return () => {
+      socket.off('id');
+    };
+  }, [])
+
   return (
     <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: "#f6f8fe", height: "100vh" }}>
     <LandingPage/>
