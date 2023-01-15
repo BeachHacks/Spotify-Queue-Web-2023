@@ -4,7 +4,7 @@ import Dashboard from './Dashboard.js';
 import Admin from "./Admin"
 import Authorized from "./Authorized"
 import History from "./History"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavBar from "./NavBar"
 import { Routes, Route } from "react-router-dom"
 import HowToUse from './HowToUse';
@@ -12,25 +12,22 @@ import LandingPage from "./LandingPage";
 import { createContext } from 'react'
 import io from 'socket.io-client';
 
-export const SocketContext = createContext({});
+export const SocketContext = createContext(io(process.env.REACT_APP_API_URL));
 
 function App() {
 
-  const [apiSocket, setApiSocket] = useState(null);
+  const apiSocket = useContext(SocketContext);
 
   useEffect(() => {
-    // Create Socket
-    const socket = io(process.env.REACT_APP_API_URL);
-    setApiSocket(socket);
     
     // Event Handlers
-    socket.on('id', (res) => {
+    apiSocket.on('id', (res) => {
       console.log('ID: ', res);
     });
 
     return () => {
-      socket.off('id');
-      socket.disconnect();
+      apiSocket.off('id');
+      apiSocket.disconnect();
     };
   }, [])
 

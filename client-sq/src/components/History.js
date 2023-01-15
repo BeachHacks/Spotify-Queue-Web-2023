@@ -5,12 +5,11 @@ import Track from "./Track"
 import { Container, IconButton } from '@mui/material';
 import {  TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import io from 'socket.io-client';
 import { SocketContext } from './App';
 
 function History() {
 
-  let socket = useContext(SocketContext);
+  const socket = useContext(SocketContext);
 
   const [historyData, setHistoryData] = useState([])
   const [searchedHistory, setSearchedHistory] = useState(historyData)
@@ -39,15 +38,12 @@ function History() {
     }
     fetchHistory();
 
-    if (socket == null) {
-      socket = io.connect(process.env.REACT_APP_API_URL)
-    }
     socket.on('updateHistory', (data) => {
       setHistoryData((prevData) => ([data, ...prevData]))
     })
     return () => { 
       ignore = true;
-      if (socket != null) socket.off('updateHistory');
+      socket.off('updateHistory');
     }
   }, [])
 

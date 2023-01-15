@@ -15,7 +15,7 @@ import { SocketContext } from './App';
 
 function Dashboard(){
 
-  let socket = useContext(SocketContext);
+  const socket = useContext(SocketContext);
 
   const [searchResults, setSearchResults] = useState([])
   //const [goodSongsArr, setPassArr] = useState([])
@@ -70,10 +70,6 @@ function Dashboard(){
         if (!ignore) setQueueData(result.data);
       }
       fetchQueue();
-
-      if (socket == null) {
-        socket = io.connect(process.env.REACT_APP_API_URL);
-      }
 
       socket.on('queueAdd', (data) => {
         setQueueData((prevData) => [...prevData, data]);
