@@ -15,7 +15,7 @@ function NowPlaying() {
     title: "Loading"
   });
 
-  // Socket Handler
+  // Initialization
   useEffect(() => {
 
     // Socket Handlers
@@ -24,10 +24,11 @@ function NowPlaying() {
     })
 
     return () => {
-      io.off('playback');
+     io.off('playback');
     }
   }, [])
 
+  // Helper Functions
   const millisecondsToMinute = (millisec) => {
     var minutes = Math.floor((millisec / 1000) / 60)
     var seconds = (millisec / 1000) % 60
@@ -40,6 +41,7 @@ function NowPlaying() {
     return minutes + ":" + seconds
   }
 
+  // Render NowPlaying Component
   return (
     <div style={{ display: "inline-flex", width: window.innerWidth*.444,}}>
     <div>

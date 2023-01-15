@@ -41,7 +41,7 @@ module.exports = function(socket, spotifyApi, adminStatus) {
             },
             data.body.item.album.images[0]
           )
-          history.push({
+          const newHistoryItem = {
             title: data.body.item.name,
             artist: data.body.item.artists[0].name,
             albumUrl: smallestAlbumImage.url,
@@ -50,8 +50,10 @@ module.exports = function(socket, spotifyApi, adminStatus) {
             uri: data.body.item.uri,
             explicit: data.body.item.explicit, 
             filter: true,
-          })
+          }
+          history.push(newHistoryItem)
           console.log("Added to history")
+          socket.emit('updateHistory', newHistoryItem);
         }
         else { //Debugging Purposes
           //console.log("Not added to history. Empty playback state.")
