@@ -56,8 +56,18 @@ module.exports = function(socket, spotifyApi, adminStatus) {
         else { //Debugging Purposes
           //console.log("Not added to history. Empty playback state.")
         }
+
         adminStatus.playbackState = data.body
         adminStatus.activePlaying = adminStatus.playbackState.device.is_active
+        const playState = adminStatus.playbackState
+        const playClient = {
+          title: playState.item.name,
+          artist: playState.item.artists[0].name,
+          albumImage: playState.item.album.images,
+          progress: playState.progress_ms,
+          duration: playState.item.duration_ms,
+        }
+        socket.emit('playback', playClient);
       } 
     }, (err) => {
       console.log('Could not retrieve playback state successfully', err);

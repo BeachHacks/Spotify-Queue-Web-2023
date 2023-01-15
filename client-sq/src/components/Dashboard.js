@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
@@ -12,6 +12,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
 
 function Dashboard(){
+
 
   const [searchResults, setSearchResults] = useState([])
   //const [goodSongsArr, setPassArr] = useState([])

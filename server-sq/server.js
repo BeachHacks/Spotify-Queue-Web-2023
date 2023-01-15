@@ -40,7 +40,6 @@ app.use('/host', host(spotifyApi, hostStatus));
 app.use('/queue', queue(io, spotifyApi, hostStatus));
 app.use('/playback', playback(io, spotifyApi, hostStatus));
 app.use('/search', search(spotifyApi, hostStatus));
-app.set('socketio', io);
 
 // Open to port
 server.listen(process.env.PORT || 3001, () => {
@@ -52,7 +51,6 @@ io.on('connection', (socket) => {
   socket.emit('id', socket.id);
   console.log(socket.id + ' connected');
   socket.on('disconnect', (reason) => {
-    console.log(reason);
   })
 });
 
