@@ -80,7 +80,7 @@ function LandingPage() {
                                     >
                                         How to Use
                                     </Button>
-                                    <img src="BeachMuseGraphics.png"
+                                    <img src="BeachMuseGraphics1.png"
                                         style={{
                                             marginTop: '7.5vh',
                                             marginLeft: '10vw',
