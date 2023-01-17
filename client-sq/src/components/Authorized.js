@@ -9,7 +9,7 @@ export default function Authorized() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/adminLogin", {
+      .post(process.env.REACT_APP_API_URL + "/adminLogin", {
         code,
       })
       .then(res => {
@@ -26,7 +26,7 @@ export default function Authorized() {
       className="d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      <a className="btn btn-success btn-lg" href={'http://localhost:3000/'}>
+      <a className="btn btn-success btn-lg" href={process.env.REACT_APP_BASE_URL}>
         Authorized. Back to Dashboard
       </a>
     </Container>

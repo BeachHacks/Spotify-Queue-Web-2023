@@ -58,11 +58,7 @@ main{
   padding: 20px;
 }
 
-.top_section{
-  display: flex;
-  align-items:center;
-  padding:2.2vh 0vw;
-}
+
 .logo{
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
@@ -93,15 +89,28 @@ main{
 }
 .searchA{
 
-  font-size: 1.9vh;
+  font-size:1.05vw;
+  color:#3d435a;
 }
 .searchA::placeholder{
-  font-size: 1.9vh;
+  font-size: 1.05vw;
+  color:#a3a8bf
 }
 .searchA:focus{
   
     outline: none !important;
 
+}
+
+.circle {
+  border-radius: 50vw;
+  width: 2vw;
+  height: 2vw;
   
- 
+  padding-top: .2vw;
+  background: #fff;
+  border: .25vh solid #3d435a;
+  color: #3d435a;
+  text-align: center;
+  font:'DM Sans', sans-serif;
 }

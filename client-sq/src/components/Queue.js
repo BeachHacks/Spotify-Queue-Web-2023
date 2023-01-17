@@ -4,34 +4,39 @@ import Track from "./Track"
 import { TableContainer, Table, TableBody, tableCellClasses, TableCell } from '@mui/material';
 
 export default function Queue({ trackList }) {
-  return (
-    // Will be modified to include displaying position in queue.
-    <TableContainer sx={{ maxHeight: window.innerHeight * .45, boxShadow: 0, width: window.innerWidth * .46, }} style={{ overflowY: "auto", overflowX: "hidden", marginLeft: -window.innerWidth * 0.005 }}>
+    return (
+      // Will be modified to include displaying position in queue.
+      
+        <TableContainer sx={{ height: "42vh", boxShadow:0,width: "auto",}} 
+        style={{ overflowY: "auto", overflowX:"hidden", marginLeft: window.innerWidth*0.00}}>
+          
+          
+          <Table
+          stickyHeader
+          sx={{
+                [`& .${tableCellClasses.root}`]: {
+                borderBottom: "none" },
+                boxShadow:0,
+                
+            }}
+          >
 
-      <Table
-        stickyHeader
-        sx={{
-          [`& .${tableCellClasses.root}`]: {
-            borderBottom: "none"
-          },
-          boxShadow: 0,
-
-        }}
-      >
-
-        <TableBody >
-          <TableCell >
-            {trackList.map((track, index) => (
-              <Track
-                track={track}
-                key={index}
-                num={index}
-                clickable={false}
+          
+          <TableBody >
+           
+           
+              {trackList.map((track, index) => (
+                <Track 
+                  track={track}
+                  key={index}
+                  num={index}
+                  clickable={false} 
               />
-            ))}
-          </TableCell>
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
+              ))}
+           
+          </TableBody>
+            </Table>
+        </TableContainer>
+    )
+
 }

@@ -1,15 +1,25 @@
 const express = require("express");
 const SpotifyWebApi = require("spotify-web-api-node");
 const app = express();
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const queue = require('./routes/queue')
 const playback = require('./routes/playback')
-app.use(cors())
 app.use(bodyParser.json())
 
-const clientId = 'db55ce79bd574c94aca99e831e39d6c9', clientSecret = 'b07d5cc57b5d4afc8b29032e60cffee9';
-const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: 'http://localhost:3000/auth'});
+// Deployment Related Functionality
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+// API
+const clientId = process.env.CLIENT_ID, clientSecret = process.env.CLIENT_SECRET;
+const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: process.env.SITE_URL + '/auth'});
 const adminStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
 app.post('/searchTracks', function(req, res){
@@ -85,4 +95,6 @@ app.use('/queue', queue(spotifyApi, adminStatus));
 app.use('/playback', playback(spotifyApi, adminStatus));
 
 // Open to port
-app.listen(3001);
+app.listen(process.env.PORT || 3001, () => {
+  console.log('Beachmuse API Active');
+});
