@@ -67,17 +67,7 @@ const NavBar = ({ children }) => {
             ))
         }
                 </div>
-                <div style={{ marginLeft: '1.8vw', marginTop: '52vh' }}>
-                    <a style={{
-                        fontFamily: 'DM Sans',
-                        fontWeight: 300,
-                        fontSize: '1.5vh',
-                        color: "#496fff",
-                        marginRight: '.5vw'
-                    }} >Powered by</a>
-                    <img style={{ height: 2.6 * .709 + 'vw', width: 2.6 * 2.362 + 'vw' }}
-                        src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" />
-                </div>
+                
                 <main>{children}</main>
             </div>
         </div>
