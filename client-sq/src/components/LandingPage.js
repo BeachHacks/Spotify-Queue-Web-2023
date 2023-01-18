@@ -232,7 +232,7 @@ function LandingPage() {
                                         border: 'none',
                                         
                                     }}
-                                    onClick={() => { handleClick(); console.log(clickNum) }}
+                                    onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
                                 > Ready to vibe!</button>
                                 <img src={"Slider3.png"}
                                     style={{
