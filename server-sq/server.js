@@ -6,6 +6,7 @@ const io = require('socket.io')(server, {cors: {origin: "*"}});
 const SpotifyWebApi = require("spotify-web-api-node");
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const SessionManager = require('./models/SessionManager');
 
 // Route Files
 const host = require('./routes/host')
@@ -35,11 +36,17 @@ app.use(cors())
 const clientId = process.env.CLIENT_ID, clientSecret = process.env.CLIENT_SECRET;
 const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: process.env.SITE_URL + '/auth'});
 const hostStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
+const session = new SessionManager();
 
-app.use('/host', host(spotifyApi, hostStatus));
-app.use('/queue', queue(io, spotifyApi, hostStatus));
-app.use('/playback', playback(io, spotifyApi, hostStatus));
-app.use('/search', search(spotifyApi, hostStatus));
+app.set('spotifyApi', spotifyApi);
+app.set('hostStatus', hostStatus);
+app.set('session', session);
+app.set('io', io);
+
+app.use('/host', host);
+//app.use('/search', search);
+//app.use('/queue', queue);
+//app.use('/playback', playback);
 
 // Open to port
 server.listen(process.env.PORT || 3001, () => {
@@ -49,8 +56,11 @@ server.listen(process.env.PORT || 3001, () => {
 // Socket Handlers
 io.on('connection', (socket) => {
   socket.emit('id', socket.id);
-  console.log(socket.id + ' connected');
   socket.on('disconnect', (reason) => {
   })
 });
 
+// Scheduled Tasks
+setInterval(() => {
+  session.refreshToken();
+}, 1800000);

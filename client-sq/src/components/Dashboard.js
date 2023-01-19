@@ -66,7 +66,7 @@ function Dashboard(){
       let ignore = false; 
 
       async function fetchQueue() {
-        const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
+        const result = await axios(process.env.REACT_APP_API_URL + '/queue/');
         if (!ignore) setQueueData(result.data);
       }
       fetchQueue();

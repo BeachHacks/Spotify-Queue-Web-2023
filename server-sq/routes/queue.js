@@ -1,32 +1,46 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(socket, spotifyApi, adminStatus) {
-  const queue = []; 
-  const buffer = [];
+let socket = null;
+let session = null;
+const buffer = [];
 
-  router.get('/', (req, res) => {
-    res.send('queue routing check')
-  })
+// Middleware
+router.use((req, res, next) => {
+  session = req.app.get('session');
+  socket = req.app.get('io');
+  next();
+})
 
-  router.get('/next', (req, res) => {
-    res.json(queue[0])
-  })
+// Routes
+router.get('/', (req, res) => {
+  res.send(session.queue)
+})
 
-  router.get('/show', (req, res) => {
-    res.json(queue)
-  })
+router.post('/add', (req, res) => {
+  const added = session.addToQueue(req.body); 
+  if (added) {
+    buffer.push(req.body.uri);
+    socket.emit('queueAdd', req.body);
+  }
+  added ? res.send("Added to queue") : res.send("Failed to add song")
+})
 
-  router.post('/add', (req, res) => {
-    let added = false 
-    if (adminStatus.activePlaying) {
-      queue.push(req.body)
-      buffer.push(req.body)
-      added = true
-      socket.emit('queueAdd', req.body);
-    }
-    added ? res.send("Added to queue") : res.send("Failed to add song")
-  })
+// Tasks
+setInterval(() => {
+  if (buffer.length < 1 || !session.status.active) { return; }
+  const next = buffer.shift();
+  session.pushToSpotify(next).then(() => {
+    console.log('Added song to Spotify')
+  }, (err) => {
+    console.log('Error occurred trying to add song to Spotify');
+    console.log(err);
+  }) 
+}, 6000);
+
+module.exports = router;
+
+/*
 
   // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)
   setInterval(() => {
@@ -58,3 +72,4 @@ module.exports = function(socket, spotifyApi, adminStatus) {
 
   return router;
 }
+*/
