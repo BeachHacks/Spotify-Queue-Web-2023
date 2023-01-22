@@ -22,6 +22,4 @@ router.get('/token', (req, res) => {
   res.send(session.token)
 })
 
-// 1800000
-
 module.exports = router;

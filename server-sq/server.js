@@ -44,7 +44,7 @@ app.set('session', session);
 app.set('io', io);
 
 app.use('/host', host);
-//app.use('/search', search);
+app.use('/search', search);
 //app.use('/queue', queue);
 //app.use('/playback', playback);
 
@@ -61,6 +61,12 @@ io.on('connection', (socket) => {
 });
 
 // Scheduled Tasks
+// Refresh Token
 setInterval(() => {
   session.refreshToken();
 }, 1800000);
+
+// Push to Spotify
+setInterval(() => {
+
+}, 10000);
