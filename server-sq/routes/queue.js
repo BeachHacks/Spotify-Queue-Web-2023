@@ -3,7 +3,6 @@ const router = express.Router()
 
 let socket = null;
 let session = null;
-const buffer = [];
 
 // Middleware
 router.use((req, res, next) => {
@@ -20,23 +19,12 @@ router.get('/', (req, res) => {
 router.post('/add', (req, res) => {
   const added = session.addToQueue(req.body); 
   if (added) {
-    buffer.push(req.body.uri);
     socket.emit('queueAdd', req.body);
   }
   added ? res.send("Added to queue") : res.send("Failed to add song")
 })
 
 // Tasks
-setInterval(() => {
-  if (buffer.length < 1 || !session.status.active) { return; }
-  const next = buffer.shift();
-  session.pushToSpotify(next).then(() => {
-    console.log('Added song to Spotify')
-  }, (err) => {
-    console.log('Error occurred trying to add song to Spotify');
-    console.log(err);
-  }) 
-}, 6000);
 
 module.exports = router;
 

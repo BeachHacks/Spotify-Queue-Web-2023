@@ -12,6 +12,7 @@ class SessionManager {
       accessToken : '',
     };
     this._playback = {};
+    this._buffer = [];
   }
 
   // Getters & Setters
@@ -43,9 +44,15 @@ class SessionManager {
     return this._status.token;
   }
 
+  get buffer(){
+    return this._buffer;
+  }
+
   // Methods
   addToQueue(item) {
     this._queue.push(item);
+    this._buffer.push(item.uri);
+    return true;
   }
 
   popQueue(){

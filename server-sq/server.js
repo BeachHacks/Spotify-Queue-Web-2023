@@ -45,7 +45,7 @@ app.set('io', io);
 
 app.use('/host', host);
 app.use('/search', search);
-//app.use('/queue', queue);
+app.use('/queue', queue);
 //app.use('/playback', playback);
 
 // Open to port
@@ -68,5 +68,12 @@ setInterval(() => {
 
 // Push to Spotify
 setInterval(() => {
-
-}, 10000);
+  if (session.buffer.length < 1 || !session.status.host) { console.log(session.status.host); return; }
+  const next = session.buffer.shift();
+  session.pushToSpotify(next).then(() => {
+    console.log('Added song to Spotify')
+  }, (err) => {
+    console.log('Error occurred trying to add song to Spotify');
+    console.log(err);
+  }) 
+}, 5000);
