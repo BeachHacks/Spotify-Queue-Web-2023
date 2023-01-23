@@ -29,7 +29,7 @@ const NavBar = ({ children }) => {
 
       <div style={{
         borderRight: '.25vh solid #e0e4f2',              
-        width: "17.60417%",
+        width: "17.60417vw",
         backgroundColor:"#ffffff",
         padding: "0% 0%", 
         fontFamily:"DM Sans",
@@ -37,7 +37,7 @@ const NavBar = ({ children }) => {
         }}
        
         >
-            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", padding: "0% 15%" }}>
+            <div style={{width: "17.60417vw",alignItems:"center", alignSelf:"center", alignContent:"center", padding: "0% 15%" }}>
                <div style={{
                     height: "18vh",
                     display: "flex",
