@@ -27,18 +27,17 @@ const NavBar = ({ children }) => {
     ]
     return (
 
-        <div style = {{ height: "80vh" }}>
       <div style={{
-                      
-        marginLeft:'1vw', 
+        borderRight: '.25vh solid #e0e4f2',              
+        width: "17.60417%",
         backgroundColor:"#ffffff",
-        
+        padding: "0% 0%", 
         fontFamily:"DM Sans",
         fontWeight:700
         }}
        
         >
-            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", marginLeft:'1vw',marginTop:'2vh'}}>
+            <div style={{alignItems:"center", alignSelf:"center", alignContent:"center", padding: "0% 15%" }}>
                <div style={{
                     height: "18vh",
                     display: "flex",
@@ -54,7 +53,7 @@ const NavBar = ({ children }) => {
                <p style={{ marginTop:'4vh', color: "#3d435a",  fontSize: '2vh'}}></p>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink style={{marginLeft: '.65vw',marginBottom: '1vh', width: '12.35vw',
+                       <NavLink style={{ width: '100%',
                        borderRadius: '.75vh',
                        padding:  "1vh .6vw",
                        gap: '1.1vh',
@@ -70,9 +69,9 @@ const NavBar = ({ children }) => {
                 
                 <main>{children}</main>
             </div>
-        </div>
     );
 };
 
 export default NavBar;
+
 

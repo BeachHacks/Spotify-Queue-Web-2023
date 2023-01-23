@@ -190,7 +190,7 @@ function Dashboard(){
 
 
     return (
-      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width: "100%", maxWidth:"100%"}}>
         <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
         fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
