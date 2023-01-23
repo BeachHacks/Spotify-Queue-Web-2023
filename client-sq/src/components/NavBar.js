@@ -27,11 +27,13 @@ const NavBar = ({ children }) => {
     ]
     return (
 
+
       <div style={{
         borderRight: '.25vh solid #e0e4f2',              
         width: "17.60417vw",
         backgroundColor:"#ffffff",
         padding: "0% 0%", 
+        minHeight: "100vh",
         fontFamily:"DM Sans",
         fontWeight:700
         }}
@@ -41,12 +43,12 @@ const NavBar = ({ children }) => {
                <div style={{
                     height: "18vh",
                     display: "flex",
-                    
-                    padding:"-.5vh .8vw"
+                    alignItems:"center",
+                    padding:"2.2vh 1.6vw"
                     }}>
                   
 
-                <img   style={{ width: 17*.674+'vw', height: 17*0.511+'vw'}}
+                <img   style={{height: 8*.615+'vw', width:8*1.254+'vw'}}
        src="logo.png" />
                    
                </div>
@@ -61,12 +63,22 @@ const NavBar = ({ children }) => {
 
                     }}to={item.path} key={index} className="link" activeclassName="active">
                     <div style={{display:  "block",  marginTop:'-.09vh', width: '1.7vw' }}>{item.icon}</div>
-                    <div style={{display:  "block",  fontSize:'1.025vw' ,fontWeight: 500,marginTop:'.09vh',marginLeft: '.08vw' }} >{item.name}</div>
+                    <div style={{display:  "block",  fontSize:'1.025vw' ,marginTop:'.09vh',marginLeft: '.08vw' }} >{item.name}</div>
                 </NavLink>
             ))
         }
                 </div>
-                
+                <div style={{ marginLeft: '1.8vw', marginTop: '52vh' }}>
+                    <a style={{
+                        fontFamily: 'DM Sans',
+                        fontWeight: 300,
+                        fontSize: '1.5vh',
+                        color: "#496fff",
+                        marginRight: '.5vw'
+                    }} >Powered by</a>
+                    <img style={{ height: 2.6 * .709 + 'vw', width: 2.6 * 2.362 + 'vw' }}
+                        src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" />
+                </div>
                 <main>{children}</main>
             </div>
     );
