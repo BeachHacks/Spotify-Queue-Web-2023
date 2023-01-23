@@ -46,7 +46,7 @@ app.set('io', io);
 app.use('/host', host);
 app.use('/search', search);
 app.use('/queue', queue);
-//app.use('/playback', playback);
+app.use('/playback', playback);
 
 // Open to port
 server.listen(process.env.PORT || 3001, () => {
@@ -68,7 +68,7 @@ setInterval(() => {
 
 // Push to Spotify
 setInterval(() => {
-  if (session.buffer.length < 1 || !session.status.host) { console.log(session.status.host); return; }
+  if (session.buffer.length < 1 || !session.status.host) { return; }
   const next = session.buffer.shift();
   session.pushToSpotify(next).then(() => {
     console.log('Added song to Spotify')
@@ -77,3 +77,64 @@ setInterval(() => {
     console.log(err);
   }) 
 }, 5000);
+
+// Retrieve playback state every 3 seconds and update history
+setInterval(() => {
+  if (!session.status.host) { return; }
+  session.spotifyApi.getMyCurrentPlaybackState().then((data) => {
+    //console.log('Retrieved playback state')
+    //console.log(data.body) //Debugging Purposes
+    if (Object.keys(data.body).length != 0){
+      if (Object.keys(session.playback).length != 0 && data.body?.item?.uri != session.playback.item.uri) {
+        const smallestAlbumImage = data.body.item.album.images.reduce(
+          (smallest, image) => {
+            if (image.height < smallest.height) return image
+            return smallest
+          },
+          data.body.item.album.images[0]
+        )
+        const newHistoryItem = {
+          title: data.body.item.name,
+          artist: data.body.item.artists[0].name,
+          albumUrl: smallestAlbumImage.url,
+          albumName: data.body.item.album.name,
+          songDuration: data.body.item.duration,
+          uri: data.body.item.uri,
+          explicit: data.body.item.explicit, 
+          filter: true,
+        }
+        session.addToHistory(newHistoryItem);
+        console.log("Added to history")
+        io.emit('updateHistory', newHistoryItem);
+      }
+      else { //Debugging Purposes
+        //console.log("Not added to history. Empty playback state.")
+      }
+
+      session.playback = data.body
+      //session.active(session.playback.device.is_active);
+      const playState = session.playback;
+      const playClient = {
+        title: playState.item.name,
+        artist: playState.item.artists[0].name,
+        albumImage: playState.item.album.images,
+        progress: playState.progress_ms,
+        duration: playState.item.duration_ms,
+      }
+      io.emit('playback', playClient);
+    } 
+  }, (err) => {
+    console.log('Could not retrieve playback state successfully', err);
+  }
+  )}, 1000);
+
+// Update Queue
+setInterval(() => {
+  if (session.queue.length < 1) { return ; }
+  if (Object.keys(session.playback).length != 0 && session.queue[0].uri == session.playback.item.uri){
+    const popped = session.popQueue(); 
+    //io.emit("queueSet", session.queue);
+    io.emit("queueRemove", 0);
+    console.log('Popped Queue');
+  }
+}, 1000);

@@ -1,81 +1,36 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(socket, spotifyApi, adminStatus) {
-  const history = []; 
+let socket = null;
+let session = null;
 
-  router.get('/', (req, res) => {
-    res.send('playback routing check')
-  })
+router.use((req, res, next) => {
+  socket = req.app.get('io');
+  session = req.app.get('session');
+  next();
+})
 
-  router.get('/history', (req, res) => {
-    res.json(history)
-  })
+router.get('/', (req, res) => {
+  res.send('playback routing check')
+})
 
-  router.get('/playState', (req, res) => {
-    if (!adminStatus.adminSet || !adminStatus.playbackState.device.is_active) res.send('Host not active');
-    else {
-      const playState = adminStatus.playbackState
-      res.json({
-        title: playState.item.name,
-        artist: playState.item.artists[0].name,
-        albumImage: playState.item.album.images,
-        progress: playState.progress_ms,
-        duration: playState.item.duration_ms,
-      });
-    }
-  })
+router.get('/history', (req, res) => {
+  res.json(session.history)
+})
 
-  // Retrieve playback state every 3 seconds and update history
-  setInterval(() => {
-    if (!adminStatus.adminSet) { return; }
-    spotifyApi.getMyCurrentPlaybackState().then((data) => {
-      //console.log('Retrieved playback state')
-      //console.log(data.body) //Debugging Purposes
-      if (Object.keys(data.body).length != 0){
-        if (Object.keys(adminStatus.playbackState).length != 0 && data.body?.item?.uri != adminStatus.playbackState.item.uri) {
-          const smallestAlbumImage = data.body.item.album.images.reduce(
-            (smallest, image) => {
-              if (image.height < smallest.height) return image
-              return smallest
-            },
-            data.body.item.album.images[0]
-          )
-          const newHistoryItem = {
-            title: data.body.item.name,
-            artist: data.body.item.artists[0].name,
-            albumUrl: smallestAlbumImage.url,
-            albumName: data.body.item.album.name,
-            songDuration: data.body.item.duration,
-            uri: data.body.item.uri,
-            explicit: data.body.item.explicit, 
-            filter: true,
-          }
-          history.push(newHistoryItem)
-          console.log("Added to history")
-          socket.emit('updateHistory', newHistoryItem);
-        }
-        else { //Debugging Purposes
-          //console.log("Not added to history. Empty playback state.")
-        }
+router.get('/playState', (req, res) => {
+  if (!session.status.host) { res.send('Host not active'); }
+  else {
+    const playState = session.playback;
+    res.json({
+      title: playState.item.name,
+      artist: playState.item.artists[0].name,
+      albumImage: playState.item.album.images,
+      progress: playState.progress_ms,
+      duration: playState.item.duration_ms,
+    });
+  }
+})
 
-        adminStatus.playbackState = data.body
-        adminStatus.activePlaying = adminStatus.playbackState.device.is_active
-        const playState = adminStatus.playbackState
-        const playClient = {
-          title: playState.item.name,
-          artist: playState.item.artists[0].name,
-          albumImage: playState.item.album.images,
-          progress: playState.progress_ms,
-          duration: playState.item.duration_ms,
-        }
-        socket.emit('playback', playClient);
-      } 
-    }, (err) => {
-      console.log('Could not retrieve playback state successfully', err);
-    }
-    )}, 1000);
-
-  return router;
-}
+module.exports = router;
 

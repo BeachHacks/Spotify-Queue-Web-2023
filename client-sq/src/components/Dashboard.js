@@ -71,8 +71,16 @@ function Dashboard(){
       }
       fetchQueue();
 
-      socket.on('queueAdd', (data) => {
-        setQueueData((prevData) => [...prevData, data]);
+      socket.on('queueAdd', (item) => {
+        setQueueData((prevData) => [...prevData, item]);
+      })
+      
+      socket.on('queueSet', (queue) => {
+          setQueueData(queue);
+      })
+
+      socket.on('queueRemove', (index) => {
+        setQueueData((prevData) => [...prevData.slice(0, index), ...prevData.slice(index+1,)]);
       })
 
       return () => {ignore = true; socket.off('addQueue');}
@@ -343,10 +351,7 @@ function Dashboard(){
 
     <div style={{height:window.innerHeight*0.3}}>
     <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.0167}}>Now playing</h2>
-    {accessToken === ""? 
-      <h2>LOGIN TO SEE THE PLAYER</h2>:
       <NowPlaying/>
-    }
     </div>
     <div>
     <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>

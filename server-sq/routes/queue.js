@@ -24,40 +24,5 @@ router.post('/add', (req, res) => {
   added ? res.send("Added to queue") : res.send("Failed to add song")
 })
 
-// Tasks
 
 module.exports = router;
-
-/*
-
-  // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)
-  setInterval(() => {
-    if (buffer.length < 1 || !adminStatus.activePlaying) {
-      return;
-    }
-    const next = buffer.shift();
-    console.log('Next: ' + next);
-    spotifyApi.addToQueue(next.uri).then(() => {
-      console.log('Added song to Spotify')
-    }, (err) => {
-      console.log(err)
-    })
-  }, 5000);
-
-  // Update queue 
-  setInterval(() => {
-    if (queue.length < 1 || !adminStatus.activePlaying) {
-      // Empty queue
-      return;
-    }
-    if (Object.keys(adminStatus.playbackState).length != 0 && queue[0].uri == adminStatus.playbackState.item.uri){
-      const popped = queue.shift();
-      console.log('Removed: ' + popped + 'from top of queue');
-    }
-
-  }, 1000);
-
-
-  return router;
-}
-*/

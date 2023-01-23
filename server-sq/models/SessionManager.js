@@ -32,6 +32,14 @@ class SessionManager {
     this._status = newStatus;
   }
 
+  get active(){
+    return this._status.active;
+  }
+
+  set active(newActive){
+    this._status.active = newActive;
+  }
+
   get playback(){
     return this._playback;
   }
@@ -56,7 +64,7 @@ class SessionManager {
   }
 
   popQueue(){
-    return this._queue.pop();
+    return this._queue.shift();
   }
 
   removeQueueItem(uri){

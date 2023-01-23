@@ -18,6 +18,7 @@ function NowPlaying() {
   // Initialization
   useEffect(() => {
 
+    console.log("Hello");
     // Socket Handlers
     io.on('playback', (data) => {
       setPlaybackState(data);
