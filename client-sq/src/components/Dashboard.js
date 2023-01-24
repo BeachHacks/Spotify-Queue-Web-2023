@@ -266,7 +266,7 @@ function Dashboard(){
 
                   <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
                     Guidelines
-                  </div>
+                  </div> 
 
                   <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 

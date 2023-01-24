@@ -67,11 +67,11 @@ export default function Track({ track, clickable, num }) {
              
             <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
            
-            {clickable==false?  <Slide in={true} timeout={500}> 
+            {clickable==false?  <Fade in={true} timeout={500}> 
             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: window.innerHeight*0.018, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
             
           }}>{num+1}</TableCell>
-              </Slide>:""}
+              </Fade>:""}
         
               
               {/* image  */}
@@ -98,17 +98,17 @@ export default function Track({ track, clickable, num }) {
                 <div style={{ marginBottom: -window.innerHeight*0.005, fontWeight : "bold", fontSize: window.innerHeight*0.018}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 700, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
+                <div style={{ fontWeight : 400, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
                   {track.artist}
                 </div>
               </TableCell> 
               </Fade>: 
               <Slide in={true} timeout={500}>
-              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a", letterSpacing: -window.innerWidth*0.00015}} align="left">
+              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : window.innerHeight*0.02}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : "bold", color: "#6d7285", fontSize: window.innerHeight*0.018, letterSpacing: -window.innerWidth*0.00015}}>
+                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: window.innerHeight*0.018}}>
                   {track.artist}
                 </div>
               </TableCell></Slide>}
@@ -132,9 +132,9 @@ export default function Track({ track, clickable, num }) {
                 
                   :
 
-                  <Slide in={disable} timeout={500}>
+                  <Fade in={disable} timeout={500}>
                   <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw'}}/>
-                  </Slide>
+                  </Fade>
                 
                   :
                   <Fade in={fade} timeout={500}>
