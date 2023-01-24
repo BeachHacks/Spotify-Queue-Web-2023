@@ -24,7 +24,6 @@ function App() {
         </Route>
         <Route path="/history" element={<History />}>
         </Route>
-
         <Route path="/howtouse" element={<HowToUse />}>
         </Route>
       </Routes>

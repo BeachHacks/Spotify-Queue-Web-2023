@@ -1,12 +1,12 @@
 // Component for rendering the Queue
-import React from "react"
+import {React, useState} from "react"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ScheduleRoundedIcon from '@mui/icons-material/Schedule';
 import CommentRoundedIcon from '@mui/icons-material/Comment';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = ({ children }) => {
-
+    const [darkMode, setDarkMode] = useState(false)
     const menuItem = [
         {
             path: "/",
@@ -69,6 +69,11 @@ const NavBar = ({ children }) => {
                 </div>
                 
                 <main>{children}</main>
+
+                <label src='Sun.png'  class="switch" style= {{marginLeft: '9.75vw',marginTop:'46vh'}}  >
+                <input type="checkbox" />
+                <span class="slider round"></span>
+    </label>
             </div>
         </div>
     );
