@@ -190,7 +190,7 @@ function Dashboard(){
 
 
     return (
-      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
+      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width: "100%", maxWidth:"100%"}}>
         <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
         fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
         <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
@@ -268,21 +268,21 @@ function Dashboard(){
                     Guidelines
                   </div>
 
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
                     </div>
                   </div>
                   
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     If you loved a song you heard earlier, you can find it again in the history tab.
                     </div>
                   </div>
 
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     To keep the event professional we've disabled adding explicit songs.

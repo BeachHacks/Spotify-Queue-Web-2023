@@ -6,22 +6,22 @@ function HowToUse() {
 
   return (
     <div style={{ minHeight: "100vh", width: "80%", maxWidth: "100%" }}>
-      <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:100*.045+ 'vh',marginLeft:100*.01+ 'vw', 
-        fontSize: 100*.021+ 'vw',fontWeight: "1000", color:"#3d435a"}}>How to use
+      <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
+        fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>How to use
       <div 
         style={{border: '.25vh solid #e0e4f2',
-        marginTop: 100*.025 + 'vh', borderRadius: 100*.015+ 'vh', 
+        marginTop: window.innerHeight*.025, borderRadius: window.innerHeight*.015, 
          flexDirection:"row",fontWeight: "bold",
         height: "23vh",  backgroundColor:"#ffffff",   
-        width:100*.7775 + 'vw'}}>
+        width:window.innerWidth*.7775}}>
 
-           
+          
           <div style = {{display:"flex"}}>
-        <div style = {{marginTop: 100*0.014+ 'vh',marginLeft: 100*0.014+ 'vw',color: "#3d435a"}}>
-          <div style = {{fontSize: 100*2.1*0.0125 + 'vh',color:"#496fff"}}>
+        <div style = {{marginTop: window.innerHeight*0.014,marginLeft: window.innerWidth*0.014,color: "#3d435a"}}>
+          <div style = {{fontSize: window.innerWidth*0.0145,color:"#496fff"}}>
                 How to find songs
                 </div>
-                <div style = {{fontWeight: 500,fontSize: 100*2.1*0.009 + 'vh',width: "33vw",}}>
+                <div style = {{fontSize: window.innerWidth*0.0105,width: "33vw",}}>
                   
                   In the search bar, type in a song or artist. Then, hit enter to see results. *To ensure playlist diversity, we've disabled album searches to avoid others adding an entire album.
                 </div>
@@ -37,18 +37,18 @@ function HowToUse() {
 
         <div 
         style={{border: '.25vh solid #e0e4f2',
-        marginTop: 100*.02+ 'vh', borderRadius: 100*.015+ 'vh', 
+        marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
         display:"flex", flexDirection:"row",fontWeight: "bold",
         height: "23vh",  backgroundColor:"#ffffff",   color: "#3d435a",
-        width:100*.7775 + 'vw'}}>
+        width:window.innerWidth*.7775}}>
 
 
 <div style = {{display:"flex"}}>
-<div style = {{marginTop: 100*0.014+ 'vh',marginLeft: 100*0.014+ 'vw',color: "#3d435a"}}>
-          <div style = {{fontSize: 100*2.1*0.0125 + 'vh',color:"#496fff"}}>
+<div style = {{marginTop: window.innerHeight*0.014,marginLeft: window.innerWidth*0.014,color: "#3d435a"}}>
+          <div style = {{fontSize: window.innerWidth*0.0145,color:"#496fff"}}>
                 How to queue songs
                 </div>
-                <div style = {{fontWeight: 500,fontSize: 100*2.1*0.009 + 'vh', width: "33vw"}}>
+                <div style = {{fontSize: window.innerWidth*0.0105, width: "33vw"}}>
                  On the right to a song, click on the plus icon. A check mark will show a successful queue.
                 </div>
                 
@@ -60,31 +60,31 @@ function HowToUse() {
 
         <div 
         style={{border: '.25vh solid #e0e4f2',
-        marginTop: 100*.02+ 'vh', borderRadius: 100*.015+ 'vh', 
+        marginTop: window.innerHeight*.02, borderRadius: window.innerHeight*.015, 
         display:"flex", flexDirection:"row",fontWeight: "bold",
         minHeight: "23vh", backgroundColor:"#ffffff",   color: "#3d435a",
-        width:100*.7775 + 'vw'}}>
+        width:window.innerWidth*.7775}}>
 
-<div style = {{marginTop: 100*0.014+ 'vh',marginLeft: 100*0.014+ 'vw',color: "#3d435a",fontWeight: 500,fontSize: 100*2.1*0.009 + 'vh',}}>
-          <div style = {{fontWeight: 700,fontSize: 100*2.1*0.0125 + 'vh',color:"#496fff"}}>
+<div style = {{marginTop: window.innerHeight*0.014,marginLeft: window.innerWidth*0.014,color: "#3d435a",fontSize: window.innerWidth*0.0105,}}>
+          <div style = {{fontSize: window.innerWidth*0.0145,color:"#496fff"}}>
                 FAQ
                 </div>
-                <div style = {{fontWeight: 700,marginBottom: '-.5vh'}}>
+                <div style = {{marginBottom: '-.7vh'}}>
                  Why can't I add a song to the playlist?
                 </div>
-                <div style = {{marginBottom: '-.5vh'}}>
+                <div style = {{marginBottom: '-.7vh'}}>
                 Some reasons why you might not be able to add a song:
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',marginBottom: '-.7vh'}}>
                 • The song is already in the playlist.
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',marginBottom: '-.7vh'}}>
                 • The song is too explicit.
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',marginBottom: '-.7vh'}}>
                 • The song was frequently played and temporarily disabled to ensure playlist diversity.
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',marginBottom: '-.7vh'}}>
                 • The song is too low tempo during after hours and might make others sleepy.
                 </div>
            
