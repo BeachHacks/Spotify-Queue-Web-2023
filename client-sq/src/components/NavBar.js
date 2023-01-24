@@ -27,14 +27,14 @@ const NavBar = ({ children }) => {
     ]
     return (
 
-        <div style = {{ height: "80vh" }}>
+        <div style = {{ backgroundColor:"#ffffff", borderRight: '.25vh solid #e0e4f2', width: '17.6vw',height: "100vh" }}>
       <div style={{
-                      
+       
         marginLeft:'1vw', 
-        backgroundColor:"#ffffff",
-        
+
         fontFamily:"DM Sans",
         fontWeight:700
+        
         }}
        
         >
@@ -42,8 +42,8 @@ const NavBar = ({ children }) => {
                <div style={{
                     height: "18vh",
                     display: "flex",
-                    
-                    padding:"-.5vh .8vw"
+                    paddingTop: ".8vh",
+                    paddingLeft: ".75vw"
                     }}>
                   
 
