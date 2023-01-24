@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
@@ -44,7 +44,7 @@ function Dashboard(){
       let ignore = false;
       
       async function fetchToken() {
-        const result = await axios(process.env.REACT_APP_API_URL + '/token')
+        const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
         if(!ignore) setAccessToken(result.data)
       }
 

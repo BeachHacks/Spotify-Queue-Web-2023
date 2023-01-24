@@ -39,6 +39,7 @@ function History() {
     socket.on('updateHistory', (data) => {
       setHistoryData((prevData) => ([data, ...prevData]))
     })
+
     return () => { 
       ignore = true;
       socket.off('updateHistory');
