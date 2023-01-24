@@ -22,13 +22,12 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(bodyParser.json())
 // CORS: Cross-Origin Resource Sharing
 app.use(cors())
-/*
-  app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-*/
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Socket Setup
 
 // API
