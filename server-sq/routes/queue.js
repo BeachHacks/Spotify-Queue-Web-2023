@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(spotifyApi, adminStatus) {
+module.exports = function(socket, spotifyApi, adminStatus) {
   const queue = []; 
   const buffer = [];
 
@@ -23,6 +23,7 @@ module.exports = function(spotifyApi, adminStatus) {
       queue.push(req.body)
       buffer.push(req.body)
       added = true
+      socket.emit('queueAdd', req.body);
     }
     added ? res.send("Added to queue") : res.send("Failed to add song")
   })

@@ -10,8 +10,12 @@ import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
+import io from 'socket.io-client'
+import { SocketContext } from './App'
 
 function Dashboard(){
+    const socket = useContext(SocketContext);
+
     const [text,setText] = useState("Loading")
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
@@ -54,11 +58,7 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
-      
-     
     }
-  
-   
   }
   
     // Hook handling retrieving the data of the queue from the backend.
@@ -70,17 +70,14 @@ function Dashboard(){
         if (!ignore) setQueueData(result.data);
       }
       fetchQueue();
-      const interval = setInterval(() => {
-        fetchQueue();
-      }, 1000);
 
-      return () => {ignore = true; clearInterval(interval);}
+      socket.on('queueAdd', (data) => {
+        setQueueData((prevData) => [...prevData, data]);
+      })
+
+      return () => {ignore = true; socket.off('addQueue');}
     }, [])
 
-  
- 
-   
-    
     useEffect(() => {
 
       function loadingDots () {
@@ -109,7 +106,7 @@ function Dashboard(){
       const searchTracks = async(searchQuery) => {
         setLoading(true)
         return axios
-          .post(process.env.REACT_APP_API_URL + "/searchTracks", {
+          .post(process.env.REACT_APP_API_URL + "/search/tracks", {
             searchString : searchQuery,
             params: {limit: 50}
           })
@@ -409,4 +406,3 @@ function Dashboard(){
     )}
 
 export default Dashboard;
-

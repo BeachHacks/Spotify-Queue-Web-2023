@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(spotifyApi, adminStatus) {
+module.exports = function(socket, spotifyApi, adminStatus) {
   const history = []; 
 
   router.get('/', (req, res) => {
@@ -41,7 +41,7 @@ module.exports = function(spotifyApi, adminStatus) {
             },
             data.body.item.album.images[0]
           )
-          history.push({
+          const newHistoryItem = {
             title: data.body.item.name,
             artist: data.body.item.artists[0].name,
             albumUrl: smallestAlbumImage.url,
@@ -50,14 +50,26 @@ module.exports = function(spotifyApi, adminStatus) {
             uri: data.body.item.uri,
             explicit: data.body.item.explicit, 
             filter: true,
-          })
+          }
+          history.push(newHistoryItem)
           console.log("Added to history")
+          socket.emit('updateHistory', newHistoryItem);
         }
         else { //Debugging Purposes
           //console.log("Not added to history. Empty playback state.")
         }
+
         adminStatus.playbackState = data.body
         adminStatus.activePlaying = adminStatus.playbackState.device.is_active
+        const playState = adminStatus.playbackState
+        const playClient = {
+          title: playState.item.name,
+          artist: playState.item.artists[0].name,
+          albumImage: playState.item.album.images,
+          progress: playState.progress_ms,
+          duration: playState.item.duration_ms,
+        }
+        socket.emit('playback', playClient);
       } 
     }, (err) => {
       console.log('Could not retrieve playback state successfully', err);
