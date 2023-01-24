@@ -268,21 +268,21 @@ function Dashboard(){
                     Guidelines
                   </div> 
 
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
                     </div>
                   </div>
                   
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     If you loved a song you heard earlier, you can find it again in the history tab.
                     </div>
                   </div>
 
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
                     <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
                     To keep the event professional we've disabled adding explicit songs.
