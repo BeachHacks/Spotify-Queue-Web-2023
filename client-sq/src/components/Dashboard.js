@@ -306,7 +306,7 @@ function Dashboard(){
                     {text}
                     </div>
                   :
-                <div style = {{fontSize: window.innerWidth*0.01025}}>
+                <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
                 </div>}
                </div>
@@ -340,11 +340,11 @@ function Dashboard(){
                   </div>
 
                   {loading? 
-                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
                     {text}
                     </div>
                   :
-                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
                     Explicit or recently added songs are grayed out.
                     </div>
                     }

@@ -98,7 +98,7 @@ export default function Track({ track, clickable, num }) {
                 <div style={{ marginBottom: -window.innerHeight*0.005, fontWeight : "bold", fontSize: window.innerHeight*0.018}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 400, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
+                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
                   {track.artist}
                 </div>
               </TableCell> 
