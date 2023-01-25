@@ -51,6 +51,10 @@ class SessionManager {
     return this._buffer;
   }
 
+  get spotify(){
+    return this.spotifyApi;
+  }
+
   // Methods
   addToQueue(item) {
     this._queue.push(item);

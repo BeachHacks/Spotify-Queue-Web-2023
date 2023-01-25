@@ -37,8 +37,8 @@ const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSe
 const session = new SessionManager();
 const hostStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
-app.use('/host', host(spotifyApi, session));
-//app.use('/search', search(spotifyApi, hostStatus));
+app.use('/host', host(session));
+app.use('/search', search(session));
 //app.use('/queue', queue(io, spotifyApi, hostStatus));
 //app.use('/playback', playback(io, spotifyApi, hostStatus));
 
