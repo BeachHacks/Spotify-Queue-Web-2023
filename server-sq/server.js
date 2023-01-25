@@ -35,12 +35,11 @@ app.use((req, res, next) => {
 const clientId = process.env.CLIENT_ID, clientSecret = process.env.CLIENT_SECRET;
 const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: process.env.SITE_URL + '/auth'});
 const session = new SessionManager();
-const hostStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
 app.use('/host', host(session));
 app.use('/search', search(session));
 app.use('/queue', queue(io, session));
-//app.use('/playback', playback(io, spotifyApi, hostStatus));
+app.use('/playback', playback(io, session));
 
 // Open to port
 server.listen(process.env.PORT || 3001, () => {

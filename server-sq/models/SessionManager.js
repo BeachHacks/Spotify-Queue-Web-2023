@@ -27,6 +27,10 @@ class SessionManager {
     return this._status;
   }
 
+  get accessToken(){
+    return this._status.accessToken;
+  }
+
   set accessToken(token){
     this._status.accessToken = token;
   }

@@ -75,6 +75,10 @@ function Dashboard(){
         setQueueData((prevData) => [...prevData, data]);
       })
 
+      socket.on('queuePop', (data) => {
+        setQueueData((prevData) => prevData.shift())
+      })
+
       return () => {ignore = true; socket.off('addQueue');}
     }, [])
 
