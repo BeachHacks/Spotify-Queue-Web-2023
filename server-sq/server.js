@@ -6,6 +6,7 @@ const io = require('socket.io')(server, {cors: {origin: "*"}});
 const SpotifyWebApi = require("spotify-web-api-node");
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const SessionManager = require('./models/SessionManager');
 
 // Route Files
 const host = require('./routes/host')
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 // API
 const clientId = process.env.CLIENT_ID, clientSecret = process.env.CLIENT_SECRET;
 const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: process.env.SITE_URL + '/auth'});
+const session = new SessionManager();
 const hostStatus = { adminSet : false, activePlaying : false, accessToken : '', playbackState : {} };
 
 app.use('/host', host(spotifyApi, hostStatus));
