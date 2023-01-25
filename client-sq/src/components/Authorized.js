@@ -9,7 +9,7 @@ export default function Authorized() {
 
   useEffect(() => {
     axios
-      .post(process.env.REACT_APP_API_URL + "/adminLogin", {
+      .post(process.env.REACT_APP_API_URL + "/host/login", {
         code,
       })
       .then(res => {
@@ -23,12 +23,12 @@ export default function Authorized() {
 
   return (
     <Container
-      className="d-flex justify-content-center align-items-center"
-      style={{ minHeight: "100vh" }}
+    className="d-flex justify-content-center align-items-center"
+    style={{ minHeight: "100vh" }}
     >
-      <a className="btn btn-success btn-lg" href={process.env.REACT_APP_BASE_URL}>
-        Authorized. Back to Dashboard
-      </a>
+    <a className="btn btn-success btn-lg" href={process.env.REACT_APP_BASE_URL}>
+    Authorized. Back to Dashboard
+    </a>
     </Container>
   )
 }

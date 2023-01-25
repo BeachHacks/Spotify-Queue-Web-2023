@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
@@ -10,8 +10,12 @@ import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchRounded from "@mui/icons-material/SearchRounded";
+import io from 'socket.io-client'
+import { SocketContext } from './App'
 
 function Dashboard(){
+    const socket = useContext(SocketContext);
+
     const [text,setText] = useState("Loading")
     const [searchResults, setSearchResults] = useState([])
     //const [goodSongsArr, setPassArr] = useState([])
@@ -40,7 +44,7 @@ function Dashboard(){
       let ignore = false;
       
       async function fetchToken() {
-        const result = await axios(process.env.REACT_APP_API_URL + '/token')
+        const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
         if(!ignore) setAccessToken(result.data)
       }
 
@@ -54,11 +58,7 @@ function Dashboard(){
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
-      
-     
     }
-  
-   
   }
   
     // Hook handling retrieving the data of the queue from the backend.
@@ -70,17 +70,18 @@ function Dashboard(){
         if (!ignore) setQueueData(result.data);
       }
       fetchQueue();
-      const interval = setInterval(() => {
-        fetchQueue();
-      }, 1000);
 
-      return () => {ignore = true; clearInterval(interval);}
+      socket.on('queueAdd', (data) => {
+        setQueueData((prevData) => [...prevData, data]);
+      })
+
+      socket.on('queuePop', (data) => {
+        setQueueData((prevData) => [...prevData.slice(1)]);
+      })
+
+      return () => {ignore = true; socket.off('queueAdd'); socket.off('queuePop')}
     }, [])
 
-  
- 
-   
-    
     useEffect(() => {
 
       function loadingDots () {
@@ -109,7 +110,7 @@ function Dashboard(){
       const searchTracks = async(searchQuery) => {
         setLoading(true)
         return axios
-          .post(process.env.REACT_APP_API_URL + "/searchTracks", {
+          .post(process.env.REACT_APP_API_URL + "/search/tracks", {
             searchString : searchQuery,
             params: {limit: 50}
           })
@@ -409,4 +410,3 @@ function Dashboard(){
     )}
 
 export default Dashboard;
-
