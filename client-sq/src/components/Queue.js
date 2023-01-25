@@ -24,7 +24,6 @@ export default function Queue({ trackList }) {
           
           <TableBody >
            
-           
               {trackList.map((track, index) => (
                 <Track 
                   track={track}

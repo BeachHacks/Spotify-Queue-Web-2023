@@ -42,12 +42,12 @@ const NavBar = ({ children }) => {
                <div style={{
                     height: "18vh",
                     display: "flex",
-                    paddingTop: ".8vh",
-                    paddingLeft: ".75vw"
+                    paddingTop: ".5vh",
+                    paddingLeft: "1.6vw"
                     }}>
                   
 
-                <img   style={{ width: 17*.674+'vw', height: 17*0.511+'vw'}}
+                <img   style={{ width: 17*.625+'vw', height: 17*0.533+'vw'}}
        src="logo.png" />
                    
                </div>

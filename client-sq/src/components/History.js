@@ -14,15 +14,17 @@ function History() {
 
   const [searching, setSearching] = useState(false)
   const [clickedSB, setClickedSB] = useState("#a3a8bf")
+  const [borderColor, setBC] = useState(".25vh solid #e0e4f2")
 
+  
   function handleFocus() {
-    setClickedSB("#496fff");
-
+    setClickedSB("#496fff")
+    setBC(".25vh solid #496fff")
   }
 
   function handleBlur() {
-    setClickedSB("#a3a8bf");
-
+    setClickedSB("#a3a8bf")
+    setBC(".25vh solid #e0e4f2")
   }
   // Hook handling retrieving the data of the queue from the backend.
     useEffect(() => {
@@ -71,7 +73,7 @@ function History() {
         paddingLeft: window.innerWidth*.027,
         paddingRight: window.innerWidth*.00875,
 
-        border: '.25vh solid #e0e4f2'
+        border: borderColor
     }} 
 
     type="search"
@@ -131,7 +133,7 @@ function History() {
         :
         <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
       }
-      <div style={{height: "5vh",fontWeight: 700,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
+      <div style={{height: "5vh",fontWeight: 500,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
       Title
 
       </div>
