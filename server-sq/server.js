@@ -29,11 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Socket Setup
-
 // API
-const clientId = process.env.CLIENT_ID, clientSecret = process.env.CLIENT_SECRET;
-const spotifyApi = new SpotifyWebApi({clientId: clientId, clientSecret: clientSecret, redirectUri: process.env.SITE_URL + '/auth'});
 const session = new SessionManager();
 
 app.use('/host', host(session));

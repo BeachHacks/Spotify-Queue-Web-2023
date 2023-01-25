@@ -76,10 +76,10 @@ function Dashboard(){
       })
 
       socket.on('queuePop', (data) => {
-        setQueueData((prevData) => prevData.shift())
+        setQueueData((prevData) => [...prevData.slice(1)]);
       })
 
-      return () => {ignore = true; socket.off('addQueue');}
+      return () => {ignore = true; socket.off('queueAdd'); socket.off('queuePop')}
     }, [])
 
     useEffect(() => {

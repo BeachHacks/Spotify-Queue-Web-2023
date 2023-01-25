@@ -29,7 +29,7 @@ module.exports = function(socket, session) {
   setInterval(() => {
     if (!session.status.host) { return; }
     session.spotify.getMyCurrentPlaybackState().then((data) => {
-      console.log('Retrieved playback state')
+      //console.log('Retrieved playback state')
       //console.log(data.body) //Debugging Purposes
       if (Object.keys(data.body).length != 0){
         if (Object.keys(session.playback).length != 0 && data.body?.item?.uri != session.playback.item.uri) {
@@ -53,6 +53,7 @@ module.exports = function(socket, session) {
           session.addToHistory(newHistoryItem)
           console.log("Added to history")
           socket.emit('updateHistory', newHistoryItem);
+          socket.emit('queuePop', 0);
         }
         else { //Debugging Purposes
           //console.log("Not added to history. Empty playback state.")
