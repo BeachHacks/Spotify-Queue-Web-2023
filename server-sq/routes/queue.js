@@ -17,11 +17,16 @@ module.exports = function(socket, session) {
 
   router.post('/add', (req, res) => {
     let added = false 
-    //if (session.status.active) {
+    if (session.status.active) {
       added = session.addToQueue(req.body);
+    }
+    if (added) {
       socket.emit('queueAdd', req.body);
-    //}
-    added ? res.send("Added to queue") : res.send("Failed to add song")
+      res.send("Added to queue");
+    }
+    else {
+      res.send("Failed to add song to queue");
+    }
   })
 
   // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)

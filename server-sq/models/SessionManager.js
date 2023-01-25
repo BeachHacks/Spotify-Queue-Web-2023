@@ -61,6 +61,19 @@ class SessionManager {
 
   // Methods
   addToQueue(item) {
+    // Check if song is already in queue
+    for (let i = 0; i < this._queue.length; i++){
+      if(item.uri === this._queue[i].uri){
+        return false;
+      }
+    }
+    // Check if song is within the last 10 songs in history
+    for (let i = 0; i < ((this._history.length) > (10-this._queue.length) ? (10-this._queue.length): this._history.length); i++){
+      const index = this._history.length-i-1;
+      if(item.uri === this._history[index].uri){
+        return false;
+      }
+    }
     this._queue.push(item);
     this._buffer.push(item.uri);
     return true;

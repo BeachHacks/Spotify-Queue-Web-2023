@@ -29,8 +29,6 @@ module.exports = function(socket, session) {
   setInterval(() => {
     if (!session.status.host) { return; }
     session.spotify.getMyCurrentPlaybackState().then((data) => {
-      //console.log('Retrieved playback state')
-      //console.log(data.body) //Debugging Purposes
       if (Object.keys(data.body).length != 0){
         if (Object.keys(session.playback).length != 0 && data.body?.item?.uri != session.playback.item.uri) {
           const smallestAlbumImage = data.body.item.album.images.reduce(
@@ -56,7 +54,6 @@ module.exports = function(socket, session) {
           socket.emit('queuePop', 0);
         }
         else { //Debugging Purposes
-          //console.log("Not added to history. Empty playback state.")
         }
 
         session.playback = data.body; 
