@@ -39,7 +39,7 @@ const hostStatus = { adminSet : false, activePlaying : false, accessToken : '', 
 
 app.use('/host', host(session));
 app.use('/search', search(session));
-//app.use('/queue', queue(io, spotifyApi, hostStatus));
+app.use('/queue', queue(io, session));
 //app.use('/playback', playback(io, spotifyApi, hostStatus));
 
 // Open to port
