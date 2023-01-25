@@ -1,8 +1,9 @@
 // Component for rendering the Queue
 import React from "react"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ScheduleRoundedIcon from '@mui/icons-material/Schedule';
-import CommentRoundedIcon from '@mui/icons-material/Comment';
+import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
+
+import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = ({ children }) => {
@@ -16,12 +17,12 @@ const NavBar = ({ children }) => {
         {
             path: "/history",
             name: "History",
-            icon: <ScheduleRoundedIcon style={{ fontSize: '1.7vw' }} />
+            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '1.7vw' }} />
         },
         {
             path: "/howtouse",
             name: "How to use",
-            icon: <CommentRoundedIcon style={{ fontSize: '1.7vw'  }} />
+            icon: <HelpCenterRoundedIcon style={{ fontSize: '1.7vw'  }} />
         }
 
     ]
@@ -42,12 +43,12 @@ const NavBar = ({ children }) => {
                <div style={{
                     height: "18vh",
                     display: "flex",
-                    paddingTop: ".8vh",
-                    paddingLeft: ".75vw"
+                    paddingTop: ".5vh",
+                    paddingLeft: "1.6vw"
                     }}>
                   
 
-                <img   style={{ width: 17*.674+'vw', height: 17*0.511+'vw'}}
+                <img   style={{ width: 17*.625+'vw', height: 17*0.533+'vw'}}
        src="logo.png" />
                    
                </div>

@@ -14,6 +14,9 @@ import io from 'socket.io-client'
 import { SocketContext } from './App'
 
 function Dashboard(){
+
+    const [borderColor, setBC] = useState(".25vh solid #e0e4f2")
+
     const socket = useContext(SocketContext);
 
     const [text,setText] = useState("Loading")
@@ -31,13 +34,15 @@ function Dashboard(){
     const [clickedSB, setClickedSB] = useState("#a3a8bf")
 
     function handleFocus() {
-        setClickedSB("#496fff");
+        setClickedSB("#496fff")
+        setBC(".25vh solid #496fff")
         setClicked(true)
     
       }
       
       function handleBlur() {
-        setClickedSB("#a3a8bf");
+        setClickedSB("#a3a8bf")
+        setBC(".25vh solid #e0e4f2")
         setClicked(false)
       }
     useEffect(() => {
@@ -209,7 +214,7 @@ function Dashboard(){
                                                             width: window.innerWidth*.29, 
                                                             height: window.innerHeight*.06,  
                                                             borderRadius: window.innerHeight*.015,
-                                                            border: ".25vh solid #e0e4f2",
+                                                            border: borderColor,
                                                             paddingLeft: window.innerWidth*.027,
                                                             paddingRight: window.innerWidth*.00875
                                                             }} 
@@ -264,34 +269,37 @@ function Dashboard(){
                 
                 {!clicked?
                 <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
-
+              <div  style = {{ height: '25vh'}}>
                   <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
                     Guidelines
                   </div> 
 
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
-                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
                     To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
                     </div>
                   </div>
                   
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "2vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
-                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
                     If you loved a song you heard earlier, you can find it again in the history tab.
                     </div>
                   </div>
 
-                  <div style = {{fontWeight:"normal",display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
+                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "2vh"}}>
                     <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
-                    <div style = {{fontSize: window.innerWidth*0.01025,width: "23vw", marginLeft: "1vw"}}>
+                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
                     To keep the event professional we've disabled adding explicit songs.
                     </div>
                   </div>
+                  </div>
                 </div>
+               
                 :
                  <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
+                   <div  style = {{ height: '25vh'}}>
                 <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
                Results
                 </div>
@@ -300,12 +308,20 @@ function Dashboard(){
                     {text}
                     </div>
                   :
-                <div style = {{fontSize: window.innerWidth*0.01025}}>
+                <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025}}>
                 Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
                 </div>}
-                
+               </div>
                 </div>
              }
+             <img  style={{ 
+                            marginTop: '1.25vh',
+                            width: 46.5*.892+'vh', 
+                            height: 46.5*0.918+'vh',
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto"}}
+                src="faded.png" />
              </div>
               :
               <div style = {{
@@ -326,11 +342,11 @@ function Dashboard(){
                   </div>
 
                   {loading? 
-                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
                     {text}
                     </div>
                   :
-                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
+                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
                     Explicit or recently added songs are grayed out.
                     </div>
                     }
@@ -376,7 +392,7 @@ function Dashboard(){
             <div>
               <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>
               
-                <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a"}}>
+                <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a",fontWeight: 500}}>
                   <span style={{marginLeft:window.innerWidth*0.0065}}> # </span>
 
                   {queueData.length<20? 

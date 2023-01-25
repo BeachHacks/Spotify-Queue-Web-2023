@@ -88,11 +88,12 @@ main{
 
 }
 .searchA{
-
+  font-weight: 500;
   font-size:1.05vw;
   color:#3d435a;
 }
 .searchA::placeholder{
+  font-weight: 500;
   font-size: 1.05vw;
   color:#a3a8bf
 }

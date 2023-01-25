@@ -68,7 +68,7 @@ export default function Track({ track, clickable, num }) {
             <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
            
             {clickable==false?  <Fade in={true} timeout={500}> 
-            <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: window.innerHeight*0.018, fontWeight : "bold",fontFamily:"DM Sans",color: "#6d7285", 
+            <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: window.innerHeight*0.018, fontWeight : 500,fontFamily:"DM Sans",color: "#6d7285", 
             
           }}>{num+1}</TableCell>
               </Fade>:""}
@@ -98,7 +98,7 @@ export default function Track({ track, clickable, num }) {
                 <div style={{ marginBottom: -window.innerHeight*0.005, fontWeight : "bold", fontSize: window.innerHeight*0.018}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 400, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
+                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
                   {track.artist}
                 </div>
               </TableCell> 

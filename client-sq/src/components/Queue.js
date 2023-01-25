@@ -7,7 +7,7 @@ export default function Queue({ trackList }) {
     return (
       // Will be modified to include displaying position in queue.
       
-        <TableContainer sx={{ height: "42vh", boxShadow:0,width: "auto",}} 
+        <TableContainer sx={{ height: "40vh", boxShadow:0,width: "auto",}} 
         style={{ overflowY: "auto", overflowX:"hidden", marginLeft: window.innerWidth*0.00}}>
           
           
@@ -23,7 +23,6 @@ export default function Queue({ trackList }) {
 
           
           <TableBody >
-           
            
               {trackList.map((track, index) => (
                 <Track 

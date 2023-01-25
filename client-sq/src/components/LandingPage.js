@@ -11,8 +11,8 @@ const style = {
     transform: 'translate(-50%, -50%)',
     borderRadius: ".75vh",
     boxShadow: 24,
-    width: "77.5%",
-    height: "75%",
+    width: "78%",
+    height: "74%",
     fontFamily: "DM Sans",
     backgroundColor: "#F6F8FF",
     outline: "none",
@@ -47,25 +47,34 @@ function LandingPage() {
 
                             <Grid style={{width: "100%",
                                         height: "100%",
-                                        margin: "6.7vw",
+                                        marginTop: "1vh",
                                         
                                          }}>
-                                <div style={{ fontSize: '5vw', fontWeight: "bold", color: "#3C435C",marginTop:'5vh' }}>
+                                <div style={{ textAlign: 'center',fontSize: '3.3vw', fontWeight: "bold", color: "#3C435C",marginTop:'5vh' }}>
                                     Hey <a style={{ color: "#496fff", }}>BeachHacks!👋</a>
                                 </div>
                                 
-                                <div style={{ fontWeight: 1000,fontSize: '2.5vw', height: '7vh', color: "#3C435C",marginTop:'2vh' }}>Ready to add your vibe to the party with <div style = {{marginTop:'-1vh'}}>BeachMuse?</div></div>
-                                
-                               <div style={{ marginTop:'1vh'}}>
+                                <div style={{ textAlign: 'center',fontWeight: 500,fontSize: '1.85vw', height: '8vh', color: "#3C435C",marginTop:'1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
+                                <img src="BeachMuseGraphics1.png"
+                                        style={{
+                                           
+                                            height: .037 * 379 + 'vw',
+                                            width: .037 * 740 + 'vw',
+                                            display: "block",
+                                            marginLeft: "auto",
+                                            marginRight: "auto",
+                                            
+                                        }} />
+                               <div style={{textAlign: 'center',marginTop:'5.25vh'}}>
                                     <button
 
                                         style={{
-                                            fontWeight: 1000,
+                                            fontWeight: 500,
                                             color: "white",
                                             backgroundColor: "#496fff",
-                                            width: '15.75vw',
-                                            height: '9.25vh',
-                                            fontSize: '1.45vw',
+                                            width: '12.5vw',
+                                            height: '7vh',
+                                            fontSize: '1.25vw',
                                             borderRadius: '.75vh',
                                             border: 'none'
 
@@ -77,12 +86,12 @@ function LandingPage() {
                                     </button>
                                     <button
                                         style={{
-                                            fontWeight: 1000,
+                                            fontWeight: 500,
                                             backgroundColor: "#EBEEFF",
                                             color: "#496fff",
-                                            width: '15.75vw',
-                                            height: '9.25vh',
-                                            fontSize: '1.45vw',
+                                            width: '12.5vw',
+                                            height: '7vh',
+                                            fontSize: '1.25vw',
                                             borderRadius: '.75vh',
                                             border: 'none',
                                             marginLeft: '1.1vw'
@@ -92,13 +101,7 @@ function LandingPage() {
                                         How to use
                                         
                                     </button>
-                                    <img src="BeachMuseGraphics1.png"
-                                        style={{
-                                            marginTop: '0vh',
-                                            marginLeft: '1.5vw',
-                                            height: .04 * 379 + 'vw',
-                                            width: .04 * 740 + 'vw'
-                                        }} />
+                                    
                                </div>
 
                             </Grid>
@@ -109,24 +112,25 @@ function LandingPage() {
 
                             <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
                                 <div style={{
-                                    width: "45.5%", height: "100%",
-                                    paddingTop: "7.75vh", paddingLeft: "5.325vw",
+                                    width: "49.5%", height: "100%",
+                                    paddingTop: "20.625vh", paddingLeft: "6.7vw",
                                 }}>
-                                    <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>How to find songs</div>
+                                    <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.08vw" }}>How to find songs</div>
                                 
-                                    <div style={{marginTop: "1vh",fontWeight: 1000, color: "#3C435C", fontSize: "1.875vw" ,lineHeight:'4.35vh'}}> In the search bar, type in a song or artist. Then, hit enter to see results.</div>
+                                    <div style={{height: '8vh',marginTop: "0.1vh",fontWeight: 500, color: "#3C435C", fontSize: "1.67vw" ,lineHeight:'4vh'}}> In the search bar, type in a song or artist. Then, hit enter to see results.</div>
                                 
 
-                                    <div style={{ marginTop: "9.85vh", display: "inline-flex" }}>
+                                    <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
                                         <button
                                         
                                             style={{
-                                                fontWeight: 1000,
+                                                
+                                                fontWeight: 500,
                                                 color: "white",
                                                 backgroundColor: "#496fff",
                                                 width: '12.5vw',
                                                 height: '6.9vh',
-                                                fontSize: '1.2vw',
+                                                fontSize: '1.25vw',
                                                 borderRadius: '1.4vh',
                                                 border: 'none',
                                                 
@@ -135,151 +139,153 @@ function LandingPage() {
                                         > Next </button>
                                         <img src={"Slider1.png"}
                                             style={{
-                                                marginLeft: "1.3vw",
-                                                marginTop: "2.65vh",
+                                                marginLeft: "18.2vw",
+                                                marginTop: "19.7vh",
                                                 width: .052 * 62 + 'vw',
                                                 height: .052 * 16 + 'vw'
+                                                
                                             }}></img>
                                     </div>
                                 </div>
                                 <div>
                                     <img src={"LandingPage1.png"}
                                         style={{
-                                            marginLeft: '7.5vw',
-                                            marginTop: "6.5vh",
-                                            width: .078 * 612 + 'vh',
-                                            height: .078* 878 + 'vh'
+                                            marginLeft: '4.5vw',
+                                            marginTop: "5.65vh",
+                                            width: .0925 * 612 + 'vh',
+                                            height: .0925* 738 + 'vh',
+                                            
                                         }} />
                                 </div>
                             </div>
                         </Fade> : <></>}
                     {/* 2220797; 2252854 */}
                     {mainPageFadeIn === false && clickNum === 2 ?
-                         <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
-                         <div style={{
-                             width: "45.5%", height: "100%",
-                             paddingTop: "7.75vh", paddingLeft: "5.325vw",
-                         }}>
-                             <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>How to queue songs</div>
-                         
-                             <div style={{marginTop: "1vh",fontWeight: 1000, color: "#3C435C", fontSize: "1.875vw" ,lineHeight:'4.35vh'}}>
-                                On the right to a song, click on the plus icon. A check mark will show a successful queue.
-                                
-                                </div>
-                         
+                    <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
+                    <div style={{
+                        width: "49.5%", height: "100%",
+                        paddingTop: "20.625vh", paddingLeft: "6.7vw",
+                    }}>
+                        <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.08vw" }}>How to queue songs</div>
+                    
+                        <div style={{height: '8vh',marginTop: "0.1vh",fontWeight: 500, color: "#3C435C", fontSize: "1.67vw" ,lineHeight:'4vh'}}>
+                        On the right to a song, click on the plus icon. A check mark will show a successful queue.</div>
+                    
 
-                             <div style={{ marginTop: "9.85vh", display: "inline-flex" }}>
-                                 <button
-                                 
-                                     style={{
-                                         fontWeight: 1000,
-                                         color: "white",
-                                         backgroundColor: "#496fff",
-                                         width: '12.5vw',
-                                         height: '6.9vh',
-                                         fontSize: '1.2vw',
-                                         borderRadius: '1.4vh',
-                                         border: 'none',
-                                         
-                                     }}
-                                     onClick={() => { handleClick(); console.log(clickNum) }}
-                                 > Next </button>
-                                 <img src={"Slider2.png"}
-                                     style={{
-                                         marginLeft: "1.3vw",
-                                         marginTop: "2.65vh",
-                                         width: .052 * 62 + 'vw',
-                                         height: .052 * 16 + 'vw'
-                                     }}></img>
-                             </div>
-                         </div>
-                         <div>
-                             <img src={"LandingPage2.png"}
-                                 style={{
-                                     marginLeft: '7.5vw',
-                                     marginTop: "6.5vh",
-                                     width: .078 * 612 + 'vh',
-                                     height: .078* 873 + 'vh'
-                                 }} />
-                         </div>
-                     </div>
+                        <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
+                            <button
+                            
+                                style={{
+                                    
+                                    fontWeight: 500,
+                                    color: "white",
+                                    backgroundColor: "#496fff",
+                                    width: '12.5vw',
+                                    height: '6.9vh',
+                                    fontSize: '1.25vw',
+                                    borderRadius: '1.4vh',
+                                    border: 'none',
+                                    
+                                }}
+                                onClick={() => { handleClick(); console.log(clickNum) }}
+                            > Next </button>
+                            <img src={"Slider2.png"}
+                                style={{
+                                    marginLeft: "18.2vw",
+                                    marginTop: "19.7vh",
+                                    width: .052 * 62 + 'vw',
+                                    height: .052 * 16 + 'vw'
+                                    
+                                }}></img>
+                        </div>
+                    </div>
+                    <div>
+                        <img src={"LandingPage2.png"}
+                            style={{
+                                marginLeft: '4.5vw',
+                                marginTop: "5.65vh",
+                                width: .0925 * 612 + 'vh',
+                                height: .0925* 738 + 'vh',
+                                
+                            }} />
+                    </div>
+                </div>
+                        
                         : <></>}
 
                     {mainPageFadeIn === false && clickNum === 3 ?
-                        <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
-                        <div style={{
-                            width: "45.5%", height: "100%",
-                            paddingTop: "7.75vh", paddingLeft: "5.325vw",
-                        }}>
-                            <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.5vw" }}>Other things to know</div>
-                        
-                            <div style={{marginTop: "1vh",fontWeight: 1000, color: "#3C435C", fontSize: "1.875vw" ,lineHeight:'4.35vh'}}>
-                               In order to create the best playlist for BeachHacks, we recommend following these tips.
-                               </div>
-                        
+                    <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
+                    <div style={{
+                        width: "49.5%", height: "100%",
+                        paddingTop: "20.625vh", paddingLeft: "6.7vw",
+                    }}>
+                        <div style={{ color: "#496fff", fontWeight: "bold", fontSize: "2.08vw" }}>Other things to know</div>
+                    
+                        <div style={{height: '8vh',marginTop: "0.1vh",fontWeight: 500, color: "#3C435C", fontSize: "1.67vw" ,lineHeight:'4vh'}}>
+                        In order to create the best playlist for BeachHacks, we recommend following these tips.</div>
+                    
 
-                            <div style={{ marginTop: "9.85vh", display: "inline-flex" }}>
-                                <button
-                                
-                                    style={{
-                                        fontWeight: 1000,
-                                        color: "white",
-                                        backgroundColor: "#496fff",
-                                        width: '12.5vw',
-                                        height: '6.9vh',
-                                        fontSize: '1.2vw',
-                                        borderRadius: '1.4vh',
-                                        border: 'none',
-                                        
-                                    }}
-                                    onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
-                                > Ready to vibe!</button>
-                                <img src={"Slider3.png"}
-                                    style={{
-                                        marginLeft: "1.3vw",
-                                        marginTop: "2.65vh",
-                                        width: .052 * 62 + 'vw',
-                                        height: .052 * 16 + 'vw'
-                                    }}></img>
-                            </div>
+                        <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
+                            <button
+                            
+                                style={{
+                                    
+                                    fontWeight: 500,
+                                    color: "white",
+                                    backgroundColor: "#496fff",
+                                    width: '12.5vw',
+                                    height: '6.9vh',
+                                    fontSize: '1.25vw',
+                                    borderRadius: '1.4vh',
+                                    border: 'none',
+                                    
+                                }}
+                                onClick={() => { setOpen(false); setMainPageFadeIn(true); setClickNum(1); localStorage.setItem('visited', 'true');}}
+                            > Ready to vibe! </button>
+                            <img src={"Slider3.png"}
+                                style={{
+                                    marginLeft: "18.2vw",
+                                    marginTop: "19.7vh",
+                                    width: .052 * 62 + 'vw',
+                                    height: .052 * 16 + 'vw'
+                                    
+                                }}></img>
                         </div>
-                        <div  style={{
-                                        marginTop: '8vh',
-                                        marginLeft: '9.2vw',
-                                        
-                                        
-                                    }}>
-                        <Stack direction="column" spacing={4}>
+                    </div>
+                    <div style = {{margin: "auto", paddingLeft: '1.025vw', paddingBottom: '5vh'}}>
+
+                       <Stack direction="column" spacing={'3vh'}>
                                     <Grid
                                         container
-                                        sx={{ backgroundColor: "white", boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2", borderRadius: '1.3vh', height: "10.5vh", width: "29vw", textAlign: "center",
+                                        sx={{ backgroundColor: "white", boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2", borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                          border: '.25vh solid #e0e4f2' }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{fontWeight: 1000, fontSize: '2.6vh', marginTop: "0vh",lineHeight:'3.5vh' }}>To keep it professional, avoid<br />explicit songs.</div>
+                                        <div style={{fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh",lineHeight:'3.25vh' }}>To keep it professional, avoid<br />explicit songs.</div>
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{ backgroundColor: "white",boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2", borderRadius: '1.3vh', height: "10.5vh", width: "29vw", textAlign: "center",
+                                        sx={{ backgroundColor: "white",boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2", borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                         border: '.25vh solid #e0e4f2'  }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{ fontWeight: 1000,fontSize: '2.6vh', marginTop: "0vh" ,lineHeight:'3.5vh'}}>To keep the playlist diverse,<br />avoid repeating songs.</div>
+                                        <div style={{ fontWeight: 500,fontSize: '2.6vh', marginTop: "0vh" ,lineHeight:'3.25vh'}}>To keep the playlist diverse,<br />avoid repeating songs.</div>
                                     </Grid>
                                     <Grid
                                         container
-                                        sx={{ backgroundColor: "white",boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2",borderRadius: '1.3vh', height: "10.5vh", width: "29vw", textAlign: "center",
+                                        sx={{ backgroundColor: "white",boxShadow: "0vw .5vh 1vw 0.25vw #e0e4f2",borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                         border: '.25vh solid #e0e4f2'  }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{fontWeight: 1000, fontSize: '2.6vh', marginTop: "0vh",lineHeight:'3.5vh' }}>Rule 3 here</div>
+                                        <div style={{fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh",lineHeight:'3.25vh' }}>Rule 3 here</div>
                                     </Grid>
                                 </Stack>
-                        </div>
-                    </div>: <></>}
+                    </div>
+                </div>
+                        : <></>}
                 </Grid>
             </Modal>
         </>
