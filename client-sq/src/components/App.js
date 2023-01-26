@@ -34,8 +34,8 @@ function App() {
   return (
     <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: "#f6f8fe", height: "100vh" }}>
     <SocketContext.Provider value={apiSocket}>
-    {(localStorage.getItem('visited') === null) && <LandingPage/>}
       <NavBar />
+      <LandingPage/>
       <Routes>
         <Route path="/admin" element={<Admin />}>
         </Route>
