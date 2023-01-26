@@ -89,7 +89,7 @@ export default function Track({ track, clickable, num }) {
 
            </TableRow> 
            </Fade>: 
-        <Slide direction = 'down' in={true} timeout={500} >
+        <Slide direction = 'down' in={true} timeout={500}>
           
             <TableRow  
              hover={true} >  

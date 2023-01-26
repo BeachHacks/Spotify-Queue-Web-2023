@@ -137,7 +137,7 @@ function History() {
       {searching?
         <div style={{margin: "2vh"}}>Results</div>
         :
-        <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+        <div style={{fontWeight: 700,margin: "2vh", fontSize: '1.25vw'}}>Can't remember a song you want to replay?</div>
       }
       <div style={{height: "5vh",fontWeight: 500,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
       Title
@@ -163,7 +163,7 @@ function History() {
       <TableBody>
 
 
-      {((searchedHistory.length > 0 ) ? searchedHistory.slice(1) : historyData.slice(1)).map((track, index) => (
+      {((searchedHistory.length > 0 ) ? searchedHistory : historyData.slice(1)).map((track, index) => (
 
         <Track 
         track={track}
