@@ -354,16 +354,16 @@ const Dashboard = ({ theme }) => {
                   <div style={{ padding: "1vh", fontSize: window.innerWidth * 0.0154, marginTop: window.innerHeight * 0.011, marginLeft: window.innerWidth * 0.007 }}>
 
 
-                    <div style={{ fontSize: window.innerWidth * 0.0145, height: "4.25vh" }}>
+                    <div style={{ fontSize: window.innerWidth * 0.0145, height: "4.25vh", color: theme.palette.text.primary }}>
                       Results
                     </div>
 
                     {loading ?
-                      <div style={{ fontWeight: 500, fontSize: window.innerWidth * 0.01025, height: "1vh" }}>
+                      <div style={{ fontWeight: 500, fontSize: window.innerWidth * 0.01025, height: "1vh", color: theme.palette.text.primary }}>
                         {text}
                       </div>
                       :
-                      <div style={{ fontWeight: 500, fontSize: window.innerWidth * 0.01025, height: "1vh" }}>
+                      <div style={{ fontWeight: 500, fontSize: window.innerWidth * 0.01025, height: "1vh", color: theme.palette.text.primary  }}>
                         Explicit or recently added songs are grayed out.
                       </div>
                     }
