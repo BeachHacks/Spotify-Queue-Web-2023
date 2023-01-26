@@ -61,7 +61,7 @@ const NowPlaying = ({ theme }) => {
                 <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: window.innerWidth * 0.0105, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
                 </Slide>
                
-                <ProgressBar style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
+                <ProgressBar theme ={theme} style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
                 
              
               <Slide direction = 'left' key={playbackState.duration} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={700}>
