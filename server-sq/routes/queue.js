@@ -1,54 +1,56 @@
 const express = require("express");
 const router = express.Router()
 
-module.exports = function(spotifyApi, adminStatus) {
-  const queue = []; 
-  const buffer = [];
+module.exports = function(socket, session) {
 
   router.get('/', (req, res) => {
     res.send('queue routing check')
   })
 
   router.get('/next', (req, res) => {
-    res.json(queue[0])
+    res.json(session.queue[0])
   })
 
   router.get('/show', (req, res) => {
-    res.json(queue)
+    res.json(session.queue)
   })
 
   router.post('/add', (req, res) => {
     let added = false 
-    if (adminStatus.activePlaying) {
-      queue.push(req.body)
-      buffer.push(req.body)
-      added = true
+    if (session.status.active) {
+      added = session.addToQueue(req.body);
     }
-    added ? res.send("Added to queue") : res.send("Failed to add song")
+    if (added) {
+      socket.emit('queueAdd', req.body);
+      res.send("Added to queue");
+    }
+    else {
+      res.send("Failed to add song to queue");
+    }
   })
 
   // Add song to Spotify account queue periodically (Purpose: Reduces number of API requests)
   setInterval(() => {
-    if (buffer.length < 1 || !adminStatus.activePlaying) {
+    if (session.buffer.length < 1) {
       return;
     }
-    const next = buffer.shift();
+    const next = session.buffer.shift();
     console.log('Next: ' + next);
-    spotifyApi.addToQueue(next.uri).then(() => {
+    session.spotify.addToQueue(next).then(() => {
       console.log('Added song to Spotify')
     }, (err) => {
       console.log(err)
     })
   }, 5000);
 
-  // Update queue 
+  // Popping Queue 
   setInterval(() => {
-    if (queue.length < 1 || !adminStatus.activePlaying) {
+    if (session.queue.length < 1) {
       // Empty queue
       return;
     }
-    if (Object.keys(adminStatus.playbackState).length != 0 && queue[0].uri == adminStatus.playbackState.item.uri){
-      const popped = queue.shift();
+    if (Object.keys(session.playback).length != 0 && session.queue[0].uri == session.playback.item.uri){
+      const popped = session.popQueue();
       console.log('Removed: ' + popped + 'from top of queue');
     }
 

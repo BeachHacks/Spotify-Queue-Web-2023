@@ -62,32 +62,33 @@ function HowToUse() {
         style={{border: '.25vh solid #e0e4f2',
         marginTop: 100*.02+ 'vh', borderRadius: 100*.015+ 'vh', 
         display:"flex", flexDirection:"row",fontWeight: "bold",
-        minHeight: "23vh", backgroundColor:"#ffffff",   color: "#3d435a",
+        minHeight: "32.5vh", backgroundColor:"#ffffff",   color: "#3d435a",
         width:100*.7775 + 'vw'}}>
 
 <div style = {{marginTop: 100*0.014+ 'vh',marginLeft: 100*0.014+ 'vw',color: "#3d435a",fontWeight: 500,fontSize: 100*2.1*0.009 + 'vh',}}>
           <div style = {{fontWeight: 700,fontSize: 100*2.1*0.0125 + 'vh',color:"#496fff"}}>
-                FAQ
+                Frequently asked questions
                 </div>
-                <div style = {{fontWeight: 700,marginBottom: '-.5vh'}}>
+                <div style = {{fontWeight: 700,}}>
                  Why can't I add a song to the playlist?
                 </div>
-                <div style = {{marginBottom: '-.5vh'}}>
+                <div style = {{}}>
                 Some reasons why you might not be able to add a song:
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',}}>
                 • The song is already in the playlist.
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
-                • The song is too explicit.
+                <div style = {{marginLeft: '1vw',}}>
+                • The song might be too explicit.
                 </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
-                • The song was frequently played and temporarily disabled to ensure playlist diversity.
-                </div>
-                <div style = {{marginLeft: '1vw',marginBottom: '-.5vh'}}>
+                <div style = {{marginLeft: '1vw',}}>
                 • The song is too low tempo during after hours and might make others sleepy.
                 </div>
            
+                <div style = {{marginLeft: '1vw',}}>
+                • The song was frequently played and temporarily disabled to ensure playlist diversity.
+                </div>
+                
                 
                 </div>
         

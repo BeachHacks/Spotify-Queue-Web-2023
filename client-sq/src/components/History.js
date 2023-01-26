@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Track from "./Track"
 import { Container, IconButton } from '@mui/material';
 import {  TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import { SocketContext } from './App';
 
 function History() {
+
+  const socket = useContext(SocketContext);
 
   const [historyData, setHistoryData] = useState([])
   const [searchedHistory, setSearchedHistory] = useState(historyData)
@@ -14,35 +17,40 @@ function History() {
 
   const [searching, setSearching] = useState(false)
   const [clickedSB, setClickedSB] = useState("#a3a8bf")
+  const [borderColor, setBC] = useState(".25vh solid #e0e4f2")
 
+  
   function handleFocus() {
-    setClickedSB("#496fff");
 
+    setClickedSB("#496fff")
+    setBC(".25vh solid #496fff")
   }
 
   function handleBlur() {
-    setClickedSB("#a3a8bf");
+    setClickedSB("#a3a8bf")
+    setBC(".25vh solid #e0e4f2")
 
   }
-  // Hook handling retrieving the data of the queue from the backend.
-    useEffect(() => {
-      let ignore = false;
 
-      async function fetchHistory() {
+  // Initialization
+  useEffect(() => {
 
-        const result = await axios(process.env.REACT_APP_API_URL + '/playback/history');
-        if (!ignore) setHistoryData(result.data.reverse().slice(1));
+    let ignore = false;
+    async function fetchHistory() {
+      const result = await axios(process.env.REACT_APP_API_URL + '/playback/history');
+      if (!ignore) setHistoryData(result.data.reverse());
+    }
+    fetchHistory();
 
-      }
+    socket.on('updateHistory', (data) => {
+      setHistoryData((prevData) => ([data, ...prevData]))
+    })
 
-      fetchHistory();
-
-      const interval = setInterval(() => {
-        fetchHistory();
-      }, 1000);
-
-      return () => { ignore = true; clearInterval(interval); }
-    }, [])
+    return () => { 
+      ignore = true;
+      socket.off('updateHistory');
+    }
+  }, [])
 
   const searchHistory = (term) => {
     setSearchedHistory(historyData.filter((track) => (track.title.toLowerCase().includes(term.toLowerCase()) || track.artist.toLowerCase().includes(term.toLowerCase()))))
@@ -71,7 +79,7 @@ function History() {
         paddingLeft: window.innerWidth*.027,
         paddingRight: window.innerWidth*.00875,
 
-        border: '.25vh solid #e0e4f2'
+        border: borderColor
     }} 
 
     type="search"
@@ -129,9 +137,9 @@ function History() {
       {searching?
         <div style={{margin: "2vh"}}>Results</div>
         :
-        <div style={{margin: "2vh"}}>Can't remember a song you want to replay?</div>
+        <div style={{fontWeight: 700,margin: "2vh", fontSize: '1.25vw'}}>Can't remember a song you want to replay?</div>
       }
-      <div style={{height: "5vh",fontWeight: 700,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
+      <div style={{height: "5vh",fontWeight: 500,   color: "#3d435a",fontSize: window.innerWidth*0.01, paddingLeft:window.innerHeight*0.024,paddingTop:window.innerHeight*0.01}} align="left">
       Title
 
       </div>
@@ -155,7 +163,7 @@ function History() {
       <TableBody>
 
 
-      {((searchedHistory.length > 0 ) ? searchedHistory : historyData).map((track, index) => (
+      {((searchedHistory.length > 0 ) ? searchedHistory : historyData.slice(1)).map((track, index) => (
 
         <Track 
         track={track}
@@ -180,6 +188,6 @@ function History() {
     </div>
     </div>
   )
-}
+};
 
 export default History;
