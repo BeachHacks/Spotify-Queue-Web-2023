@@ -43,7 +43,8 @@ function NowPlaying() {
   }
 
     return (
-      <Zoom direction = 'left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500} >
+
+      <Zoom direction = 'left' key={playbackState.title} in={(playbackState.duration / 1000) - (playbackState.progress / 1000) > 1} timeout={500} >
         <div style={{ display: "inline-flex", width: "100%"}}>
         
             <div>
@@ -53,7 +54,7 @@ function NowPlaying() {
             </div>
             
     <div style={{ alignSelf: "flex-end", marginLeft: window.innerWidth * .016, width: "100%", marginBottom: -window.innerHeight * 0.006 }}>
-    <Slide direction = 'left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
+      <Slide direction = 'left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
                 <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.01657, marginBottom: -window.innerHeight * 0.005 }}>{playbackState.title}</div>
                 </Slide>
                 <Slide direction = 'left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
@@ -74,6 +75,7 @@ function NowPlaying() {
    
     </div>
     </Zoom>
+
   )
 }
 export default NowPlaying;
