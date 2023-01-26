@@ -19,8 +19,16 @@ class SessionManager {
     return this._queue;
   }
 
+  set queue(newQueue){
+    this._queue = newQueue;
+  }
+
   get history(){
     return this._history;
+  }
+
+  set history(newHistory){
+    this._history = newHistory;
   }
 
   get status(){
@@ -98,8 +106,21 @@ class SessionManager {
     this._history.push(this._queue.shift());
   }
 
+  resetSession(){
+    this._queue = [];
+    this._history = [];
+    this._status = {
+      host : false,
+      active : false,
+      accessToken : '',
+    };
+    this._playback = {};
+    this._buffer = [];
+  }
+
   // Spotify
   authenticate(code){
+    this.resetSession();
     return this.spotifyApi.authorizationCodeGrant(code).then((data) => {
       this._status.accessToken = data.body['access_token']
       // Set the access token on the API object to use it in later calls
