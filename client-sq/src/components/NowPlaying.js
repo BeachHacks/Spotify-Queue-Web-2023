@@ -44,9 +44,8 @@ function NowPlaying() {
 
     return (
 
-      <Zoom direction = 'left' key={playbackState.title} in={(playbackState.duration / 1000) - (playbackState.progress / 1000) > 1} timeout={500} >
+      <Zoom key={playbackState.title} in={(playbackState.duration / 1000) - (playbackState.progress / 1000) > 1} timeout={ {enter: 500, exit: 300 }} >
         <div style={{ display: "inline-flex", width: "100%"}}>
-        
             <div>
                 <img src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
