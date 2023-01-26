@@ -3,21 +3,23 @@ import React from "react"
 import Track from "./Track"
 // import {Container} from 'react-bootstrap';
 import { TableContainer, Table, TableBody, tableCellClasses } from '@mui/material';
-export default function DisplayResults({ trackList }) {
+const DisplayResults = ({ trackList, theme }) => {
     return (
 
-        <TableContainer   style={{ height: "64vh", marginTop: window.innerHeight*0.02, overflowY: "auto",
-        width: "auto", overflowX:"hidden"}}>
+        <TableContainer style={{
+            height: "64vh", marginTop: window.innerHeight * 0.02, overflowY: "auto",
+            width: "auto", overflowX: "hidden"
+        }}>
 
             <Table stickyHeader
-                    sx={{
-                        [`& .${tableCellClasses.root}`]: {
-                        borderBottom: "none" ,
-                        
-                        }
-                    }}
-                     aria-label="sticky table">
-                 
+                sx={{
+                    [`& .${tableCellClasses.root}`]: {
+                        borderBottom: "none",
+
+                    }
+                }}
+                aria-label="sticky table">
+
                 <TableBody style={{}}>
 
                     {trackList.map(track => (
@@ -27,6 +29,7 @@ export default function DisplayResults({ trackList }) {
                             clickable={true}
                             albumName={track.albumName}
                             duration={track.songDuration}
+                            theme={theme}
                         />
                     ))}
                 </TableBody>
@@ -34,3 +37,4 @@ export default function DisplayResults({ trackList }) {
         </TableContainer>
     )
 }
+export default DisplayResults;

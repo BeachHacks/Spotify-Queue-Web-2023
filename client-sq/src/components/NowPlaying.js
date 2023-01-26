@@ -3,7 +3,8 @@ import axios from 'axios';
 import ProgressBar from "./ProgressBar";
 import { SocketContext } from "./App";
 import {selectClasses, Slide,Zoom} from '@mui/material';
-function NowPlaying() {
+
+const NowPlaying = ({ theme }) => {
 
   const io = useContext(SocketContext);
 
@@ -25,7 +26,7 @@ function NowPlaying() {
     })
 
     return () => {
-     io.off('playback');
+      io.off('playback');
     }
   }, [])
 
@@ -54,17 +55,17 @@ function NowPlaying() {
             
     <div style={{ alignSelf: "flex-end", marginLeft: window.innerWidth * .016, width: "100%", marginBottom: -window.innerHeight * 0.006 }}>
       <Slide direction = 'left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
-                <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.01657, marginBottom: -window.innerHeight * 0.005 }}>{playbackState.title}</div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: window.innerWidth * 0.01657, marginBottom: -window.innerHeight * 0.005 }}>{playbackState.title}</div>
                 </Slide>
                 <Slide direction = 'left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
-                <div style={{ color: "#3d435a", fontWeight: 500, fontSize: window.innerWidth * 0.0105, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: window.innerWidth * 0.0105, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
                 </Slide>
                
                 <ProgressBar style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
                 
              
               <Slide direction = 'left' key={playbackState.duration} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={700}>
-                <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.0075, marginTop: window.innerHeight * 0.005 }}>{millisecondsToMinute(playbackState.progress)}<span style={{ float: "right" }} >{millisecondsToMinute(playbackState.duration)}</span></div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: window.innerWidth * 0.0075, marginTop: window.innerHeight * 0.005 }}>{millisecondsToMinute(playbackState.progress)}<span style={{ float: "right" }} >{millisecondsToMinute(playbackState.duration)}</span></div>
              
                 </Slide>
                
@@ -74,7 +75,7 @@ function NowPlaying() {
    
     </div>
     </Zoom>
-
   )
 }
+
 export default NowPlaying;

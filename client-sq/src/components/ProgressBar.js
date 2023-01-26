@@ -3,7 +3,7 @@ import '../styles/App.css'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
 
-function ProgressBar({ number, style }) {
+function ProgressBar({ number, style, theme }) {
 
     const BorderLinearProgress = styled(LinearProgress)({
         height: window.innerHeight * 0.005,
@@ -13,7 +13,7 @@ function ProgressBar({ number, style }) {
         },
         [`& .${linearProgressClasses.bar}`]: {
             borderRadius: 5,
-            backgroundColor: '#516ef6',
+            backgroundColor: theme.palette.primary.main,
         },
     });
 

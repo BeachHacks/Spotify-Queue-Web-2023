@@ -1,64 +1,64 @@
 // Component for showing track details
-import {useState,React} from "react"
+import { useState, React } from "react"
 import axios from 'axios';
-import {Slide,Fade,TableCell, TableRow } from '@mui/material';
+import { Slide, Fade, TableCell, TableRow } from '@mui/material';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { IconButton } from '@mui/material';
 
-export default function Track({ track, clickable, num }) {
-    const [clicked, setClicked] = useState(false)
-    const [disable, setDisabled] = useState(false)
-    const [fade, setSlide] = useState(true)
-    let unqueueable = false
-    
-    if(!track.filter)
-      unqueueable = true
-    if(track.explicit)
-      unqueueable = true
-    
-   
-    function handleAdd() {
-      if (!track.explicit && clickable && track.filter) axios.post(process.env.REACT_APP_API_URL + "/queue/add", {
-            title: track.title,
-            artist: track.artist,
-            albumUrl: track.albumUrl,
-            albumName: track.albumName,
-            songDuration: track.songDuration,
-            uri: track.uri,
-            explicit: track.explicit
+const Track = ({ track, clickable, num, theme }) => {
+  const [clicked, setClicked] = useState(false)
+  const [disable, setDisabled] = useState(false)
+  const [fade, setSlide] = useState(true)
+  let unqueueable = false
+
+  if (!track.filter)
+    unqueueable = true
+  if (track.explicit)
+    unqueueable = true
 
 
-          })
-          .then(res => {
-            console.log(res.data)
-          })
-          .catch((err) => {
-            console.log(err)
-          }); 
+  function handleAdd() {
+    if (!track.explicit && clickable && track.filter) axios.post(process.env.REACT_APP_API_URL + "/queue/add", {
+      title: track.title,
+      artist: track.artist,
+      albumUrl: track.albumUrl,
+      albumName: track.albumName,
+      songDuration: track.songDuration,
+      uri: track.uri,
+      explicit: track.explicit
 
-          setClicked(true)
-          setDisabled(true)
-          setTimeout(() => {
-            setClicked(false)
-          }, 3000)
-          setTimeout(() => {
-            setSlide(false)
-        }, 2500)
-   }
-  
-   function secondsToMinutes(milliSeconds){
-      let seconds = parseFloat((milliSeconds/1000) % 60).toFixed(0)
-      let minutes = Math.floor((milliSeconds/1000)/60)
-      if (seconds < 10){
-        return minutes.toString() + ":0" + seconds.toString() 
-      }
-      return minutes.toString() + ":" + seconds.toString() 
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
 
-   
-    
-    
-   }
+    setClicked(true)
+    setDisabled(true)
+    setTimeout(() => {
+      setClicked(false)
+    }, 3000)
+    setTimeout(() => {
+      setSlide(false)
+    }, 2500)
+  }
+
+  function secondsToMinutes(milliSeconds) {
+    let seconds = parseFloat((milliSeconds / 1000) % 60).toFixed(0)
+    let minutes = Math.floor((milliSeconds / 1000) / 60)
+    if (seconds < 10) {
+      return minutes.toString() + ":0" + seconds.toString()
+    }
+    return minutes.toString() + ":" + seconds.toString()
+
+
+
+
+  }
+
     return (
       
         <>  
@@ -76,7 +76,7 @@ export default function Track({ track, clickable, num }) {
               </TableCell> 
               <div  style={{ marginLeft: -window.innerWidth*0.007, alignItems: "center", align: "center"}}>
 
-              <TableCell style={{ padding: "1.3vh .8vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
+              <TableCell style={{ padding: "1.3vh .8vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
                 <div style={{ marginBottom: -window.innerHeight*0.005, fontWeight : "bold", fontSize: window.innerHeight*0.018}}>
                   {track.title}
                 </div>
@@ -107,7 +107,7 @@ export default function Track({ track, clickable, num }) {
               <div  style={{ marginLeft: -window.innerWidth*0.007, alignItems: "center", align: "center"}}>
               {/* Title and Artist  */}
               
-              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:"#3d435a"}} align="left">
+              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:theme.palette.text.primary}} align="left">
                 <div style={{ fontWeight : "bold", fontSize : window.innerHeight*0.02}}>
                   {track.title}
                 </div>
@@ -130,7 +130,7 @@ export default function Track({ track, clickable, num }) {
                  !clicked?
                  !disable?
                  
-                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw', color: "#496fff"}}/>
+                 <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw', color: theme.palette.primary.main}}/>
                 
                 
                   :
@@ -141,7 +141,7 @@ export default function Track({ track, clickable, num }) {
                 
                   :
                   <Fade in={fade} timeout={500}>
-                 <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: "#496fff"}}/>
+                 <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
                  </Fade>
                  }
                  </IconButton>
@@ -162,3 +162,4 @@ export default function Track({ track, clickable, num }) {
     )
 
 }
+export default Track;
