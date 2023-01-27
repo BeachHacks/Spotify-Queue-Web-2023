@@ -101,11 +101,26 @@ main{
   font-weight: 500;
   font-size:1.05vw;
 }
+.searchA::placeholder{
+ color: #A3A8BF;
+}
+
 
 .searchA:focus{
   outline: none !important;
 }
+.searchB{
+  font-weight: 500;
+  font-size:1.05vw;
+}
+.searchB::placeholder{
+ color: #5A627E;
+}
 
+
+.searchB:focus{
+  outline: none !important;
+}
 .circle {
   border-radius: 50vw;
   width: 2vw;

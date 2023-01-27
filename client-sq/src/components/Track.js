@@ -1,7 +1,7 @@
 // Component for showing track details
 import { useState, React } from "react"
 import axios from 'axios';
-import { Slide, Fade, TableCell, TableRow } from '@mui/material';
+import { Slide, Fade, Zoom, TableCell, TableRow } from '@mui/material';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { IconButton } from '@mui/material';
@@ -43,7 +43,7 @@ const Track = ({ track, clickable, num, theme }) => {
     }, 3000)
     setTimeout(() => {
       setSlide(false)
-    }, 2500)
+    }, 2700)
   }
 
   function secondsToMinutes(milliSeconds) {
@@ -53,10 +53,6 @@ const Track = ({ track, clickable, num, theme }) => {
       return minutes.toString() + ":0" + seconds.toString()
     }
     return minutes.toString() + ":" + seconds.toString()
-
-
-
-
   }
 
     return (
@@ -135,14 +131,14 @@ const Track = ({ track, clickable, num, theme }) => {
                 
                   :
 
-                  <Fade in={disable} timeout={500}>
+                  <Zoom in={disable} timeout={300}>
                   <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw'}}/>
-                  </Fade>
+                  </Zoom>
                 
                   :
-                  <Fade in={fade} timeout={500}>
+                  <Zoom in={fade} timeout={300}>
                  <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
-                 </Fade>
+                 </Zoom>
                  }
                  </IconButton>
                 

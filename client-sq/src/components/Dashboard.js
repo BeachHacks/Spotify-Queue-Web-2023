@@ -26,16 +26,14 @@ const Dashboard = ({ theme }) => {
 
 
   const [clicked, setClicked] = useState(false)
-  const [clickedSB, setClickedSB] = useState(theme.palette.common.misc)
+  
 
   function handleFocus() {
-    setClickedSB(theme.palette.primary.main)
     setBC(".25vh solid " + theme.palette.primary.main)
     setClicked(true)
   }
 
   function handleBlur() {
-    setClickedSB(theme.palette.common.misc)
     setBC(".25vh solid " + theme.palette.common.border)
     setClicked(false)
   }
@@ -219,7 +217,7 @@ const Dashboard = ({ theme }) => {
               color: theme.palette.text.primary
             }}
               placeholder="Search for a song to queue"
-              className="searchA"
+              className={theme.palette.mode == 'light'?"searchA":"searchB"}
               onChange={(e) => { setInput(e.target.value) }}
               onKeyPress={
                 handleKeyPress
@@ -234,7 +232,7 @@ const Dashboard = ({ theme }) => {
                 marginTop: 100 * .0235+ 'vh', marginLeft: -100 * .2875+ 'vw', height: 100 * .05+ 'vh',
                 width: 100 * .05+ 'vh', borderRadius: 80,
 
-                color: clickedSB
+                color: clicked? theme.palette.primary.main :theme.palette.common.misc
               }}
               onClick={() => {
 

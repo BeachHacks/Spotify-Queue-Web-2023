@@ -32,7 +32,8 @@ const themeDefinition = (mode) => ({
                     main: "#496FFF"
                 },
                 common: {
-                    border: "#202733"
+                    border: "#202733",
+                    misc: "#5A627E"
                 }
             }
     }

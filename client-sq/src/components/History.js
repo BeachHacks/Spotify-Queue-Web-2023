@@ -86,7 +86,7 @@ const History = ({ theme }) => {
 
               type="search"
               placeholder="Search with a word or artist"
-              className="searchA"
+              className={theme.palette.mode == 'light'?"searchA":"searchB"}
               onFocus={handleFocus}
               onBlur={handleBlur}
 

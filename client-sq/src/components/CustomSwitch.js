@@ -5,30 +5,34 @@ const CustomSwitch = styled((props) => (
     <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
     marginTop: '-.4vh',
-    width: "4.2vw",
-    height: "2.05vw",
+    width: "7.4vh",
+    height: "3.7vh",
     padding: 0,
+    borderRadius: "5vh",
+    backgroundColor: "#496FFF",
     '& .MuiSwitch-switchBase': {
         padding: 0,
-        margin: ".7vh",
+        margin: ".705vh",
         // transitionDuration: '300ms',
         '&.Mui-checked': {
-            transform: 'translateX(2vw)',
+            transform: 'translateX(3.524vh)',
             color: '#fff',
             "& .MuiSwitch-thumb:before": {
-                left: '-.05vw',
-                top: '-.05vw',
-                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+                left: '-.07vh',
+                top: '-.1vh',
+                
+                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="{max}" width="{max}" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
                     "#496FFF"
                 )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`
             },
             '& + .MuiSwitch-track': {
-                left: '-.05vw',
-                top: '-.05vw',
+                marginLeft: '.01vh',
+                height:'2.73vh',
                 backgroundColor: "#496FFF",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "left 10% bottom 50%",
-                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+               
+                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20"><path fill="${encodeURIComponent(
                     "#FFF"
                 )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
                 opacity: 1,
@@ -52,34 +56,37 @@ const CustomSwitch = styled((props) => (
     '& .MuiSwitch-thumb': {
         
         boxSizing: 'border-box',
-        width: '1.55vw',
-        height:'1.55vw',
-        marginTop:'-.15vw',
-        marginLeft:'-.05vw',
+        width: '2.73vh',
+        height:'2.73vh',
+        
+        marginTop:'-.264vh',
+        marginLeft:'-.1vh',
         "&:before": {
             content: "''",
             position: "absolute",
-            width: "1.5vw",
+            width: "2.643vh",
             height: "100%",
-            left: '-.05vw',
-            top: '-.05vw',
+            left: '-.07vh',
+            top: '-.1vh',
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="{max}" width="{max}" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
                 "#496FFF"
             )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`
         }
     },
     '& .MuiSwitch-track': {
-        left: '-.05vw',
-        top: '-.05vw',
-        borderRadius: "2vw",
+        marginLeft: '-.15vh',
+        marginTop: '0.5vh',
+
+        height: '2.73vh',
         opacity: 1,
-        
+        paddingBottom: '1vh',
         backgroundColor: "#496FFF",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right 10% bottom 50%",
-        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+       
+        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 20 20"><path fill="${encodeURIComponent(
             "#FFF"
         )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`
     },
