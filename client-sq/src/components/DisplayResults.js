@@ -7,7 +7,7 @@ const DisplayResults = ({ trackList, theme }) => {
     return (
 
         <TableContainer style={{
-            height: "64vh", marginTop: window.innerHeight * 0.02, overflowY: "auto",
+            height: "65vh", marginTop: window.innerHeight * 0.02, overflowY: "auto",
             width: "auto", overflowX: "hidden"
         }}>
 
@@ -20,10 +20,10 @@ const DisplayResults = ({ trackList, theme }) => {
                 }}
                 aria-label="sticky table">
 
-                <TableBody style={{}}>
+                <TableBody  style={{}}>
 
                     {trackList.map(track => (
-                        <Track
+                        <Track 
                             track={track}
                             key={track.uri}
                             clickable={true}

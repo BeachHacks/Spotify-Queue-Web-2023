@@ -124,6 +124,8 @@ const History = ({ theme }) => {
           <div
 
             style={{
+              overflowY: "hidden",
+              overflowX: "hidden",
               border: '.25vh solid ' + theme.palette.common.border,
               marginTop: 100 * .02+ 'vh', borderRadius: 100 * .015+ 'vh',
               display: "flex", flexDirection: "row", fontWeight: "bold",
@@ -155,7 +157,7 @@ const History = ({ theme }) => {
                     float: "left",
                     borderBottomLeftRadius: 100 * .015+ 'vh',
                     borderBottomRightRadius: 100 * .015+ 'vh',
-                    backgroundColor: theme.palette.background.secondary, height: "61vh", width: "99.5%", overflowX: "hidden"
+                    backgroundColor: theme.palette.background.secondary, height: "62.5vh", width: "99.5%", overflowY: "auto", overflowX: "hidden" 
                   }}>
 
                     <Table sx={{
@@ -163,11 +165,8 @@ const History = ({ theme }) => {
                         borderBottom: "none",
                       }
                     }}
-                      stickyHeader aria-label="sticky table">
-                      <TableHead style={{ width: 100 * 0.954+ 'vh' }} sx={{}}>
-
-
-                      </TableHead>
+                   >
+                   
                       <TableBody>
 
 

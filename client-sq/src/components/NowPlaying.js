@@ -48,7 +48,7 @@ const NowPlaying = ({ theme }) => {
       <Zoom key={playbackState.title} in={(playbackState.duration / 1000) - (playbackState.progress / 1000) > 1} timeout={ {enter: 500, exit: 300 }} >
         <div style={{ display: "inline-flex", width: "100%"}}>
             <div>
-                <img src={playbackState.albumImage[0].url}
+                <img class ="bigger2" src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
                     style={{ height: 100 * 0.104 + 'vw', width: 100 * 0.104 + 'vw', marginTop: 100 * 0.008 + 'vh'}} />   
             </div>

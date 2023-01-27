@@ -7,7 +7,7 @@ const Queue = ({ trackList, theme }) => {
   return (
     // Will be modified to include displaying position in queue.
 
-    <TableContainer sx={{ height: "40vh", boxShadow: 0, width: "auto", }}
+    <TableContainer sx={{ height: "46vh", boxShadow: 0, width: "auto", }}
       style={{ overflowY: "auto", overflowX: "hidden" }}>
 
       <Table

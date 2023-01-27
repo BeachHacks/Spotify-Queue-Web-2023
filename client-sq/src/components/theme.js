@@ -16,7 +16,8 @@ const themeDefinition = (mode) => ({
                 },
                 common:{
                     border: "#E0E4F2",
-                    misc: "#A3A8BF"
+                    misc: "#A3A8BF",
+                    disButton: "#A3A8BF"
                 }
             } :
             {
@@ -33,7 +34,8 @@ const themeDefinition = (mode) => ({
                 },
                 common: {
                     border: "#202733",
-                    misc: "#5A627E"
+                    misc: "#5A627E",
+                    disButton: "#3C435C"
                 }
             }
     }

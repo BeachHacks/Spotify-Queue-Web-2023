@@ -339,6 +339,8 @@ const Dashboard = ({ theme }) => {
                 </div>
                 :
                 <div style={{
+                  overflowX: 'hidden',
+                  overflowY: 'hidden',
                   color: "#3d435a",
                   border: '.25vh solid ' + theme.palette.common.border,
                   borderRadius: 100 * .015+ 'vh',
@@ -406,7 +408,7 @@ const Dashboard = ({ theme }) => {
                   }
                 </div>
 
-                <div>
+                <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
                   <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
