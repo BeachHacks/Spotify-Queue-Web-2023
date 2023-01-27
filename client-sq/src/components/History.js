@@ -81,7 +81,8 @@ const History = ({ theme }) => {
                 paddingRight: 100 * .00875+ 'vw',
                 border: borderColor,
                 borderColor: theme.palette.common.border,
-                backgroundColor: theme.palette.background.secondary
+                backgroundColor: theme.palette.background.secondary,
+                color: theme.palette.text.primary
               }}
 
               type="search"
