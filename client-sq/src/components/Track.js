@@ -68,7 +68,7 @@ const Track = ({ track, clickable, num, theme }) => {
           
           <TableCell style={{ padding: ".7vh 1.1vw",width: 100*0.01+ 'vw' }} align="left">
                 
-                <a href={track.spotifyUrl}><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:100*0.02625+ 'vw'}} /></a>
+                <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer"><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:100*0.02625+ 'vw'}} /></a>
                 
               </TableCell> 
               <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
@@ -98,7 +98,7 @@ const Track = ({ track, clickable, num, theme }) => {
                 
               <TableCell style={{ padding: ".75vh .9vw",width: 100*0.01+ 'vw' }} align="left">
               
-                <a href={track.spotifyUrl}><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.034+ 'vw', width: 100*0.034+ 'vw'}} /></a>
+                <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer"><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.034+ 'vw', width: 100*0.034+ 'vw'}} /></a>
              
               </TableCell> 
             
