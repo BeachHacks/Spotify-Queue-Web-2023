@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Switch } from "@mui/material";
 
 const CustomSwitch = styled((props) => (
-    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} checked={window.localStorage.getItem('theme') === 'dark'}/>
 ))(({ theme }) => ({
     marginTop: '-.4vh',
     width: "7.4vh",
