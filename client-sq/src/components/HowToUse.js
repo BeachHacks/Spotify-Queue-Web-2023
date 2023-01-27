@@ -33,7 +33,7 @@ const HowToUse = ({ theme }) => {
 
 
             <img style={{ marginTop: '-0.3vh', marginLeft: '7.5vw', height: '22.85vh', width: 22.85 * 612 / 247 + 'vh', objectFit: "contain" }}
-              objectFit="cover" src="htf.png" />
+              objectFit="cover"src={theme.palette.text.primary == "#3C435C"? "htf.png" : "htfDark.png" } />
           </div>
         </div>
 
@@ -57,7 +57,7 @@ const HowToUse = ({ theme }) => {
 
             </div>
             <img style={{ marginTop: '-.03vh', marginLeft: '7.5vw', height: '22.6vh', width: 22.6 * 612 / 244 + 'vh', objectFit: "contain" }}
-              objectFit="cover" src="htq.png" />
+              objectFit="cover" src={theme.palette.text.primary == "#3C435C"? "htq.png" : "htqDark.png" } />
           </div>
         </div>
 

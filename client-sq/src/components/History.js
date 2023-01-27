@@ -59,26 +59,26 @@ const History = ({ theme }) => {
 
     <div style={{ minHeight: "100vh", width: "80vh", maxWidth: "100%" }}>
       <Container style={{
-        fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .045, marginLeft: window.innerWidth * .01,
-        fontSize: window.innerWidth * .021, fontWeight: "1000", color: theme.palette.text.primary
+        fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
+        fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
       }}>History</Container>
 
-      <div style={{ display: "inline-flex", width: "100%", height: window.innerHeight, marginTop: -window.innerHeight * .05 }}>
+      <div style={{ display: "inline-flex", width: "100%", height: 100+ 'vh', marginTop: -100 * .05 + 'vh'}}>
 
         <Container style={{
-          fontFamily: "'DM Sans', sans-serif", marginTop: window.innerHeight * .05, marginLeft: window.innerWidth * .01,
-          width: window.innerWidth * .75,
+          fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .05+ 'vh', marginLeft: 100 * .01+ 'vw',
+          width: 100 * .75+ 'vw',
         }}>
 
           <div style={{ display: "flex", flexDirection: "row" }}>
             <input
               style={{
-                marginTop: window.innerHeight * .018,
-                width: window.innerWidth * .7775,
-                height: window.innerHeight * .06,
-                borderRadius: window.innerHeight * .015,
-                paddingLeft: window.innerWidth * .027,
-                paddingRight: window.innerWidth * .00875,
+                marginTop: 100 * .018+ 'vh',
+                width: 100 * .7775+ 'vw',
+                height: 100 * .06+ 'vh',
+                borderRadius: 100 * .015+ 'vh',
+                paddingLeft: 100 * .027+ 'vw',
+                paddingRight: 100 * .00875+ 'vw',
                 border: borderColor,
                 borderColor: theme.palette.common.border,
                 backgroundColor: theme.palette.background.secondary
@@ -104,15 +104,15 @@ const History = ({ theme }) => {
             <IconButton
               disableRipple
               style={{
-                marginLeft: -window.innerWidth * .77525, marginTop: window.innerHeight * .023, marginBottom: window.innerHeight * .000, height: window.innerHeight * .05,
-                width: window.innerHeight * .05, borderRadius: 80, display: "flex",
+                marginLeft: -100 * .77525+ 'vw', marginTop: 100 * .023+ 'vh', marginBottom: 100 * .000+ 'vh', height: 100 * .05+ 'vh',
+                width: 100 * .05+ 'vh', borderRadius: 80, display: "flex",
 
                 color: clickedSB
               }}
               onClick={() => { }}
               type="button"
               variant="contained"
-              children={<SearchRoundedIcon style={{ fontSize: window.innerWidth * .02 }} />}
+              children={<SearchRoundedIcon style={{ fontSize: 100 * .02+ 'vw' }} />}
               fullWidth={false}
             >
             </IconButton>
@@ -124,10 +124,10 @@ const History = ({ theme }) => {
 
             style={{
               border: '.25vh solid ' + theme.palette.common.border,
-              marginTop: window.innerHeight * .02, borderRadius: window.innerHeight * .015,
+              marginTop: 100 * .02+ 'vh', borderRadius: 100 * .015+ 'vh',
               display: "flex", flexDirection: "row", fontWeight: "bold",
               height: "75.3vh", backgroundColor: theme.palette.background.secondary, color: theme.palette.text.primary,
-              fontSize: window.innerWidth * 0.0145, width: window.innerWidth * .7775
+              fontSize: 100 * 0.0145+ 'vw', width: 100 * .7775+ 'vw'
             }}
 
           >
@@ -135,25 +135,25 @@ const History = ({ theme }) => {
               {historyData.length === 0 ?
                 <div
 
-                  style={{ fontWeight: "bold", overflowY: "auto", padding: window.innerHeight * 0.03, color: theme.palette.text.primary }}>
+                  style={{ fontWeight: "bold", overflowY: "auto", padding: 100 * 0.03+ 'vh', color: theme.palette.text.primary }}>
                   The party just started, no songs have been played.
                 </div>
                 :
-                <div style={{ borderRadius: window.innerHeight * .015, height: "69.4vh", width: "100%" }} >
+                <div style={{ borderRadius: 100 * .015+ 'vh', height: "69.4vh", width: "100%" }} >
                   {searching ?
                     <div style={{ margin: "2vh" }}>Results</div>
                     :
                     <div style={{fontWeight: 700, margin: "2vh", fontSize: '1.25vw' }}>Can't remember a song you want to replay?</div>
                   }
-                  <div style={{ height: "5vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: window.innerWidth * 0.01, paddingLeft: window.innerHeight * 0.024, paddingTop: window.innerHeight * 0.01 }} align="left">
+                  <div style={{ height: "5vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: 100 * 0.01 + 'vw', paddingLeft: 100 * 0.024+ 'vh', paddingTop: 100 * 0.01 + 'vh'}} align="left">
                     Title
 
                   </div>
-                  <div style={{ borderTop: ".25vh solid " + theme.palette.common.border, marginLeft: window.innerWidth * 0.01, width: window.innerWidth * .76, marginTop: window.innerHeight * .000 }} />
+                  <div style={{ borderTop: ".25vh solid " + theme.palette.common.border, marginLeft: 100 * 0.01+ 'vw', width: 100 * .76+ 'vw', marginTop: 100 * .000+ 'vh' }} />
                   <TableContainer style={{
                     float: "left",
-                    borderBottomLeftRadius: window.innerHeight * .015,
-                    borderBottomRightRadius: window.innerHeight * .015,
+                    borderBottomLeftRadius: 100 * .015+ 'vh',
+                    borderBottomRightRadius: 100 * .015+ 'vh',
                     backgroundColor: theme.palette.background.secondary, height: "61vh", width: "99.5%", overflowX: "hidden"
                   }}>
 
@@ -163,7 +163,7 @@ const History = ({ theme }) => {
                       }
                     }}
                       stickyHeader aria-label="sticky table">
-                      <TableHead style={{ width: window.innerHeight * 0.954 }} sx={{}}>
+                      <TableHead style={{ width: 100 * 0.954+ 'vh' }} sx={{}}>
 
 
                       </TableHead>

@@ -8,7 +8,7 @@ const Queue = ({ trackList, theme }) => {
     // Will be modified to include displaying position in queue.
 
     <TableContainer sx={{ height: "40vh", boxShadow: 0, width: "auto", }}
-      style={{ overflowY: "auto", overflowX: "hidden", marginLeft: window.innerWidth * 0.00 }}>
+      style={{ overflowY: "auto", overflowX: "hidden" }}>
 
       <Table
         stickyHeader

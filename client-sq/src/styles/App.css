@@ -81,13 +81,13 @@ main{
 
 .link1 {
   display: flex;
-  color: #3C435C;
+  color: #D6DDFF;
   transition: all 0.5s;
   text-decoration: none;
 }
 
 .link1:hover {
-  background: #222329;
+  background: #202733;
   color: #496fff;
   transition: all 0.5s;
 }

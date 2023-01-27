@@ -12,17 +12,17 @@ const NavBar = ({ children, theme, mode }) => {
         {
             path: "/",
             name: "Home",
-            icon: <HomeRoundedIcon style={{ fontSize: '1.7vw' }} />
+            icon: <HomeRoundedIcon style={{ fontSize: '3vh' }} />
         },
         {
             path: "/history",
             name: "History",
-            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '1.7vw' }} />
+            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '3vh' }} />
         },
         {
             path: "/howtouse",
             name: "How to use",
-            icon: <HelpCenterRoundedIcon style={{ fontSize: '1.7vw' }} />
+            icon: <HelpCenterRoundedIcon style={{ fontSize: '3vh' }} />
         }
 
     ]
@@ -64,8 +64,8 @@ const NavBar = ({ children, theme, mode }) => {
                                 key={index}
                                 className={mode === "light" ? "link" : "link1"}
                                 activeclassName="active">
-                                <div style={{ display: "block", marginTop: '-.09vh', width: '1.7vw' }}>{item.icon}</div>
-                                <div style={{ display: "block", fontSize: '1.025vw', fontWeight: 500, marginTop: '.09vh', marginLeft: '.08vw' }} >{item.name}</div>
+                                <div style={{  marginTop: '-.09vh', width: '3vh' }}>{item.icon}</div>
+                                <div style={{ display: "block", fontSize: '1.85vh', fontWeight: 500, marginTop: '.09vh', marginLeft: '.05vw' }} >{item.name}</div>
                             </NavLink>
                         ))
                     }

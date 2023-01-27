@@ -65,22 +65,22 @@ const Track = ({ track, clickable, num, theme }) => {
         {clickable==false?
         <Fade key = {num && track.title} in={true} timeout={1000}><TableRow  
              hover={true} > 
-              <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
-             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: window.innerHeight*0.018, fontWeight : 500,fontFamily:"DM Sans",color: "#6d7285" }}>{num+1}
+              <div  style={{width: '.9vw', marginLeft: -100*0.007+ 'vw'}}></div>
+             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: 100*0.018+ 'vh', fontWeight : 500,fontFamily:"DM Sans",color: "#6d7285" }}>{num+1}
              </TableCell>
           
-          <TableCell style={{ padding: ".7vh 1.1vw",width: window.innerWidth*0.01 }} align="left">
+          <TableCell style={{ padding: ".7vh 1.1vw",width: 100*0.01+ 'vw' }} align="left">
                 
-                <img src={track.albumUrl} alt={track.title} style={{height : window.innerWidth*0.02625, width:window.innerWidth*0.02625}} />
+                <img src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:100*0.02625+ 'vw'}} />
                 
               </TableCell> 
-              <div  style={{ marginLeft: -window.innerWidth*0.007, alignItems: "center", align: "center"}}>
+              <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
 
-              <TableCell style={{ padding: "1.3vh .8vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
-                <div style={{ marginBottom: -window.innerHeight*0.005, fontWeight : "bold", fontSize: window.innerHeight*0.018}}>
+              <TableCell style={{ padding: "1.3vh .8vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
+                <div style={{ marginBottom: -100*0.005+ 'vh', fontWeight : "bold", fontSize: 100*0.018+ 'vh'}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: window.innerHeight*0.015}}>
+                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: 100*0.015+ 'vh'}}>
                   {track.artist}
                 </div>
               </TableCell> 
@@ -94,24 +94,24 @@ const Track = ({ track, clickable, num, theme }) => {
             <TableRow  
              hover={true} >  
              
-            <div  style={{width: '.9vw', marginLeft: -window.innerWidth*0.007}}></div>
+            <div  style={{width: '.9vw', marginLeft: -100*0.007+ 'vw'}}></div>
           
               {/* image  */}
                 
-              <TableCell style={{ padding: ".75vh .9vw",width: window.innerWidth*0.01 }} align="left">
+              <TableCell style={{ padding: ".75vh .9vw",width: 100*0.01+ 'vw' }} align="left">
               
-                <img src={track.albumUrl} alt={track.title} style={{height : window.innerWidth*0.034, width: window.innerWidth*0.034}} />
+                <img src={track.albumUrl} alt={track.title} style={{height : 100*0.034+ 'vw', width: 100*0.034+ 'vw'}} />
              
               </TableCell> 
             
-              <div  style={{ marginLeft: -window.innerWidth*0.007, alignItems: "center", align: "center"}}>
+              <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
               {/* Title and Artist  */}
               
-              <TableCell style={{ padding: "1.4vh .6vw",width: window.innerWidth*0.3, fontFamily:"DM Sans", color:theme.palette.text.primary}} align="left">
-                <div style={{ fontWeight : "bold", fontSize : window.innerHeight*0.02}}>
+              <TableCell style={{ padding: "1.4vh .6vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color:theme.palette.text.primary}} align="left">
+                <div style={{ fontWeight : "bold", fontSize : 100*0.02+ 'vh'}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: window.innerHeight*0.018}}>
+                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: 100*0.018+ 'vh'}}>
                   {track.artist}
                 </div>
               </TableCell>
@@ -125,7 +125,7 @@ const Track = ({ track, clickable, num, theme }) => {
               {
                  !unqueueable && clickable? 
                 
-                 <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{  marginRight: -window.innerWidth*0.008}} >
+                 <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{  marginRight: -100*0.008+ 'vw'}} >
                  {
                  !clicked?
                  !disable?
@@ -148,8 +148,8 @@ const Track = ({ track, clickable, num, theme }) => {
                 
                  : clickable ? 
                
-                 <IconButton variant="outlined" disabled style={{  marginRight: -window.innerWidth*0.008}}>
-                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:window.innerWidth*0.022, }}/>
+                 <IconButton variant="outlined" disabled style={{  marginRight: -100*0.008+ 'vw'}}>
+                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
                  </IconButton>: null
               }  
               </TableCell> 
