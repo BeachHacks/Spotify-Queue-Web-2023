@@ -47,7 +47,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: theme.palette.background.primary, height: "100vh" }}>
         <SocketContext.Provider value={apiSocket}>
-          {(localStorage.getItem('visited') === null) && <LandingPage />}
+        
           <NavBar theme={theme} mode={mode}>
             <div style={{ marginLeft: '.645vw', marginTop: '48.25vh' }}>
               <span style={{ fontWeight: 500,fontSize: '1.85vh', marginRight: "4.65vw", color: mode === "light" ? "#A3A8BF" : "#D6DDFF"}}>Theme</span>
@@ -55,6 +55,7 @@ function App() {
               <CustomSwitch  onChange={handleSwitch}></CustomSwitch>
             </div>
           </NavBar>
+          <LandingPage />
           <Routes>
             <Route path="/admin" element={<Admin />}>
             </Route>
