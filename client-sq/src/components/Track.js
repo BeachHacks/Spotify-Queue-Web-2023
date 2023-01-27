@@ -134,7 +134,7 @@ const Track = ({ track, clickable, num, theme }) => {
                   :
 
                   <Zoom in={disable} timeout={300}>
-                  <AddCircleOutlineRoundedIcon  sx={{opacity:"10%", color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
+                  <AddCircleOutlineRoundedIcon  sx={{ color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
                   </Zoom>
                 
                   :
