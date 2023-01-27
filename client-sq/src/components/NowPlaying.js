@@ -14,7 +14,8 @@ const NowPlaying = ({ theme }) => {
     artist: "",
     duration: 0,
     progress: 0,
-    title: "Loading"
+    title: "Loading",
+    spotifyUrl: ""
   });
 
   // Initialization
@@ -48,9 +49,9 @@ const NowPlaying = ({ theme }) => {
       <Zoom key={playbackState.title} in={(playbackState.duration / 1000) - (playbackState.progress / 1000) > 1} timeout={ {enter: 500, exit: 300 }} >
         <div style={{ display: "inline-flex", width: "100%"}}>
             <div>
-                <img class ="bigger2" src={playbackState.albumImage[0].url}
+                <a href={playbackState.spotifyUrl}><img class ="bigger2" src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
-                    style={{ height: 100 * 0.104 + 'vw', width: 100 * 0.104 + 'vw', marginTop: 100 * 0.008 + 'vh'}} />   
+                    style={{ height: 100 * 0.104 + 'vw', width: 100 * 0.104 + 'vw', marginTop: 100 * 0.008 + 'vh'}} /> </a>
             </div>
             
     <div style={{ alignSelf: "flex-end", marginLeft: 100 * .016 + 'vw', width: "100%", marginBottom: -100 * 0.006 + 'vh'}}>

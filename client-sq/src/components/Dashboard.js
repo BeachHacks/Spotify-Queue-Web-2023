@@ -177,8 +177,8 @@ const Dashboard = ({ theme }) => {
             albumName: track.album.name,
             songDuration: track.duration_ms,
             explicit: track.explicit,
-            filter: boolArray[counter++]
-
+            filter: boolArray[counter++],
+            spotifyUrl: track.external_urls.spotify
           }
         })
       )
