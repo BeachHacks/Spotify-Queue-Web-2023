@@ -17,6 +17,7 @@
     "express": "^4.18.2",
     "parser": "^0.1.4",
     "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
     "spotify-web-api-node": "^5.0.2"
   },
   "devDependencies": {

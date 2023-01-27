@@ -1,428 +1,449 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import '../styles/App.css'
 import axios from 'axios';
 import Queue from "./Queue"
-import NavBar from "./NavBar"
-import {Fade,IconButton, TextField, Table, Container, TableRow, TableContainer, tableCellClasses, Button} from '@mui/material';
-import { Typography } from '@mui/material';
-import { Row } from "react-bootstrap";
+import { IconButton, Container } from '@mui/material';
 import DisplayResults from "./DisplayResults";
 import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import SearchRounded from "@mui/icons-material/SearchRounded";
-import io from 'socket.io-client'
 import { SocketContext } from './App'
 
-function Dashboard(){
+const Dashboard = ({ theme }) => {
 
-    const [borderColor, setBC] = useState(".25vh solid #e0e4f2")
+  const [borderColor, setBC] = useState(".25vh solid " + theme.palette.common.border)
 
-    const socket = useContext(SocketContext);
+  const socket = useContext(SocketContext);
 
-    const [text,setText] = useState("Loading")
-    const [searchResults, setSearchResults] = useState([])
-    //const [goodSongsArr, setPassArr] = useState([])
-    const [dynInput, setInput] = useState("")
-    const [search, setSearch] = useState("")
-    const [queueData, setQueueData] = useState([])
-    const [accessToken, setAccessToken] = useState("")
+  const [text, setText] = useState("Loading")
+  const [searchResults, setSearchResults] = useState([])
+  //const [goodSongsArr, setPassArr] = useState([])
+  const [dynInput, setInput] = useState("")
+  const [search, setSearch] = useState("")
+  const [queueData, setQueueData] = useState([])
+  const [accessToken, setAccessToken] = useState("")
 
-    const [loading, setLoading] = useState(false)
-
-
-    const [clicked, setClicked] = useState(false)
-    const [clickedSB, setClickedSB] = useState("#a3a8bf")
-
-    function handleFocus() {
-        setClickedSB("#496fff")
-        setBC(".25vh solid #496fff")
-        setClicked(true)
-    
-      }
-      
-      function handleBlur() {
-        setClickedSB("#a3a8bf")
-        setBC(".25vh solid #e0e4f2")
-        setClicked(false)
-      }
-    useEffect(() => {
-      let ignore = false;
-      
-      async function fetchToken() {
-        const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
-        if(!ignore) setAccessToken(result.data)
-      }
-
-      fetchToken();
-
-      return () => { ignore = true; }
-    }, [])
+  const [loading, setLoading] = useState(false)
 
 
-   const handleKeyPress = (event) => {
+  const [clicked, setClicked] = useState(false)
+  
+
+  function handleFocus() {
+    setBC(".25vh solid " + theme.palette.primary.main)
+    setClicked(true)
+  }
+
+  function handleBlur() {
+    setBC(".25vh solid " + theme.palette.common.border)
+    setClicked(false)
+  }
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchToken() {
+      const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
+      if (!ignore) setAccessToken(result.data)
+    }
+
+    fetchToken();
+
+    return () => { ignore = true; }
+  }, [])
+
+
+  const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // Perform change here
       setSearch(dynInput)
     }
   }
-  
-    // Hook handling retrieving the data of the queue from the backend.
-    useEffect(() => {
-      let ignore = false; 
 
-      async function fetchQueue() {
-        const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
-        if (!ignore) setQueueData(result.data);
-      }
-      fetchQueue();
+  // Hook handling retrieving the data of the queue from the backend.
+  useEffect(() => {
+    let ignore = false;
 
-      socket.on('queueAdd', (data) => {
-        setQueueData((prevData) => [...prevData, data]);
-      })
+    async function fetchQueue() {
+      const result = await axios(process.env.REACT_APP_API_URL + '/queue/show');
+      if (!ignore) setQueueData(result.data);
+    }
+    fetchQueue();
 
-      socket.on('queuePop', (data) => {
-        setQueueData((prevData) => [...prevData.slice(1)]);
-      })
+    socket.on('queueAdd', (data) => {
+      setQueueData((prevData) => [...prevData, data]);
+    })
 
-      return () => {ignore = true; socket.off('queueAdd'); socket.off('queuePop')}
-    }, [])
+    socket.on('queuePop', (data) => {
+      setQueueData((prevData) => [...prevData.slice(1)]);
+    })
 
-    useEffect(() => {
+    return () => { ignore = true; socket.off('queueAdd'); socket.off('queuePop') }
+  }, [])
 
-      function loadingDots () {
-        let timer = setTimeout(() => {
-          setText("Loading.")
-          },250)
-          
-          let timer2 = setTimeout(() => {
-            setText("Loading..")
-            },500)
-            
-          let timer3 =  setTimeout(() => {
-              setText("Loading...")
-            },750)
-      }
-      
-      if(loading){
-        loadingDots()
-        setText("Loading")
+  useEffect(() => {
+
+    function loadingDots() {
+      let timer = setTimeout(() => {
+        setText("Loading.")
+      }, 250)
+
+      let timer2 = setTimeout(() => {
+        setText("Loading..")
+      }, 500)
+
+      let timer3 = setTimeout(() => {
+        setText("Loading...")
+      }, 750)
+    }
+
+    if (loading) {
+      loadingDots()
+      setText("Loading")
+    }
+  }, [loading])
+
+  // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
+  useEffect(() => {
+
+    const searchTracks = async (searchQuery) => {
+      setLoading(true)
+      return axios
+        .post(process.env.REACT_APP_API_URL + "/search/tracks", {
+          searchString: searchQuery,
+          params: { limit: 50 }
+        })
+        .then(res => {
+          setLoading(false)
+          return res.data;
+
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
+
+
+    function filter(features) {
+      var boolFilter = []
+      for (let i = 0; i < features.length; i++) {
+        if (features[i] === null) {
+          boolFilter.push(false);
         }
-         }, [loading])
+        else if (features[i].energy <= 0.3 ||
+          features[i].loudness <= -17 ||
+          features[i].acousticness >= .8 ||
+          features[i].instrumentalness >= 0.60 ||
+          features[i].valence <= 0.15 ||
+          features[i].tempo <= 45) {
 
-    // Hook handling relay of search request to backend. Backend serves as middle to Spotify API.
-    useEffect(() => {
-      
-      const searchTracks = async(searchQuery) => {
-        setLoading(true)
-        return axios
-          .post(process.env.REACT_APP_API_URL + "/search/tracks", {
-            searchString : searchQuery,
-            params: {limit: 50}
-          })
-          .then(res => {
-            setLoading(false)
-            return res.data;
-            
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-        } 
-      
-      
+          boolFilter.push(false);
 
-      function filter(features){
-        var boolFilter = []
-          for(let i = 0; i < features.length; i++){
-            if (features[i] === null) {
-              boolFilter.push(false);
-            }
-            else if (features[i].energy <= 0.3 || 
-                features[i].loudness <= -17 ||
-                features[i].acousticness >= .8 ||
-                features[i].instrumentalness >= 0.60 ||
-                features[i].valence <= 0.15 ||
-                features[i].tempo <= 45 ) {
+        }
+        else {
+          boolFilter.push(true);
+        }
+      }
+      return boolFilter;
+    }
 
-              boolFilter.push(false);
 
+    if (!search) return setSearchResults([])
+    // Parse search query
+
+    searchTracks(search).then(res => {
+
+      console.log("AUDIO feats", res.features.audio_features)
+
+      let boolArray = filter(res.features.audio_features)
+
+      console.log("filter", boolArray)
+      let counter = 0
+
+      setSearchResults(
+        res.tracks.tracks.items.map(track => {
+          const smallestAlbumImage = track.album.images.reduce(
+            (smallest, image) => {
+              if (image.height < smallest.height) return image
+              return smallest
+            },
+            track.album.images[0]
+          )
+          //Track attributes
+          return {
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: smallestAlbumImage.url,
+            albumName: track.album.name,
+            songDuration: track.duration_ms,
+            explicit: track.explicit,
+            filter: boolArray[counter++],
+            spotifyUrl: track.external_urls.spotify
           }
-            else {
-              boolFilter.push(true);
-            }
-          }
-        return boolFilter;
-      } 
-      
-      
-      if(!search) return setSearchResults([])
-      // Parse search query
-      
-      searchTracks(search).then(res => {
+        })
+      )
+    })
 
-        console.log("AUDIO feats",res.features.audio_features)
-        
-        let boolArray = filter(res.features.audio_features)
-
-        console.log("filter", boolArray)
-        let counter = 0
-
-        setSearchResults(
-          res.tracks.tracks.items.map(track => {
-            const smallestAlbumImage = track.album.images.reduce(
-              (smallest, image) => {
-                if (image.height < smallest.height) return image
-                return smallest
-              },
-              track.album.images[0]
-            )
-            //Track attributes
-            return {
-              artist: track.artists[0].name,
-              title: track.name,
-              uri: track.uri,
-              albumUrl: smallestAlbumImage.url,
-              albumName : track.album.name,
-              songDuration : track.duration_ms,
-              explicit: track.explicit, 
-              filter: boolArray[counter++]
-
-            }
-          })
-        )
-      })
-      
-    }, [search])
+  }, [search])
 
 
-    return (
-      <div style={{minHeight: "100vh",backgroundColor:"#f6f8fe", width:window.innerWidth*.8, maxWidth:"100%"}}>
-        <Container style={{ fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.045,marginLeft:window.innerWidth*.01, 
-        fontSize: window.innerWidth *.021,fontWeight: "1000", color:"#3d435a"}}>Home</Container>
-        <div  style={{ display:"inline-flex",  width: "100%", height:window.innerHeight ,marginTop:-window.innerHeight*.00}}>
-          <Container style={{fontFamily:"'DM Sans', sans-serif" , 
-                            marginTop:window.innerHeight*.00,
-                            marginLeft:window.innerWidth*.01,
-                            // outline: '.25vh solid #e00000',
-                            width:window.innerWidth*.303 }}>
-         
-            <div style={{display:"flex", flexDirection:"row"}}>
+  return (
+    <div style={{ minHeight: "100vh", backgroundColor: theme.palette.background.primary, width: 100 * .8 + 'vw', maxWidth: "100%" }}>
+      <Container style={{
+        fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
+        fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
+      }}>Home</Container>
+      <div style={{ display: "inline-flex", width: "100%", height: 100+ 'vh', marginTop: -100 * .00+ 'vh' }}>
+        <Container style={{
+          fontFamily: "'DM Sans', sans-serif",
+          marginTop: 100 * .00+ 'vh',
+          marginLeft: 100 * .01+ 'vw',
+          width: 100 * .303+ 'vw'
+        }}>
 
-              <input type="search" id = "site-search"  style = {{
-                                                            marginLeft: 0, 
-                                                            marginTop: window.innerHeight*.018,
-                                                            width: window.innerWidth*.29, 
-                                                            height: window.innerHeight*.06,  
-                                                            borderRadius: window.innerHeight*.015,
-                                                            border: borderColor,
-                                                            paddingLeft: window.innerWidth*.027,
-                                                            paddingRight: window.innerWidth*.00875
-                                                            }} 
-                                                            placeholder ="Search for a song to queue"  
-                                                            className="searchA"
-                                                            onChange={(e)=>{setInput (e.target.value)}}
-                                                            onKeyPress={
-                                                              handleKeyPress
-                                                            }
-                                                            onFocus={handleFocus}
-                                                            onBlur={handleBlur} />
-         
-         
-         <IconButton disableRipple
-         
-         style= {{ marginTop: window.innerHeight*.0235,marginLeft: -window.innerWidth*.2875, height: window.innerHeight*.05,
-           width: window.innerHeight*.05, borderRadius: 80, 
-         
-           color:clickedSB}}
-         onClick={() =>{
-          
-          setSearch(dynInput)
-         
-        }}
-         type="button"
-         variant="contained"
-         children={<SearchRoundedIcon style = {{fontSize: window.innerWidth*.02 }}/>}
-         fullWidth={false}
-         >
-         </IconButton>
-             
+          <div style={{ display: "flex", flexDirection: "row" }}>
+
+            <input type="search" id="site-search" style={{
+              marginLeft: 0,
+              marginTop: 100 * .018+ 'vh',
+              width: 100 * .29+ 'vw',
+              height: 100 * .06+ 'vh',
+              borderRadius: 100 * .015+ 'vh',
+              border: borderColor,
+              borderColor: theme.palette.common.border,
+              paddingLeft: 100 * .027+ 'vw',
+              paddingRight: 100 * .00875+ 'vw',
+              backgroundColor: theme.palette.background.secondary,
+              color: theme.palette.text.primary
+            }}
+              placeholder="Search for a song to queue"
+              className={theme.palette.mode == 'light'?"searchA":"searchB"}
+              onChange={(e) => { setInput(e.target.value) }}
+              onKeyPress={
+                handleKeyPress
+              }
+              onFocus={handleFocus}
+              onBlur={handleBlur} />
+
+
+            <IconButton disableRipple
+
+              style={{
+                marginTop: 100 * .0235+ 'vh', marginLeft: -100 * .2875+ 'vw', height: 100 * .05+ 'vh',
+                width: 100 * .05+ 'vh', borderRadius: 80,
+
+                color: clicked? theme.palette.primary.main :theme.palette.common.misc
+              }}
+              onClick={() => {
+
+                setSearch(dynInput)
+
+              }}
+              type="button"
+              variant="contained"
+              children={<SearchRoundedIcon style={{ fontSize: 100 * .02 + 'vw'}} />}
+              fullWidth={false}
+            >
+            </IconButton>
+
 
           </div>
-          <div 
-          style={{fontWeight: "bold", display:"flex", flexDirection:"row"}}
+          <div
+            style={{ fontWeight: "bold", display: "flex", flexDirection: "row" }}
           >
             <div>
-            {/* results component */}
-            {searchResults.length === 0?
-              <div 
-              //sx={{boxShadow:3}}
-              style={{
-              border: '.25vh solid #e0e4f2',
-              height: window.innerHeight*0.755,
-              marginTop: window.innerHeight*0.02, 
-              overflowY: "auto",
-              width: window.innerWidth*0.29,
-              backgroundColor:"#ffffff", 
-               
-              borderRadius:window.innerHeight*.015,
-              color: "#3d435a"}}>
-                
-                {!clicked?
-                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
-              <div  style = {{ height: '25vh'}}>
-                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
-                    Guidelines
-                  </div> 
+              {/* results component */}
+              {searchResults.length === 0 ?
+                <div
+                  //sx={{boxShadow:3}}
+                  style={{
+                    border: '.25vh solid ' + theme.palette.common.border,
+                    height: 100 * 0.755+ 'vh',
+                    marginTop: 100 * 0.02+ 'vh',
+                    overflowY: "auto",
+                    width: 100 * 0.29+ 'vw',
+                    backgroundColor: theme.palette.background.secondary,
 
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "1.75vh"}}>
-                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >1</div> 
-                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
-                    To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
-                    </div>
-                  </div>
-                  
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "2vh"}}>
-                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >2</div> 
-                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
-                    If you loved a song you heard earlier, you can find it again in the history tab.
-                    </div>
-                  </div>
+                    borderRadius: 100 * .015+ 'vh',
+                    color: theme.palette.text.primary
+                  }}>
 
-                  <div style = {{fontWeight:500,display:"flex",flexDirection:"row",marginTop: "2vh"}}>
-                    <div  class="circle"style = {{fontSize:"1vw",marginLeft: ".4vw",marginTop: ".6vh"}} >3</div> 
-                    <div style = {{fontSize: window.innerWidth*0.0105,width: "23vw", marginLeft: "1vw",lineHeight:'2.5vh'}}>
-                    To keep the event professional we've disabled adding explicit songs.
+                  {!clicked ?
+                    <div style={{ padding: "1vh", fontSize: 100 * 0.0154+ 'vw', marginTop: 100 * 0.011+ 'vh', marginLeft: 100 * 0.007+ 'vw' }}>
+                      <div style={{ height: '25vh' }}>
+                        <div style={{ fontSize: 100 * 0.0145+ 'vw', height: "4.25vh" }}>
+                          Guidelines
+                        </div>
+
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "1.75vh" }}>
+                          <div class="circle" style={{
+                            backgroundColor: theme.palette.background.secondary,
+                            border: ".25vh solid " + theme.palette.text.primary,
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                          }} >1</div>
+                          <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
+                            To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
+                          </div>
+                        </div>
+
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                          <div class="circle" style={{
+                            backgroundColor: theme.palette.background.secondary,
+                            border: ".25vh solid " + theme.palette.text.primary,
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                          }} >2</div>
+                          <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
+                            If you loved a song you heard earlier, you can find it again in the history tab.
+                          </div>
+                        </div>
+
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                          <div class="circle" style={{
+                            backgroundColor: theme.palette.background.secondary,
+                            border: ".25vh solid " + theme.palette.text.primary,
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                          }} >3</div>
+                          <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
+                            To keep the event professional we've disabled adding explicit songs.
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  </div>
+
+                    :
+                    <div style={{ padding: "1vh", fontSize: 100 * 0.0154+ 'vw', marginTop: 100 * 0.011+ 'vh', marginLeft: 100 * 0.007+ 'vw'}}>
+                      <div style={{ height: '25vh' }}>
+                        <div style={{ fontSize: 100 * 0.0145+ 'vw', height: "4.25vh" }}>
+                          Results
+                        </div>
+                        {loading ?
+                          <div style={{ fontSize: 100 * 0.01025+ 'vw', height: "1vh" }}>
+                            {text}
+                          </div>
+                          :
+                          <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw' }}>
+                            Your search results will show here once you <a style={{ color: theme.palette.primary.main }}>hit enter</a>
+                          </div>}
+                      </div>
+                    </div>
+                  }
+                  <img style={{
+                    marginTop: '1.25vh',
+                    width: 46.5 * .892 + 'vh',
+                    height: 46.5 * 0.918 + 'vh',
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                    src={theme.palette.text.primary == "#3C435C"? "faded.png" : "fadedDark.png" } />
                 </div>
-               
                 :
-                 <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
-                   <div  style = {{ height: '25vh'}}>
-                <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
-               Results
-                </div>
-                {loading? 
-                    <div style = {{fontSize: window.innerWidth*0.01025,height:"1vh"}}>
-                    {text}
+                <div style={{
+                  overflowX: 'hidden',
+                  overflowY: 'hidden',
+                  color: "#3d435a",
+                  border: '.25vh solid ' + theme.palette.common.border,
+                  borderRadius: 100 * .015+ 'vh',
+                  backgroundColor: theme.palette.background.secondary,
+                  width: 100 * 0.29+ 'vw',
+                  height: 100 * 0.755+ 'vh',
+                  marginTop: 100 * 0.02+ 'vh',
+                }}>
+
+
+                  <div style={{ padding: "1vh", fontSize: 100 * 0.0154+ 'vw', marginTop: 100 * 0.011+ 'vh', marginLeft: 100 * 0.007+ 'vw' }}>
+
+
+                    <div style={{ fontSize: 100 * 0.0145+ 'vw', height: "4.25vh", color: theme.palette.text.primary }}>
+                      Results
                     </div>
-                  :
-                <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025}}>
-                Your search results will show here once you <a style = {{color:"#496fff"}}>hit enter</a>
-                </div>}
-               </div>
-                </div>
-             }
-             <img  style={{ 
-                            marginTop: '1.25vh',
-                            width: 46.5*.892+'vh', 
-                            height: 46.5*0.918+'vh',
-                            display: "block",
-                            marginLeft: "auto",
-                            marginRight: "auto"}}
-                src="faded.png" />
-             </div>
-              :
-              <div style = {{
-                color: "#3d435a", 
-                border: '.25vh solid #e0e4f2',
-                borderRadius:window.innerHeight*.015,
-                backgroundColor:'#ffffff',  
-                width: window.innerWidth*0.29, 
-                height: window.innerHeight*0.755, 
-                marginTop: window.innerHeight*0.02, }}>
 
+                    {loading ?
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                        {text}
+                      </div>
+                      :
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
+                        Explicit or recently added songs are grayed out.
+                      </div>
+                    }
 
-                <div style = {{padding:"1vh",fontSize: window.innerWidth*0.0154, marginTop: window.innerHeight*0.011, marginLeft:  window.innerWidth*0.007}}>
-                
-        
-                  <div style = {{fontSize: window.innerWidth*0.0145,height:"4.25vh"}}>
-                     Results
                   </div>
 
-                  {loading? 
-                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
-                    {text}
-                    </div>
-                  :
-                    <div style = {{fontWeight:500,fontSize: window.innerWidth*0.01025,height:"1vh"}}>
-                    Explicit or recently added songs are grayed out.
-                    </div>
-                    }
-                  
+
+                  <DisplayResults trackList={searchResults} theme={theme} />
+
+
                 </div>
-              
-                
-                <DisplayResults trackList={searchResults}  />
-               
-                
-              </div>
               }
             </div>
           </div>
-      </Container>
-      <Container style={{fontFamily:"'DM Sans', sans-serif" , marginTop:window.innerHeight*.05,// outline: '.25vh solid #e00000'
-      }}>
-     
-      <Container  style={{   border: '.25vh solid #e0e4f2',
-                                          borderRadius:window.innerHeight*.015,
-                                          backgroundColor:'#ffffff',
-                                          height: window.innerHeight*0.835,
-                                          width: window.innerWidth*0.4,
-                                          overflowY: "hidden",
-                                          marginTop: -window.innerHeight*.032,
-                                          marginLeft:-window.innerHeight*.0,
-                                          minWidth: window.innerWidth*.4748,
-                                          overflowX:"hidden",
-                                          fontFamily:"DM Sans"
-                                          }}>
+        </Container>
+        <Container style={{
+          fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .05+ 'vh',
+        }}>
+
+          <Container style={{
+            border: '.25vh solid ' + theme.palette.common.border,
+            borderRadius: 100 * .015+ 'vh',
+            backgroundColor: theme.palette.background.secondary,
+            height: 100 * 0.835+ 'vh',
+            width: 100 * 0.4+ 'vw',
+            overflowY: "hidden",
+            marginTop: -100 * .032+ 'vh',
+            marginLeft: -100 * .0+ 'vh',
+            minWidth: 100 * .4748+ 'vw',
+            overflowX: "hidden",
+            fontFamily: "DM Sans"
+          }}>
 
 
-        <div style = {{marginLeft:-window.innerHeight*.02}}>  
-          <div style={{ marginLeft:window.innerWidth*.012, marginTop:window.innerHeight*.026}}>
-            <div style={{height:window.innerHeight*0.3}}>
-              <h2 style={{ color: "#3d435a", fontWeight: "1000", fontSize:window.innerWidth*0.0167}}>Now playing</h2>
-              {accessToken === ""? 
-              <h2>LOGIN TO SEE THE PLAYER</h2>:
-              <NowPlaying/>
-              }
-            </div>
-
-            <div>
-              <h2 style={{color:"#3d435a", marginTop: -window.innerHeight*0.001,fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: "1000"}}>Next up</h2>
-              
-                <div style={{marginTop: window.innerHeight*0.0075,fontSize : window.innerWidth*0.01,fontFamily: "DM Sans", fontWeight: "bold",color: "#3d435a",fontWeight: 500}}>
-                  <span style={{marginLeft:window.innerWidth*0.0065}}> # </span>
-
-                  {queueData.length<20? 
-                  <span style={{marginLeft:window.innerWidth*0.018}}> Title </span>:
-                  <span style={{marginLeft:window.innerWidth*0.01875}}> Title </span>}
-                  
-                  <div style={{ 
-                    borderTop: ".25vh solid #e0e4f2", 
-                    width: '100%',
-                    marginTop: window.innerHeight*.00755, 
-                    height:window.innerHeight*.018 }} />     
+            <div style={{ marginLeft: -100 * .02+ 'vh' }}>
+              <div style={{ marginLeft: 100 * .012+ 'vw', marginTop: 100 * .026 + 'vh'}}>
+                <div style={{ height: 100 * 0.3 + 'vh'}}>
+                  <h2 style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.0167+ 'vw' }}>Now playing</h2>
+                  {accessToken === "" ?
+                    <h2 color={theme.palette.text.primary}>LOGIN TO SEE THE PLAYER</h2> :
+                    <NowPlaying theme={theme} />
+                  }
                 </div>
-              
 
-            {queueData.length==0? 
-              <div style={{opacity: "50%", color: "#3d435a", marginLeft: '.5vw',fontSize:window.innerWidth*0.0147,height: "4vh", fontWeight: 300}}>
-                Be the first to add a song to the queue!
+                <div >
+                  <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
+
+                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
+                    <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
+
+                    {queueData.length < 20 ?
+                      <span style={{ marginLeft: 100 * 0.018+ 'vw' }}> Title </span> :
+                      <span style={{ marginLeft: 100 * 0.01875+ 'vw' }}> Title </span>}
+
+                    <div style={{
+                      borderTop: ".25vh solid " + theme.palette.common.border,
+                      width: '100%',
+                      marginTop: 100 * .00755+ 'vh',
+                      height: 100 * .018+ 'vh'
+                    }} />
+                  </div>
+
+
+                  {queueData.length == 0 ?
+                    <div style={{ opacity: "50%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
+                      Be the first to add a song to the queue!
+                    </div>
+                    :
+
+                    <Queue trackList={queueData} theme={theme} />}
+
+                </div>
+
               </div>
-              :
-              
-              <Queue trackList={queueData} />}
-            
             </div>
-
-          </div>
-        </div>     
-      </Container>
-    </Container>
-  </div>
-</div>
-    )}
+          </Container>
+        </Container>
+      </div>
+    </div>
+  )
+}
 
 export default Dashboard;

@@ -21,6 +21,7 @@ module.exports = function(socket, session) {
         albumImage: playState.item.album.images,
         progress: playState.progress_ms,
         duration: playState.item.duration_ms,
+        spotifyUrl: playState.item.external_urls.spotify
       });
     }
   })
@@ -47,6 +48,7 @@ module.exports = function(socket, session) {
             uri: data.body.item.uri,
             explicit: data.body.item.explicit, 
             filter: true,
+            spotifyUrl: data.body.item.external_urls.spotify
           }
           session.addToHistory(newHistoryItem)
           console.log("Added to history")
@@ -65,6 +67,7 @@ module.exports = function(socket, session) {
           albumImage: playState.item.album.images,
           progress: playState.progress_ms,
           duration: playState.item.duration_ms,
+          spotifyUrl: playState.item.external_urls.spotify
         }
         socket.emit('playback', playClient);
       } 
