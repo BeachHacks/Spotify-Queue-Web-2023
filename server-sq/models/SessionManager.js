@@ -75,7 +75,6 @@ class SessionManager {
       }
     }
     this._queue.push(item);
-    console.log(item);
     this._buffer.push(item.uri);
     return true;
   }
