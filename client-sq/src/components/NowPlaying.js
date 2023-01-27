@@ -3,7 +3,8 @@ import axios from 'axios';
 import ProgressBar from "./ProgressBar";
 import { SocketContext } from "./App";
 import {selectClasses, Slide,Zoom} from '@mui/material';
-function NowPlaying() {
+
+const NowPlaying = ({ theme }) => {
 
   const io = useContext(SocketContext);
 
@@ -25,7 +26,7 @@ function NowPlaying() {
     })
 
     return () => {
-     io.off('playback');
+      io.off('playback');
     }
   }, [])
 
@@ -49,22 +50,22 @@ function NowPlaying() {
             <div>
                 <img src={playbackState.albumImage[0].url}
                     alt={"Album Image"}
-                    style={{ height: window.innerWidth * 0.104, width: window.innerWidth * 0.104, marginTop: window.innerHeight * 0.008 }} />   
+                    style={{ height: 100 * 0.104 + 'vw', width: 100 * 0.104 + 'vw', marginTop: 100 * 0.008 + 'vh'}} />   
             </div>
             
-    <div style={{ alignSelf: "flex-end", marginLeft: window.innerWidth * .016, width: "100%", marginBottom: -window.innerHeight * 0.006 }}>
+    <div style={{ alignSelf: "flex-end", marginLeft: 100 * .016 + 'vw', width: "100%", marginBottom: -100 * 0.006 + 'vh'}}>
       <Slide direction = 'left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
-                <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.01657, marginBottom: -window.innerHeight * 0.005 }}>{playbackState.title}</div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.01657 + 'vw', marginBottom: -100 * 0.005+ 'vh' }}>{playbackState.title}</div>
                 </Slide>
                 <Slide direction = 'left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
-                <div style={{ color: "#3d435a", fontWeight: 500, fontSize: window.innerWidth * 0.0105, marginBottom: window.innerHeight * 0.019 }}>{playbackState.artist}</div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 0.0105 + 'vw', marginBottom: 100 * 0.019 + 'vh'}}>{playbackState.artist}</div>
                 </Slide>
                
-                <ProgressBar style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
+                <ProgressBar theme ={theme} style={{marginLeft: ".01vw"}}number={(playbackState.progress / playbackState.duration) * 100} />
                 
              
               <Slide direction = 'left' key={playbackState.duration} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={700}>
-                <div style={{ color: "#3d435a", fontWeight: "1000", fontSize: window.innerWidth * 0.0075, marginTop: window.innerHeight * 0.005 }}>{millisecondsToMinute(playbackState.progress)}<span style={{ float: "right" }} >{millisecondsToMinute(playbackState.duration)}</span></div>
+                <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.0075 + 'vw', marginTop: 100 * 0.005+ 'vh' }}>{millisecondsToMinute(playbackState.progress)}<span style={{ float: "right" }} >{millisecondsToMinute(playbackState.duration)}</span></div>
              
                 </Slide>
                
@@ -74,7 +75,7 @@ function NowPlaying() {
    
     </div>
     </Zoom>
-
   )
 }
+
 export default NowPlaying;
