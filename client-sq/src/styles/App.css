@@ -129,3 +129,18 @@ main{
   text-align: center;
   font:'DM Sans', sans-serif;
 }
+
+img{
+  transition: transform .2s;
+}
+
+.bigger:hover{
+
+  transform:scale(1.2);
+}
+
+
+.bigger2:hover{
+
+  transform:scale(1.05);
+}

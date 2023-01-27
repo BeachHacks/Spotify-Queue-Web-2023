@@ -35,9 +35,8 @@ module.exports = function(socket, session) {
       return;
     }
     const next = session.buffer.shift();
-    console.log('Next: ' + next);
     session.spotify.addToQueue(next).then(() => {
-      console.log('Added song to Spotify')
+    console.log('Next: ' + next);
     }, (err) => {
       console.log(err)
     })
@@ -50,8 +49,7 @@ module.exports = function(socket, session) {
       return;
     }
     if (Object.keys(session.playback).length != 0 && session.queue[0].uri == session.playback.item.uri){
-      const popped = session.popQueue();
-      console.log('Removed: ' + popped + 'from top of queue');
+      session.popQueue();
     }
 
   }, 1000);

@@ -20,6 +20,8 @@ export const SocketContext = createContext(io(process.env.REACT_APP_API_URL));
 function App() {
 
   const apiSocket = useContext(SocketContext);
+  const [mode, setMode] = useState(window.localStorage.getItem('theme') === null ? "light" : window.localStorage.getItem('theme'));
+  const theme = useMemo(() => createTheme(themeDefinition(mode)), [mode])
 
   useEffect(() => {
 
@@ -34,11 +36,10 @@ function App() {
     };
   }, [])
 
-  const [mode, setMode] = useState("light")
-  const theme = useMemo(() => createTheme(themeDefinition(mode)), [mode])
   // console.log(theme)
 
   const handleSwitch = () => {
+    window.localStorage.setItem("theme", mode === "light" ? "dark" : "light")
     setMode(mode === "light" ? "dark" : "light")
   }
 

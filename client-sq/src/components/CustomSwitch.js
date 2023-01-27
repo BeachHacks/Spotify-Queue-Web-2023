@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Switch } from "@mui/material";
 
 const CustomSwitch = styled((props) => (
-    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} checked={window.localStorage.getItem('theme') === 'dark'}/>
 ))(({ theme }) => ({
     marginTop: '-.4vh',
     width: "7.4vh",
@@ -12,22 +12,23 @@ const CustomSwitch = styled((props) => (
     backgroundColor: "#496FFF",
     '& .MuiSwitch-switchBase': {
         padding: 0,
-        margin: ".705vh",
+        marginTop: "0.475vh",
+        marginLeft: "0.475vh",
         // transitionDuration: '300ms',
         '&.Mui-checked': {
-            transform: 'translateX(3.524vh)',
+            transform: 'translateX(3.7vh)',
             color: '#fff',
             "& .MuiSwitch-thumb:before": {
-                left: '-.07vh',
-                top: '-.1vh',
-                
+               
+                width: '2.75vh',
+                height:'2.75vh',
                 backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="{max}" width="{max}" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
                     "#496FFF"
                 )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`
             },
             '& + .MuiSwitch-track': {
-                marginLeft: '.01vh',
-                height:'2.73vh',
+                
+                height:'2.75vh',
                 backgroundColor: "#496FFF",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "left 10% bottom 50%",
@@ -56,18 +57,16 @@ const CustomSwitch = styled((props) => (
     '& .MuiSwitch-thumb': {
         
         boxSizing: 'border-box',
-        width: '2.73vh',
-        height:'2.73vh',
+        width: '2.75vh',
+        height:'2.75vh',
         
-        marginTop:'-.264vh',
-        marginLeft:'-.1vh',
+        
         "&:before": {
             content: "''",
             position: "absolute",
-            width: "2.643vh",
-            height: "100%",
-            left: '-.07vh',
-            top: '-.1vh',
+            width: "2.75vh",
+            height: "2.75vh",
+            
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="{max}" width="{max}" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
@@ -79,7 +78,7 @@ const CustomSwitch = styled((props) => (
         marginLeft: '-.15vh',
         marginTop: '0.5vh',
 
-        height: '2.73vh',
+        height: '2.75vh',
         opacity: 1,
         paddingBottom: '1vh',
         backgroundColor: "#496FFF",

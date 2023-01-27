@@ -26,7 +26,8 @@ const Track = ({ track, clickable, num, theme }) => {
       albumName: track.albumName,
       songDuration: track.songDuration,
       uri: track.uri,
-      explicit: track.explicit
+      explicit: track.explicit,
+      spotifyUrl: track.spotifyUrl
 
     })
       .then(res => {
@@ -67,7 +68,7 @@ const Track = ({ track, clickable, num, theme }) => {
           
           <TableCell style={{ padding: ".7vh 1.1vw",width: 100*0.01+ 'vw' }} align="left">
                 
-                <img src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:100*0.02625+ 'vw'}} />
+                <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer"><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:100*0.02625+ 'vw'}} /></a>
                 
               </TableCell> 
               <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
@@ -76,7 +77,7 @@ const Track = ({ track, clickable, num, theme }) => {
                 <div style={{ marginBottom: -100*0.005+ 'vh', fontWeight : "bold", fontSize: 100*0.018+ 'vh'}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: 100*0.015+ 'vh'}}>
+                <div style={{ opacity: '75%',fontWeight : 500, color: theme.palette.text.primary, fontSize: 100*0.015+ 'vh'}}>
                   {track.artist}
                 </div>
               </TableCell> 
@@ -88,7 +89,8 @@ const Track = ({ track, clickable, num, theme }) => {
         <Slide direction = 'down' in={true} timeout={500}>
           
             <TableRow  
-             hover={true} >  
+             hover={true}  >  
+             
              
             <div  style={{width: '.9vw', marginLeft: -100*0.007+ 'vw'}}></div>
           
@@ -96,7 +98,7 @@ const Track = ({ track, clickable, num, theme }) => {
                 
               <TableCell style={{ padding: ".75vh .9vw",width: 100*0.01+ 'vw' }} align="left">
               
-                <img src={track.albumUrl} alt={track.title} style={{height : 100*0.034+ 'vw', width: 100*0.034+ 'vw'}} />
+                <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer"><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.034+ 'vw', width: 100*0.034+ 'vw'}} /></a>
              
               </TableCell> 
             
@@ -107,7 +109,7 @@ const Track = ({ track, clickable, num, theme }) => {
                 <div style={{ fontWeight : "bold", fontSize : 100*0.02+ 'vh'}}>
                   {track.title}
                 </div>
-                <div style={{ fontWeight : 500, color: "#6d7285", fontSize: 100*0.018+ 'vh'}}>
+                <div style={{ opacity: '75%',fontWeight : 500, color: theme.palette.text.primary, fontSize: 100*0.018+ 'vh'}}>
                   {track.artist}
                 </div>
               </TableCell>
@@ -132,7 +134,7 @@ const Track = ({ track, clickable, num, theme }) => {
                   :
 
                   <Zoom in={disable} timeout={300}>
-                  <AddCircleOutlineRoundedIcon  sx={{  fontSize: '2.2vw'}}/>
+                  <AddCircleOutlineRoundedIcon  sx={{opacity:"10%", color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
                   </Zoom>
                 
                   :
@@ -144,7 +146,7 @@ const Track = ({ track, clickable, num, theme }) => {
                 
                  : clickable ? 
                
-                 <IconButton variant="outlined" disabled style={{  marginRight: -100*0.008+ 'vw'}}>
+                 <IconButton variant="outlined" disabled style={{ color: theme.palette.common.disButton, marginRight: -100*0.008+ 'vw'}}>
                      <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
                  </IconButton>: null
               }  

@@ -12,17 +12,17 @@ const NavBar = ({ children, theme, mode }) => {
         {
             path: "/",
             name: "Home",
-            icon: <HomeRoundedIcon style={{ fontSize: '3vh' }} />
+            icon: <HomeRoundedIcon style={{ fontSize: '2.75vh' }} />
         },
         {
             path: "/history",
             name: "History",
-            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '3vh' }} />
+            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '2.75vh' }} />
         },
         {
             path: "/howtouse",
             name: "How to use",
-            icon: <HelpCenterRoundedIcon style={{ fontSize: '3vh' }} />
+            icon: <HelpCenterRoundedIcon style={{ fontSize: '2.75vh' }} />
         }
 
     ]
@@ -44,7 +44,7 @@ const NavBar = ({ children, theme, mode }) => {
                     }}>
 
 
-                        <img style={{ width: 17 * .625 + 'vw', height: 17 * 0.533 + 'vw' }}
+                        <img style={{transition:'transform .2s', width: 17 * .625 + 'vw', height: 17 * 0.533 + 'vw' }}
                             src="logo.png" />
 
                     </div>
@@ -56,7 +56,7 @@ const NavBar = ({ children, theme, mode }) => {
                                 marginBottom: '1vh',
                                 width: '12.35vw',
                                 borderRadius: '.75vh',
-                                padding: "1vh .6vw",
+                                padding: "1.1vh .7vw",
                                 gap: '1.1vh',
                                 height: '5vh'
                             }}
@@ -64,8 +64,8 @@ const NavBar = ({ children, theme, mode }) => {
                                 key={index}
                                 className={mode === "light" ? "link" : "link1"}
                                 activeclassName="active">
-                                <div style={{  marginTop: '-.09vh', width: '3vh' }}>{item.icon}</div>
-                                <div style={{ display: "block", fontSize: '1.85vh', fontWeight: 500, marginTop: '.09vh', marginLeft: '.05vw' }} >{item.name}</div>
+                                {item.icon}
+                                <div style={{ display: "block", fontSize: '1.85vh', fontWeight: 500, marginTop: '0vh', marginLeft: '.1vw' }} >{item.name}</div>
                             </NavLink>
                         ))
                     }
