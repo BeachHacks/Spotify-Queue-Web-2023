@@ -49,10 +49,12 @@ function App() {
         <SocketContext.Provider value={apiSocket}>
         
           <NavBar theme={theme} mode={mode}>
-            <div style={{ marginLeft: '.645vw', marginTop: '48.25vh' }}>
-              <span style={{ fontWeight: 500,fontSize: '1.85vh', marginRight: "4.65vw", color: mode === "light" ? "#A3A8BF" : "#D6DDFF"}}>Theme</span>
+            <div  style={{position: "absolute", bottom: '4.5vh' , left: '2.645vw'  }}>
+              <div style = {{}}>
+              <span  style={{float:'bottom', fontWeight: 500,fontSize: '1.85vh', marginRight: "4.65vw", color: mode === "light" ? "#A3A8BF" : "#D6DDFF"}}>Theme</span>
               
               <CustomSwitch  onChange={handleSwitch}></CustomSwitch>
+              </div>
             </div>
           </NavBar>
           <LandingPage />
