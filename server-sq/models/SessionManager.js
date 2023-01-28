@@ -120,13 +120,14 @@ class SessionManager {
 
   // Spotify
   authenticate(code){
-    this.resetSession();
+    this._buffer = [];
     return this.spotifyApi.authorizationCodeGrant(code).then((data) => {
       this._status.accessToken = data.body['access_token']
       // Set the access token on the API object to use it in later calls
       this.spotifyApi.setAccessToken(data.body['access_token']);
       this.spotifyApi.setRefreshToken(data.body['refresh_token']);
       this.status.host = true; //Flag verifying token set (Concept in case we need to add more adminstrative features from client)
+      this._buffer = this._queue.map(item => item.uri); 
       console.log('Host set')
       return(200);
     }, (err) => {
