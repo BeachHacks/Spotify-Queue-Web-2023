@@ -22,10 +22,10 @@ module.exports = function(socket, session) {
     }
     if (added) {
       socket.emit('queueAdd', req.body);
-      res.send("Added to queue");
+      res.send('PASS');
     }
     else {
-      res.send("Failed to add song to queue");
+      res.send('FAIL');
     }
   })
 

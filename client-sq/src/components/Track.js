@@ -19,32 +19,57 @@ const Track = ({ track, clickable, num, theme }) => {
 
 
   function handleAdd() {
-    if (!track.explicit && clickable && track.filter) axios.post(process.env.REACT_APP_API_URL + "/queue/add", {
-      title: track.title,
-      artist: track.artist,
-      albumUrl: track.albumUrl,
-      albumName: track.albumName,
-      songDuration: track.songDuration,
-      uri: track.uri,
-      explicit: track.explicit,
-      spotifyUrl: track.spotifyUrl
-
-    })
-      .then(res => {
-        console.log(res.data)
+    const queueRequest = () => {
+      if (!track.explicit && clickable && track.filter) axios.post(process.env.REACT_APP_API_URL + "/queue/add", {
+        title: track.title,
+        artist: track.artist,
+        albumUrl: track.albumUrl,
+        albumName: track.albumName,
+        songDuration: track.songDuration,
+        uri: track.uri,
+        explicit: track.explicit,
+        spotifyUrl: track.spotifyUrl
       })
-      .catch((err) => {
-        console.log(err)
-      });
+        .then(res => {
+          console.log(res.data);
+          if(res.data === 'PASS'){
+            localStorage.setItem('time-queued', JSON.stringify(new Date().getTime()));
+            setClicked(true)
+            setDisabled(true)
+            setTimeout(() => {
+              setClicked(false)
+            }, 3000)
+            setTimeout(() => {
+              setSlide(false)
+            }, 2700)
+          }
+          else {
+            console.log('Failed to add to queue');
+            setDisabled(true)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    }
 
-    setClicked(true)
-    setDisabled(true)
-    setTimeout(() => {
-      setClicked(false)
-    }, 3000)
-    setTimeout(() => {
-      setSlide(false)
-    }, 2700)
+    /* Limiting clients to queueing to 1 minute intervals. Method: localStorage flags
+      * Not strict. */
+      const interval = 60000; // Allowed interval in milliseconds
+    let lastQueued = localStorage.getItem('time-queued');
+    if(!lastQueued){
+      queueRequest();
+    }
+    else {
+      let time = new Date().getTime();
+      let check = Math.abs(lastQueued - time)
+      if (check < interval) {
+        console.log('Wait to add to queue again');
+      } else {
+        queueRequest();
+      }
+    }
+
   }
 
   function secondsToMinutes(milliSeconds) {
