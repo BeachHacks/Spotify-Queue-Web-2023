@@ -132,6 +132,22 @@ class SessionManager {
     return this.spotifyApi.addToQueue(uri);
   }
 
+  getSpotifyQueue(){
+    const oauth = 'Bearer '+this._status.accessToken;
+    if (this._status.host) {
+      fetch('https://api.spotify.com/v1/me/player/queue', {
+        headers: {
+          Accept: 'application/json',
+          Authorization: oauth,
+        }
+      }).then(res => {
+        return res.json(); 
+      }, err => {console.log(err);}).then(res => {
+        console.log(res.queue);
+      })
+    }
+  }
+
 }
 
 module.exports = SessionManager;

@@ -54,6 +54,13 @@ module.exports = function(socket, session) {
 
   }, 1000);
 
+  // Sync User Queue every 20 seconds
+  setInterval(() => {
+    if (session.status.host) {
+      session.getSpotifyQueue();
+    }
+  }, 20000);
+
 
   return router;
 }
