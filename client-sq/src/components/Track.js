@@ -63,7 +63,7 @@ const Track = ({ track, clickable, num, theme }) => {
         <Fade key = {num && track.title} in={true} timeout={1000}><TableRow  
              hover={true} > 
               <div  style={{width: '.9vw', marginLeft: -100*0.007+ 'vw'}}></div>
-             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: 100*0.018+ 'vh', fontWeight : 500,fontFamily:"DM Sans",color: "#6d7285" }}>{num+1}
+             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: 100*0.018+ 'vh', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>{num+1}
              </TableCell>
           
           <TableCell style={{ padding: ".7vh 1.1vw",width: 100*0.01+ 'vw' }} align="left">
