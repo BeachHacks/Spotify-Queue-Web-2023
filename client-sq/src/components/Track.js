@@ -163,7 +163,7 @@ const Track = ({ track, clickable, num, theme }) => {
                   </Zoom>
                 
                   :
-                  <Zoom in={fade} timeout={300}>
+                  <Zoom  in={fade} timeout={300}>
                  <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
                  </Zoom>
                  }

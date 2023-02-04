@@ -39,12 +39,12 @@ const NavBar = ({ children, theme, mode }) => {
                     <div style={{
                         height: "18vh",
                         display: "flex",
-                        paddingTop: ".5vh",
-                        paddingLeft: "1.6vw"
+                        paddingTop: "2.25vh",
+                        paddingLeft: ".5vw"
                     }}>
 
 
-                        <img style={{transition:'transform .2s', width: 17 * .625 + 'vw', height: 17 * 0.533 + 'vw' }}
+                        <img style={{transition:'transform .2s', width: 52 * .240 + 'vw', height: 52 * 0.152 + 'vw' }}
                             src="logo.png" />
 
                     </div>

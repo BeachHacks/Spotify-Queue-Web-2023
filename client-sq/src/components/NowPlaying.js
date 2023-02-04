@@ -62,11 +62,15 @@ const NowPlaying = ({ theme, mode }) => {
             <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 0.0105 + 'vw', marginBottom: 100 * 0.019 + 'vh' }}>{playbackState.artist}</div>
           </Slide>
 
-          <Slide direction='left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
-            <img src={mode === "light" ? "ProgressBuddyLight.png" : "ProgressBuddyDark.png"} style={{ width: 100 * 0.085 + 'vh', height: 100 * 0.08947 + 'vh', marginLeft: (playbackState.progress / playbackState.duration) * 420 }}></img>
-          </Slide>
+          <Zoom  timeout={{enter: 300, exit: 300}} 
+          style = {{transformOrigin: "bottom Left"}}  
+          key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)}>
+            <img src={mode === "light" ? "ProgressBuddyLight.png" : "ProgressBuddyDark.png"} style={{  marginTop:'1.5vh',transitionDuration: '5ms',
+              transform: playbackState.progress / playbackState.duration<=.09? "scale("+ playbackState.progress / playbackState.duration/.09 +")": "scale(1)",
+              width: 40 * 0.085 + 'vw', height: 40 * 0.08947 + 'vw', marginLeft: (playbackState.progress / playbackState.duration)<=.09?0:(-.09 + playbackState.progress / playbackState.duration) * 100 +'%' }}></img>
+          </Zoom>
 
-          <ProgressBar theme={theme} style={{ marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
+          <ProgressBar theme={theme} style={{ marginTop:'-.1vh',marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
 
 
           <Slide direction='left' key={playbackState.duration} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={700}>

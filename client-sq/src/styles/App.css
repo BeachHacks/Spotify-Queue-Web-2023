@@ -130,10 +130,17 @@ main{
   font:'DM Sans', sans-serif;
 }
 
-img{
-  transition: transform .2s;
+.shark{
+  transition: transform .002s;
 }
 
+
+.bigger{
+  transition: transform .2s;
+}
+.bigger2{
+  transition: transform .2s;
+}
 .bigger:hover{
 
   transform:scale(1.2);

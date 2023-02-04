@@ -16,12 +16,12 @@ module.exports = function(socket, session) {
     else {
       const playState = session.playback;
       res.json({
-        title: playState.item.name===null?"a":playState.item.name,
-        artist: playState.item.artists[0].name===null?"":playState.item.artists[0].name,
-        albumImage: playState.item.album===null?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png":playState.item.album.images,
-        progress: playState.progress_ms===null?0:playState.progress_ms,
-        duration: playState.item.duration_ms===null?0:playState.item.duration_ms,
-        spotifyUrl: playState.item.external_urls.spotify===null?"":playState.item.external_urls.spotify
+        title: !(playState.item.name)?"":playState.item.name,
+        artist: !(playState.item.artists[0].name)?"":playState.item.artists[0].name,
+        albumImage: !(playState.item.album)?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png":playState.item.album.images,
+        progress: !(playState.progress_ms)?0:playState.progress_ms,
+        duration: !(playState.item.duration_ms)?0:playState.item.duration_ms,
+        spotifyUrl: !(playState.item.external_urls.spotify)?"":playState.item.external_urls.spotify
       });
     }
   })
@@ -32,7 +32,7 @@ module.exports = function(socket, session) {
     session.spotify.getMyCurrentPlaybackState().then((data) => {
       if (Object.keys(data.body).length != 0){
         if (Object.keys(session.playback).length != 0 && data.body?.item?.uri != session.playback.item.uri) {
-          const smallestAlbumImage = data.body.item.album===null?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png"
+          const smallestAlbumImage = !(data.body.item.album)?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png"
           :
           data.body.item.album.images.reduce(
             (smallest, image) => {
@@ -64,12 +64,12 @@ module.exports = function(socket, session) {
         session.active = session.playback.device.is_active 
         const playState = session.playback;
         const playClient = {
-          title: playState.item.name===null?"a":playState.item.name,
-          artist: playState.item.artists[0].name===null?"":playState.item.artists[0].name,
-          albumImage: playState.item.album===null?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png":playState.item.album.images,
-          progress: playState.progress_ms===null?0:playState.progress_ms,
-          duration: playState.item.duration_ms===null?0:playState.item.duration_ms,
-          spotifyUrl: playState.item.external_urls.spotify===null?"":playState.item.external_urls.spotify
+          title: !(playState.item.name)?"a":playState.item.name,
+          artist: !(playState.item.artists[0].name)?"":playState.item.artists[0].name,
+          albumImage: !(playState.item.album)?"https://cdn.discordapp.com/attachments/216598078315167744/1070887586278678538/image_30.png":playState.item.album.images,
+          progress: !(playState.progress_ms)?0:playState.progress_ms,
+          duration: !(playState.item.duration_ms)?0:playState.item.duration_ms,
+          spotifyUrl: !(playState.item.external_urls.spotify)?"":playState.item.external_urls.spotify
         }
         socket.emit('playback', playClient);
       } 
