@@ -56,7 +56,7 @@ function LandingPage({ theme, mode }) {
                                 </div>
 
                                 <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '1.85vw', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
-                                <img src="BeachMuseGraphics1.png"
+                                <img src="BeachMuseGraphics.png"
                                     style={{
 
                                         height: .037 * 379 + 'vw',

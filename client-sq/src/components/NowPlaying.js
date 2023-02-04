@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect, useContext } from "react";
-import axios from 'axios';
 import ProgressBar from "./ProgressBar";
 import { SocketContext } from "./App";
-import { selectClasses, Slide, Zoom } from '@mui/material';
+import { Slide, Zoom } from '@mui/material';
 
-const NowPlaying = ({ theme }) => {
+const NowPlaying = ({ theme, mode }) => {
 
   const io = useContext(SocketContext);
 
@@ -55,12 +55,16 @@ const NowPlaying = ({ theme }) => {
         </div>
 
         <div style={{ alignSelf: "flex-end", marginLeft: 100 * .016 + 'vw', width: "100%", marginBottom: -100 * 0.006 + 'vh' }}>
-          {/* <Slide direction='left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
+          <Slide direction='left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
             <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.01657 + 'vw', marginBottom: -100 * 0.005 + 'vh' }}>{playbackState.title}</div>
           </Slide>
           <Slide direction='left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
             <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 0.0105 + 'vw', marginBottom: 100 * 0.019 + 'vh' }}>{playbackState.artist}</div>
-          </Slide> */}
+          </Slide>
+
+          <Slide direction='left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
+            <img src={mode === "light" ? "ProgressBuddyLight.png" : "ProgressBuddyDark.png"} style={{ width: 100 * 0.085 + 'vh', height: 100 * 0.08947 + 'vh', marginLeft: (playbackState.progress / playbackState.duration) * 420 }}></img>
+          </Slide>
 
           <ProgressBar theme={theme} style={{ marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
 

@@ -327,7 +327,7 @@ const Dashboard = ({ theme, mode }) => {
                     </div>
                   }
                   <img style={{
-                    marginTop: mode === "light" ? '10vh': "4.5vh",
+                    marginTop: mode === "light" ? '10vh': "10vh",
                     width: mode === "light" ? 110 * .46253 + 'vh' : 110 * .41668 + 'vh',
                     height: mode === "light" ? 110 * 0.30512 + 'vh' : 110 * 0.25243   + 'vh',
                     display: "block",
@@ -403,7 +403,7 @@ const Dashboard = ({ theme, mode }) => {
                   <h2 style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.0167+ 'vw' }}>Now playing</h2>
                   {accessToken === "" ?
                     <h2 color={theme.palette.text.primary}>LOGIN TO SEE THE PLAYER</h2> :
-                    <NowPlaying theme={theme} />
+                    <NowPlaying theme={theme} mode = {mode}/>
                   }
                 </div>
 
