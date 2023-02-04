@@ -278,7 +278,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
                           }} >1</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
@@ -289,7 +289,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
                           }} >2</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             If you loved a song you heard earlier, you can find it again in the history tab.
@@ -300,7 +300,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
                           }} >3</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the event professional we've disabled adding explicit songs.
