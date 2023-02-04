@@ -57,13 +57,13 @@ function App() {
               </div>
             </div>
           </NavBar>
-          <LandingPage />
+          <LandingPage theme = {theme} mode = {mode}/>
           <Routes>
             <Route path="/admin" element={<Admin />}>
             </Route>
             <Route path="/auth" element={<Authorized />}>
             </Route>
-            <Route path="/" element={<Dashboard theme={theme} />}>
+            <Route path="/" element={<Dashboard theme={theme} mode ={mode}/>}>
             </Route>
             <Route path="/history" element={<History theme={theme} />}>
             </Route>

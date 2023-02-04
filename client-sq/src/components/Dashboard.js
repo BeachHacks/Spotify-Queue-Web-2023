@@ -8,7 +8,7 @@ import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { SocketContext } from './App'
 
-const Dashboard = ({ theme }) => {
+const Dashboard = ({ theme, mode }) => {
 
   const [borderColor, setBC] = useState(".25vh solid " + theme.palette.common.border)
 
@@ -186,9 +186,8 @@ const Dashboard = ({ theme }) => {
 
   }, [search])
 
-
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: theme.palette.background.primary, width: 100 * .8 + 'vw', maxWidth: "100%" }}>
+    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%", backgroundImage: mode === "light" ?"url(http://localhost:3000/BackgroundLight.png)" : ("url(http://localhost:3000/BackgroundDark.png)")}}>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
         fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
@@ -328,14 +327,14 @@ const Dashboard = ({ theme }) => {
                     </div>
                   }
                   <img style={{
-                    marginTop: '1.25vh',
-                    width: 46.5 * .892 + 'vh',
-                    height: 46.5 * 0.918 + 'vh',
+                    marginTop: mode === "light" ? '10vh': "4.5vh",
+                    width: mode === "light" ? 110 * .46253 + 'vh' : 110 * .41668 + 'vh',
+                    height: mode === "light" ? 110 * 0.30512 + 'vh' : 110 * 0.25243   + 'vh',
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto"
                   }}
-                    src={theme.palette.text.primary == "#3C435C"? "faded.png" : "fadedDark.png" } />
+                    src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
                 </div>
                 :
                 <div style={{
