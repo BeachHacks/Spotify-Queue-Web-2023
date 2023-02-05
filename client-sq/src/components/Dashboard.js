@@ -84,15 +84,15 @@ const Dashboard = ({ theme, mode }) => {
     function loadingDots() {
       let timer = setTimeout(() => {
         setText("Loading.")
-      }, 250)
+      }, 252)
 
       let timer2 = setTimeout(() => {
         setText("Loading..")
-      }, 500)
+      }, 520)
 
       let timer3 = setTimeout(() => {
         setText("Loading...")
-      }, 750)
+      }, 752)
     }
 
     if (loading) {
@@ -109,7 +109,7 @@ const Dashboard = ({ theme, mode }) => {
       return axios
         .post(process.env.REACT_APP_API_URL + "/search/tracks", {
           searchString: searchQuery,
-          params: { limit: 50 }
+          params: { limit: 52 }
         })
         .then(res => {
           setLoading(false)
@@ -274,7 +274,7 @@ const Dashboard = ({ theme, mode }) => {
                           Guidelines
                         </div>
 
-                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "1.75vh" }}>
+                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "1.75vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
@@ -285,7 +285,7 @@ const Dashboard = ({ theme, mode }) => {
                           </div>
                         </div>
 
-                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
@@ -296,7 +296,7 @@ const Dashboard = ({ theme, mode }) => {
                           </div>
                         </div>
 
-                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
@@ -320,16 +320,28 @@ const Dashboard = ({ theme, mode }) => {
                             {text}
                           </div>
                           :
-                          <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw' }}>
+                          <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw' }}>
                             Your search results will show here once you <a style={{ color: theme.palette.primary.main }}>hit enter</a>
                           </div>}
                       </div>
                     </div>
                   }
-                  <img style={{
-                    marginTop: mode === "light" ? '10vh': "10vh",
-                    width: mode === "light" ? 110 * .46253 + 'vh' : 110 * .41668 + 'vh',
-                    height: mode === "light" ? 110 * 0.30512 + 'vh' : 110 * 0.25243   + 'vh',
+
+                   <img class = "snoring" style={{
+                    transformOrigin: "bottom right",
+                    marginTop: mode === "light" ? '0vh': "15vh",
+                    marginLeft: mode === "light" ? '0vh': "9.25vw",
+                    marginBottom: mode === "light" ? '0vh': "-20vh",
+                    width:  mode === "light" ? 0 + 'vw' : 5.5* .3378 + 'vw',
+                    height: mode === "light" ? 0 + 'vw' : 5.5*.6089   + 'vw',
+
+                  
+                  }}
+                    src={ mode === "light" ? "" : "zZ.png" } />
+                  <img  style={{
+                    marginTop: mode === "light" ? '14vh': "10.5vh",
+                    width: mode === "light" ? 52 * .46253 + 'vw' : 52 * .41668 + 'vw',
+                    height: mode === "light" ? 52 * 0.30512 + 'vw' : 52 * 0.25243   + 'vw',
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto"
@@ -358,11 +370,11 @@ const Dashboard = ({ theme, mode }) => {
                     </div>
 
                     {loading ?
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                      <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
                         {text}
                       </div>
                       :
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
+                      <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
                         Explicit or recently added songs are grayed out.
                       </div>
                     }
@@ -410,7 +422,7 @@ const Dashboard = ({ theme, mode }) => {
                 <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
-                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
+                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 520 }}>
                     <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
 
                     {queueData.length < 20 ?
@@ -427,7 +439,7 @@ const Dashboard = ({ theme, mode }) => {
 
 
                   {queueData.length == 0 ?
-                    <div style={{ opacity: "50%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
+                    <div style={{ opacity: "52%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
                       Be the first to add a song to the queue!
                     </div>
                     :

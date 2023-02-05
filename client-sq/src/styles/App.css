@@ -130,9 +130,56 @@ main{
   font:'DM Sans', sans-serif;
 }
 
-.shark{
-  transition: transform .002s;
+.floating {
+  animation: float 1.5s infinite ease-in-out;
 }
+.floating2 {
+  animation: float2 1.5s infinite ease-in-out;
+  animation-delay: .25s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0vh) rotate(-0deg);
+  }
+  50% {
+    transform: translateY(.75vh)rotate(0deg);
+  }
+  
+  100%   { 
+    transform: translateY(0vh)rotate(-0deg); }   
+  
+}
+@keyframes float2 {
+  0% {
+    transform: translateY(0vh) rotate(0deg);
+  }
+  50% {
+    transform: translateY(.75vh)rotate(-0deg);
+  }
+  
+  100%   { 
+    transform: translateY(0vh)rotate(0deg); }   
+  
+}
+.snoring {
+  animation: snore 6s infinite ease-in-out;
+  
+}
+
+@keyframes snore {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  
+  100%   { 
+    transform: scale(0); }   
+  
+}
+
 
 
 .bigger{
