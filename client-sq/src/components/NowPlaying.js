@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect, useContext } from "react";
-import axios from 'axios';
 import ProgressBar from "./ProgressBar";
 import { SocketContext } from "./App";
-import { selectClasses, Slide, Zoom } from '@mui/material';
+import { Slide, Zoom } from '@mui/material';
 
-const NowPlaying = ({ theme }) => {
+const NowPlaying = ({ theme, mode }) => {
 
   const io = useContext(SocketContext);
 
@@ -55,14 +55,22 @@ const NowPlaying = ({ theme }) => {
         </div>
 
         <div style={{ alignSelf: "flex-end", marginLeft: 100 * .016 + 'vw', width: "100%", marginBottom: -100 * 0.006 + 'vh' }}>
-          {/* <Slide direction='left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
+          <Slide direction='left' key={playbackState.title} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={500}>
             <div style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.01657 + 'vw', marginBottom: -100 * 0.005 + 'vh' }}>{playbackState.title}</div>
           </Slide>
           <Slide direction='left' key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={600}>
             <div style={{ color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 0.0105 + 'vw', marginBottom: 100 * 0.019 + 'vh' }}>{playbackState.artist}</div>
-          </Slide> */}
+          </Slide>
 
-          <ProgressBar theme={theme} style={{ marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
+          <Zoom  timeout={{enter: 300, exit: 300}} 
+          style = {{transformOrigin: "bottom Left"}}  
+          key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)}>
+            <img src={mode === "light" ? "ProgressBuddyLight.png" : "ProgressBuddyDark.png"} style={{  marginTop:'1.5vh',transitionDuration: '5ms',
+              transform: playbackState.progress / playbackState.duration<=.09? "scale("+ playbackState.progress / playbackState.duration/.09 +")": "scale(1)",
+              width: 40 * 0.085 + 'vw', height: 40 * 0.08947 + 'vw', marginLeft: (playbackState.progress / playbackState.duration)<=.09?0:(-.09 + playbackState.progress / playbackState.duration) * 100 +'%' }}></img>
+          </Zoom>
+
+          <ProgressBar theme={theme} style={{ marginTop:'-.1vh',marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
 
 
           <Slide direction='left' key={playbackState.duration} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)} timeout={700}>
