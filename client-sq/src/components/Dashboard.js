@@ -326,28 +326,32 @@ const Dashboard = ({ theme, mode }) => {
                       </div>
                     </div>
                   }
-
-                   <img class = "snoring" style={{
+                 
+                   <img class="snoring" style={{
                     transformOrigin: "bottom right",
                     marginTop: mode === "light" ? '0vh': "15vh",
                     marginLeft: mode === "light" ? '0vh': "9.25vw",
                     marginBottom: mode === "light" ? '0vh': "-20vh",
-                    width:  mode === "light" ? 0 + 'vw' : 5.5* .3378 + 'vw',
-                    height: mode === "light" ? 0 + 'vw' : 5.5*.6089   + 'vw',
+                    width:  mode === "light" ? 0 + 'vw' : 10* .3378 + 'vh',
+                    height: mode === "light" ? 0 + 'vw' : 10*.6089   + 'vh',
 
                   
                   }}
                     src={ mode === "light" ? "" : "zZ.png" } />
-                  <img  style={{
-                    marginTop: mode === "light" ? '9vh': "10.5vh",
-                    width: mode === "light" ? 52 * .46253 + 'vw' : 52 * .41668 + 'vw',
-                    height: mode === "light" ? 52 * 0.30512 + 'vw' : 52 * 0.25243   + 'vw',
+                  <img   style={{
+                    marginTop: mode === "light" ? '13vh': "10.5vh",
+                    width: mode === "light" ? 92 * .46253 + 'vh' : 92 * .41668 + 'vh',
+                    height: mode === "light" ? 92 * 0.30512 + 'vh' : 92 * 0.25243   + 'vh',
                     display: "block",
                     marginLeft: "auto",
-                    marginRight: "auto"
+                    marginRight: "auto",
+              
+                    
+          
                   }}
                     src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
-                </div>
+                  </div>
+               
                 :
                 <div style={{
                   overflowX: 'hidden',
