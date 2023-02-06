@@ -187,7 +187,7 @@ const Dashboard = ({ theme, mode }) => {
   }, [search])
 
   return (
-    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%", backgroundImage: mode === "light" ?"url(http://localhost:3000/BackgroundLight.png)" : ("url(http://localhost:3000/BackgroundDark.png)")}}>
+    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%"}}>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
         fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
@@ -339,7 +339,7 @@ const Dashboard = ({ theme, mode }) => {
                   }}
                     src={ mode === "light" ? "" : "zZ.png" } />
                   <img  style={{
-                    marginTop: mode === "light" ? '14vh': "10.5vh",
+                    marginTop: mode === "light" ? '9vh': "10.5vh",
                     width: mode === "light" ? 52 * .46253 + 'vw' : 52 * .41668 + 'vw',
                     height: mode === "light" ? 52 * 0.30512 + 'vw' : 52 * 0.25243   + 'vw',
                     display: "block",
