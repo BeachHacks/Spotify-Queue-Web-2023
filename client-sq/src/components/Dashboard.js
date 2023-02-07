@@ -109,7 +109,7 @@ const Dashboard = ({ theme, mode }) => {
       return axios
         .post(process.env.REACT_APP_API_URL + "/search/tracks", {
           searchString: searchQuery,
-          params: { limit: 52 }
+          params: { limit: 50 }
         })
         .then(res => {
           setLoading(false)
