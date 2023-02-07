@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Modal, Grid, Fade, Stack } from '@mui/material';
 import '../styles/App.css'
@@ -149,18 +147,16 @@ function LandingPage({ theme, mode }) {
                                     </div>
                                 </div>
                                 <div>
-                                    <img src={"LandingPage1.png"}
+                                    <img src={mode === "light" ? "LandingPageLight1.png" : "LandingPageDark1.png"}
                                         style={{
                                             marginLeft: '4.5vw',
                                             marginTop: "5.65vh",
                                             width: .0925 * 612 + 'vh',
                                             height: .0925 * 738 + 'vh',
-
                                         }} />
                                 </div>
                             </div>
                         </Fade> : <></>}
-                    {/* 2220797; 2252854 */}
                     {mainPageFadeIn === false && clickNum === 2 ?
                         <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
                             <div style={{
@@ -201,7 +197,7 @@ function LandingPage({ theme, mode }) {
                                 </div>
                             </div>
                             <div>
-                                <img src={"LandingPage2.png"}
+                                <img src={mode === "light" ? "LandingPageLight2.png" : "LandingPageDark2.png"}
                                     style={{
                                         marginLeft: '4.5vw',
                                         marginTop: "5.65vh",
@@ -211,7 +207,6 @@ function LandingPage({ theme, mode }) {
                                     }} />
                             </div>
                         </div>
-
                         : <></>}
 
                     {mainPageFadeIn === false && clickNum === 3 ?

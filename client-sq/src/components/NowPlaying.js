@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect, useContext } from "react";
 import ProgressBar from "./ProgressBar";
 import { SocketContext } from "./App";
