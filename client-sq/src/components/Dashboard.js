@@ -84,7 +84,7 @@ const Dashboard = ({ theme, mode }) => {
     function loadingDots() {
       let timer = setTimeout(() => {
         setText("Loading.")
-      }, 252)
+      }, 250)
 
       let timer2 = setTimeout(() => {
         setText("Loading..")
@@ -92,7 +92,7 @@ const Dashboard = ({ theme, mode }) => {
 
       let timer3 = setTimeout(() => {
         setText("Loading...")
-      }, 752)
+      }, 750)
     }
 
     if (loading) {
@@ -109,7 +109,7 @@ const Dashboard = ({ theme, mode }) => {
       return axios
         .post(process.env.REACT_APP_API_URL + "/search/tracks", {
           searchString: searchQuery,
-          params: { limit: 52 }
+          params: { limit: 50 }
         })
         .then(res => {
           setLoading(false)
@@ -453,7 +453,7 @@ const Dashboard = ({ theme, mode }) => {
 
 
                   {queueData.length == 0 ?
-                    <div style={{ opacity: "52%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
+                    <div style={{ opacity: "50%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
                       Be the first to add a song to the queue!
                     </div>
                     :
