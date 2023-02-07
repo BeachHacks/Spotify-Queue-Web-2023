@@ -279,7 +279,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >1</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
@@ -290,7 +290,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >2</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             If you loved a song you heard earlier, you can find it again in the history tab.
@@ -301,7 +301,7 @@ const Dashboard = ({ theme, mode }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >3</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the event professional we've disabled adding explicit songs.
@@ -317,7 +317,7 @@ const Dashboard = ({ theme, mode }) => {
                           Results
                         </div>
                         {loading ?
-                          <div style={{ fontSize: 100 * 0.01025+ 'vw', height: "1vh" }}>
+                          <div style={{ fontSize: 100 * 0.01025+ 'vw', height: "0vh" }}>
                             {text}
                           </div>
                           :
@@ -384,11 +384,11 @@ const Dashboard = ({ theme, mode }) => {
                     </div>
 
                     {loading ?
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "0vh", color: theme.palette.text.primary }}>
                         {text}
                       </div>
                       :
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "0vh", color: theme.palette.text.primary  }}>
                         Explicit or recently added songs are grayed out.
                       </div>
                     }
@@ -436,7 +436,7 @@ const Dashboard = ({ theme, mode }) => {
                 <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
-                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
+                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 300 }}>
                     <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
 
                     {queueData.length < 20 ?

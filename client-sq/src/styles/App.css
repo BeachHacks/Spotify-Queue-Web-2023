@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,700;1,700&family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 
 .App {
   text-align: center;
@@ -197,4 +195,18 @@ main{
 .bigger2:hover{
 
   transform:scale(1.05);
+}
+
+ 
+.button {
+
+  color: #496FFF;
+  transition: all 0.35s;
+ 
+}
+
+.button:hover {
+
+  color: #248aff;
+  transition: all 0.35s;
 }
