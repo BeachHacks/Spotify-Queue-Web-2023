@@ -84,15 +84,15 @@ const Dashboard = ({ theme, mode }) => {
     function loadingDots() {
       let timer = setTimeout(() => {
         setText("Loading.")
-      }, 252)
+      }, 250)
 
       let timer2 = setTimeout(() => {
         setText("Loading..")
-      }, 520)
+      }, 500)
 
       let timer3 = setTimeout(() => {
         setText("Loading...")
-      }, 752)
+      }, 750)
     }
 
     if (loading) {
@@ -109,7 +109,7 @@ const Dashboard = ({ theme, mode }) => {
       return axios
         .post(process.env.REACT_APP_API_URL + "/search/tracks", {
           searchString: searchQuery,
-          params: { limit: 52 }
+          params: { limit: 50 }
         })
         .then(res => {
           setLoading(false)
@@ -187,7 +187,7 @@ const Dashboard = ({ theme, mode }) => {
   }, [search])
 
   return (
-    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%", backgroundImage: mode === "light" ?"url(http://localhost:3000/BackgroundLight.png)" : ("url(http://localhost:3000/BackgroundDark.png)")}}>
+    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%"}}>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
         fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
@@ -256,6 +256,7 @@ const Dashboard = ({ theme, mode }) => {
                 <div
                   //sx={{boxShadow:3}}
                   style={{
+                    position: "relative", 
                     border: '.25vh solid ' + theme.palette.common.border,
                     height: 100 * 0.755+ 'vh',
                     marginTop: 100 * 0.02+ 'vh',
@@ -274,33 +275,33 @@ const Dashboard = ({ theme, mode }) => {
                           Guidelines
                         </div>
 
-                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "1.75vh" }}>
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "1.75vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
                           }} >1</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
                           </div>
                         </div>
 
-                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
                           }} >2</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             If you loved a song you heard earlier, you can find it again in the history tab.
                           </div>
                         </div>
 
-                        <div style={{ fontWeight: 520, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
+                        <div style={{ fontWeight: 500, display: "flex", flexDirection: "row", marginTop: "2vh" }}>
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".3vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.5vh"
                           }} >3</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the event professional we've disabled adding explicit songs.
@@ -320,34 +321,47 @@ const Dashboard = ({ theme, mode }) => {
                             {text}
                           </div>
                           :
-                          <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw' }}>
+                          <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw' }}>
                             Your search results will show here once you <a style={{ color: theme.palette.primary.main }}>hit enter</a>
                           </div>}
                       </div>
                     </div>
                   }
-
-                   <img class = "snoring" style={{
+                 
+                  <div style={{
+                    
+                   
+                    position: "absolute",
+                    left: "0",
+                    right: "0",
+                    bottom: mode === "light" ? 4 + 'vh' : 10  + 'vh',
+                    
+          
+                  }}> 
+                 <img class = "snoring" style={{
+                    display: "flex",
                     transformOrigin: "bottom right",
-                    marginTop: mode === "light" ? '0vh': "15vh",
-                    marginLeft: mode === "light" ? '0vh': "9.25vw",
-                    marginBottom: mode === "light" ? '0vh': "-20vh",
-                    width:  mode === "light" ? 0 + 'vw' : 5.5* .3378 + 'vw',
-                    height: mode === "light" ? 0 + 'vw' : 5.5*.6089   + 'vw',
-
-                  
+                    marginBottom: mode === "light" ? '0vh': "-10vh",
+                    marginLeft: mode === "light" ? '0vh': "9vw",
+                    
+                    width:  mode === "light" ? 0 + 'vw' : 5.7* .3378 + 'vw',
+                    height: mode === "light" ? 0 + 'vw' : 5.7*.6089   + 'vw',
                   }}
                     src={ mode === "light" ? "" : "zZ.png" } />
                   <img  style={{
-                    marginTop: mode === "light" ? '14vh': "10.5vh",
-                    width: mode === "light" ? 52 * .46253 + 'vw' : 52 * .41668 + 'vw',
-                    height: mode === "light" ? 52 * 0.30512 + 'vw' : 52 * 0.25243   + 'vw',
-                    display: "block",
+                    
+                    width: mode === "light" ? 54 *.46253 + 'vw' : 54 *.41668 + 'vw',
+                    height: mode === "light" ? 54 *0.30512 + 'vw' : 54 *0.25243   + 'vw',
+                    display: "flex",
                     marginLeft: "auto",
-                    marginRight: "auto"
+                    marginRight: "auto",
+                
+          
                   }}
                     src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
-                </div>
+                    </div>
+                    </div>
+                 
                 :
                 <div style={{
                   overflowX: 'hidden',
@@ -370,11 +384,11 @@ const Dashboard = ({ theme, mode }) => {
                     </div>
 
                     {loading ?
-                      <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
                         {text}
                       </div>
                       :
-                      <div style={{ fontWeight: 520, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
                         Explicit or recently added songs are grayed out.
                       </div>
                     }
@@ -422,7 +436,7 @@ const Dashboard = ({ theme, mode }) => {
                 <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
-                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 520 }}>
+                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
                     <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
 
                     {queueData.length < 20 ?
@@ -439,7 +453,7 @@ const Dashboard = ({ theme, mode }) => {
 
 
                   {queueData.length == 0 ?
-                    <div style={{ opacity: "52%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
+                    <div style={{ opacity: "50%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: 300 }}>
                       Be the first to add a song to the queue!
                     </div>
                     :
