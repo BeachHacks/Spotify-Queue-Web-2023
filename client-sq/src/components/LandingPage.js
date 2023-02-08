@@ -43,7 +43,7 @@ function LandingPage({ theme, mode }) {
                             <Grid style={{
                                 width: "100%",
                                 height: "100%",
-                                marginTop: "1vh",
+                                marginTop: "1vh"
                             }}>
                                 <div style={{
                                     textAlign: 'center', fontSize: '3.3vw', fontWeight: "bold",
@@ -61,21 +61,21 @@ function LandingPage({ theme, mode }) {
                                         width: .037 * 88 + 'vw',
                                         height: .037 * 93 + 'vw',
                                         display: "block",
-                                        marginTop: "1vh",
+                                        marginTop: "2vh",
                                         marginBottom: "-4.25vh",
-                                        marginLeft: "32.75vw",
+                                        marginLeft: "33vw",
                                         
 
                                     }} />
                                     <img className ="floating2" src="BeachNotes2.png" 
-                                    style={{animationDelay: '.25s',
+                                    style={{animationDelay: '1.5s',
                                         width: .037 * 70 + 'vw',
                                         height: .037 * 69 + 'vw',
                                         
                                         display: "block",
-                                        marginBottom: "-7vh",
+                                        marginBottom: "-8vh",
                                         
-                                        marginLeft: "36.25vw",
+                                        marginLeft: "36.5vw",
                                       
                                     }} />
                                 <img src="BeachMuseGraphics.png"
