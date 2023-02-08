@@ -132,8 +132,7 @@ main{
   animation: float 1.5s infinite ease-in-out;
 }
 .floating2 {
-  animation: float2 1.5s infinite ease-in-out;
-  animation-delay: .25s;
+  animation: float2 3s infinite ease-in-out;
 }
 
 @keyframes float {
@@ -141,7 +140,7 @@ main{
     transform: translateY(0vh) rotate(-0deg);
   }
   50% {
-    transform: translateY(.75vh)rotate(0deg);
+    transform: translateY(1vh)rotate(0deg);
   }
   
   100%   { 
@@ -150,14 +149,14 @@ main{
 }
 @keyframes float2 {
   0% {
-    transform: translateY(0vh) rotate(0deg);
+    transform: translateY(0vh) rotate(7.5deg);
   }
   50% {
-    transform: translateY(.75vh)rotate(-0deg);
+    transform: translateY(1.5vh)rotate(-7.5deg);
   }
   
   100%   { 
-    transform: translateY(0vh)rotate(0deg); }   
+    transform: translateY(0vh)rotate(7.5deg); }   
   
 }
 .snoring {

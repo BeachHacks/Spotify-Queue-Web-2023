@@ -54,6 +54,30 @@ function LandingPage({ theme, mode }) {
                                 </div>
 
                                 <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '1.85vw', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
+                                
+                                <div>
+                                <img className ="floating2" src="BeachNotes.png"
+                                    style={{
+                                        width: .037 * 88 + 'vw',
+                                        height: .037 * 93 + 'vw',
+                                        display: "block",
+                                        marginTop: "1vh",
+                                        marginBottom: "-4.25vh",
+                                        marginLeft: "32.75vw",
+                                        
+
+                                    }} />
+                                    <img className ="floating2" src="BeachNotes2.png" 
+                                    style={{animationDelay: '.25s',
+                                        width: .037 * 70 + 'vw',
+                                        height: .037 * 69 + 'vw',
+                                        
+                                        display: "block",
+                                        marginBottom: "-7vh",
+                                        
+                                        marginLeft: "36.25vw",
+                                      
+                                    }} />
                                 <img src="BeachMuseGraphics.png"
                                     style={{
 
@@ -64,7 +88,8 @@ function LandingPage({ theme, mode }) {
                                         marginRight: "auto",
 
                                     }} />
-                                <div style={{ textAlign: 'center', marginTop: '5.25vh' }}>
+                                    </div>
+                                <div style={{ textAlign: 'center', marginTop: '5vh' }}>
                                     <button
 
                                         style={{
