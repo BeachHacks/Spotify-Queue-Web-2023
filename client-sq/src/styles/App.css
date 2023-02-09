@@ -178,6 +178,25 @@ main{
 }
 
 
+.sidetoside {
+  animation: sides 3s infinite ease-in-out;
+  
+}
+
+@keyframes sides {
+  0% {
+    transform: translateX(-2.25vw);
+  }
+  50% {
+    transform: translateX(-1vw);
+  }
+  
+  100%   { 
+    transform: translateX(-2.25vw); }   
+  
+}
+
+
 
 .bigger{
   transition: transform .2s;

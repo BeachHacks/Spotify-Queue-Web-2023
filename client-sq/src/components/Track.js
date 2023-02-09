@@ -45,10 +45,20 @@ const Track = ({ track, clickable, num, theme }) => {
             setTimeout(() => {
               setSlide(false)
             }, 2700)
+            
           }
           else {
             console.log('Failed to add to queue');
+            setClicked(true)
+
             setDisabled(true)
+
+            setTimeout(() => {
+              setClicked(false)
+            }, 3000)
+            setTimeout(() => {
+              setSlide(false)
+            }, 2700)
           }
         })
         .catch((err) => {
@@ -72,7 +82,7 @@ const Track = ({ track, clickable, num, theme }) => {
         queueRequest();
       }
     }
-
+    setSlide(true)
   }
 
   function secondsToMinutes(milliSeconds) {
@@ -153,31 +163,29 @@ const Track = ({ track, clickable, num, theme }) => {
                  !unqueueable && clickable? 
                 
                  <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{ }} >
-                 {
-                 !clicked?
-                 !disable?
-                 
-                 <AddCircleOutlineRoundedIcon className = "button"  sx={{fontSize: '2.2vw'}}/>
-                
+                  {
+                  !clicked?
+                    !disable?
+                      <AddCircleOutlineRoundedIcon className = "button"  sx={{fontSize: '2.2vw'}}/>
+                      :
+                        <Zoom in={disable} timeout={300}>
+                          <AddCircleOutlineRoundedIcon  sx={{ color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
+                        </Zoom>
+                  
+                      :
+                        <Zoom  in={fade} timeout={300}>
+                          <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
+                        </Zoom>
+                    }
+                  </IconButton>
                 
                   :
-
-                  <Zoom in={disable} timeout={300}>
-                  <AddCircleOutlineRoundedIcon  sx={{ color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
-                  </Zoom>
-                
-                  :
-                  <Zoom  in={fade} timeout={300}>
-                 <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
-                 </Zoom>
-                 }
-                 </IconButton>
-                
-                 : clickable ? 
-               
-                 <IconButton variant="outlined" disabled style={{ color: theme.palette.common.disButton}}>
-                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
-                 </IconButton>: null
+                    clickable ? 
+                      <IconButton variant="outlined" disabled style={{ color: theme.palette.common.disButton}}>
+                          <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
+                      </IconButton>
+                        : 
+                          null
               }  
               </TableCell> 
             </TableRow>
