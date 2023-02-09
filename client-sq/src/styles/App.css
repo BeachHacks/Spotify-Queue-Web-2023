@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,700;1,700&family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 
 .App {
   text-align: center;
@@ -134,8 +132,7 @@ main{
   animation: float 1.5s infinite ease-in-out;
 }
 .floating2 {
-  animation: float2 1.5s infinite ease-in-out;
-  animation-delay: .25s;
+  animation: float2 3s infinite ease-in-out;
 }
 
 @keyframes float {
@@ -152,14 +149,14 @@ main{
 }
 @keyframes float2 {
   0% {
-    transform: translateY(0vh) rotate(0deg);
+    transform: translateY(0vh) rotate(10deg);
   }
   50% {
-    transform: translateY(.75vh)rotate(-0deg);
+    transform: translateY(2vh)rotate(-10deg);
   }
   
   100%   { 
-    transform: translateY(0vh)rotate(0deg); }   
+    transform: translateY(0vh)rotate(10deg); }   
   
 }
 .snoring {
@@ -197,4 +194,18 @@ main{
 .bigger2:hover{
 
   transform:scale(1.05);
+}
+
+ 
+.button {
+
+  color: #496FFF;
+  transition: all 0.35s;
+ 
+}
+
+.button:hover {
+
+  color: #248aff;
+  transition: all 0.35s;
 }
