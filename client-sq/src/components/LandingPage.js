@@ -68,7 +68,7 @@ function LandingPage({ theme, mode }) {
 
                                     }} />
                                     <img className ="floating2" src="BeachNotes2.png" 
-                                    style={{animationDelay: '1.5s',
+                                    style={{animationDelay: '1.5s', transform:"rotate(10deg)",
                                         width: .037 * 70 + 'vw',
                                         height: .037 * 69 + 'vw',
                                         
