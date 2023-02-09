@@ -318,7 +318,7 @@ const Dashboard = ({ theme, mode }) => {
                             Results
                           </div>
                           {loading ?
-                            <div style={{ fontSize: 100 * 0.01025 + 'vw', height: "1vh" }}>
+                            <div style={{ fontSize: 100 * 0.01025 + 'vw', height: "0vh" }}>
                               {text}
                             </div>
                             :
@@ -380,11 +380,11 @@ const Dashboard = ({ theme, mode }) => {
                           </div>
 
                           {loading ?
-                            <div style={{ fontWeight: 500, fontSize: 100 * 0.01025 + 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                            <div style={{ fontWeight: 500, fontSize: 100 * 0.01025 + 'vw', height: "0vh", color: theme.palette.text.primary }}>
                               {text}
                             </div>
                             :
-                            <div style={{ fontWeight: 500, fontSize: 100 * 0.01025 + 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                            <div style={{ fontWeight: 500, fontSize: 100 * 0.01025 + 'vw', height: "0vh", color: theme.palette.text.primary }}>
                               Explicit or recently added songs are grayed out.
                             </div>
                           }
@@ -466,12 +466,12 @@ const Dashboard = ({ theme, mode }) => {
                 <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001 + 'vh', fontSize: 100 * 0.0147 + 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
-                  <div style={{ marginTop: 100 * 0.0075 + 'vh', fontSize: 100 * 0.01 + 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
-                    <span style={{ marginLeft: 100 * 0.0065 + 'vw' }}> # </span>
+                  <div style={{ marginTop: 100 * 0.0075 + 'vh', fontSize: 100 * 0.01 + 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 300 }}>
+                    <span style={{ marginLeft: 100 * 0.007 + 'vw' }}> # </span>
 
-                    {queueData.length < 20 ?
-                      <span style={{ marginLeft: 100 * 0.018 + 'vw' }}> Title </span> :
-                      <span style={{ marginLeft: 100 * 0.01875 + 'vw' }}> Title </span>}
+                   
+                      <span style={{ marginLeft: 100 * 0.0175 + 'vw' }}> Title </span> 
+                     
 
                     <div style={{
                       borderTop: ".25vh solid " + theme.palette.common.border,
