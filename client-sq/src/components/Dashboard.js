@@ -8,7 +8,7 @@ import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { SocketContext } from './App'
 
-const Dashboard = ({ theme }) => {
+const Dashboard = ({ theme, mode }) => {
 
   const [borderColor, setBC] = useState(".25vh solid " + theme.palette.common.border)
 
@@ -186,9 +186,8 @@ const Dashboard = ({ theme }) => {
 
   }, [search])
 
-
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: theme.palette.background.primary, width: 100 * .8 + 'vw', maxWidth: "100%" }}>
+    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%"}}>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
         fontSize: 100 * .021+ 'vw', fontWeight: "1000", color: theme.palette.text.primary
@@ -257,6 +256,7 @@ const Dashboard = ({ theme }) => {
                 <div
                   //sx={{boxShadow:3}}
                   style={{
+                    position: "relative", 
                     border: '.25vh solid ' + theme.palette.common.border,
                     height: 100 * 0.755+ 'vh',
                     marginTop: 100 * 0.02+ 'vh',
@@ -279,7 +279,7 @@ const Dashboard = ({ theme }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >1</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the playlist diverse, add a variety of songs. Everyone loves discovering new jams!
@@ -290,7 +290,7 @@ const Dashboard = ({ theme }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >2</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             If you loved a song you heard earlier, you can find it again in the history tab.
@@ -301,7 +301,7 @@ const Dashboard = ({ theme }) => {
                           <div class="circle" style={{
                             backgroundColor: theme.palette.background.secondary,
                             border: ".25vh solid " + theme.palette.text.primary,
-                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: ".6vh"
+                            color: theme.palette.text.primary, fontSize: "1vw", marginLeft: ".4vw", marginTop: "0.4vh"
                           }} >3</div>
                           <div style={{ fontSize: 100 * 0.0105+ 'vw', width: "23vw", marginLeft: "1vw", lineHeight: '2.5vh' }}>
                             To keep the event professional we've disabled adding explicit songs.
@@ -317,7 +317,7 @@ const Dashboard = ({ theme }) => {
                           Results
                         </div>
                         {loading ?
-                          <div style={{ fontSize: 100 * 0.01025+ 'vw', height: "1vh" }}>
+                          <div style={{ fontSize: 100 * 0.01025+ 'vw', height: "0vh" }}>
                             {text}
                           </div>
                           :
@@ -327,16 +327,41 @@ const Dashboard = ({ theme }) => {
                       </div>
                     </div>
                   }
-                  <img style={{
-                    marginTop: '1.25vh',
-                    width: 46.5 * .892 + 'vh',
-                    height: 46.5 * 0.918 + 'vh',
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto"
+                 
+                  <div style={{
+                    
+                   
+                    position: "absolute",
+                    left: "0",
+                    right: "0",
+                    bottom: mode === "light" ? 4 + 'vh' : 10  + 'vh',
+                    
+          
+                  }}> 
+                 <img class = "snoring" style={{
+                    display: "flex",
+                    transformOrigin: "bottom right",
+                    marginBottom: mode === "light" ? '0vh': "-10vh",
+                    marginLeft: mode === "light" ? '0vh': "9vw",
+                    
+                    width:  mode === "light" ? 0 + 'vw' : 5.7* .3378 + 'vw',
+                    height: mode === "light" ? 0 + 'vw' : 5.7*.6089   + 'vw',
                   }}
-                    src={theme.palette.text.primary == "#3C435C"? "faded.png" : "fadedDark.png" } />
-                </div>
+                    src={ mode === "light" ? "" : "zZ.png" } />
+                  <img  style={{
+                    
+                    width: mode === "light" ? 54 *.46253 + 'vw' : 54 *.41668 + 'vw',
+                    height: mode === "light" ? 54 *0.30512 + 'vw' : 54 *0.25243   + 'vw',
+                    display: "flex",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                
+          
+                  }}
+                    src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
+                    </div>
+                    </div>
+                 
                 :
                 <div style={{
                   overflowX: 'hidden',
@@ -359,11 +384,11 @@ const Dashboard = ({ theme }) => {
                     </div>
 
                     {loading ?
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "0vh", color: theme.palette.text.primary }}>
                         {text}
                       </div>
                       :
-                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "1vh", color: theme.palette.text.primary  }}>
+                      <div style={{ fontWeight: 500, fontSize: 100 * 0.01025+ 'vw', height: "0vh", color: theme.palette.text.primary  }}>
                         Explicit or recently added songs are grayed out.
                       </div>
                     }
@@ -404,14 +429,14 @@ const Dashboard = ({ theme }) => {
                   <h2 style={{ color: theme.palette.text.primary, fontWeight: "1000", fontSize: 100 * 0.0167+ 'vw' }}>Now playing</h2>
                   {accessToken === "" ?
                     <h2 color={theme.palette.text.primary}>LOGIN TO SEE THE PLAYER</h2> :
-                    <NowPlaying theme={theme} />
+                    <NowPlaying theme={theme} mode = {mode}/>
                   }
                 </div>
 
                 <div >
                   <h2 style={{ color: theme.palette.text.primary, marginTop: -100 * 0.001+ 'vh', fontSize: 100 * 0.0147+ 'vw', height: "4vh", fontWeight: "1000" }}>Next up</h2>
 
-                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 500 }}>
+                  <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 300 }}>
                     <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
 
                     {queueData.length < 20 ?

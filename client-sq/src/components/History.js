@@ -148,7 +148,7 @@ const History = ({ theme }) => {
                     :
                     <div style={{fontWeight: 700, margin: "2vh", fontSize: '1.25vw' }}>Can't remember a song you want to replay?</div>
                   }
-                  <div style={{ height: "5vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: 100 * 0.01 + 'vw', paddingLeft: 100 * 0.024+ 'vh', paddingTop: 100 * 0.01 + 'vh'}} align="left">
+                  <div style={{ height: "5vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: 100 * 0.01 + 'vw', paddingLeft: 100 * 0.015+ 'vw', paddingTop: 100 * 0.01 + 'vh'}} align="left">
                     Title
 
                   </div>

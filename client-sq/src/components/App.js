@@ -45,7 +45,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: theme.palette.background.primary, height: "100vh" }}>
+      <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: theme.palette.background.primary, height: "100vh",backgroundImage: mode === "light" ?"url(http://localhost:3000/BackgroundLight.png)" : ("url(http://localhost:3000/BackgroundDark.png)") }}>
         <SocketContext.Provider value={apiSocket}>
         
           <NavBar theme={theme} mode={mode}>
@@ -57,13 +57,13 @@ function App() {
               </div>
             </div>
           </NavBar>
-          <LandingPage />
+          <LandingPage theme = {theme} mode = {mode}/>
           <Routes>
             <Route path="/admin" element={<Admin />}>
             </Route>
             <Route path="/auth" element={<Authorized />}>
             </Route>
-            <Route path="/" element={<Dashboard theme={theme} />}>
+            <Route path="/" element={<Dashboard theme={theme} mode ={mode}/>}>
             </Route>
             <Route path="/history" element={<History theme={theme} />}>
             </Route>
