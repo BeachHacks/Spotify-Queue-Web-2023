@@ -329,7 +329,7 @@ const Dashboard = ({ theme, mode }) => {
                   }
                  
                   <div style={{
-                    
+                    opacity:  "70%",
                    
                     position: "absolute",
                     left: "0",
@@ -343,18 +343,18 @@ const Dashboard = ({ theme, mode }) => {
                     transformOrigin: "bottom right",
                     
 
-                    opacity: mode === "light" ? "70%":"70%",
+                   
                     zIndex: 2,
                     position: "relative",
-                    marginBottom: mode === "light" ? '-13.6vw': "-5.5vw",
-                    marginLeft: mode === "light" ? '20vw': "9vw",
+                    marginBottom: mode === "light" ? '-16vw': "-5.5vw",
+                    marginLeft: mode === "light" ? '2vw': "9vw",
                     
-                    width:  mode === "light" ? 54* 0.021 + 'vw' : 5.7* .3378 + 'vw',
-                    height: mode === "light" ? 54* 0.009 + 'vw' : 5.7*.6089   + 'vw',
+                    width:  mode === "light" ? 54* 0.148 + 'vw' : 5.7* .3378 + 'vw',
+                    height: mode === "light" ? 54* 0.146 + 'vw' : 5.7*.6089   + 'vw',
                   }}
-                    src={ mode === "light" ? "lines.png" : "zZ.png" } />
+                    src={ mode === "light" ? "sharkSk8.png" : "zZ.png" } />
                   <img  style={{
-                    opacity: mode === "light" ? "70%":"100%",
+                    
                     zIndex: 1,
                     position: "relative",
                     width: mode === "light" ? 54 *.46253 + 'vw' : 54 *.41668 + 'vw',
