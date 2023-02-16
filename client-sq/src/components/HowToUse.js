@@ -94,6 +94,8 @@ const HowToUse = ({ theme }) => {
               • The song was frequently played and temporarily disabled to ensure playlist diversity.
             </div>
 
+            <img  style={{ marginLeft: '58.5vw',marginTop: '-9.5vw',width: 52 * .204 + 'vw', height: 52 * 0.245 + 'vw' }}
+                            src={theme.palette.text.primary === "#3C435C"? "sharkQuestion.png": "sharkQuestionDark.png"} />
 
           </div>
 

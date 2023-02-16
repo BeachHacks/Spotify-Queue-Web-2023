@@ -66,7 +66,10 @@ const NowPlaying = ({ theme, mode }) => {
           key={playbackState.artist} in={((playbackState.duration / 1000) - (playbackState.progress / 1000) > 1)}>
             <img src={mode === "light" ? "ProgressBuddyLight.png" : "ProgressBuddyDark.png"} style={{  marginTop:'1.5vh',transitionDuration: '5ms',
               transform: playbackState.progress / playbackState.duration<=.09? "scale("+ playbackState.progress / playbackState.duration/.09 +")": "scale(1)",
-              width: 40 * 0.085 + 'vw', height: 40 * 0.08947 + 'vw', marginLeft: (playbackState.progress / playbackState.duration)<=.09?0:(-.09 + playbackState.progress / playbackState.duration) * 100 +'%' }}></img>
+              width: 40 * 0.085 + 'vw', height: 40 * 0.08947 + 'vw', 
+              marginLeft: (playbackState.progress / playbackState.duration)<=.09?0:(-.09 + playbackState.progress / playbackState.duration) * 100 +'%' }}>
+
+              </img>
           </Zoom>
 
           <ProgressBar theme={theme} style={{ marginTop:'-.1vh',marginLeft: ".01vw" }} number={(playbackState.progress / playbackState.duration) * 100} />
