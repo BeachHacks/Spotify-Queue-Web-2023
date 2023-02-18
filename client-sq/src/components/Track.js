@@ -68,7 +68,7 @@ const Track = ({ track, clickable, num, theme }) => {
 
     /* Limiting clients to queueing to 1 minute intervals. Method: localStorage flags
       * Not strict. */
-      const interval = 60000; // Allowed interval in milliseconds
+      const interval = 30000; // Allowed interval in milliseconds
     let lastQueued = localStorage.getItem('time-queued');
     if(!lastQueued){
       queueRequest();

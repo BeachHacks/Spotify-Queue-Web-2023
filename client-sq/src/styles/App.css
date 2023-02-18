@@ -179,22 +179,22 @@ main{
 
 
 .sidetoside {
-  animation: sides 6s infinite ease-in-out;
+  animation: sides 3s infinite ease-in-out;
   
 }
 
 @keyframes sides {
   0% {
-    transform: translateX(30vw)rotate(5deg);
+    transform: translateX(11.5vw)rotate(0deg);
   }
  
   50%   { 
-    transform: translateX(10vw)translateY(-2vh); }   
+    transform: translateX(8.5vw)translateY(0vh); }   
   
   
   
   100%  { 
-    transform: translateX(-10vw)rotate(-7deg); }   
+    transform: translateX(11.5vw)rotate(0deg); }   
   
 }
 

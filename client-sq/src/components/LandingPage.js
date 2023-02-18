@@ -280,7 +280,7 @@ function LandingPage({ theme, mode }) {
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.primary, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"
@@ -291,7 +291,7 @@ function LandingPage({ theme, mode }) {
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.primary, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"
@@ -302,7 +302,7 @@ function LandingPage({ theme, mode }) {
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.primary, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"

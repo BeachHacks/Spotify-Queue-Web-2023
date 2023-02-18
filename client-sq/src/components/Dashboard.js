@@ -346,7 +346,7 @@ const Dashboard = ({ theme, mode }) => {
                    
                     zIndex: 2,
                     position: "relative",
-                    marginBottom: mode === "light" ? '-16vw': "-5.5vw",
+                    marginBottom: mode === "light" ? '-15.25vw': "-5.5vw",
                     marginLeft: mode === "light" ? '2vw': "9vw",
                     
                     width:  mode === "light" ? 54* 0.148 + 'vw' : 5.7* .3378 + 'vw',
@@ -360,8 +360,9 @@ const Dashboard = ({ theme, mode }) => {
                     width: mode === "light" ? 54 *.46253 + 'vw' : 54 *.41668 + 'vw',
                     height: mode === "light" ? 54 *0.30512 + 'vw' : 54 *0.25243   + 'vw',
                     display: "flex",
-                    marginLeft: "auto",
-                    marginRight: "auto",
+                    marginLeft:  "auto",
+                    marginRight:"auto",
+                   
                 
           
                   }}
