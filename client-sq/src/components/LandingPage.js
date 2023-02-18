@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import { Modal, Grid, Fade, Stack } from '@mui/material';
 import '../styles/App.css'
@@ -48,7 +49,7 @@ function LandingPage({ theme, mode }) {
                                 <div style={{
                                     textAlign: 'center', fontSize: '3.3vw', fontWeight: "bold",
                                     color: theme.palette.text.primary,
-                                    marginTop: '5vh'
+                                    marginTop: '2vh'
                                 }}>
                                     Hey <a style={{ color: theme.palette.primary.main }}>BeachHacks!👋</a>
                                 </div>
@@ -58,19 +59,17 @@ function LandingPage({ theme, mode }) {
                                 <div>
                                 <img className ="floating2" src="BeachNotes.png"
                                     style={{
-                                        width: .037 * 88 + 'vw',
-                                        height: .037 * 93 + 'vw',
+                                        width: 80 * .088 + 'vh',
+                                        height: 80 * .093 + 'vh',
                                         display: "block",
-                                        marginTop: "2vh",
-                                        marginBottom: "-4.25vh",
+                                        marginTop: "1vh",
+                                        marginBottom: "-8.0vh",
                                         marginLeft: "33vw",
-                                        
-
                                     }} />
                                     <img className ="floating2" src="BeachNotes2.png" 
                                     style={{animationDelay: '1.5s',
-                                        width: .037 * 70 + 'vw',
-                                        height: .037 * 69 + 'vw',
+                                        width: 80 * .070 + 'vh',
+                                        height: 80 * .069 + 'vh',
                                         
                                         display: "block",
                                         marginBottom: "-8vh",
@@ -81,9 +80,10 @@ function LandingPage({ theme, mode }) {
                                 <img src="BeachMuseGraphics.png"
                                     style={{
 
-                                        height: .037 * 379 + 'vw',
-                                        width: .037 * 740 + 'vw',
+                                        height: .269 * 100 + 'vh',
+                                        width: .525 * 100 + 'vh',
                                         display: "block",
+                                        marginTop:"5vh",
                                         marginLeft: "auto",
                                         marginRight: "auto",
 
