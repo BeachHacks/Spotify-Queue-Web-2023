@@ -32,7 +32,7 @@ function LandingPage({ theme, mode }) {
             <Modal open={open} >
                 <Grid
                     container
-                    sx={[style, { backgroundColor: theme.palette.background.primary, color: theme.palette.text.primary }, mainPageFadeIn === true ? { padding: '4vh' } : { padding: 0 }]}
+                    sx={[style, { backgroundColor: theme.palette.background.primary, color: theme.palette.text.primary }, mainPageFadeIn === true ? { padding: '0vh' } : { padding: 0 }]}
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
@@ -40,56 +40,62 @@ function LandingPage({ theme, mode }) {
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>
 
-                            <Grid style={{
+                            <Grid  style={{
+                                
                                 width: "100%",
                                 height: "100%",
-                                marginTop: "1vh"
+                                marginTop: "7vh"
                             }}>
                                 <div style={{
-                                    textAlign: 'center', fontSize: '3.3vw', fontWeight: "bold",
+                                    textAlign: 'center', fontSize: '6vh', fontWeight: "bold",
                                     color: theme.palette.text.primary,
-                                    marginTop: '5vh'
+                                    marginTop: '0vh'
                                 }}>
                                     Hey <a style={{ color: theme.palette.primary.main }}>BeachHacks!👋</a>
                                 </div>
 
-                                <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '1.85vw', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
+                                <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '3.4vh', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
                                 
-                                <div>
+                                <div style={{marginLeft: '-7vh'}}>
                                 <img className ="floating2" src="BeachNotes.png"
                                     style={{
-                                        width: .037 * 88 + 'vw',
-                                        height: .037 * 93 + 'vw',
+                                       
+                                        width: .070 * 88 + 'vh',
+                                        height: .070 * 93 + 'vh',
                                         display: "block",
                                         marginTop: "2vh",
                                         marginBottom: "-4.25vh",
-                                        marginLeft: "33vw",
-                                        
-
-                                    }} />
-                                    <img className ="floating2" src="BeachNotes2.png" 
-                                    style={{animationDelay: '1.5s',
-                                        transform: "rotate(10deg)",
-                                        width: .037 * 70 + 'vw',
-                                        height: .037 * 69 + 'vw',
-                                        
-                                        display: "block",
-                                        marginBottom: "-8vh",
-                                        
-                                        marginLeft: "36.5vw",
                                       
-                                    }} />
-                                <img src="BeachMuseGraphics.png"
-                                    style={{
-
-                                        height: .037 * 379 + 'vw',
-                                        width: .037 * 740 + 'vw',
-                                        display: "block",
                                         marginLeft: "auto",
                                         marginRight: "auto",
 
                                     }} />
                                     </div>
+                                    <div style={{marginLeft: '4vh'}}>
+                                    <img className ="floating2" src="BeachNotes2.png" 
+                                    style={{animationDelay: '1.5s',
+                                        transform: "rotate(10deg)",
+                                        width: .070 * 70 + 'vh',
+                                        height: .070 * 69 + 'vh',
+                                        
+                                        display: "block",
+                                        marginBottom: "-8vh",
+                                        marginLeft: "auto",
+                                        marginRight: "auto",
+                                    }} />
+                                    </div>
+                                 
+                                <img src="BeachMuseGraphics.png"
+                                    style={{
+
+                                        height: .070 * 379 + 'vh',
+                                        width: .070 * 740 + 'vh',
+                                        display: "block",
+                                        marginLeft: "auto",
+                                        marginRight: "auto",
+
+                                    }} />
+                                    
                                 <div style={{ textAlign: 'center', marginTop: '5vh' }}>
                                     <button
 
@@ -99,7 +105,7 @@ function LandingPage({ theme, mode }) {
                                             backgroundColor: theme.palette.primary.main,
                                             width: '12.5vw',
                                             height: '7vh',
-                                            fontSize: '1.25vw',
+                                            fontSize: '2.25vh',
                                             borderRadius: '.75vh',
                                             border: 'none'
 
@@ -116,7 +122,7 @@ function LandingPage({ theme, mode }) {
                                             color: theme.palette.primary.main,
                                             width: '12.5vw',
                                             height: '7vh',
-                                            fontSize: '1.25vw',
+                                            fontSize: '2.25vh',
                                             borderRadius: '.75vh',
                                             border: 'none',
                                             marginLeft: '1.1vw'
