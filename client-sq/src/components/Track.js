@@ -45,20 +45,10 @@ const Track = ({ track, clickable, num, theme }) => {
             setTimeout(() => {
               setSlide(false)
             }, 2700)
-            
           }
           else {
             console.log('Failed to add to queue');
-            setClicked(true)
-
             setDisabled(true)
-
-            setTimeout(() => {
-              setClicked(false)
-            }, 3000)
-            setTimeout(() => {
-              setSlide(false)
-            }, 2700)
           }
         })
         .catch((err) => {
@@ -68,7 +58,7 @@ const Track = ({ track, clickable, num, theme }) => {
 
     /* Limiting clients to queueing to 1 minute intervals. Method: localStorage flags
       * Not strict. */
-      const interval = 30000; // Allowed interval in milliseconds
+      const interval = 30; // Allowed interval in milliseconds
     let lastQueued = localStorage.getItem('time-queued');
     if(!lastQueued){
       queueRequest();
@@ -82,7 +72,7 @@ const Track = ({ track, clickable, num, theme }) => {
         queueRequest();
       }
     }
-    setSlide(true)
+
   }
 
   function secondsToMinutes(milliSeconds) {
@@ -100,9 +90,10 @@ const Track = ({ track, clickable, num, theme }) => {
         {clickable==false?
         <Fade key = {num && track.title} in={true} timeout={1000}><TableRow  
               > 
-              <div  style={{width: '.9vw', marginLeft: -100*0.007+ 'vw'}}></div>
-             <TableCell style={{ width: '2.15vw',padding: "2.08vh .55vw",fontSize: 100*0.010+ 'vw', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>{num+1}
-             </TableCell>
+             
+             <div style={{ textAlign:'center', width: '2vw',padding: "2.08vh .6vw",fontSize: 100*0.010+ 'vw', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>
+              {num+1}
+             </div>
           
           <TableCell style={{ padding: ".7vh 1.6vw",width: 100*0.01+ 'vw' }} align="left">
                 
@@ -163,29 +154,31 @@ const Track = ({ track, clickable, num, theme }) => {
                  !unqueueable && clickable? 
                 
                  <IconButton onClick={handleAdd} disabled = {disable} disableRipple disableTouchRipple style={{ }} >
-                  {
-                  !clicked?
-                    !disable?
-                      <AddCircleOutlineRoundedIcon className = "button"  sx={{fontSize: '2.2vw'}}/>
-                      :
-                        <Zoom in={disable} timeout={300}>
-                          <AddCircleOutlineRoundedIcon  sx={{ color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
-                        </Zoom>
-                  
-                      :
-                        <Zoom  in={fade} timeout={300}>
-                          <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
-                        </Zoom>
-                    }
-                  </IconButton>
+                 {
+                 !clicked?
+                 !disable?
+                 
+                 <AddCircleOutlineRoundedIcon className = "button"  sx={{fontSize: '2.2vw'}}/>
+                
                 
                   :
-                    clickable ? 
-                      <IconButton variant="outlined" disabled style={{ color: theme.palette.common.disButton}}>
-                          <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
-                      </IconButton>
-                        : 
-                          null
+
+                  <Zoom in={disable} timeout={300}>
+                  <AddCircleOutlineRoundedIcon  sx={{ color: theme.palette.common.disButton, fontSize: '2.2vw'}}/>
+                  </Zoom>
+                
+                  :
+                  <Zoom  in={fade} timeout={300}>
+                 <CheckCircleRoundedIcon sx={{  fontSize: '2.2vw', color: theme.palette.primary.main }}/>
+                 </Zoom>
+                 }
+                 </IconButton>
+                
+                 : clickable ? 
+               
+                 <IconButton variant="outlined" disabled style={{ color: theme.palette.common.disButton}}>
+                     <AddCircleOutlineRoundedIcon   sx={{ fontSize:100*0.022+ 'vw' }}/>
+                 </IconButton>: null
               }  
               </TableCell> 
             </TableRow>

@@ -44,7 +44,7 @@ function LandingPage({ theme, mode }) {
                                 
                                 width: "100%",
                                 height: "100%",
-                                marginTop: "7vh"
+                                marginTop: "7.5vh"
                             }}>
                                 <div style={{
                                     textAlign: 'center', fontSize: '6vh', fontWeight: "bold",
@@ -146,9 +146,9 @@ function LandingPage({ theme, mode }) {
                                     width: "49.5%", height: "100%",
                                     paddingTop: "20.625vh", paddingLeft: "6.7vw",
                                 }}>
-                                    <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "2.08vw" }}>How to find songs</div>
+                                    <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "3.70vh" }}>How to find songs</div>
 
-                                    <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "1.67vw", lineHeight: '4vh' }}> In the search bar, type in a song or artist. Then, hit enter to see results.</div>
+                                    <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "2.9725vh", lineHeight: '4vh' }}> In the search bar, type in a song or artist. Then, hit enter to see results.</div>
 
 
                                     <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
@@ -161,7 +161,7 @@ function LandingPage({ theme, mode }) {
                                                 backgroundColor: theme.palette.primary.main,
                                                 width: '12.5vw',
                                                 height: '6.9vh',
-                                                fontSize: '1.25vw',
+                                                fontSize: '2.225vh',
                                                 borderRadius: '1.4vh',
                                                 border: 'none',
 
@@ -172,8 +172,8 @@ function LandingPage({ theme, mode }) {
                                             style={{
                                                 marginLeft: "18.2vw",
                                                 marginTop: "19.7vh",
-                                                width: .052 * 62 + 'vw',
-                                                height: .052 * 16 + 'vw'
+                                                width: .0925 * 62 + 'vh',
+                                                height: .0925 * 16 + 'vh'
 
                                             }}></img>
                                     </div>
@@ -181,6 +181,7 @@ function LandingPage({ theme, mode }) {
                                 <div>
                                     <img src={mode === "light" ? "LandingPageLight1.png" : "LandingPageDark1.png"}
                                         style={{
+                                           
                                             marginLeft: '4.5vw',
                                             marginTop: "5.65vh",
                                             width: .0925 * 612 + 'vh',
@@ -195,9 +196,9 @@ function LandingPage({ theme, mode }) {
                                 width: "49.5%", height: "100%",
                                 paddingTop: "20.625vh", paddingLeft: "6.7vw",
                             }}>
-                                <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "2.08vw" }}>How to queue songs</div>
+                                <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "3.70vh" }}>How to queue songs</div>
 
-                                <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "1.67vw", lineHeight: '4vh' }}>
+                                <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "2.9725vh", lineHeight: '4vh' }}>
                                     On the right to a song, click on the plus icon. A check mark will show a successful queue.</div>
 
 
@@ -211,7 +212,7 @@ function LandingPage({ theme, mode }) {
                                             backgroundColor: theme.palette.primary.main,
                                             width: '12.5vw',
                                             height: '6.9vh',
-                                            fontSize: '1.25vw',
+                                            fontSize: '2.225vh',
                                             borderRadius: '1.4vh',
                                             border: 'none',
 
@@ -222,8 +223,8 @@ function LandingPage({ theme, mode }) {
                                         style={{
                                             marginLeft: "18.2vw",
                                             marginTop: "19.7vh",
-                                            width: .052 * 62 + 'vw',
-                                            height: .052 * 16 + 'vw'
+                                            width: .0925 * 62 + 'vh',
+                                            height: .0925 * 16 + 'vh'
 
                                         }}></img>
                                 </div>
@@ -247,10 +248,10 @@ function LandingPage({ theme, mode }) {
                                 width: "49.5%", height: "100%",
                                 paddingTop: "20.625vh", paddingLeft: "6.7vw",
                             }}>
-                                <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "2.08vw" }}>Other things to know</div>
+                                <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "3.70vh" }}>Other things to know</div>
 
-                                <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "1.67vw", lineHeight: '4vh' }}>
-                                    In order to create the best playlist for BeachHacks, we recommend following these tips.</div>
+                                <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "2.9725vh", lineHeight: '4vh' }}>
+                                    We implemented the following rules to create the best experience for BeachHacks!</div>
 
 
                                 <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
@@ -263,7 +264,7 @@ function LandingPage({ theme, mode }) {
                                             backgroundColor: theme.palette.primary.main,
                                             width: '12.5vw',
                                             height: '6.9vh',
-                                            fontSize: '1.25vw',
+                                            fontSize: '2.225vh',
                                             borderRadius: '1.4vh',
                                             border: 'none',
 
@@ -274,47 +275,47 @@ function LandingPage({ theme, mode }) {
                                         style={{
                                             marginLeft: "18.2vw",
                                             marginTop: "19.7vh",
-                                            width: .052 * 62 + 'vw',
-                                            height: .052 * 16 + 'vw'
+                                            width: .0925 * 62 + 'vh',
+                                            height: .0925 * 16 + 'vh'
 
                                         }}></img>
                                 </div>
                             </div>
-                            <div style={{ margin: "auto", paddingLeft: '1.025vw', paddingBottom: '5vh' }}>
+                            <div style={{ margin: "auto", paddingLeft: '2.5vw', paddingBottom: '5vh' }}>
 
                                 <Stack direction="column" spacing={'3vh'}>
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "30.4vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>To keep it professional, avoid<br />explicit songs.</div>
+                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>Explicit, low energy, and instrumental<br />songs are excluded.</div>
                                     </Grid>
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "30.4vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>To keep the playlist diverse,<br />avoid repeating songs.</div>
+                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>The same song cannot play until after 10<br />songs.</div>
                                     </Grid>
                                     <Grid
                                         container
                                         sx={{
-                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "28.75vw", textAlign: "center",
+                                            backgroundColor: theme.palette.background.third, boxShadow: "0vw .5vh 1vw 0.25vw " + theme.palette.common.boxShadow, borderRadius: '1.3vh', height: "10.5vh", width: "30.4vw", textAlign: "center",
                                             border: '.25vh solid ' + theme.palette.common.boxShadow
                                         }}
                                         direction="column"
                                         alignItems="center"
                                         justifyContent="center">
-                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>Rule 3 here</div>
+                                        <div style={{ fontWeight: 500, fontSize: '2.6vh', marginTop: "0vh", lineHeight: '3.25vh' }}>Songs can only be added every 30 <br /> seconds per person.</div>
                                     </Grid>
                                 </Stack>
                             </div>

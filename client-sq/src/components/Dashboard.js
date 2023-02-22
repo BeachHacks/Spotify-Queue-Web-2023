@@ -447,9 +447,8 @@ const Dashboard = ({ theme, mode }) => {
                   <div style={{ marginTop: 100 * 0.0075+ 'vh', fontSize: 100 * 0.01+ 'vw', fontFamily: "DM Sans", fontWeight: "bold", color: theme.palette.text.primary, fontWeight: 300 }}>
                     <span style={{ marginLeft: 100 * 0.0065+ 'vw' }}> # </span>
 
-                    {queueData.length < 20 ?
-                      <span style={{ marginLeft: 100 * 0.018+ 'vw' }}> Title </span> :
-                      <span style={{ marginLeft: 100 * 0.01875+ 'vw' }}> Title </span>}
+                   
+                      <span style={{ marginLeft: 100 * 0.018+ 'vw' }}> Title </span> 
 
                     <div style={{
                       borderTop: ".25vh solid " + theme.palette.common.border,
