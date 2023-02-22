@@ -103,8 +103,8 @@ const Track = ({ track, clickable, num, theme }) => {
               <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
             
 
-              <TableCell  class = "bigger2" style={{ transformOrigin: "left", padding: "1.1vh .3vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
-                <div style={{ marginBottom: -100*0.002+ 'vh', fontWeight : "bold", fontSize: 100*0.010+ 'vw', width: "50vw"}}>
+              <TableCell  class = "bigger2" style={{ transformOrigin: "left", padding: "1.15vh .3vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
+                <div style={{ marginBottom: -100*0.002+ 'vh', fontWeight : 700, fontSize: 100*0.010+ 'vw', width: "50vw"}}>
                 {track.title.length>70 ? track.title.substring(0,67)+ "...": track.title}
                 </div>
                 <div style={{ opacity: '75%',fontWeight : 300, color: theme.palette.text.primary, fontSize: 100*0.008+ 'vw'}}>

@@ -21,7 +21,7 @@ const HowToUse = ({ theme }) => {
 
 
           <div style={{ display: "flex" }}>
-            <div style={{ marginTop: 100 * 0.014 + 'vh', marginLeft: 100 * 0.014 + 'vw', color: theme.palette.text.primary }}>
+            <div style={{ marginTop: 100 * 0.020+ 'vh', marginLeft: 100 * 0.016 + 'vw', color: theme.palette.text.primary }}>
               <div style={{ fontSize: 100 * 2.1 * 0.0125 + 'vh', color: theme.palette.primary.main }}>
                 How to find songs
               </div>
@@ -47,7 +47,7 @@ const HowToUse = ({ theme }) => {
           }}>
 
           <div style={{ display: "flex" }}>
-            <div style={{ marginTop: 100 * 0.014 + 'vh', marginLeft: 100 * 0.014 + 'vw', color: theme.palette.text.primary }}>
+            <div style={{ marginTop: 100 * 0.020+ 'vh', marginLeft: 100 * 0.016 + 'vw', color: theme.palette.text.primary }}>
               <div style={{ fontSize: 100 * 2.1 * 0.0125 + 'vh', color: theme.palette.primary.main }}>
                 How to queue songs
               </div>
@@ -70,7 +70,7 @@ const HowToUse = ({ theme }) => {
             width: 100 * .7775 + 'vw'
           }}>
 
-          <div style={{ marginTop: 100 * 0.014 + 'vh', marginLeft: 100 * 0.014 + 'vw', color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 2.1 * 0.009 + 'vh', }}>
+          <div style={{ marginTop: 100 * 0.020+ 'vh', marginLeft: 100 * 0.016 + 'vw', color: theme.palette.text.primary, fontWeight: 500, fontSize: 100 * 2.1 * 0.009 + 'vh', }}>
             <div style={{ fontWeight: 700, fontSize: 100 * 2.1 * 0.0125 + 'vh', color: theme.palette.primary.main }}>
               Frequently asked questions
             </div>
@@ -87,14 +87,18 @@ const HowToUse = ({ theme }) => {
               • The song might be too explicit.
             </div>
             <div style={{ marginLeft: '1vw', }}>
-              • The song is too low tempo during after hours and might make others sleepy.
+              • The song is too low tempo and might make others sleepy.
             </div>
 
             <div style={{ marginLeft: '1vw', }}>
-              • The song was frequently played and temporarily disabled to ensure playlist diversity.
+              • The song was frequently played and temporarily disabled for the next 10 songs.
+            </div>
+            <div style={{ marginLeft: '1vw', }}>
+              • You have a 30 second cool down before adding your next song!
             </div>
 
-
+            <img  style={{ marginLeft: '58.5vw',marginTop: '-20vh',width: 95 * .204 + 'vh', height: 95 * 0.245 + 'vh' }}
+                            src={theme.palette.text.primary === "#3C435C"? "sharkQuestion.png": "sharkQuestionDark.png"} />
           </div>
 
 
