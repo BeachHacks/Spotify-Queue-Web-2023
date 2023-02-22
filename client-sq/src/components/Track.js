@@ -90,11 +90,11 @@ const Track = ({ track, clickable, num, theme }) => {
         {clickable==false?
         <Fade key = {num && track.title} in={true} timeout={1000}><TableRow  
               > 
-             
-             <div style={{ textAlign:'center', width: '2vw',padding: "2.08vh .6vw",fontSize: 100*0.010+ 'vw', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>
+             <TableCell style={{ padding: "0"}}>
+             <div    style={{width: '2vw', textAlign:'center',fontSize: 100*0.010+ 'vw', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>
               {num+1}
              </div>
-          
+             </TableCell>
           <TableCell style={{ padding: ".7vh 1.6vw",width: 100*0.01+ 'vw' }} align="left">
                 
                 <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer"><img class = "bigger" src={track.albumUrl} alt={track.title} style={{height : 100*0.02625+ 'vw', width:"100*0.02625+ 'vw'"}} /></a>
@@ -103,7 +103,7 @@ const Track = ({ track, clickable, num, theme }) => {
               <div  style={{ marginLeft: -100*0.007+ 'vw', alignItems: "center", align: "center"}}>
             
 
-              <TableCell  class = "bigger2" style={{ transformOrigin: "left", padding: "1.2vh .3vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
+              <TableCell  class = "bigger2" style={{ transformOrigin: "left", padding: "1.1vh .3vw",width: 100*0.3+ 'vw', fontFamily:"DM Sans", color: theme.palette.text.primary}} align="left">
                 <div style={{ marginBottom: -100*0.002+ 'vh', fontWeight : "bold", fontSize: 100*0.010+ 'vw', width: "50vw"}}>
                 {track.title.length>70 ? track.title.substring(0,67)+ "...": track.title}
                 </div>
