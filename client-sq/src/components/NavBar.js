@@ -77,6 +77,8 @@ const NavBar = ({ children, theme, mode }) => {
                     }
                 </div>
 
+
+                
                 <main>{children}</main>
             </div>
         </div>
