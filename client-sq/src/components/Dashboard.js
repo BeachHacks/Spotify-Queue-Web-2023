@@ -370,6 +370,7 @@ const Dashboard = ({ theme, mode }) => {
                     src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
                     </div>
                   </div>) : (
+                    
                     searchResults.length != 0 ?
                       (<div style={{
                         overflowX: 'hidden',
@@ -407,6 +408,7 @@ const Dashboard = ({ theme, mode }) => {
                       </div>)
                       :
                       (
+                        
                         <div style={{
                           overflowX: 'hidden',
                           overflowY: 'hidden',
@@ -418,13 +420,19 @@ const Dashboard = ({ theme, mode }) => {
                           height: 100 * 0.755 + 'vh',
                           marginTop: 100 * 0.02 + 'vh',
                         }}>
+                          
                           <div style={{ padding: "1vh", fontSize: 100 * 0.0154 + 'vw', marginTop: 100 * 0.011 + 'vh', marginLeft: 100 * 0.007 + 'vw' }}>
 
 
                             <div style={{ fontSize: 100 * 0.0145 + 'vw', height: "4.25vh", color: theme.palette.text.primary }}>
                               Results
                             </div>
-
+                            {loading?
+                            <div style={{ fontSize: 100 * 0.01025 + 'vw', height: "0vh" , color: theme.palette.text.primary }}>
+                              {text}
+                            </div>
+                            :
+                            <div>
                             <div style={{ fontWeight: 500, fontSize: 100 * 0.01025 + 'vw', height: "1vh", color: theme.palette.text.primary }}>
                               Hm... We couldn’t find anything. Try searching again.
                             </div>
@@ -438,6 +446,8 @@ const Dashboard = ({ theme, mode }) => {
                               marginRight: "auto",
                             }}
                               src={mode === "light" ? "BeeLight.png" : "BeeDark.png"} />
+                              </div>
+                                }
                           </div>
                         </div>
                       )
