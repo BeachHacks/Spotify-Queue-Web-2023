@@ -56,9 +56,9 @@ const Track = ({ track, clickable, num, theme }) => {
         });
     }
 
-    /* Limiting clients to queueing to 1 minute intervals. Method: localStorage flags
+    /* Limiting clients to queueing to 30 second intervals. Method: localStorage flags
       * Not strict. */
-      const interval = 30; // Allowed interval in milliseconds
+      const interval = 30000; // Allowed interval in milliseconds
     let lastQueued = localStorage.getItem('time-queued');
     if(!lastQueued){
       queueRequest();
