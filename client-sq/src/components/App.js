@@ -45,7 +45,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: theme.palette.background.primary, height: "100vh",backgroundImage: mode === "light" ?"url(http://localhost:3000/BackgroundLight.png)" : ("url(http://localhost:3000/BackgroundDark.png)") }}>
+      <div style={{ display: 'inline-flex', width: "100%", overflow: "hidden", backgroundColor: theme.palette.background.primary, height: "100vh",backgroundImage: mode === "light" ?"url(https://beachmuse.netlify.app/BackgroundLight.png)" : ("url(https://beachmuse.netlify.app/BackgroundDark.png)") }}>
         <SocketContext.Provider value={apiSocket}>
         
           <NavBar theme={theme} mode={mode}>

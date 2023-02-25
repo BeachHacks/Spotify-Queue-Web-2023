@@ -73,6 +73,7 @@ function LandingPage({ theme, mode }) {
                                     </div>
                                     <div style={{marginLeft: '4vh'}}>
                                     <img className ="floating2" src="BeachNotes2.png" 
+
                                     style={{animationDelay: '1.5s',
                                         transform: "rotate(10deg)",
                                         width: .070 * 70 + 'vh',
