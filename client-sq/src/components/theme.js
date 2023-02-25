@@ -9,7 +9,8 @@ const themeDefinition = (mode) => ({
                 },
                 background: {
                     primary: "#F6F8FF",
-                    secondary: "#FFFFFF"
+                    secondary: "#FFFFFF",
+                    third: "#FFFFFF"
                 },
                 primary: {
                     main: "#496FFF"
@@ -28,7 +29,8 @@ const themeDefinition = (mode) => ({
                 },
                 background: {
                     primary: "#151A28",
-                    secondary: "#0F1521"
+                    secondary: "#0F1521",
+                    third: "#151A28"
                 },
                 primary: {
                     main: "#496FFF"
