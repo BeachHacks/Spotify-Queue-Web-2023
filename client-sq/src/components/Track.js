@@ -94,6 +94,7 @@ const Track = ({ track, clickable, num, theme }) => {
              <div    style={{width: '2vw', textAlign:'center',fontSize: 100*0.010+ 'vw', fontWeight : 500,fontFamily:"DM Sans", opacity: '75%',color: theme.palette.text.primary }}>
               {num+1}
              </div>
+
              </TableCell>
           <TableCell style={{ padding: ".7vh 1.6vw",width: 100*0.01+ 'vw' }} align="left">
                 
