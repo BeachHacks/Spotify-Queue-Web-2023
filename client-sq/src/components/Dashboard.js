@@ -329,33 +329,45 @@ const Dashboard = ({ theme, mode }) => {
                       </div>
                     }
 
-                    <div style={{
-                      position: "absolute",
-                      left: "0",
-                      right: "0",
-                      bottom: mode === "light" ? 4 + 'vh' : 10 + 'vh',
-                    }}>
-                      <img class="snoring" style={{
-                        display: "flex",
-                        transformOrigin: "bottom right",
-                        marginBottom: mode === "light" ? '0vh' : "-10vh",
-                        marginLeft: mode === "light" ? '0vh' : "9vw",
+<div style={{
+                    opacity:  "70%",
+                   
+                    position: "absolute",
+                    left: "0",
+                    right: "0",
+                    bottom: mode === "light" ? 4 + 'vh' : 10  + 'vh',
+                    
+          
+                  }}> 
+                 <img class = {mode === "light" ? "sidetoside":"snoring"  }style={{
+                    display: "flex",
+                    transformOrigin: "bottom right",
+                    
 
-                        width: mode === "light" ? 0 + 'vw' : 5.7 * .3378 + 'vw',
-                        height: mode === "light" ? 0 + 'vw' : 5.7 * .6089 + 'vw',
-                      }}
-                        src={mode === "light" ? "" : "zZ.png"} />
-                      <img style={{
-
-                        width: mode === "light" ? 54 * .46253 + 'vw' : 54 * .41668 + 'vw',
-                        height: mode === "light" ? 54 * 0.30512 + 'vw' : 54 * 0.25243 + 'vw',
-                        display: "flex",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-
-
-                      }}
-                        src={mode === "light" ? "faded.png" : "fadedDark.png"} />
+                   
+                    zIndex: 2,
+                    position: "relative",
+                    marginBottom: mode === "light" ? '-15.25vw': "-5.5vw",
+                    marginLeft: mode === "light" ? '2vw': "9vw",
+                    
+                    width:  mode === "light" ? 54* 0.148 + 'vw' : 5.7* .3378 + 'vw',
+                    height: mode === "light" ? 54* 0.146 + 'vw' : 5.7*.6089   + 'vw',
+                  }}
+                    src={ mode === "light" ? "sharkSk8.png" : "zZ.png" } />
+                  <img  style={{
+                    
+                    zIndex: 1,
+                    position: "relative",
+                    width: mode === "light" ? 54 *.46253 + 'vw' : 54 *.41668 + 'vw',
+                    height: mode === "light" ? 54 *0.30512 + 'vw' : 54 *0.25243   + 'vw',
+                    display: "flex",
+                    marginLeft:  "auto",
+                    marginRight:"auto",
+                   
+                
+          
+                  }}
+                    src={ mode === "light" ? "faded.png" : "fadedDark.png" } />
                     </div>
                   </div>) : (
                     searchResults.length != 0 ?

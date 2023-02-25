@@ -46,10 +46,10 @@ const NavBar = ({ children, theme, mode }) => {
 
                         <img  style={{transition:'transform .2s', width: 52 * .240 + 'vw', height: 52 * 0.152 + 'vw' }}
                             src={mode === "light"? "logo.png": "logoDark.png"} />
-                        <div style= {{marginLeft:'-1.5vw', marginTop: '3vh'}}>
+                        <div style= {{marginLeft:'-1.5vw', marginTop: '1.6vw'}}>
                             <img class = "floating" style={{transition:'transform .2s', width: 5 * .15 + 'vw', height: 5 * 0.19 + 'vw' }}
                             src="note2.png" />
-                            <img class = "floating" style={{animationDelay: '.25s', marginTop:'2.25vh',marginLeft:'-.4vw',transition:'transform .2s', width: 5 * .22 + 'vw', height: 5 * 0.21 + 'vw' }}
+                            <img class = "floating" style={{animationDelay: '.25s', marginTop:'1.3vw',marginLeft:'-.4vw',transition:'transform .2s', width: 5 * .22 + 'vw', height: 5 * 0.21 + 'vw' }}
                             src="note1.png" />
                         </div>
 
@@ -77,6 +77,8 @@ const NavBar = ({ children, theme, mode }) => {
                     }
                 </div>
 
+
+                
                 <main>{children}</main>
             </div>
         </div>
